@@ -1,0 +1,48 @@
+San Francisco; Blue
+Chicago; Blue
+Montreal; Blue
+New York; Blue
+Washington; Blue
+Atlanta; Blue
+London; Blue
+Madrid; Blue
+Paris; Blue
+Milan; Blue
+St. Petersburg; Blue
+Essen; Blue
+Los Angeles; Yellow
+Mexico City; Yellow
+Miami; Yellow
+Bogota; Yellow
+Lima; Yellow
+Sao Paulo; Yellow
+Buenos Aires; Yellow
+Santiago; Yellow
+Lagos; Yellow
+Khartoum; Yellow
+Kinshasa; Yellow
+Johannesburg; Yellow
+Algiers; Black
+Cairo; Black
+Istanbul; Black
+Moscow; Black
+Baghdad; Black
+Riyadh; Black
+Tehran; Black
+Karachi; Black
+Delhi; Black
+Mumbai; Black
+Chennai; Black
+Kolkata; Black
+Beijing; Red
+Seoul; Red
+Shanghai; Red
+Tokyo; Red
+Osaka; Red
+Taipei; Red
+Hong Kong; Red
+Bangkok; Red
+Manila; Red
+Ho Chi Minh City; Red
+Jakarta; Red
+Sydney; Red
