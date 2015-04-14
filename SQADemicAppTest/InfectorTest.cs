@@ -10,6 +10,8 @@ namespace SQADemicAppTest
     {
         private LinkedList<String> deck;
         private LinkedList<String> pile;
+        private int infectionRate;
+        private int infectionIndex;
         
         [TestInitialize]
         public void SetUpArrays()
@@ -20,7 +22,8 @@ namespace SQADemicAppTest
             //deck.AddFirst("Saint Petersburg");
             //deck.AddFirst("Sydney");
             pile = new LinkedList<string>();
-
+            infectionRate = 3;
+            infectionIndex = 4;
         }
 
         [TestMethod]
@@ -78,8 +81,7 @@ namespace SQADemicAppTest
         {
             //InfectionRates = { 2, 2, 2, 3, 3, 4, 4 };
             deck.AddFirst("Chicago");
-            int infectionRate =2;
-            int infectionIndex = 1;
+            infectionIndex = 1;
             InfectorBL.Epidemic(deck, pile, ref infectionIndex, ref infectionRate);
             Assert.AreEqual(2, infectionRate);
         }
@@ -89,8 +91,7 @@ namespace SQADemicAppTest
         {
             //InfectionRates = { 2, 2, 2, 3, 3, 4, 4 };
             deck.AddFirst("Chicago");
-            int infectionRate = 2;
-            int infectionIndex = 2;
+            infectionIndex = 2;
             InfectorBL.Epidemic(deck, pile, ref infectionIndex, ref infectionRate);
             Assert.AreEqual(3, infectionRate);
         }
@@ -100,8 +101,8 @@ namespace SQADemicAppTest
         {
             //InfectionRates = { 2, 2, 2, 3, 3, 4, 4 };
             deck.AddFirst("Chicago");
-            int infectionRate = 3;
-            int infectionIndex = 4;
+            infectionRate = 3;
+            infectionIndex = 4;
             InfectorBL.Epidemic(deck, pile, ref infectionIndex, ref infectionRate);
             Assert.AreEqual(4, infectionRate);
         }
@@ -110,10 +111,19 @@ namespace SQADemicAppTest
         public void TestEpidemicIncreaseInfectionIndex()
         {
             deck.AddFirst("Chicago");
-            int infectionRate = 3;
-            int infectionIndex = 4;
+            infectionRate = 3;
+            infectionIndex = 4;
             InfectorBL.Epidemic(deck, pile, ref infectionIndex, ref infectionRate);
             Assert.AreEqual(5, infectionIndex);
+        }
+
+        [TestMethod]
+        public void TestEpidemicDrawLastCardChicago()
+        {
+            deck.AddFirst("Chicago");
+            deck.AddFirst("New York");
+            string lastCity = InfectorBL.Epidemic(deck, pile, ref infectionIndex, ref infectionRate);
+            Assert.AreEqual("Chicago", lastCity);
         }
     }
 }
