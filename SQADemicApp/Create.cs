@@ -125,6 +125,11 @@ namespace SQAdemicApp
             
         }
 
+        public List<string> getAdjacentCities(string name)
+        {
+            return null;
+        }
+
     }
 
 }

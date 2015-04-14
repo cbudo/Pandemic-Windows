@@ -51,6 +51,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="InfectorTest.cs" />
+    <Compile Include="NeighborsTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
