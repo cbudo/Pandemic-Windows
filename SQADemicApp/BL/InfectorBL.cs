@@ -34,10 +34,9 @@ namespace SQADemicApp.BL
 		/// </summary>
         /// <param name="deck">infection Deck - LinkedList</param>
         /// <param name="pile">infection Deck - LinkedList</param>
-        /// <param name="infectionRates">infectionRates- int[] of the possible infection rates</param>
         /// <param name="infectionRateIndex">infectionRateIndex - int current index in teh infectionRates</param>
        	/// <returns></returns>
-        public static List<String> Epidemic(LinkedList<String> deck, LinkedList<String> pile, int[] infectionRates, int infectionRateIndex, ref int infectionRate)
+        public static List<String> Epidemic(LinkedList<String> deck, LinkedList<String> pile, int infectionRateIndex, ref int infectionRate)
         {
             infectionRate = infectionRateIndex > 1 ? (infectionRateIndex > 3 ? 4 :3) : 2;
             return new List<String> { "city" };

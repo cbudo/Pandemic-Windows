@@ -10,7 +10,6 @@ namespace SQADemicAppTest
     {
         private LinkedList<String> deck;
         private LinkedList<String> pile;
-        private int[] InfectionRates = { 2, 2, 2, 3, 3, 4, 4 };
         
         [TestInitialize]
         public void SetUpArrays()
@@ -80,7 +79,7 @@ namespace SQADemicAppTest
             //InfectionRates = { 2, 2, 2, 3, 3, 4, 4 };
             deck.AddFirst("Chicago");
             int infectionRate =2;
-            InfectorBL.Epidemic(deck, pile, InfectionRates, 1, ref infectionRate);
+            InfectorBL.Epidemic(deck, pile, 1, ref infectionRate);
             Assert.AreEqual(2, infectionRate);
         }
 
@@ -90,7 +89,7 @@ namespace SQADemicAppTest
             //InfectionRates = { 2, 2, 2, 3, 3, 4, 4 };
             deck.AddFirst("Chicago");
             int infectionRate = 2;
-            InfectorBL.Epidemic(deck, pile, InfectionRates, 2, ref infectionRate);
+            InfectorBL.Epidemic(deck, pile, 2, ref infectionRate);
             Assert.AreEqual(3, infectionRate);
         }
 
@@ -100,7 +99,7 @@ namespace SQADemicAppTest
             //InfectionRates = { 2, 2, 2, 3, 3, 4, 4 };
             deck.AddFirst("Chicago");
             int infectionRate = 3;
-            InfectorBL.Epidemic(deck, pile, InfectionRates, 4, ref infectionRate);
+            InfectorBL.Epidemic(deck, pile, 4, ref infectionRate);
             Assert.AreEqual(4, infectionRate);
         }
 
