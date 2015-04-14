@@ -11,10 +11,15 @@ namespace SQADemicApp.BL
 
         public static List<String> InfectCities(LinkedList<String> deck, LinkedList<String> pile, int drawAmmount)
         {
-            List<string> returnList;
+            List<string> returnList = new List<string>();
 
-            returnList = drawAmmount == 2 ? new List<string> { "Sydney", "Saint Petersburg" } : new List<string> { "New York", "Sydney", "Saint Petersburg" };
-            return returnList;
+            for (int i = 0; i < drawAmmount; i++)
+            {
+                returnList.Add(deck.First.Value);
+                deck.RemoveFirst();
+				
+            }
+                return returnList;
         }
 
     }

@@ -37,9 +37,9 @@ namespace SQADemicAppTest
         [TestMethod]
         public void TestInfectThreeCities()
         {
-            deck.AddFirst("New York");
             deck.AddFirst("Saint Petersburg");
             deck.AddFirst("Sydney");
+            deck.AddFirst("New York");
             List<String> removedCities = InfectorBL.InfectCities(deck, pile, 3);
             List<String> answer = new List<string> { "New York", "Sydney", "Saint Petersburg" };
             CollectionAssert.AreEqual(answer, removedCities);
@@ -53,8 +53,8 @@ namespace SQADemicAppTest
             List<String> removedCities = InfectorBL.InfectCities(deck, pile, 2);
             List<String> answer = new List<string> { "Sydney", "Saint Petersburg" };
             CollectionAssert.AreEqual(answer, removedCities);
-            deck.AddFirst("Chicago");
             deck.AddFirst("New York");
+            deck.AddFirst("Chicago");
             removedCities = InfectorBL.InfectCities(deck, pile, 2);
             answer = new List<string> { "Chicago", "New York" };
             CollectionAssert.AreEqual(answer, removedCities);
