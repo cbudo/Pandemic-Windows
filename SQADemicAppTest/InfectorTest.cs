@@ -125,5 +125,14 @@ namespace SQADemicAppTest
             string lastCity = InfectorBL.Epidemic(deck, pile, ref infectionIndex, ref infectionRate);
             Assert.AreEqual("Chicago", lastCity);
         }
+
+        [TestMethod]
+        public void TestEpidemicDrawLastCardNewYork()
+        {
+            deck.AddFirst("New York");
+            deck.AddFirst("Chicago");
+            string lastCity = InfectorBL.Epidemic(deck, pile, ref infectionIndex, ref infectionRate);
+            Assert.AreEqual("New York", lastCity);
+        }
     }
 }
