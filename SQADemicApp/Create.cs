@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.IO;
 
 namespace SQAdemicApp
 {
@@ -66,9 +67,14 @@ namespace SQAdemicApp
 
         public void setAdjacentCities()
         {
-            
+
         }
 
+
+        public List<GameBoardModels.Card> makeCardList(StringReader stringReader)
+        {
+            throw new NotImplementedException();
+        }
     }
 
 }
