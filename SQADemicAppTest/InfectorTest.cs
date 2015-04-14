@@ -1,7 +1,8 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SQADemicApp.BL;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace SQADemicAppTest
 {
@@ -148,6 +149,12 @@ namespace SQADemicAppTest
             Assert.AreEqual(0, pile.Count);
             Assert.AreEqual(4, deck.Count);
 
+            //Look at print statments to manualy asses random/diffrent placing
+            string[] deckarray = deck.ToArray<String>();
+            for (int i = 0; i < 4; i++)
+            {
+                Console.WriteLine(deckarray[i]);
+            }
         }
     }
 }

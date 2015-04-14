@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SQADemicApp.BL
 {
@@ -45,11 +43,14 @@ namespace SQADemicApp.BL
             //draw Last card
             string epidmicCity = deck.Last.Value;
             //shuffle remains back on to the deck
-            
-
-
+            string[] pilearray = pile.ToArray<string>();
+            pilearray = HelperBL.shuffleArray(pilearray);
+            for (int i = 0; i < pilearray.Length; i++)
+            {
+                deck.AddFirst(pilearray[i]);
+            }
+            pile.Clear();
             return epidmicCity;
-
 		}
 
     }
