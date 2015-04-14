@@ -29,7 +29,7 @@ namespace SQADemicAppTest
         {
             List<String> removedCities = InfectorBL.InfectCities(deck, pile, 2);
             List<String> answer = new List<string> { "Sydney", "Saint Petersburg" };
-            Assert.AreEqual<List<String>>(answer, removedCities);
+            Assert.AreEqual<String>(answer.ToString(), removedCities.ToString());
 
         }
     }
