@@ -156,5 +156,18 @@ namespace SQADemicAppTest
                 Console.WriteLine(deckarray[i]);
             }
         }
+
+        [TestMethod]
+        public void TestEpidemicLastCityMixedIn()
+        {
+            deck = new LinkedList<string>();
+            pile = new LinkedList<string>();
+            deck.AddFirst("Saint Petersburg");
+            deck.AddFirst("Sydney");
+            deck.AddFirst("New York");
+            deck.AddFirst("Chicago");
+            string lastcity = InfectorBL.Epidemic(deck, pile, ref infectionIndex, ref infectionRate);
+            Assert.AreEqual(lastcity, deck.First.Value);
+        }
     }
 }
