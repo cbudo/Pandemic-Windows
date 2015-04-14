@@ -17,5 +17,14 @@ namespace SQADemicAppTest
             returnedList = createTestClass.makeCardList(new System.IO.StringReader("test; blue"));
             Assert.IsTrue(cardList[0].Equals(returnedList[0]));
         }
+        [TestMethod]
+        public void TestThatCardListCorrectTwoItem()
+        {
+            cardList.Add(new SQAdemicApp.GameBoardModels.Card("test", SQAdemicApp.GameBoardModels.CARDTYPE.Player, SQAdemicApp.GameBoardModels.COLOR.blue));
+            cardList.Add(new SQAdemicApp.GameBoardModels.Card("test2", SQAdemicApp.GameBoardModels.CARDTYPE.Player, SQAdemicApp.GameBoardModels.COLOR.blue));
+            returnedList = createTestClass.makeCardList(new System.IO.StringReader("test; blue\ntest2; blue"));
+            Assert.IsTrue(cardList[0].Equals(returnedList[0]));
+            Assert.IsTrue(cardList[1].Equals(returnedList[1]));
+        }
     }
 }
