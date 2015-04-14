@@ -10,6 +10,7 @@ namespace SQADemicAppTest
     {
         private LinkedList<String> deck;
         private LinkedList<String> pile;
+        private int[] InfectionRates = { 2, 2, 2, 3, 3, 4, 4 };
         
         [TestInitialize]
         public void SetUpArrays()
@@ -22,7 +23,6 @@ namespace SQADemicAppTest
             pile = new LinkedList<string>();
 
         }
-
 
         [TestMethod]
         public void TestInfectTwoCities()
@@ -72,6 +72,16 @@ namespace SQADemicAppTest
             answer.AddFirst("Sydney");
             answer.AddFirst("Saint Petersburg");
             CollectionAssert.AreEqual(answer, pile);
+        }
+
+        [TestMethod]
+        public void TestEpidemicIncreaseInfectionCounter()
+        {
+            //InfectionRates = { 2, 2, 2, 3, 3, 4, 4 };
+            deck.AddFirst("Chicago");
+            int infectionRate;
+            InfectorBL.Epidemic(deck, pile, InfectionRates, 2, out infectionRate);
+
         }
 
     }

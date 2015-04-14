@@ -29,16 +29,17 @@ namespace SQADemicApp.BL
                 return returnList;
         }
 		/// <summary>
-		/// handles Epidmeic card actions
-        /// Increases the infection rate, draws from the bottom of the deck, shuffles the Infection discard pile back into the infection deck 
+		/// Handles Epidmeic card actions,
+        /// Increases the infection rate, draws from the bottom of the deck, Shuffles the infection discard pile back into the infection deck 
 		/// </summary>
         /// <param name="deck">infection Deck - LinkedList</param>
         /// <param name="pile">infection Deck - LinkedList</param>
-        /// <param name="infectionRate"></param>
-		/// <returns></returns>
-        public static List<String> Epidemic(LinkedList<String> deck, LinkedList<String> pile, int infectionRate)
+        /// <param name="infectionRates">infectionRates- int[] of the possible infection rates</param>
+        /// <param name="infectionRateIndex">infectionRateIndex - int current index in teh infectionRates</param>
+       	/// <returns></returns>
+        public static List<String> Epidemic(LinkedList<String> deck, LinkedList<String> pile, int[] infectionRates, int infectionRateIndex, out int infectionRate)
         {
-
+			
             return new List<String> { "city" };
 
 		}
