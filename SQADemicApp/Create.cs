@@ -64,6 +64,20 @@ namespace SQAdemicApp
         City jakarta = new City(GameBoardModels.COLOR.red);
         City sydney = new City(GameBoardModels.COLOR.red);
 
+        Dictionary<string, City> dictOfNeighbors = new Dictionary<string, City>();
+
+        public void createDictionary()
+        {
+            dictOfNeighbors.Add("San Francisco", sanFrancisco);
+            dictOfNeighbors.Add("Chicago", chicago);
+            dictOfNeighbors.Add("Montreal", montreal);
+            dictOfNeighbors.Add("New York", newYork);
+            dictOfNeighbors.Add("Atlanta", atlanta);
+            dictOfNeighbors.Add("Washington", washington);
+            dictOfNeighbors.Add("London", london);
+
+        }
+
         public void setAdjacentCities()
         {
             
