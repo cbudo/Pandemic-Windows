@@ -43,10 +43,10 @@ namespace SQADemicApp.BL
             infectionRateIndex += 1;
 
             //draw Last card
-
+            string epidmicCity = deck.Last.Value;
             //shuffle remains back on to the deck
-
-            return "Chicago";
+            
+            return epidmicCity;
 
 		}
 
