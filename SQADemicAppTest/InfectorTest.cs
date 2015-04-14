@@ -79,7 +79,8 @@ namespace SQADemicAppTest
             //InfectionRates = { 2, 2, 2, 3, 3, 4, 4 };
             deck.AddFirst("Chicago");
             int infectionRate =2;
-            InfectorBL.Epidemic(deck, pile, 1, ref infectionRate);
+            int infectionIndex = 1;
+            InfectorBL.Epidemic(deck, pile, ref infectionIndex, ref infectionRate);
             Assert.AreEqual(2, infectionRate);
         }
 
@@ -89,7 +90,8 @@ namespace SQADemicAppTest
             //InfectionRates = { 2, 2, 2, 3, 3, 4, 4 };
             deck.AddFirst("Chicago");
             int infectionRate = 2;
-            InfectorBL.Epidemic(deck, pile, 2, ref infectionRate);
+            int infectionIndex = 2;
+            InfectorBL.Epidemic(deck, pile, ref infectionIndex, ref infectionRate);
             Assert.AreEqual(3, infectionRate);
         }
 
@@ -99,9 +101,19 @@ namespace SQADemicAppTest
             //InfectionRates = { 2, 2, 2, 3, 3, 4, 4 };
             deck.AddFirst("Chicago");
             int infectionRate = 3;
-            InfectorBL.Epidemic(deck, pile, 4, ref infectionRate);
+            int infectionIndex = 4;
+            InfectorBL.Epidemic(deck, pile, ref infectionIndex, ref infectionRate);
             Assert.AreEqual(4, infectionRate);
         }
 
+        [TestMethod]
+        public void TestEpidemicIncreaseInfectionIndex()
+        {
+            deck.AddFirst("Chicago");
+            int infectionRate = 3;
+            int infectionIndex = 4;
+            InfectorBL.Epidemic(deck, pile, ref infectionIndex, ref infectionRate);
+            Assert.AreEqual(5, infectionIndex);
+        }
     }
 }
