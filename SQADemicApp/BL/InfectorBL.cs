@@ -44,6 +44,7 @@ namespace SQADemicApp.BL
             string epidmicCity = deck.Last.Value;
             deck.RemoveLast();
             pile.AddFirst(epidmicCity);
+
             //shuffle remains back on to the deck
             string[] pilearray = pile.ToArray<string>();
             pilearray = HelperBL.shuffleArray(pilearray);
