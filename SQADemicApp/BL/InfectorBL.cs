@@ -39,8 +39,7 @@ namespace SQADemicApp.BL
        	/// <returns></returns>
         public static List<String> Epidemic(LinkedList<String> deck, LinkedList<String> pile, int[] infectionRates, int infectionRateIndex, ref int infectionRate)
         {
-            
-            infectionRate = 2;
+            infectionRate = infectionRateIndex > 1 ? 3 : 2;
             return new List<String> { "city" };
 
 		}
