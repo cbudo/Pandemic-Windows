@@ -15,10 +15,10 @@ namespace SQADemicAppTest
         public void SetUpArrays()
         {
             deck = new LinkedList<string>();
-            deck.AddFirst("Chicago");
-            deck.AddFirst("New York");
-            deck.AddFirst("Saint Petersburg");
-            deck.AddFirst("Sydney");
+            //deck.AddFirst("Chicago");
+            //deck.AddFirst("New York");
+            //deck.AddFirst("Saint Petersburg");
+            //deck.AddFirst("Sydney");
             pile = new LinkedList<string>();
 
         }
@@ -27,10 +27,24 @@ namespace SQADemicAppTest
         [TestMethod]
         public void TestInfectTwoCities()
         {
+            deck.AddFirst("Saint Petersburg");
+            deck.AddFirst("Sydney");
             List<String> removedCities = InfectorBL.InfectCities(deck, pile, 2);
             List<String> answer = new List<string> { "Sydney", "Saint Petersburg" };
             Assert.AreEqual<String>(answer.ToString(), removedCities.ToString());
-
         }
+
+        [TestMethod]
+        public void TestInfectThreeCities()
+        {
+            deck.AddFirst("New York");
+            deck.AddFirst("Saint Petersburg");
+            deck.AddFirst("Sydney");
+            List<String> removedCities = InfectorBL.InfectCities(deck, pile, 3);
+            List<String> answer = new List<string> {"New York", "Sydney", "Saint Petersburg" };
+            Assert.AreEqual<String>(answer.ToString(), removedCities.ToString());
+        }
+
+
     }
 }
