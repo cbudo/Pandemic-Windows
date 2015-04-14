@@ -46,6 +46,8 @@ namespace SQADemicApp.BL
             string epidmicCity = deck.Last.Value;
             //shuffle remains back on to the deck
             
+
+
             return epidmicCity;
 
 		}
