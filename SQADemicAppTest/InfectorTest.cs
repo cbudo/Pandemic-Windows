@@ -94,5 +94,15 @@ namespace SQADemicAppTest
             Assert.AreEqual(3, infectionRate);
         }
 
+        [TestMethod]
+        public void TestEpidemicIncreaseInfectionCounter3to4()
+        {
+            //InfectionRates = { 2, 2, 2, 3, 3, 4, 4 };
+            deck.AddFirst("Chicago");
+            int infectionRate = 3;
+            InfectorBL.Epidemic(deck, pile, InfectionRates, 4, ref infectionRate);
+            Assert.AreEqual(4, infectionRate);
+        }
+
     }
 }
