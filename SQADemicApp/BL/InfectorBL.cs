@@ -16,6 +16,7 @@ namespace SQADemicApp.BL
             for (int i = 0; i < drawAmmount; i++)
             {
                 returnList.Add(deck.First.Value);
+                pile.AddFirst(deck.First.Value);
                 deck.RemoveFirst();
 				
             }
