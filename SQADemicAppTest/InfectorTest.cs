@@ -6,7 +6,7 @@ using System.Collections.Generic;
 namespace SQADemicAppTest
 {
     [TestClass]
-    public class InfectorTest
+    class InfectorTest
     {
         private LinkedList<String> deck;
         private LinkedList<String> pile;
