@@ -9,7 +9,7 @@ namespace SQADemicApp.BL
     public class InfectorBL
     {
 
-        public static List<String> InfectCities()
+        public static List<String> InfectCities(LinkedList<String> deck, LinkedList<String> pile, int drawAmmount)
         {
             return new List<string> { "chicago" };
         }
