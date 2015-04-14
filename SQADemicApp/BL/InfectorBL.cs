@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SQADemicApp.BL
 {
@@ -29,18 +27,33 @@ namespace SQADemicApp.BL
                 return returnList;
         }
 		/// <summary>
-		/// handles Epidmeic card actions
-        /// Increases the infection rate, draws from the bottom of the deck, shuffles the Infection discard pile back into the infection deck 
+		/// Handles Epidmeic card actions,
+        /// Increases the infection rate, draws from the bottom of the deck, Shuffles the infection discard pile back into the infection deck 
 		/// </summary>
         /// <param name="deck">infection Deck - LinkedList</param>
         /// <param name="pile">infection Deck - LinkedList</param>
-        /// <param name="infectionRate"></param>
-		/// <returns></returns>
-        public static List<String> Epidemic(LinkedList<String> deck, LinkedList<String> pile, int infectionRate)
+        /// <param name="infectionRateIndex">infectionRateIndex - int current index in teh infectionRates</param>
+       	/// <returns></returns>
+        public static string Epidemic(LinkedList<String> deck, LinkedList<String> pile, ref int infectionRateIndex, ref int infectionRate)
         {
+            //infection rate stuff
+            infectionRate = infectionRateIndex > 1 ? (infectionRateIndex > 3 ? 4 :3) : 2;
+            infectionRateIndex += 1;
 
-            return new List<String> { "city" };
+            //draw Last card
+            string epidmicCity = deck.Last.Value;
+            deck.RemoveLast();
+            pile.AddFirst(epidmicCity);
 
+            //shuffle remains back on to the deck
+            string[] pilearray = pile.ToArray<string>();
+            pilearray = HelperBL.shuffleArray(pilearray);
+            for (int i = 0; i < pilearray.Length; i++)
+            {
+                deck.AddFirst(pilearray[i]);
+            }
+            pile.Clear();
+            return epidmicCity;
 		}
 
     }

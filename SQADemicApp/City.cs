@@ -24,6 +24,11 @@ namespace SQAdemicApp
         {
             this.color = color;
         }
+        public City(GameBoardModels.COLOR color, String name)
+        {
+            this.color = color;
+            this.Name = name;
+        }
 
         public void setAdjacentCities(List<City> cities)
         {

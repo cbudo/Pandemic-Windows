@@ -65,9 +65,64 @@ namespace SQAdemicApp
         City jakarta = new City(GameBoardModels.COLOR.red);
         City sydney = new City(GameBoardModels.COLOR.red);
 
-        public void setAdjacentCities()
-        {
+        Dictionary<string, City> dictOfNeighbors = new Dictionary<string, City>();
 
+        public void createDictionary()
+        {
+            dictOfNeighbors.Add("San Francisco", sanFrancisco);
+            dictOfNeighbors.Add("Chicago", chicago);
+            dictOfNeighbors.Add("Montreal", montreal);
+            dictOfNeighbors.Add("New York", newYork);
+            dictOfNeighbors.Add("Atlanta", atlanta);
+            dictOfNeighbors.Add("Washington", washington);
+            dictOfNeighbors.Add("London", london);
+            dictOfNeighbors.Add("Essen", essen);
+            dictOfNeighbors.Add("Saint Petersburg", stPetersburg);
+            dictOfNeighbors.Add("Milan", milan);
+            dictOfNeighbors.Add("Paris", paris);
+            dictOfNeighbors.Add("Madrid", madrid);
+            dictOfNeighbors.Add("Los Angeles", losAngeles);
+            dictOfNeighbors.Add("Mexico City", mexicoCity);
+            dictOfNeighbors.Add("Miami", miami);
+            dictOfNeighbors.Add("Bogota", bogota);
+            dictOfNeighbors.Add("Lima", lima);
+            dictOfNeighbors.Add("Santiago", santiago);
+            dictOfNeighbors.Add("Buenos Aires", buenosAires);
+            dictOfNeighbors.Add("Sao Paulo", saoPaulo);
+            dictOfNeighbors.Add("Lagos", lagos);
+            dictOfNeighbors.Add("Kinshasa", kinshasa);
+            dictOfNeighbors.Add("Johannesburg", johannesburg);
+            dictOfNeighbors.Add("Khartoum", khartoum);
+            dictOfNeighbors.Add("Moscow", moscow);
+            dictOfNeighbors.Add("Tehran", tehran);
+            dictOfNeighbors.Add("Delhi", delhi);
+            dictOfNeighbors.Add("Kolkata", kolkata);
+            dictOfNeighbors.Add("Istanbul", istanbul);
+            dictOfNeighbors.Add("Baghdad", baghdad);
+            dictOfNeighbors.Add("Karachi", karachi);
+            dictOfNeighbors.Add("Algiers", algiers);
+            dictOfNeighbors.Add("Cairo", cairo);
+            dictOfNeighbors.Add("Riyadh", riyadh);
+            dictOfNeighbors.Add("Mumbai", mumbai);
+            dictOfNeighbors.Add("Chennai", chennai);
+            dictOfNeighbors.Add("Beijing", beijing);
+            dictOfNeighbors.Add("Seoul", seoul);
+            dictOfNeighbors.Add("Shanghai", shanghai);
+            dictOfNeighbors.Add("Tokyo", tokyo);
+            dictOfNeighbors.Add("Osaka", osaka);
+            dictOfNeighbors.Add("Taipei", taipei);
+            dictOfNeighbors.Add("Hong Kong", hongKong);
+            dictOfNeighbors.Add("Bangkok", bangkok);
+            dictOfNeighbors.Add("Manila", manila);
+            dictOfNeighbors.Add("Ho Chi Minh City", hoChiMinhCity);
+            dictOfNeighbors.Add("Jakarta", jakarta);
+            dictOfNeighbors.Add("Sydney", sydney);
+        }
+
+        public void setAdjacentCities(StringReader reader)
+        {
+            
+            
         }
 
 
