@@ -61,5 +61,18 @@ namespace SQADemicAppTest
 
         }
 
+        [TestMethod]
+        public void TestInfectTwoCitiesUpdatePile()
+        {
+            deck.AddFirst("Saint Petersburg");
+            deck.AddFirst("Sydney");
+            pile = new LinkedList<String>();
+            List<String> removedCities = InfectorBL.InfectCities(deck, pile, 2);
+            LinkedList<String> answer = new LinkedList<string>();
+            answer.AddFirst("Sydney");
+            answer.AddFirst("Saint Petersburg");
+            CollectionAssert.AreEqual(answer, pile);
+        }
+
     }
 }
