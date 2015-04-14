@@ -31,7 +31,7 @@ namespace SQADemicAppTest
             deck.AddFirst("Sydney");
             List<String> removedCities = InfectorBL.InfectCities(deck, pile, 2);
             List<String> answer = new List<string> { "Sydney", "Saint Petersburg" };
-            Assert.AreEqual<String>(answer.ToString(), removedCities.ToString());
+            CollectionAssert.AreEqual(answer, removedCities);
         }
 
         [TestMethod]
@@ -41,8 +41,8 @@ namespace SQADemicAppTest
             deck.AddFirst("Saint Petersburg");
             deck.AddFirst("Sydney");
             List<String> removedCities = InfectorBL.InfectCities(deck, pile, 3);
-            List<String> answer = new List<string> {"New York", "Sydney", "Saint Petersburg" };
-            Assert.AreEqual<String>(answer.ToString(), removedCities.ToString());
+            List<String> answer = new List<string> { "New York", "Sydney", "Saint Petersburg" };
+            CollectionAssert.AreEqual(answer, removedCities);
         }
 
 
