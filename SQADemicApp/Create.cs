@@ -75,6 +75,7 @@ namespace SQAdemicApp
         {
             List<GameBoardModels.Card> cardList = new List<GameBoardModels.Card>();
             cardList.Add(new SQAdemicApp.GameBoardModels.Card("test", SQAdemicApp.GameBoardModels.CARDTYPE.Player, SQAdemicApp.GameBoardModels.COLOR.blue));
+            cardList.Add(new SQAdemicApp.GameBoardModels.Card("test2", SQAdemicApp.GameBoardModels.CARDTYPE.Player, SQAdemicApp.GameBoardModels.COLOR.blue));
             return cardList;
         }
     }
