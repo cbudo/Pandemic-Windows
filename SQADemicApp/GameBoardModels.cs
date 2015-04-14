@@ -97,6 +97,11 @@ namespace SQAdemicApp
             CARDTYPE CardType {get;set;}
             COLOR CityColor { get; set; }
 
+            public override bool Equals(Object obj)
+            {
+                Card objects = (Card)obj;
+                return (this.CityName == objects.CityName) && (this.CardType == objects.CardType) && (this.CityColor == objects.CityColor);
+            }
         }
         public class infectionCubeCount
         {

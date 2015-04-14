@@ -73,7 +73,9 @@ namespace SQAdemicApp
 
         public List<GameBoardModels.Card> makeCardList(StringReader stringReader)
         {
-            throw new NotImplementedException();
+            List<GameBoardModels.Card> cardList = new List<GameBoardModels.Card>();
+            cardList.Add(new SQAdemicApp.GameBoardModels.Card("test", SQAdemicApp.GameBoardModels.CARDTYPE.Player, SQAdemicApp.GameBoardModels.COLOR.blue));
+            return cardList;
         }
     }
 
