@@ -11,49 +11,51 @@ namespace SQAdemicApp
         Cures CURESTATUS;
         public Card[] playerDeck = new Card[58];
         int playerDeckPoint = -1;
+        public PlayerModels.Player CurrentPlayer;
         public GameBoardModels()
         {
-            List<GameBoardModels.Card> cities = new List<GameBoardModels.Card>();
-            try
-            {
-                using(StreamReader reader = new StreamReader("D:\\Documents\\GitHub\\SQAdemic\\SQAdemic\\App_Data\\CityList.txt"))
-                {
-                    string line;
-                    while((line = reader.ReadLine()) !=null)
-                    {
-                        COLOR color = COLOR.black;
-                        switch(line.Substring(line.IndexOf(";")+1).Replace(" ",""))
-                        {
-                            case "Blue":
-                                color = COLOR.blue;
-                                break;
-                            case "Black":
-                                color = COLOR.black;
-                                break;
-                            case "Yellow":
-                                color = COLOR.yellow;
-                                break;
-                            case "Red":
-                                color = COLOR.red;
-                                break;
-                            default:
-                                break;
+            //List<GameBoardModels.Card> cities = new List<GameBoardModels.Card>();
+            //try
+            //{
+            //    using(StreamReader reader = new StreamReader("D:\\Documents\\GitHub\\SQAdemic\\SQAdemic\\App_Data\\CityList.txt"))
+            //    {
+            //        string line;
+            //        while((line = reader.ReadLine()) !=null)
+            //        {
+            //            COLOR color = COLOR.black;
+            //            switch(line.Substring(line.IndexOf(";")+1).Replace(" ",""))
+            //            {
+            //                case "Blue":
+            //                    color = COLOR.blue;
+            //                    break;
+            //                case "Black":
+            //                    color = COLOR.black;
+            //                    break;
+            //                case "Yellow":
+            //                    color = COLOR.yellow;
+            //                    break;
+            //                case "Red":
+            //                    color = COLOR.red;
+            //                    break;
+            //                default:
+            //                    break;
 
-                        }
-                        cities.Add(new Card(line.Substring(0, line.IndexOf(";")), CARDTYPE.Player, color));
-                    }
-                }
-            }
-            catch(Exception ex)
-            {
+            //            }
+            //            cities.Add(new Card(line.Substring(0, line.IndexOf(";")), CARDTYPE.Player, color));
+            //        }
+            //    }
+            //}
+            //catch(Exception ex)
+            //{
 
-            }
+            //}
+
             cubeCount = new infectionCubeCount();
             cubeCount.blackCubes = cubeCount.redCubes = cubeCount.blueCubes = cubeCount.yellowCubes = 24;
             CURESTATUS = new Cures();
             CURESTATUS.BlackCure = CURESTATUS.BlueCure = CURESTATUS.RedCure = CURESTATUS.YellowCure = CURESTATE.NotCured;
-//            createDeck createDeck = new createDeck(this,cities);
-//            createDeck.makePlayerDeck();
+            Create createHelper = new Create();
+            playerDeck = createHelper.makeDeck();
         }
         public int[] getCubes()
         {
@@ -100,6 +102,11 @@ namespace SQAdemicApp
             CARDTYPE CardType {get;set;}
             COLOR CityColor { get; set; }
 
+            public override bool Equals(Object obj)
+            {
+                Card objects = (Card)obj;
+                return (this.CityName == objects.CityName) && (this.CardType == objects.CardType) && (this.CityColor == objects.CityColor);
+            }
         }
         public class infectionCubeCount
         {

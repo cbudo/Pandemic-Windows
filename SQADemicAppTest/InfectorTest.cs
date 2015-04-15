@@ -7,7 +7,7 @@ using System.Linq;
 namespace SQADemicAppTest
 {
     [TestClass]
-    public class InfectorTest
+    class InfectorTest
     {
         private LinkedList<String> deck;
         private LinkedList<String> pile;

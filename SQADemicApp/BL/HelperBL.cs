@@ -23,7 +23,12 @@ namespace SQADemicApp.BL
             string[] shuffledarray = unshuffledArry.OrderBy(x => GetNextInt32(rnd)).ToArray();
             return shuffledarray;
         }
-
+        public static List<SQAdemicApp.GameBoardModels.Card> shuffleArray(List<SQAdemicApp.GameBoardModels.Card> unshuffledArry)
+        {
+            RNGCryptoServiceProvider rnd = new RNGCryptoServiceProvider();
+            List<SQAdemicApp.GameBoardModels.Card> shuffledarray = unshuffledArry.OrderBy(x => GetNextInt32(rnd)).ToList < SQAdemicApp.GameBoardModels.Card>();
+            return shuffledarray;
+        }
         private static int GetNextInt32(RNGCryptoServiceProvider rnd)
         {
             byte[] randomInt = new byte[4];
