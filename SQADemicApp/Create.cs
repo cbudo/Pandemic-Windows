@@ -141,7 +141,11 @@ namespace SQAdemicApp
         }
         public GameBoardModels.COLOR getColor(string color)
         {
-            return GameBoardModels.COLOR.red;
+            if (color == "red")
+            {
+                return GameBoardModels.COLOR.red;
+            }
+            else return GameBoardModels.COLOR.blue;
         }
     }
 
