@@ -133,11 +133,7 @@ namespace SQAdemicApp
                     switch (city)
                     {
                         case "San Fransisco":
-                            dictOfNeighbors[cityname].adjacentCities.Add(sanFrancisco);
-                            break;
-
-                        case "Tokyo":
-                            dictOfNeighbors[cityname].adjacentCities.Add(tokyo);
+                            dictOfNeighbors[cityname].adjacentCities.Add(dictOfNeighbors[city]);
                             break;
 
                         default:
