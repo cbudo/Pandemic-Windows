@@ -52,5 +52,13 @@ namespace SQADemicAppTest
             Assert.AreEqual(SQAdemicApp.GameBoardModels.COLOR.blue, createTestClass.getColor("blue"));
             Assert.AreEqual(SQAdemicApp.GameBoardModels.COLOR.black, createTestClass.getColor("black"));
         }
+        [TestMethod]
+        public void TestThatGetsCorrectAllColors()
+        {
+            Assert.AreEqual(SQAdemicApp.GameBoardModels.COLOR.red, createTestClass.getColor("red"));
+            Assert.AreEqual(SQAdemicApp.GameBoardModels.COLOR.blue, createTestClass.getColor("blue"));
+            Assert.AreEqual(SQAdemicApp.GameBoardModels.COLOR.black, createTestClass.getColor("black"));
+            Assert.AreEqual(SQAdemicApp.GameBoardModels.COLOR.yellow, createTestClass.getColor("yellow"));
+        }
     }
 }
