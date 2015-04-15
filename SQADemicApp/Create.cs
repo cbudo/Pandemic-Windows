@@ -134,9 +134,9 @@ namespace SQAdemicApp
             {
                 string cardName = line.Substring(0, line.IndexOf(";"));
                 string cardColor = line.Substring(line.IndexOf(";") + 2);
+                GameBoardModels.COLOR color = getColor(cardColor);
+                cardList.Add(new GameBoardModels.Card(cardName, GameBoardModels.CARDTYPE.Player, color));
             }
-            cardList.Add(new SQAdemicApp.GameBoardModels.Card("test", SQAdemicApp.GameBoardModels.CARDTYPE.Player, SQAdemicApp.GameBoardModels.COLOR.blue));
-            cardList.Add(new SQAdemicApp.GameBoardModels.Card("test2", SQAdemicApp.GameBoardModels.CARDTYPE.Player, SQAdemicApp.GameBoardModels.COLOR.blue));
             return cardList;
         }
         public GameBoardModels.COLOR getColor(string color)
