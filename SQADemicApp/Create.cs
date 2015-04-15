@@ -147,6 +147,10 @@ namespace SQAdemicApp
                             dictOfNeighbors[cityname].adjacentCities.Add(dictOfNeighbors[city]);
                             break;
 
+                        case "Chicago":
+                            dictOfNeighbors[cityname].adjacentCities.Add(dictOfNeighbors[city]);
+                            break;
+
                         default:
                             break;
                     }
