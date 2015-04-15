@@ -108,5 +108,25 @@ namespace SQADemicAppTest
             expected.Add(madrid);
             CollectionAssert.AreEqual(result, expected);
         }
+
+        [TestMethod]
+        public void TestMontrealNeighbors()
+        {
+            create = new Create();
+            StringReader r = new StringReader("Montreal;New York,Washington,Chicago");
+            create.setAdjacentCities(r);
+            List<City> result = create.getAdjacentCities("Montreal");
+            List<City> e = new List<City>();
+            City newYork = new City(GameBoardModels.COLOR.blue);
+            City washington = new City(GameBoardModels.COLOR.blue);
+            City chicago = new City(GameBoardModels.COLOR.blue);
+            e.Add(newYork);
+            e.Add(washington);
+            e.Add(chicago);
+            CollectionAssert.AreEqual(result, e); 
+
+
+
+        }
     }
 }
