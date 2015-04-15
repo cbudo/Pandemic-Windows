@@ -72,8 +72,9 @@ namespace SQADemicAppTest
         #endregion
 
         [TestMethod]
-        public void TestSettingAndGettingAdjacentCities1()
+        public void TestSettingAndGettingAdjacentCitiesSF()
         {
+            create = new Create();
             StringReader r = new StringReader("San Francisco;Tokyo,Manila,Chicago,Los Angeles");
             create.setAdjacentCities(r);
             List<City> result = create.getAdjacentCities("San Francisco");
@@ -86,7 +87,26 @@ namespace SQADemicAppTest
             expected.Add(manila);
             expected.Add(chicago);
             expected.Add(losAngeles);
-            Assert.AreEqual(result, expected);
+            CollectionAssert.AreEqual(result, expected);
+        }
+
+        [TestMethod]
+        public void TestNYNeighbors()
+        {
+            create = new Create();
+            StringReader r = new StringReader("New York;Montreal,Washington,London,Madrid");
+            create.setAdjacentCities(r);
+            List<City> result = create.getAdjacentCities("New York");
+            List<City> expected = new List<City>();
+            City montreal = new City(GameBoardModels.COLOR.blue);
+            City washington = new City(GameBoardModels.COLOR.blue);
+            City london = new City(GameBoardModels.COLOR.blue);
+            City madrid = new City(GameBoardModels.COLOR.blue);
+            expected.Add(montreal);
+            expected.Add(washington);
+            expected.Add(london);
+            expected.Add(madrid);
+            CollectionAssert.AreEqual(result, expected);
         }
     }
 }

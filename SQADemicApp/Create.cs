@@ -8,7 +8,10 @@ namespace SQAdemicApp
 {
     public class Create
     {
-
+        public Create()
+        {
+            createDictionary();
+        }
         //create the blues
         City sanFrancisco = new City(GameBoardModels.COLOR.blue);
         City chicago = new City(GameBoardModels.COLOR.blue);
@@ -65,7 +68,7 @@ namespace SQAdemicApp
         City jakarta = new City(GameBoardModels.COLOR.red);
         City sydney = new City(GameBoardModels.COLOR.red);
 
-        Dictionary<string, City> dictOfNeighbors = new Dictionary<string, City>();
+        static Dictionary<string, City> dictOfNeighbors = new Dictionary<string, City>();
 
         public void createDictionary()
         {
@@ -130,11 +133,13 @@ namespace SQAdemicApp
 
                 foreach (var city in adjCityList)
                 {
-                    switch (city)
+                    switch (cityname)
                     {
-                        case "San Fransisco":
+                        case "San Francisco":
                             dictOfNeighbors[cityname].adjacentCities.Add(dictOfNeighbors[city]);
                             break;
+
+
 
                         default:
                             break;
