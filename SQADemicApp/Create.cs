@@ -143,6 +143,7 @@ namespace SQAdemicApp
                             dictOfNeighbors[cityname].adjacentCities.Add(dictOfNeighbors[city]);
                             break;
 
+
                         default:
                             break;
                     }
