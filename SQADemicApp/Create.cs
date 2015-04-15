@@ -147,6 +147,8 @@ namespace SQAdemicApp
                     return GameBoardModels.COLOR.red;
                 case "black":
                     return GameBoardModels.COLOR.black;
+                case "yellow":
+                    return GameBoardModels.COLOR.yellow;
                 default:
                     return GameBoardModels.COLOR.blue;
             }
