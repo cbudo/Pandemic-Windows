@@ -145,6 +145,10 @@ namespace SQAdemicApp
             {
                 return GameBoardModels.COLOR.red;
             }
+            if(color == "black")
+            {
+                return GameBoardModels.COLOR.black;
+            }
             else return GameBoardModels.COLOR.blue;
         }
     }
