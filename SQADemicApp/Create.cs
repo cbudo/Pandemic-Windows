@@ -121,13 +121,37 @@ namespace SQAdemicApp
 
         public void setAdjacentCities(StringReader reader)
         {
-            
+            String line;
+            while ((line = reader.ReadLine()) != null)
+            {
+                string cityname = line.Substring(0, line.IndexOf(";"));
+                string adjcities = line.Substring(line.IndexOf(";") + 1);
+                string[] adjCityList = adjcities.Split(',');
+
+                foreach (var city in adjCityList)
+                {
+                    switch (city)
+                    {
+                        case "San Fransisco":
+                            dictOfNeighbors[cityname].adjacentCities.Add(sanFrancisco);
+                            break;
+
+                        case "Tokyo":
+                            dictOfNeighbors[cityname].adjacentCities.Add(tokyo);
+                            break;
+
+                        default:
+                            break;
+                    }
+                }
+            }
             
         }
 
-        public List<string> getAdjacentCities(string name)
+        public List<City> getAdjacentCities(string name)
         {
-            return null;
+            City city = dictOfNeighbors[name];
+            return city.getAdjacentCities();
         }
 
     }
