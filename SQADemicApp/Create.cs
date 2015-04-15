@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.IO;
+using SQADemicApp;
+using SQADemicApp.BL;
 
 namespace SQAdemicApp
 {
@@ -125,7 +127,29 @@ namespace SQAdemicApp
 
         }
 
+        public GameBoardModels.Card[] makeDeck()
+        {
+            GameBoardModels.Card[] deck = new GameBoardModels.Card[58];
+            Random rand = new Random();
+            deck[rand.Next(0, 9)] = new GameBoardModels.Card("EPIDEMIC", GameBoardModels.CARDTYPE.Special);
+            deck[rand.Next(10, 19)] = new GameBoardModels.Card("EPIDEMIC", GameBoardModels.CARDTYPE.Special);
+            deck[rand.Next(20, 29)] = new GameBoardModels.Card("EPIDEMIC", GameBoardModels.CARDTYPE.Special);
+            deck[rand.Next(30, 39)] = new GameBoardModels.Card("EPIDEMIC", GameBoardModels.CARDTYPE.Special);
+            deck[rand.Next(40, 58)] = new GameBoardModels.Card("EPIDEMIC", GameBoardModels.CARDTYPE.Special);
+            List<GameBoardModels.Card> cardList = makeCardList(new StringReader(File.ReadAllText("D:\\Documents\\Visual Studio 2013\\Projects\\SQADemicApp\\SQADemicApp\\Resources\\CityList.txt")));
+            cardList = HelperBL.shuffleArray(cardList);
+            int j = 0;
+            for (int i = 0; i < 58; i++)
+            {
+                if (deck[i] == null)
+                {
+                    deck[i] = cardList[j];
+                    j++;
+                }
+            }
 
+            return deck;
+        }
         public List<GameBoardModels.Card> makeCardList(StringReader stringReader)
         {
             List<GameBoardModels.Card> cardList = new List<GameBoardModels.Card>();
@@ -146,7 +170,7 @@ namespace SQAdemicApp
         }
         public GameBoardModels.COLOR getColor(string color)
         {
-            switch (color)
+            switch (color.ToLower())
             {
                 case "red":
                     return GameBoardModels.COLOR.red;
