@@ -129,9 +129,19 @@ namespace SQAdemicApp
         public List<GameBoardModels.Card> makeCardList(StringReader stringReader)
         {
             List<GameBoardModels.Card> cardList = new List<GameBoardModels.Card>();
+            string line;
+            while ((line = stringReader.ReadLine()) != null)
+            {
+                string cardName = line.Substring(0, line.IndexOf(";"));
+                string cardColor = line.Substring(line.IndexOf(";") + 2);
+            }
             cardList.Add(new SQAdemicApp.GameBoardModels.Card("test", SQAdemicApp.GameBoardModels.CARDTYPE.Player, SQAdemicApp.GameBoardModels.COLOR.blue));
             cardList.Add(new SQAdemicApp.GameBoardModels.Card("test2", SQAdemicApp.GameBoardModels.CARDTYPE.Player, SQAdemicApp.GameBoardModels.COLOR.blue));
             return cardList;
+        }
+        public GameBoardModels.COLOR getColor(string color)
+        {
+            return GameBoardModels.COLOR.red;
         }
     }
 
