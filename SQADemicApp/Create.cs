@@ -121,8 +121,8 @@ namespace SQAdemicApp
 
         public void setAdjacentCities(StringReader reader)
         {
-            
-            
+
+
         }
 
 
@@ -141,16 +141,18 @@ namespace SQAdemicApp
         }
         public GameBoardModels.COLOR getColor(string color)
         {
-            if (color == "red")
+            switch (color)
             {
-                return GameBoardModels.COLOR.red;
+                case "red":
+                    return GameBoardModels.COLOR.red;
+                case "black":
+                    return GameBoardModels.COLOR.black;
+                default:
+                    return GameBoardModels.COLOR.blue;
             }
-            if(color == "black")
-            {
-                return GameBoardModels.COLOR.black;
-            }
-            else return GameBoardModels.COLOR.blue;
+
         }
+
     }
 
 }
