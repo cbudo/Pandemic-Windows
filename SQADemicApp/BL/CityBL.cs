@@ -28,7 +28,9 @@ namespace SQADemicApp.BL
 
         public List<City> getCitiesWithResearchStations()
         {
-            return new List<City>();
+            List<City> ls = new List<City>();
+            ls.Add(Create.dictOfNeighbors["Atlanta"]);
+            return ls;
         }
 
         public List<City> getAdjacentCities(string name)

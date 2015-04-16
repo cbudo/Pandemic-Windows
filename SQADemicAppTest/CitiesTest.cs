@@ -162,5 +162,20 @@ namespace SQADemicAppTest
             ls.Add(new City(GameBoardModels.COLOR.blue, "Atlanta"));
             Assert.AreEqual(ls, bl.getCitiesWithResearchStations());
         }
+
+        [TestMethod]
+        public void TestGetNeighborNames()
+        {
+            List<String> e = new List<String>();
+            City miami = new City(GameBoardModels.COLOR.yellow);
+            City atlanta = new City(GameBoardModels.COLOR.blue);
+            City montreal = new City(GameBoardModels.COLOR.blue);
+            City newYork = new City(GameBoardModels.COLOR.blue);
+            e.Add(miami.Name);
+            e.Add(atlanta.Name);
+            e.Add(montreal.Name);
+            e.Add(newYork.Name);
+            CollectionAssert.AreEqual(e, bl.getNeighborNames("Washington"));
+        }
     }
 }
