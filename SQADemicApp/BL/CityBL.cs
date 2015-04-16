@@ -22,14 +22,25 @@ namespace SQADemicApp.BL
         }
         public List<String> getNeighborNames(String cityName)
         {
-            //switch statment will be best
-            return new List<String> { "city" };
+            List<String> ls = new List<String>();
+            List<City> cityls = Create.dictOfNeighbors[cityName].getAdjacentCities();
+            foreach (var city in cityls)
+            {
+                ls.Add(city.Name);
+            }
+            return ls;
         }
 
         public List<City> getCitiesWithResearchStations()
         {
             List<City> ls = new List<City>();
-            ls.Add(Create.dictOfNeighbors["Atlanta"]);
+            foreach (var key in Create.dictOfNeighbors.Keys)
+            {
+                if (Create.dictOfNeighbors[key].researchStation == true)
+                {
+                    ls.Add(Create.dictOfNeighbors[key]);
+                }
+            }
             return ls;
         }
 
