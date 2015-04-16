@@ -104,6 +104,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\AdjacentNeighbors.txt" />
     <Content Include="Resources\CityList.txt" />
     <Content Include="Resources\Pandemic 6.jpg" />
     <Content Include="Resources\pandemicMap.jpg" />
