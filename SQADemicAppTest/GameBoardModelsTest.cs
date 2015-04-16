@@ -13,6 +13,7 @@ namespace SQADemicAppTest
         [TestMethod]
         public void TestThatCardListCorrectOneItem()
         {
+            cardList = new List<SQAdemicApp.GameBoardModels.Card>();
             cardList.Add(new SQAdemicApp.GameBoardModels.Card("test", SQAdemicApp.GameBoardModels.CARDTYPE.Player, SQAdemicApp.GameBoardModels.COLOR.blue));
             cardList.Add(new SQAdemicApp.GameBoardModels.Card("Airlift", SQAdemicApp.GameBoardModels.CARDTYPE.Special));
             cardList.Add(new SQAdemicApp.GameBoardModels.Card("One Quiet Night", SQAdemicApp.GameBoardModels.CARDTYPE.Special));
@@ -25,6 +26,7 @@ namespace SQADemicAppTest
         [TestMethod]
         public void TestThatCardListCorrectTwoItem()
         {
+            cardList = new List<SQAdemicApp.GameBoardModels.Card>();
             cardList.Add(new SQAdemicApp.GameBoardModels.Card("test", SQAdemicApp.GameBoardModels.CARDTYPE.Player, SQAdemicApp.GameBoardModels.COLOR.blue));
             cardList.Add(new SQAdemicApp.GameBoardModels.Card("test2", SQAdemicApp.GameBoardModels.CARDTYPE.Player, SQAdemicApp.GameBoardModels.COLOR.blue));
             cardList.Add(new SQAdemicApp.GameBoardModels.Card("Airlift", SQAdemicApp.GameBoardModels.CARDTYPE.Special));
@@ -38,6 +40,7 @@ namespace SQADemicAppTest
         [TestMethod]
         public void TestThatCardListCorrectThreeItem()
         {
+            cardList = new List<SQAdemicApp.GameBoardModels.Card>();
             cardList.Add(new SQAdemicApp.GameBoardModels.Card("test", SQAdemicApp.GameBoardModels.CARDTYPE.Player, SQAdemicApp.GameBoardModels.COLOR.blue));
             cardList.Add(new SQAdemicApp.GameBoardModels.Card("test2", SQAdemicApp.GameBoardModels.CARDTYPE.Player, SQAdemicApp.GameBoardModels.COLOR.blue));
             cardList.Add(new SQAdemicApp.GameBoardModels.Card("test3", SQAdemicApp.GameBoardModels.CARDTYPE.Player, SQAdemicApp.GameBoardModels.COLOR.blue));

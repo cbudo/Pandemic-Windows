@@ -11,8 +11,8 @@ namespace SQAdemicApp
     {
         public Create()
         {
-            createDictionary();
         }
+
         //create the blues
         City sanFrancisco = new City(GameBoardModels.COLOR.blue);
         City chicago = new City(GameBoardModels.COLOR.blue);
@@ -73,7 +73,9 @@ namespace SQAdemicApp
 
         public void createDictionary()
         {
-            dictOfNeighbors.Add("San Francisco", sanFrancisco);
+            try
+            {
+dictOfNeighbors.Add("San Francisco", sanFrancisco);
             dictOfNeighbors.Add("Chicago", chicago);
             dictOfNeighbors.Add("Montreal", montreal);
             dictOfNeighbors.Add("New York", newYork);
@@ -121,6 +123,11 @@ namespace SQAdemicApp
             dictOfNeighbors.Add("Ho Chi Minh City", hoChiMinhCity);
             dictOfNeighbors.Add("Jakarta", jakarta);
             dictOfNeighbors.Add("Sydney", sydney);
+            }
+            catch(Exception e)
+            {
+
+            }
         }
 
         public void setAdjacentCities(StringReader reader)

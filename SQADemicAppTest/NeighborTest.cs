@@ -14,19 +14,13 @@ namespace SQADemicAppTest
     [TestClass]
     public class NeighborTest
     {
+        static Create create = new Create();     
 
-        Create create;
-
-        [TestInitialize]
-        private void SetUp()
+       [TestInitialize()]
+        public void TestInitialize()
         {
             create = new Create();
-        }
-
-        [TestMethod]
-        private void TestThatCreateInitializes()
-        {
-            Assert.IsNotNull(create);
+            create.createDictionary();
         }
 
         #region Additional test attributes
