@@ -35,5 +35,19 @@ namespace SQADemicApp.BL
             rnd.GetBytes(randomInt);
             return Convert.ToInt32(randomInt[0]);
         }
+        public static GameBoardModels.COLOR getColor(string color)
+        {
+            switch (color.ToLower())
+            {
+                case "red":
+                    return GameBoardModels.COLOR.red;
+                case "black":
+                    return GameBoardModels.COLOR.black;
+                case "yellow":
+                    return GameBoardModels.COLOR.yellow;
+                default:
+                    return GameBoardModels.COLOR.blue;
+            }
+        }
     }
 }

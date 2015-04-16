@@ -178,7 +178,7 @@ namespace SQADemicApp
             {
                 string cardName = line.Substring(0, line.IndexOf(";"));
                 string cardColor = line.Substring(line.IndexOf(";") + 2);
-                GameBoardModels.COLOR color = getColor(cardColor);
+                GameBoardModels.COLOR color = HelperBL.getColor(cardColor);
                 cardList.Add(new GameBoardModels.Card(cardName, GameBoardModels.CARDTYPE.Player, color));
             }
             cardList.Add(new SQADemicApp.GameBoardModels.Card("Airlift", SQADemicApp.GameBoardModels.CARDTYPE.Special));
@@ -188,22 +188,6 @@ namespace SQADemicApp
             cardList.Add(new SQADemicApp.GameBoardModels.Card("Forecast", SQADemicApp.GameBoardModels.CARDTYPE.Special));
             return cardList;
         }
-        public GameBoardModels.COLOR getColor(string color)
-        {
-            switch (color.ToLower())
-            {
-                case "red":
-                    return GameBoardModels.COLOR.red;
-                case "black":
-                    return GameBoardModels.COLOR.black;
-                case "yellow":
-                    return GameBoardModels.COLOR.yellow;
-                default:
-                    return GameBoardModels.COLOR.blue;
-            }
-
-        }
-
     }
 
 }

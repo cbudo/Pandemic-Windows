@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
+using SQADemicApp.BL;
 
 namespace SQADemicAppTest
 {
@@ -55,28 +56,28 @@ namespace SQADemicAppTest
         [TestMethod]
         public void TestThatGetsCorrectColorRed()
         {
-            Assert.AreEqual(SQADemicApp.GameBoardModels.COLOR.red, createTestClass.getColor("red"));
+            Assert.AreEqual(SQADemicApp.GameBoardModels.COLOR.red, HelperBL.getColor("red"));
         }
         [TestMethod]
         public void TestThatGetsCorrectColorsRedBlue()
         {
-            Assert.AreEqual(SQADemicApp.GameBoardModels.COLOR.red, createTestClass.getColor("red"));
-            Assert.AreEqual(SQADemicApp.GameBoardModels.COLOR.blue, createTestClass.getColor("blue"));
+            Assert.AreEqual(SQADemicApp.GameBoardModels.COLOR.red, HelperBL.getColor("red"));
+            Assert.AreEqual(SQADemicApp.GameBoardModels.COLOR.blue, HelperBL.getColor("blue"));
         }
         [TestMethod]
         public void TestThatGetsCorrectThreeColors()
         {
-            Assert.AreEqual(SQADemicApp.GameBoardModels.COLOR.red, createTestClass.getColor("red"));
-            Assert.AreEqual(SQADemicApp.GameBoardModels.COLOR.blue, createTestClass.getColor("blue"));
-            Assert.AreEqual(SQADemicApp.GameBoardModels.COLOR.black, createTestClass.getColor("black"));
+            Assert.AreEqual(SQADemicApp.GameBoardModels.COLOR.red, HelperBL.getColor("red"));
+            Assert.AreEqual(SQADemicApp.GameBoardModels.COLOR.blue, HelperBL.getColor("blue"));
+            Assert.AreEqual(SQADemicApp.GameBoardModels.COLOR.black, HelperBL.getColor("black"));
         }
         [TestMethod]
         public void TestThatGetsCorrectAllColors()
         {
-            Assert.AreEqual(SQADemicApp.GameBoardModels.COLOR.red, createTestClass.getColor("red"));
-            Assert.AreEqual(SQADemicApp.GameBoardModels.COLOR.blue, createTestClass.getColor("blue"));
-            Assert.AreEqual(SQADemicApp.GameBoardModels.COLOR.black, createTestClass.getColor("black"));
-            Assert.AreEqual(SQADemicApp.GameBoardModels.COLOR.yellow, createTestClass.getColor("yellow"));
+            Assert.AreEqual(SQADemicApp.GameBoardModels.COLOR.red, HelperBL.getColor("red"));
+            Assert.AreEqual(SQADemicApp.GameBoardModels.COLOR.blue, HelperBL.getColor("blue"));
+            Assert.AreEqual(SQADemicApp.GameBoardModels.COLOR.black, HelperBL.getColor("black"));
+            Assert.AreEqual(SQADemicApp.GameBoardModels.COLOR.yellow, HelperBL.getColor("yellow"));
         }
     }
 }
