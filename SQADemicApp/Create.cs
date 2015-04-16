@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.IO;
-using SQADemicApp;
-using SQADemicApp.BL;
 
 namespace SQAdemicApp
 {
     public class Create
     {
-
+        public Create()
+        {
+            createDictionary();
+        }
         //create the blues
         City sanFrancisco = new City(GameBoardModels.COLOR.blue);
         City chicago = new City(GameBoardModels.COLOR.blue);
@@ -67,7 +68,7 @@ namespace SQAdemicApp
         City jakarta = new City(GameBoardModels.COLOR.red);
         City sydney = new City(GameBoardModels.COLOR.red);
 
-        Dictionary<string, City> dictOfNeighbors = new Dictionary<string, City>();
+        static Dictionary<string, City> dictOfNeighbors = new Dictionary<string, City>();
 
         public void createDictionary()
         {
@@ -129,17 +130,33 @@ namespace SQAdemicApp
                 string cityname = line.Substring(0, line.IndexOf(";"));
                 string adjcities = line.Substring(line.IndexOf(";") + 1);
                 string[] adjCityList = adjcities.Split(',');
-            
+
                 foreach (var city in adjCityList)
                 {
-                    switch (city)
+                    switch (cityname)
                     {
-                        case "San Fransisco":
-                            dictOfNeighbors[cityname].adjacentCities.Add(sanFrancisco);
+                        case "San Francisco":
+                            dictOfNeighbors[cityname].adjacentCities.Add(dictOfNeighbors[city]);
                             break;
-            
-                        case "Tokyo":
-                            dictOfNeighbors[cityname].adjacentCities.Add(tokyo);
+
+                        case "New York":
+                            dictOfNeighbors[cityname].adjacentCities.Add(dictOfNeighbors[city]);
+                            break;
+
+                        case "Montreal":
+                            dictOfNeighbors[cityname].adjacentCities.Add(dictOfNeighbors[city]);
+                            break;
+
+                        case "Chicago":
+                            dictOfNeighbors[cityname].adjacentCities.Add(dictOfNeighbors[city]);
+                            break;
+
+                        case "Atlanta":
+                            dictOfNeighbors[cityname].adjacentCities.Add(dictOfNeighbors[city]);
+                            break;
+
+                        case "Washington":
+                            dictOfNeighbors[cityname].adjacentCities.Add(dictOfNeighbors[city]);
                             break;
 
                         default:
@@ -154,63 +171,6 @@ namespace SQAdemicApp
         {
             City city = dictOfNeighbors[name];
             return city.getAdjacentCities();
-        }
-
-        public GameBoardModels.Card[] makeDeck()
-        {
-            GameBoardModels.Card[] deck = new GameBoardModels.Card[58];
-            Random rand = new Random();
-            deck[rand.Next(0, 9)] = new GameBoardModels.Card("EPIDEMIC", GameBoardModels.CARDTYPE.Special);
-            deck[rand.Next(10, 19)] = new GameBoardModels.Card("EPIDEMIC", GameBoardModels.CARDTYPE.Special);
-            deck[rand.Next(20, 29)] = new GameBoardModels.Card("EPIDEMIC", GameBoardModels.CARDTYPE.Special);
-            deck[rand.Next(30, 39)] = new GameBoardModels.Card("EPIDEMIC", GameBoardModels.CARDTYPE.Special);
-            deck[rand.Next(40, 58)] = new GameBoardModels.Card("EPIDEMIC", GameBoardModels.CARDTYPE.Special);
-            List<GameBoardModels.Card> cardList = makeCardList(new StringReader(File.ReadAllText("D:\\Documents\\Visual Studio 2013\\Projects\\SQADemicApp\\SQADemicApp\\Resources\\CityList.txt")));
-            cardList = HelperBL.shuffleArray(cardList);
-            int j = 0;
-            for (int i = 0; i < 58; i++)
-            {
-                if (deck[i] == null)
-                {
-                    deck[i] = cardList[j];
-                    j++;
-                }
-            }
-
-            return deck;
-        }
-        public List<GameBoardModels.Card> makeCardList(StringReader stringReader)
-        {
-            List<GameBoardModels.Card> cardList = new List<GameBoardModels.Card>();
-            string line;
-            while ((line = stringReader.ReadLine()) != null)
-            {
-                string cardName = line.Substring(0, line.IndexOf(";"));
-                string cardColor = line.Substring(line.IndexOf(";") + 2);
-                GameBoardModels.COLOR color = getColor(cardColor);
-                cardList.Add(new GameBoardModels.Card(cardName, GameBoardModels.CARDTYPE.Player, color));
-            }
-            cardList.Add(new SQAdemicApp.GameBoardModels.Card("Airlift", SQAdemicApp.GameBoardModels.CARDTYPE.Special));
-            cardList.Add(new SQAdemicApp.GameBoardModels.Card("One Quiet Night", SQAdemicApp.GameBoardModels.CARDTYPE.Special));
-            cardList.Add(new SQAdemicApp.GameBoardModels.Card("Resilient Population", SQAdemicApp.GameBoardModels.CARDTYPE.Special));
-            cardList.Add(new SQAdemicApp.GameBoardModels.Card("Government Grant", SQAdemicApp.GameBoardModels.CARDTYPE.Special));
-            cardList.Add(new SQAdemicApp.GameBoardModels.Card("Forecast", SQAdemicApp.GameBoardModels.CARDTYPE.Special));
-            return cardList;
-        }
-        public GameBoardModels.COLOR getColor(string color)
-        {
-            switch (color.ToLower())
-            {
-                case "red":
-                    return GameBoardModels.COLOR.red;
-                case "black":
-                    return GameBoardModels.COLOR.black;
-                case "yellow":
-                    return GameBoardModels.COLOR.yellow;
-                default:
-                    return GameBoardModels.COLOR.blue;
-            }
-
         }
 
     }
