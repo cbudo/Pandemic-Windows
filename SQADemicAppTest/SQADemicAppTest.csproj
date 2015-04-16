@@ -52,8 +52,8 @@
   <ItemGroup>
     <Compile Include="GameBoardModelsTest.cs" />
     <Compile Include="InfectorTest.cs" />
-    <Compile Include="NeighborTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="CitiesTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SQADemicApp\SQADemicApp.csproj">

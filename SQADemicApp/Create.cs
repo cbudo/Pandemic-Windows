@@ -5,13 +5,12 @@ using System.Web;
 using System.IO;
 using SQADemicApp.BL;
 
-namespace SQAdemicApp
+namespace SQADemicApp
 {
     public class Create
     {
         public Create()
         {
-
         }
 
         //create the blues
@@ -70,62 +69,62 @@ namespace SQAdemicApp
         City jakarta = new City(GameBoardModels.COLOR.red);
         City sydney = new City(GameBoardModels.COLOR.red);
 
-        static Dictionary<string, City> dictOfNeighbors = new Dictionary<string, City>();
+        public static Dictionary<string, City> dictOfNeighbors = new Dictionary<string, City>();
 
         public void createDictionary()
         {
             try
             {
-                dictOfNeighbors.Add("San Francisco", sanFrancisco);
-                dictOfNeighbors.Add("Chicago", chicago);
-                dictOfNeighbors.Add("Montreal", montreal);
-                dictOfNeighbors.Add("New York", newYork);
-                dictOfNeighbors.Add("Atlanta", atlanta);
-                dictOfNeighbors.Add("Washington", washington);
-                dictOfNeighbors.Add("London", london);
-                dictOfNeighbors.Add("Essen", essen);
-                dictOfNeighbors.Add("Saint Petersburg", stPetersburg);
-                dictOfNeighbors.Add("Milan", milan);
-                dictOfNeighbors.Add("Paris", paris);
-                dictOfNeighbors.Add("Madrid", madrid);
-                dictOfNeighbors.Add("Los Angeles", losAngeles);
-                dictOfNeighbors.Add("Mexico City", mexicoCity);
-                dictOfNeighbors.Add("Miami", miami);
-                dictOfNeighbors.Add("Bogota", bogota);
-                dictOfNeighbors.Add("Lima", lima);
-                dictOfNeighbors.Add("Santiago", santiago);
-                dictOfNeighbors.Add("Buenos Aires", buenosAires);
-                dictOfNeighbors.Add("Sao Paulo", saoPaulo);
-                dictOfNeighbors.Add("Lagos", lagos);
-                dictOfNeighbors.Add("Kinshasa", kinshasa);
-                dictOfNeighbors.Add("Johannesburg", johannesburg);
-                dictOfNeighbors.Add("Khartoum", khartoum);
-                dictOfNeighbors.Add("Moscow", moscow);
-                dictOfNeighbors.Add("Tehran", tehran);
-                dictOfNeighbors.Add("Delhi", delhi);
-                dictOfNeighbors.Add("Kolkata", kolkata);
-                dictOfNeighbors.Add("Istanbul", istanbul);
-                dictOfNeighbors.Add("Baghdad", baghdad);
-                dictOfNeighbors.Add("Karachi", karachi);
-                dictOfNeighbors.Add("Algiers", algiers);
-                dictOfNeighbors.Add("Cairo", cairo);
-                dictOfNeighbors.Add("Riyadh", riyadh);
-                dictOfNeighbors.Add("Mumbai", mumbai);
-                dictOfNeighbors.Add("Chennai", chennai);
-                dictOfNeighbors.Add("Beijing", beijing);
-                dictOfNeighbors.Add("Seoul", seoul);
-                dictOfNeighbors.Add("Shanghai", shanghai);
-                dictOfNeighbors.Add("Tokyo", tokyo);
-                dictOfNeighbors.Add("Osaka", osaka);
-                dictOfNeighbors.Add("Taipei", taipei);
-                dictOfNeighbors.Add("Hong Kong", hongKong);
-                dictOfNeighbors.Add("Bangkok", bangkok);
-                dictOfNeighbors.Add("Manila", manila);
-                dictOfNeighbors.Add("Ho Chi Minh City", hoChiMinhCity);
-                dictOfNeighbors.Add("Jakarta", jakarta);
-                dictOfNeighbors.Add("Sydney", sydney);
+            dictOfNeighbors.Add("San Francisco", sanFrancisco);
+            dictOfNeighbors.Add("Chicago", chicago);
+            dictOfNeighbors.Add("Montreal", montreal);
+            dictOfNeighbors.Add("New York", newYork);
+            dictOfNeighbors.Add("Atlanta", atlanta);
+            dictOfNeighbors.Add("Washington", washington);
+            dictOfNeighbors.Add("London", london);
+            dictOfNeighbors.Add("Essen", essen);
+            dictOfNeighbors.Add("Saint Petersburg", stPetersburg);
+            dictOfNeighbors.Add("Milan", milan);
+            dictOfNeighbors.Add("Paris", paris);
+            dictOfNeighbors.Add("Madrid", madrid);
+            dictOfNeighbors.Add("Los Angeles", losAngeles);
+            dictOfNeighbors.Add("Mexico City", mexicoCity);
+            dictOfNeighbors.Add("Miami", miami);
+            dictOfNeighbors.Add("Bogota", bogota);
+            dictOfNeighbors.Add("Lima", lima);
+            dictOfNeighbors.Add("Santiago", santiago);
+            dictOfNeighbors.Add("Buenos Aires", buenosAires);
+            dictOfNeighbors.Add("Sao Paulo", saoPaulo);
+            dictOfNeighbors.Add("Lagos", lagos);
+            dictOfNeighbors.Add("Kinshasa", kinshasa);
+            dictOfNeighbors.Add("Johannesburg", johannesburg);
+            dictOfNeighbors.Add("Khartoum", khartoum);
+            dictOfNeighbors.Add("Moscow", moscow);
+            dictOfNeighbors.Add("Tehran", tehran);
+            dictOfNeighbors.Add("Delhi", delhi);
+            dictOfNeighbors.Add("Kolkata", kolkata);
+            dictOfNeighbors.Add("Istanbul", istanbul);
+            dictOfNeighbors.Add("Baghdad", baghdad);
+            dictOfNeighbors.Add("Karachi", karachi);
+            dictOfNeighbors.Add("Algiers", algiers);
+            dictOfNeighbors.Add("Cairo", cairo);
+            dictOfNeighbors.Add("Riyadh", riyadh);
+            dictOfNeighbors.Add("Mumbai", mumbai);
+            dictOfNeighbors.Add("Chennai", chennai);
+            dictOfNeighbors.Add("Beijing", beijing);
+            dictOfNeighbors.Add("Seoul", seoul);
+            dictOfNeighbors.Add("Shanghai", shanghai);
+            dictOfNeighbors.Add("Tokyo", tokyo);
+            dictOfNeighbors.Add("Osaka", osaka);
+            dictOfNeighbors.Add("Taipei", taipei);
+            dictOfNeighbors.Add("Hong Kong", hongKong);
+            dictOfNeighbors.Add("Bangkok", bangkok);
+            dictOfNeighbors.Add("Manila", manila);
+            dictOfNeighbors.Add("Ho Chi Minh City", hoChiMinhCity);
+            dictOfNeighbors.Add("Jakarta", jakarta);
+            dictOfNeighbors.Add("Sydney", sydney);
             }
-            catch (Exception e)
+            catch(Exception e)
             {
 
             }
@@ -145,15 +144,10 @@ namespace SQAdemicApp
                     dictOfNeighbors[cityname].adjacentCities.Add(dictOfNeighbors[city]);
                 }
             }
-
+            
         }
 
-        public List<City> getAdjacentCities(string name)
-        {
-            City city = dictOfNeighbors[name];
-            return city.getAdjacentCities();
-        }
-        public GameBoardModels.Card[] makeDeck()
+        public GameBoardModels.Card[] makePlayerDeck()
         {
             GameBoardModels.Card[] deck = new GameBoardModels.Card[58];
             Random rand = new Random();
@@ -162,8 +156,7 @@ namespace SQAdemicApp
             deck[rand.Next(20, 29)] = new GameBoardModels.Card("EPIDEMIC", GameBoardModels.CARDTYPE.Special);
             deck[rand.Next(30, 39)] = new GameBoardModels.Card("EPIDEMIC", GameBoardModels.CARDTYPE.Special);
             deck[rand.Next(40, 58)] = new GameBoardModels.Card("EPIDEMIC", GameBoardModels.CARDTYPE.Special);
-            string cityList = SQADemicApp.Properties.Resources.CityList;
-            List<GameBoardModels.Card> cardList = makeCardList(new StringReader(cityList));
+            List<GameBoardModels.Card> cardList = makeCardList(new StringReader(File.ReadAllText("D:\\Documents\\Visual Studio 2013\\Projects\\SQADemicApp\\SQADemicApp\\Resources\\CityList.txt")));
             cardList = HelperBL.shuffleArray(cardList);
             int j = 0;
             for (int i = 0; i < 58; i++)
@@ -188,11 +181,11 @@ namespace SQAdemicApp
                 GameBoardModels.COLOR color = getColor(cardColor);
                 cardList.Add(new GameBoardModels.Card(cardName, GameBoardModels.CARDTYPE.Player, color));
             }
-            cardList.Add(new SQAdemicApp.GameBoardModels.Card("Airlift", SQAdemicApp.GameBoardModels.CARDTYPE.Special));
-            cardList.Add(new SQAdemicApp.GameBoardModels.Card("One Quiet Night", SQAdemicApp.GameBoardModels.CARDTYPE.Special));
-            cardList.Add(new SQAdemicApp.GameBoardModels.Card("Resilient Population", SQAdemicApp.GameBoardModels.CARDTYPE.Special));
-            cardList.Add(new SQAdemicApp.GameBoardModels.Card("Government Grant", SQAdemicApp.GameBoardModels.CARDTYPE.Special));
-            cardList.Add(new SQAdemicApp.GameBoardModels.Card("Forecast", SQAdemicApp.GameBoardModels.CARDTYPE.Special));
+            cardList.Add(new SQADemicApp.GameBoardModels.Card("Airlift", SQADemicApp.GameBoardModels.CARDTYPE.Special));
+            cardList.Add(new SQADemicApp.GameBoardModels.Card("One Quiet Night", SQADemicApp.GameBoardModels.CARDTYPE.Special));
+            cardList.Add(new SQADemicApp.GameBoardModels.Card("Resilient Population", SQADemicApp.GameBoardModels.CARDTYPE.Special));
+            cardList.Add(new SQADemicApp.GameBoardModels.Card("Government Grant", SQADemicApp.GameBoardModels.CARDTYPE.Special));
+            cardList.Add(new SQADemicApp.GameBoardModels.Card("Forecast", SQADemicApp.GameBoardModels.CARDTYPE.Special));
             return cardList;
         }
         public GameBoardModels.COLOR getColor(string color)
@@ -210,7 +203,6 @@ namespace SQAdemicApp
             }
 
         }
-
 
     }
 
