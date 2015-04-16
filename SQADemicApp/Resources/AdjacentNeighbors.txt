@@ -1,1 +1,6 @@
-﻿
+﻿San Francisco;Tokyo,Manila,Chicago,Los Angeles
+New York;Montreal,Washington,London,Madrid
+Montreal;New York,Washington,Chicago
+Chicago;San Francisco,Los Angeles,Atlanta,Montreal
+Atlanta;Chicago,Washington,Miami
+Washington;Miami,Atlanta,Montreal,New York
