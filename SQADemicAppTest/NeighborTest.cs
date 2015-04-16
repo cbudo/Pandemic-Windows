@@ -71,6 +71,9 @@ namespace SQADemicAppTest
         //
         #endregion
 
+        //the following tests check the getters and setters for 
+        //adjacent cities list and also verify the integrity of the dictionary
+
         [TestMethod]
         public void TestSettingAndGettingAdjacentCitiesSF()
         {
@@ -159,6 +162,25 @@ namespace SQADemicAppTest
             e.Add(chicago);
             e.Add(washington);
             e.Add(miami);
+            CollectionAssert.AreEqual(res, e);
+        }
+
+        [TestMethod]
+        public void TestWashingtonNeighbors()
+        {
+            create = new Create();
+            StringReader r = new StringReader("Washington;Miami,Atlanta,Montreal,New York");
+            create.setAdjacentCities(r);
+            List<City> res = create.getAdjacentCities("Washington");
+            List<City> e = new List<City>();
+            City miami = new City(GameBoardModels.COLOR.yellow);
+            City atlanta = new City(GameBoardModels.COLOR.blue);
+            City montreal = new City(GameBoardModels.COLOR.blue);
+            City newYork = new City(GameBoardModels.COLOR.blue);
+            e.Add(miami);
+            e.Add(atlanta);
+            e.Add(montreal);
+            e.Add(newYork);
             CollectionAssert.AreEqual(res, e);
 
         }
