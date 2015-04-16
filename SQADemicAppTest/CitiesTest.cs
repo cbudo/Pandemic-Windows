@@ -5,7 +5,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Linq;
 using System.Threading.Tasks;
 using System.IO;
-using SQAdemicApp;
+using SQADemicApp;
 using SQADemicApp.BL;
 
 

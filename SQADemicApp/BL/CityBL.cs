@@ -1,4 +1,4 @@
-﻿using SQAdemicApp;
+﻿using SQADemicApp;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace SQADemicApp.BL
 {
-    class CityBL
+    public class CityBL
     {
         /// <summary>
         /// Gets the Neighboring Cities
@@ -33,7 +33,7 @@ namespace SQADemicApp.BL
 
         public List<City> getAdjacentCities(string name)
         {
-            City city = dictOfNeighbors[name];
+            City city = Create.dictOfNeighbors[name];
             return city.getAdjacentCities();
         }
 

@@ -26,6 +26,7 @@ namespace SQADemicApp.BL
             }
                 return returnList;
         }
+
 		/// <summary>
 		/// Handles Epidmeic card actions,
         /// Increases the infection rate, draws from the bottom of the deck, Shuffles the infection discard pile back into the infection deck 
@@ -56,5 +57,11 @@ namespace SQADemicApp.BL
             return epidmicCity;
 		}
 
+
+        public static int InfectCity(SQADemicApp.City city)
+        {
+
+            return 0;
+        }
     }
 }

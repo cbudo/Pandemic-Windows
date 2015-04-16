@@ -5,7 +5,7 @@ using System.Web;
 using System.IO;
 using SQADemicApp.BL;
 
-namespace SQAdemicApp
+namespace SQADemicApp
 {
     public class Create
     {
@@ -69,7 +69,7 @@ namespace SQAdemicApp
         City jakarta = new City(GameBoardModels.COLOR.red);
         City sydney = new City(GameBoardModels.COLOR.red);
 
-        static Dictionary<string, City> dictOfNeighbors = new Dictionary<string, City>();
+        public static Dictionary<string, City> dictOfNeighbors = new Dictionary<string, City>();
 
         public void createDictionary()
         {
@@ -147,7 +147,7 @@ namespace SQAdemicApp
             
         }
 
-        public GameBoardModels.Card[] makeDeck()
+        public GameBoardModels.Card[] makePlayerDeck()
         {
             GameBoardModels.Card[] deck = new GameBoardModels.Card[58];
             Random rand = new Random();
@@ -181,11 +181,11 @@ namespace SQAdemicApp
                 GameBoardModels.COLOR color = getColor(cardColor);
                 cardList.Add(new GameBoardModels.Card(cardName, GameBoardModels.CARDTYPE.Player, color));
             }
-            cardList.Add(new SQAdemicApp.GameBoardModels.Card("Airlift", SQAdemicApp.GameBoardModels.CARDTYPE.Special));
-            cardList.Add(new SQAdemicApp.GameBoardModels.Card("One Quiet Night", SQAdemicApp.GameBoardModels.CARDTYPE.Special));
-            cardList.Add(new SQAdemicApp.GameBoardModels.Card("Resilient Population", SQAdemicApp.GameBoardModels.CARDTYPE.Special));
-            cardList.Add(new SQAdemicApp.GameBoardModels.Card("Government Grant", SQAdemicApp.GameBoardModels.CARDTYPE.Special));
-            cardList.Add(new SQAdemicApp.GameBoardModels.Card("Forecast", SQAdemicApp.GameBoardModels.CARDTYPE.Special));
+            cardList.Add(new SQADemicApp.GameBoardModels.Card("Airlift", SQADemicApp.GameBoardModels.CARDTYPE.Special));
+            cardList.Add(new SQADemicApp.GameBoardModels.Card("One Quiet Night", SQADemicApp.GameBoardModels.CARDTYPE.Special));
+            cardList.Add(new SQADemicApp.GameBoardModels.Card("Resilient Population", SQADemicApp.GameBoardModels.CARDTYPE.Special));
+            cardList.Add(new SQADemicApp.GameBoardModels.Card("Government Grant", SQADemicApp.GameBoardModels.CARDTYPE.Special));
+            cardList.Add(new SQADemicApp.GameBoardModels.Card("Forecast", SQADemicApp.GameBoardModels.CARDTYPE.Special));
             return cardList;
         }
         public GameBoardModels.COLOR getColor(string color)
@@ -204,7 +204,6 @@ namespace SQAdemicApp
 
         }
 
-    
     }
 
 }

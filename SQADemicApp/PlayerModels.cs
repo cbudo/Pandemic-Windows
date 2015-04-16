@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace SQAdemicApp
+namespace SQADemicApp
 {
     public class PlayerModels
     {
