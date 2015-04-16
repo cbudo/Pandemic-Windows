@@ -141,35 +141,7 @@ dictOfNeighbors.Add("San Francisco", sanFrancisco);
 
                 foreach (var city in adjCityList)
                 {
-                    switch (cityname)
-                    {
-                        case "San Francisco":
-                            dictOfNeighbors[cityname].adjacentCities.Add(dictOfNeighbors[city]);
-                            break;
-
-                        case "New York":
-                            dictOfNeighbors[cityname].adjacentCities.Add(dictOfNeighbors[city]);
-                            break;
-
-                        case "Montreal":
-                            dictOfNeighbors[cityname].adjacentCities.Add(dictOfNeighbors[city]);
-                            break;
-
-                        case "Chicago":
-                            dictOfNeighbors[cityname].adjacentCities.Add(dictOfNeighbors[city]);
-                            break;
-
-                        case "Atlanta":
-                            dictOfNeighbors[cityname].adjacentCities.Add(dictOfNeighbors[city]);
-                            break;
-
-                        case "Washington":
-                            dictOfNeighbors[cityname].adjacentCities.Add(dictOfNeighbors[city]);
-                            break;
-
-                        default:
-                            break;
-                    }
+                    dictOfNeighbors[cityname].adjacentCities.Add(dictOfNeighbors[city]);
                 }
             }
             
