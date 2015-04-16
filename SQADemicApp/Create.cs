@@ -75,7 +75,7 @@ namespace SQAdemicApp
         {
             try
             {
-dictOfNeighbors.Add("San Francisco", sanFrancisco);
+            dictOfNeighbors.Add("San Francisco", sanFrancisco);
             dictOfNeighbors.Add("Chicago", chicago);
             dictOfNeighbors.Add("Montreal", montreal);
             dictOfNeighbors.Add("New York", newYork);
