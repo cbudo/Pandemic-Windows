@@ -6,17 +6,18 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.IO;
 using SQAdemicApp;
+using SQADemicApp.BL;
+
 
 namespace SQADemicAppTest
 {
-  
-
     [TestClass]
-    public class NeighborTest
+    public class CitiesTest
     {
-        static Create create = new Create();     
+        static Create create = new Create();
+        static CityBL bl = new CityBL();
 
-       [TestInitialize()]
+        [TestInitialize()]
         public void TestInitialize()
         {
             create = new Create();
@@ -53,7 +54,7 @@ namespace SQADemicAppTest
         {
             StringReader r = new StringReader("San Francisco;Tokyo,Manila,Chicago,Los Angeles");
             create.setAdjacentCities(r);
-            List<City> result = create.getAdjacentCities("San Francisco");
+            List<City> result = bl.getAdjacentCities("San Francisco");
             List<City> expected = new List<City>();
             City tokyo = new City(GameBoardModels.COLOR.red);
             City manila = new City(GameBoardModels.COLOR.red);
@@ -71,7 +72,7 @@ namespace SQADemicAppTest
         {
             StringReader r = new StringReader("New York;Montreal,Washington,London,Madrid");
             create.setAdjacentCities(r);
-            List<City> result = create.getAdjacentCities("New York");
+            List<City> result = bl.getAdjacentCities("New York");
             List<City> expected = new List<City>();
             City montreal = new City(GameBoardModels.COLOR.blue);
             City washington = new City(GameBoardModels.COLOR.blue);
@@ -89,7 +90,7 @@ namespace SQADemicAppTest
         {
             StringReader r = new StringReader("Montreal;New York,Washington,Chicago");
             create.setAdjacentCities(r);
-            List<City> result = create.getAdjacentCities("Montreal");
+            List<City> result = bl.getAdjacentCities("Montreal");
             List<City> e = new List<City>();
             City newYork = new City(GameBoardModels.COLOR.blue);
             City washington = new City(GameBoardModels.COLOR.blue);
@@ -97,7 +98,7 @@ namespace SQADemicAppTest
             e.Add(newYork);
             e.Add(washington);
             e.Add(chicago);
-            CollectionAssert.AreEqual(result, e); 
+            CollectionAssert.AreEqual(result, e);
         }
 
         [TestMethod]
@@ -105,7 +106,7 @@ namespace SQADemicAppTest
         {
             StringReader r = new StringReader("Chicago;San Francisco,Los Angeles,Atlanta,Montreal");
             create.setAdjacentCities(r);
-            List<City> res = create.getAdjacentCities("Chicago");
+            List<City> res = bl.getAdjacentCities("Chicago");
             List<City> e = new List<City>();
             City sanFrancisco = new City(GameBoardModels.COLOR.blue);
             City losAngeles = new City(GameBoardModels.COLOR.yellow);
@@ -123,7 +124,7 @@ namespace SQADemicAppTest
         {
             StringReader r = new StringReader("Atlanta;Chicago,Washington,Miami");
             create.setAdjacentCities(r);
-            List<City> res = create.getAdjacentCities("Atlanta");
+            List<City> res = bl.getAdjacentCities("Atlanta");
             List<City> e = new List<City>();
             City chicago = new City(GameBoardModels.COLOR.blue);
             City washington = new City(GameBoardModels.COLOR.blue);
@@ -139,7 +140,7 @@ namespace SQADemicAppTest
         {
             StringReader r = new StringReader("Washington;Miami,Atlanta,Montreal,New York");
             create.setAdjacentCities(r);
-            List<City> res = create.getAdjacentCities("Washington");
+            List<City> res = bl.getAdjacentCities("Washington");
             List<City> e = new List<City>();
             City miami = new City(GameBoardModels.COLOR.yellow);
             City atlanta = new City(GameBoardModels.COLOR.blue);

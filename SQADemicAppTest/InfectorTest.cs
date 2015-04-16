@@ -18,10 +18,6 @@ namespace SQADemicAppTest
         public void SetUpArrays()
         {
             deck = new LinkedList<string>();
-            //deck.AddFirst("Chicago");
-            //deck.AddFirst("New York");
-            //deck.AddFirst("Saint Petersburg");
-            //deck.AddFirst("Sydney");
             pile = new LinkedList<string>();
             infectionRate = 3;
             infectionIndex = 4;
