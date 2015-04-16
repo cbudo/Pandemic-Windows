@@ -33,7 +33,9 @@
             this.Player2CheckBox = new System.Windows.Forms.CheckBox();
             this.Player2ComboBox = new System.Windows.Forms.ComboBox();
             this.Player3CheckBox = new System.Windows.Forms.CheckBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.Player3ComboBox = new System.Windows.Forms.ComboBox();
+            this.Player4CheckBox = new System.Windows.Forms.CheckBox();
+            this.Player4ComboBox = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // Player1ComboBox
@@ -94,26 +96,52 @@
             this.Player3CheckBox.Text = "Player 3";
             this.Player3CheckBox.UseVisualStyleBackColor = true;
             // 
-            // comboBox1
+            // Player3ComboBox
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.Player3ComboBox.FormattingEnabled = true;
+            this.Player3ComboBox.Items.AddRange(new object[] {
             "Dispatcher",
             "Operations Expert",
             "Scientist",
             "Medic",
             "Researcher"});
-            this.comboBox1.Location = new System.Drawing.Point(115, 113);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 24);
-            this.comboBox1.TabIndex = 6;
+            this.Player3ComboBox.Location = new System.Drawing.Point(115, 113);
+            this.Player3ComboBox.Name = "Player3ComboBox";
+            this.Player3ComboBox.Size = new System.Drawing.Size(121, 24);
+            this.Player3ComboBox.TabIndex = 6;
+            // 
+            // Player4CheckBox
+            // 
+            this.Player4CheckBox.AutoSize = true;
+            this.Player4CheckBox.Location = new System.Drawing.Point(11, 153);
+            this.Player4CheckBox.Name = "Player4CheckBox";
+            this.Player4CheckBox.Size = new System.Drawing.Size(82, 21);
+            this.Player4CheckBox.TabIndex = 7;
+            this.Player4CheckBox.Text = "Player 4";
+            this.Player4CheckBox.UseVisualStyleBackColor = true;
+            // 
+            // Player4ComboBox
+            // 
+            this.Player4ComboBox.FormattingEnabled = true;
+            this.Player4ComboBox.Items.AddRange(new object[] {
+            "Dispatcher",
+            "Operations Expert",
+            "Scientist",
+            "Medic",
+            "Researcher"});
+            this.Player4ComboBox.Location = new System.Drawing.Point(115, 153);
+            this.Player4ComboBox.Name = "Player4ComboBox";
+            this.Player4ComboBox.Size = new System.Drawing.Size(121, 24);
+            this.Player4ComboBox.TabIndex = 8;
             // 
             // SetupGameForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(593, 576);
-            this.Controls.Add(this.comboBox1);
+            this.ClientSize = new System.Drawing.Size(261, 226);
+            this.Controls.Add(this.Player4ComboBox);
+            this.Controls.Add(this.Player4CheckBox);
+            this.Controls.Add(this.Player3ComboBox);
             this.Controls.Add(this.Player3CheckBox);
             this.Controls.Add(this.Player2ComboBox);
             this.Controls.Add(this.Player2CheckBox);
@@ -133,6 +161,8 @@
         private System.Windows.Forms.CheckBox Player2CheckBox;
         private System.Windows.Forms.ComboBox Player2ComboBox;
         private System.Windows.Forms.CheckBox Player3CheckBox;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox Player3ComboBox;
+        private System.Windows.Forms.CheckBox Player4CheckBox;
+        private System.Windows.Forms.ComboBox Player4ComboBox;
     }
 }
