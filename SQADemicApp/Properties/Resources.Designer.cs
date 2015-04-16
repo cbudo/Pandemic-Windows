@@ -8,10 +8,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SQADemicApp.Properties
-{
-
-
+namespace SQADemicApp.Properties {
+    using System;
+    
+    
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -22,49 +22,101 @@ namespace SQADemicApp.Properties
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources
-    {
-
+    internal class Resources {
+        
         private static global::System.Resources.ResourceManager resourceMan;
-
+        
         private static global::System.Globalization.CultureInfo resourceCulture;
-
+        
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resources()
-        {
+        internal Resources() {
         }
-
+        
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager
-        {
-            get
-            {
-                if ((resourceMan == null))
-                {
+        internal static global::System.Resources.ResourceManager ResourceManager {
+            get {
+                if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SQADemicApp.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
             }
         }
-
+        
         /// <summary>
         ///   Overrides the current thread's CurrentUICulture property for all
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture
-        {
-            get
-            {
+        internal static global::System.Globalization.CultureInfo Culture {
+            get {
                 return resourceCulture;
             }
-            set
-            {
+            set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to San Francisco;Tokyo,Manila,Chicago,Los Angeles
+        ///New York;Montreal,Washington,London,Madrid
+        ///Montreal;New York,Washington,Chicago
+        ///Chicago;San Francisco,Los Angeles,Atlanta,Montreal
+        ///Atlanta;Chicago,Washington,Miami
+        ///Washington;Miami,Atlanta,Montreal,New York
+        ///London;New York,Madrid,Paris,Essen
+        ///Essen;London,Paris,Milan,Saint Petersburg
+        ///Saint Petersburg;Essen,Istanbul,Moscow
+        ///Madrid;Sao Paulo,New York,London,Paris,Essen
+        ///Paris;London,Madrid,Algiers,Milan,Essen
+        ///Milan;Essen,Paris,Istanbul
+        ///Los Angeles;Sydney [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string AdjacentNeighbors {
+            get {
+                return ResourceManager.GetString("AdjacentNeighbors", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to San Francisco; Blue
+        ///Chicago; Blue
+        ///Montreal; Blue
+        ///New York; Blue
+        ///Washington; Blue
+        ///Atlanta; Blue
+        ///London; Blue
+        ///Madrid; Blue
+        ///Paris; Blue
+        ///Milan; Blue
+        ///St. Petersburg; Blue
+        ///Essen; Blue
+        ///Los Angeles; Yellow
+        ///Mexico City; Yellow
+        ///Miami; Yellow
+        ///Bogota; Yellow
+        ///Lima; Yellow
+        ///Sao Paulo; Yellow
+        ///Buenos Aires; Yellow
+        ///Santiago; Yellow
+        ///Lagos; Yellow
+        ///Khartoum; Yellow
+        ///Kinshasa; Yellow
+        ///Johannesburg; Yellow
+        ///Algiers; Black
+        ///Cairo; Black
+        ///Istanbul; Black
+        ///Moscow; Black
+        ///Baghdad; Black
+        ///Riyadh; Black
+        ///Tehran; Bl [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string CityList {
+            get {
+                return ResourceManager.GetString("CityList", resourceCulture);
             }
         }
     }

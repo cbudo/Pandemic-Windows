@@ -70,6 +70,12 @@
     <Compile Include="PlayerModels.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SetupGameForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SetupGameForm.Designer.cs">
+      <DependentUpon>SetupGameForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="WS\InfectorWS.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -88,8 +94,12 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="BL\InfectorBL.cs" />
+    <EmbeddedResource Include="SetupGameForm.resx">
+      <DependentUpon>SetupGameForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

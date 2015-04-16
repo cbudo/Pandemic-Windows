@@ -189,7 +189,8 @@ dictOfNeighbors.Add("San Francisco", sanFrancisco);
             deck[rand.Next(20, 29)] = new GameBoardModels.Card("EPIDEMIC", GameBoardModels.CARDTYPE.Special);
             deck[rand.Next(30, 39)] = new GameBoardModels.Card("EPIDEMIC", GameBoardModels.CARDTYPE.Special);
             deck[rand.Next(40, 58)] = new GameBoardModels.Card("EPIDEMIC", GameBoardModels.CARDTYPE.Special);
-            List<GameBoardModels.Card> cardList = makeCardList(new StringReader(File.ReadAllText("D:\\Documents\\Visual Studio 2013\\Projects\\SQADemicApp\\SQADemicApp\\Resources\\CityList.txt")));
+            string cityList = SQADemicApp.Properties.Resources.CityList;
+            List<GameBoardModels.Card> cardList = makeCardList(new StringReader(cityList));
             cardList = HelperBL.shuffleArray(cardList);
             int j = 0;
             for (int i = 0; i < 58; i++)
