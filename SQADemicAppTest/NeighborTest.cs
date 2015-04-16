@@ -9,21 +9,13 @@ using SQAdemicApp;
 
 namespace SQADemicAppTest
 {
-    /// <summary>
-    /// Summary description for NeighborTest
-    /// </summary>
+  
+
     [TestClass]
     public class NeighborTest
     {
 
         Create create;
-
-        public NeighborTest()
-        {
-            //
-            // TODO: Add constructor logic here
-            //
-        }
 
         [TestInitialize]
         private void SetUp()
@@ -31,22 +23,10 @@ namespace SQADemicAppTest
             create = new Create();
         }
 
-        private TestContext testContextInstance;
-
-        /// <summary>
-        ///Gets or sets the test context which provides
-        ///information about and functionality for the current test run.
-        ///</summary>
-        public TestContext TestContext
+        [TestMethod]
+        private void TestThatCreateInitializes()
         {
-            get
-            {
-                return testContextInstance;
-            }
-            set
-            {
-                testContextInstance = value;
-            }
+            Assert.IsNotNull(create);
         }
 
         #region Additional test attributes
@@ -77,7 +57,6 @@ namespace SQADemicAppTest
         [TestMethod]
         public void TestSettingAndGettingAdjacentCitiesSF()
         {
-            create = new Create();
             StringReader r = new StringReader("San Francisco;Tokyo,Manila,Chicago,Los Angeles");
             create.setAdjacentCities(r);
             List<City> result = create.getAdjacentCities("San Francisco");
@@ -96,7 +75,6 @@ namespace SQADemicAppTest
         [TestMethod]
         public void TestNYNeighbors()
         {
-            create = new Create();
             StringReader r = new StringReader("New York;Montreal,Washington,London,Madrid");
             create.setAdjacentCities(r);
             List<City> result = create.getAdjacentCities("New York");
@@ -115,7 +93,6 @@ namespace SQADemicAppTest
         [TestMethod]
         public void TestMontrealNeighbors()
         {
-            create = new Create();
             StringReader r = new StringReader("Montreal;New York,Washington,Chicago");
             create.setAdjacentCities(r);
             List<City> result = create.getAdjacentCities("Montreal");
@@ -132,7 +109,6 @@ namespace SQADemicAppTest
         [TestMethod]
         public void TestChicagoNeighbors()
         {
-            create = new Create();
             StringReader r = new StringReader("Chicago;San Francisco,Los Angeles,Atlanta,Montreal");
             create.setAdjacentCities(r);
             List<City> res = create.getAdjacentCities("Chicago");
@@ -151,7 +127,6 @@ namespace SQADemicAppTest
         [TestMethod]
         public void TestAtlantaNeighbors()
         {
-            create = new Create();
             StringReader r = new StringReader("Atlanta;Chicago,Washington,Miami");
             create.setAdjacentCities(r);
             List<City> res = create.getAdjacentCities("Atlanta");
@@ -168,7 +143,6 @@ namespace SQADemicAppTest
         [TestMethod]
         public void TestWashingtonNeighbors()
         {
-            create = new Create();
             StringReader r = new StringReader("Washington;Miami,Atlanta,Montreal,New York");
             create.setAdjacentCities(r);
             List<City> res = create.getAdjacentCities("Washington");
