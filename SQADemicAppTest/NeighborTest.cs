@@ -74,6 +74,7 @@ namespace SQADemicAppTest
         [TestMethod]
         public void TestSettingAndGettingAdjacentCities1()
         {
+            create = new Create();
             StringReader r = new StringReader("San Francisco;Tokyo,Manila,Chicago,Los Angeles");
             create.setAdjacentCities(r);
             List<City> result = create.getAdjacentCities("San Francisco");
