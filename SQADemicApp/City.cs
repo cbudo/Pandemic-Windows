@@ -14,7 +14,7 @@ namespace SQAdemicApp
         private int blackCubes = 0;
         private int blueCubes = 0;
         private int yellowCubes = 0;
-        private bool researchStation = false;
+        public bool researchStation = false;
         public List<City> adjacentCities;
         public City()
         {

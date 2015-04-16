@@ -1,9 +1,11 @@
-﻿using System;
+﻿using SQAdemicApp;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 
 namespace SQADemicApp.BL
 {
@@ -14,10 +16,25 @@ namespace SQADemicApp.BL
         /// </summary>
         /// <param name="cityName"></param>
         /// <returns>List of Neigboring Cities names</returns>
+        public CityBL()
+        {
+
+        }
         public List<String> getNeighborNames(String cityName)
         {
             //switch statment will be best
             return new List<String> { "city" };
+        }
+
+        public List<City> getCitiesWithResearchStations()
+        {
+            return new List<City>();
+        }
+
+        public List<City> getAdjacentCities(string name)
+        {
+            City city = dictOfNeighbors[name];
+            return city.getAdjacentCities();
         }
 
     }

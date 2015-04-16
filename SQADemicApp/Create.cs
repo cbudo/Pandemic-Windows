@@ -147,11 +147,6 @@ namespace SQAdemicApp
             
         }
 
-        public List<City> getAdjacentCities(string name)
-        {
-            City city = dictOfNeighbors[name];
-            return city.getAdjacentCities();
-        }
         public GameBoardModels.Card[] makeDeck()
         {
             GameBoardModels.Card[] deck = new GameBoardModels.Card[58];
@@ -161,8 +156,7 @@ namespace SQAdemicApp
             deck[rand.Next(20, 29)] = new GameBoardModels.Card("EPIDEMIC", GameBoardModels.CARDTYPE.Special);
             deck[rand.Next(30, 39)] = new GameBoardModels.Card("EPIDEMIC", GameBoardModels.CARDTYPE.Special);
             deck[rand.Next(40, 58)] = new GameBoardModels.Card("EPIDEMIC", GameBoardModels.CARDTYPE.Special);
-            string cityList = SQADemicApp.Properties.Resources.CityList;
-            List<GameBoardModels.Card> cardList = makeCardList(new StringReader(cityList));
+            List<GameBoardModels.Card> cardList = makeCardList(new StringReader(File.ReadAllText("D:\\Documents\\Visual Studio 2013\\Projects\\SQADemicApp\\SQADemicApp\\Resources\\CityList.txt")));
             cardList = HelperBL.shuffleArray(cardList);
             int j = 0;
             for (int i = 0; i < 58; i++)
