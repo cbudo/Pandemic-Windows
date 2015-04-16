@@ -157,7 +157,7 @@ namespace SQADemicAppTest
         [TestMethod]
         public void TestResearchCityList()
         {
-            create.atlanta.researchStation = true;
+            Create.dictOfNeighbors["Atlanta"].researchStation = true;
             List<City> ls = new List<City>();
             ls.Add(new City(GameBoardModels.COLOR.blue, "Atlanta"));
             Assert.AreEqual(ls, bl.getCitiesWithResearchStations());
