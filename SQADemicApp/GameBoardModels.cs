@@ -90,7 +90,15 @@ namespace SQADemicApp
         public Card drawCard()
         {
             playerDeckPoint++;
-            return playerDeck[playerDeckPoint];
+            if (playerDeckPoint < 58)
+            {
+                return playerDeck[playerDeckPoint];
+            }
+            else
+            {
+                //gameover
+                throw new Exception("Game Over");
+            }
         }
     }
 }

@@ -16,5 +16,30 @@ namespace SQADemicApp
         {
             InitializeComponent();
         }
+
+        private void SubmitButton_Click(object sender, EventArgs e)
+        {
+            StringBuilder sb = new StringBuilder();
+            if(Player1CheckBox.Checked)
+            {
+                sb.Append(Player1ComboBox.SelectedItem + ",");
+            }
+            if (Player2CheckBox.Checked)
+            {
+                sb.Append(Player2ComboBox.SelectedItem + ",");
+            }
+            if (Player3CheckBox.Checked)
+            {
+                sb.Append(Player3ComboBox.SelectedItem + ",");
+            }
+            if (Player4CheckBox.Checked)
+            {
+                sb.Append(Player4ComboBox.SelectedItem+",");
+            }
+            sb.Remove(sb.ToString().LastIndexOf(','),1);
+            this.Hide();
+            Form1 form1 = new Form1(sb.ToString().Split(','));
+            form1.Show();
+        }
     }
 }

@@ -18,6 +18,17 @@ namespace SQADemicApp
             form2.Show();
             form3.Show();
         }
+        public Form1(string[] playerRoles)
+        {
+            SetupGameForm setupForm = new SetupGameForm();
+            setupForm.Show();
+
+            boardModel = new GameBoardModels();
+            
+            InitializeComponent();
+            form2.Show();
+            form3.Show();
+        }
 
         private void Form1_Load(object sender, EventArgs e)
         {

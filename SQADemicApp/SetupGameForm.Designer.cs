@@ -36,6 +36,7 @@
             this.Player3ComboBox = new System.Windows.Forms.ComboBox();
             this.Player4CheckBox = new System.Windows.Forms.CheckBox();
             this.Player4ComboBox = new System.Windows.Forms.ComboBox();
+            this.SubmitButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Player1ComboBox
@@ -134,11 +135,22 @@
             this.Player4ComboBox.Size = new System.Drawing.Size(121, 24);
             this.Player4ComboBox.TabIndex = 8;
             // 
+            // SubmitButton
+            // 
+            this.SubmitButton.Location = new System.Drawing.Point(91, 191);
+            this.SubmitButton.Name = "SubmitButton";
+            this.SubmitButton.Size = new System.Drawing.Size(75, 23);
+            this.SubmitButton.TabIndex = 9;
+            this.SubmitButton.Text = "Submit";
+            this.SubmitButton.UseVisualStyleBackColor = true;
+            this.SubmitButton.Click += new System.EventHandler(this.SubmitButton_Click);
+            // 
             // SetupGameForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(261, 226);
+            this.Controls.Add(this.SubmitButton);
             this.Controls.Add(this.Player4ComboBox);
             this.Controls.Add(this.Player4CheckBox);
             this.Controls.Add(this.Player3ComboBox);
@@ -148,7 +160,7 @@
             this.Controls.Add(this.Player1CheckBox);
             this.Controls.Add(this.Player1ComboBox);
             this.Name = "SetupGameForm";
-            this.Text = "SetupGameForm";
+            this.Text = "Setup Game";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -164,5 +176,6 @@
         private System.Windows.Forms.ComboBox Player3ComboBox;
         private System.Windows.Forms.CheckBox Player4CheckBox;
         private System.Windows.Forms.ComboBox Player4ComboBox;
+        private System.Windows.Forms.Button SubmitButton;
     }
 }
