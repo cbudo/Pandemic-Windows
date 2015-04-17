@@ -181,5 +181,6 @@ namespace SQADemicAppTest
             List<String> result = bl.getNeighborNames("Washington");
             CollectionAssert.AreEqual(e, result);
         }
+
     }
 }
