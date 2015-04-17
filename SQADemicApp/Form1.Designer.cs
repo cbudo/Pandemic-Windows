@@ -540,7 +540,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(1199, 830);
+            this.ClientSize = new System.Drawing.Size(1205, 839);
             this.Controls.Add(this.button49);
             this.Controls.Add(this.Sydney);
             this.Controls.Add(this.Manila);
