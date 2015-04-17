@@ -27,7 +27,7 @@ namespace SQADemicApp.BL
         public static List<String> DirectFlightOption(List<GameBoardModels.Card> hand, City currentCity)
         {
 
-            return new List<String> { "city" };
+            return new List<String>();
         }
 
         public static bool CharterFlightOption(List<GameBoardModels.Card> hand, City currentCity)
