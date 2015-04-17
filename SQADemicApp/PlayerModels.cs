@@ -6,6 +6,7 @@ namespace SQADemicApp
 {
     public class PlayerModels
     {
+        public enum ROLE { Dispatcher, Medic, OpExpert, Researcher, Scientist };
         public class Player
         {
             public List<GameBoardModels.Card> hand = new List<GameBoardModels.Card>();
@@ -18,42 +19,6 @@ namespace SQADemicApp
             {
 
             }
-        }
-        public class Medic : Player
-        {
-            public Medic()
-            {
-
-            }
-        }
-        public class OpExpert : Player
-        {
-            public OpExpert()
-            {
-
-            }
-        }
-        public class Researcher : Player
-        {
-            public Researcher()
-            {
-
-            }
-        }
-        public class Scientist : Player
-        {
-            public Scientist()
-            {
-
-            }
-        }
-        public class Dispatcher :Player
-        {
-            public Dispatcher()
-            {
-
-            }
-        }
-        
+        }       
     }
 }
