@@ -14,60 +14,60 @@ namespace SQADemicApp
         }
 
         //create the blues
-        City sanFrancisco = new City(GameBoardModels.COLOR.blue);
-        City chicago = new City(GameBoardModels.COLOR.blue);
-        City montreal = new City(GameBoardModels.COLOR.blue);
-        City newYork = new City(GameBoardModels.COLOR.blue);
-        City washington = new City(GameBoardModels.COLOR.blue);
-        City atlanta = new City(GameBoardModels.COLOR.blue);
-        City london = new City(GameBoardModels.COLOR.blue);
-        City madrid = new City(GameBoardModels.COLOR.blue);
-        City paris = new City(GameBoardModels.COLOR.blue);
-        City milan = new City(GameBoardModels.COLOR.blue);
-        City stPetersburg = new City(GameBoardModels.COLOR.blue);
-        City essen = new City(GameBoardModels.COLOR.blue);
+        City sanFrancisco = new City(GameBoardModels.COLOR.blue, "San Francisco");
+        City chicago = new City(GameBoardModels.COLOR.blue, "Chicago");
+        City montreal = new City(GameBoardModels.COLOR.blue, "Montreal");
+        City newYork = new City(GameBoardModels.COLOR.blue, "New York");
+        City washington = new City(GameBoardModels.COLOR.blue, "Washington");
+        City atlanta = new City(GameBoardModels.COLOR.blue, "Atlanta");
+        City london = new City(GameBoardModels.COLOR.blue, "London");
+        City madrid = new City(GameBoardModels.COLOR.blue, "Madrid");
+        City paris = new City(GameBoardModels.COLOR.blue, "Paris");
+        City milan = new City(GameBoardModels.COLOR.blue, "Milan");
+        City stPetersburg = new City(GameBoardModels.COLOR.blue, "Saint Petersburg");
+        City essen = new City(GameBoardModels.COLOR.blue, "Essen");
 
         //create the yellows
-        City losAngeles = new City(GameBoardModels.COLOR.yellow);
-        City mexicoCity = new City(GameBoardModels.COLOR.yellow);
-        City miami = new City(GameBoardModels.COLOR.yellow);
-        City bogota = new City(GameBoardModels.COLOR.yellow);
-        City lima = new City(GameBoardModels.COLOR.yellow);
-        City saoPaulo = new City(GameBoardModels.COLOR.yellow);
-        City buenosAires = new City(GameBoardModels.COLOR.yellow);
-        City santiago = new City(GameBoardModels.COLOR.yellow);
-        City lagos = new City(GameBoardModels.COLOR.yellow);
-        City khartoum = new City(GameBoardModels.COLOR.yellow);
-        City kinshasa = new City(GameBoardModels.COLOR.yellow);
-        City johannesburg = new City(GameBoardModels.COLOR.yellow);
+        City losAngeles = new City(GameBoardModels.COLOR.yellow, "Los Angeles");
+        City mexicoCity = new City(GameBoardModels.COLOR.yellow, "Mexico City");
+        City miami = new City(GameBoardModels.COLOR.yellow, "Miami");
+        City bogota = new City(GameBoardModels.COLOR.yellow, "Bogota");
+        City lima = new City(GameBoardModels.COLOR.yellow, "Lima");
+        City saoPaulo = new City(GameBoardModels.COLOR.yellow, "Sao Paulo");
+        City buenosAires = new City(GameBoardModels.COLOR.yellow, "Buenos Aires");
+        City santiago = new City(GameBoardModels.COLOR.yellow, "Santiago");
+        City lagos = new City(GameBoardModels.COLOR.yellow, "Lagos");
+        City khartoum = new City(GameBoardModels.COLOR.yellow, "Khartoum");
+        City kinshasa = new City(GameBoardModels.COLOR.yellow, "Kinshasa");
+        City johannesburg = new City(GameBoardModels.COLOR.yellow, "Johannesburg");
 
         //create the blacks
-        City algiers = new City(GameBoardModels.COLOR.black);
-        City cairo = new City(GameBoardModels.COLOR.black);
-        City istanbul = new City(GameBoardModels.COLOR.black);
-        City moscow = new City(GameBoardModels.COLOR.black);
-        City baghdad = new City(GameBoardModels.COLOR.black);
-        City riyadh = new City(GameBoardModels.COLOR.black);
-        City tehran = new City(GameBoardModels.COLOR.black);
-        City karachi = new City(GameBoardModels.COLOR.black);
-        City delhi = new City(GameBoardModels.COLOR.black);
-        City mumbai = new City(GameBoardModels.COLOR.black);
-        City chennai = new City(GameBoardModels.COLOR.black);
-        City kolkata = new City(GameBoardModels.COLOR.black);
+        City algiers = new City(GameBoardModels.COLOR.black, "Algiers");
+        City cairo = new City(GameBoardModels.COLOR.black, "Cairo");
+        City istanbul = new City(GameBoardModels.COLOR.black, "Istanbul");
+        City moscow = new City(GameBoardModels.COLOR.black, "Moscow");
+        City baghdad = new City(GameBoardModels.COLOR.black, "Baghdad");
+        City riyadh = new City(GameBoardModels.COLOR.black, "Riyadh");
+        City tehran = new City(GameBoardModels.COLOR.black, "Tehran");
+        City karachi = new City(GameBoardModels.COLOR.black, "Karachi");
+        City delhi = new City(GameBoardModels.COLOR.black, "Delhi");
+        City mumbai = new City(GameBoardModels.COLOR.black, "Mumbai");
+        City chennai = new City(GameBoardModels.COLOR.black, "Chennai");
+        City kolkata = new City(GameBoardModels.COLOR.black, "Kolkata");
 
         //create the reds
-        City beijing = new City(GameBoardModels.COLOR.red);
-        City seoul = new City(GameBoardModels.COLOR.red);
-        City shanghai = new City(GameBoardModels.COLOR.red);
-        City tokyo = new City(GameBoardModels.COLOR.red);
-        City osaka = new City(GameBoardModels.COLOR.red);
-        City taipei = new City(GameBoardModels.COLOR.red);
-        City hongKong = new City(GameBoardModels.COLOR.red);
-        City bangkok = new City(GameBoardModels.COLOR.red);
-        City manila = new City(GameBoardModels.COLOR.red);
-        City hoChiMinhCity = new City(GameBoardModels.COLOR.red);
-        City jakarta = new City(GameBoardModels.COLOR.red);
-        City sydney = new City(GameBoardModels.COLOR.red);
+        City beijing = new City(GameBoardModels.COLOR.red, "Beijing");
+        City seoul = new City(GameBoardModels.COLOR.red, "Seoul");
+        City shanghai = new City(GameBoardModels.COLOR.red, "Shanghai");
+        City tokyo = new City(GameBoardModels.COLOR.red, "Tokyo");
+        City osaka = new City(GameBoardModels.COLOR.red, "Osaka");
+        City taipei = new City(GameBoardModels.COLOR.red, "Taipei");
+        City hongKong = new City(GameBoardModels.COLOR.red, "Hong Kong");
+        City bangkok = new City(GameBoardModels.COLOR.red, "Bangkok");
+        City manila = new City(GameBoardModels.COLOR.red, "Manila");
+        City hoChiMinhCity = new City(GameBoardModels.COLOR.red, "Ho Chi Minh City");
+        City jakarta = new City(GameBoardModels.COLOR.red, "Jakarta");
+        City sydney = new City(GameBoardModels.COLOR.red, "Sydney");
 
         public static Dictionary<string, City> dictOfNeighbors = new Dictionary<string, City>();
 
@@ -178,7 +178,7 @@ namespace SQADemicApp
             {
                 string cardName = line.Substring(0, line.IndexOf(";"));
                 string cardColor = line.Substring(line.IndexOf(";") + 2);
-                GameBoardModels.COLOR color = HelperBL.getColor(cardColor);
+                GameBoardModels.COLOR color = getColor(cardColor);
                 cardList.Add(new GameBoardModels.Card(cardName, GameBoardModels.CARDTYPE.Player, color));
             }
             cardList.Add(new SQADemicApp.GameBoardModels.Card("Airlift", SQADemicApp.GameBoardModels.CARDTYPE.Special));
@@ -188,6 +188,22 @@ namespace SQADemicApp
             cardList.Add(new SQADemicApp.GameBoardModels.Card("Forecast", SQADemicApp.GameBoardModels.CARDTYPE.Special));
             return cardList;
         }
+        public GameBoardModels.COLOR getColor(string color)
+        {
+            switch (color.ToLower())
+            {
+                case "red":
+                    return GameBoardModels.COLOR.red;
+                case "black":
+                    return GameBoardModels.COLOR.black;
+                case "yellow":
+                    return GameBoardModels.COLOR.yellow;
+                default:
+                    return GameBoardModels.COLOR.blue;
+            }
+
+        }
+
     }
 
 }

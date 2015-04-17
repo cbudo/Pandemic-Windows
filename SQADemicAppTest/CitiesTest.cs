@@ -163,7 +163,7 @@ namespace SQADemicAppTest
             a.researchStation = true;
             ls.Add(a);
             List<City> result = bl.getCitiesWithResearchStations();
-            Assert.AreEqual(ls, result);
+            CollectionAssert.AreEqual(ls, result);
         }
 
         [TestMethod]
