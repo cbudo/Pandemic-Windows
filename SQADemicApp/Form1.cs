@@ -10,6 +10,9 @@ namespace SQADemicApp
         Form3 form3 = new Form3();
         public Form1()
         {
+            SetupGameForm setupForm = new SetupGameForm();
+            setupForm.Show();
+            
             boardModel = new GameBoardModels();
             InitializeComponent();
             form2.Show();
