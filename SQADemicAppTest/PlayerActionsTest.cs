@@ -15,6 +15,7 @@ namespace SQADemicAppTest
     {
         City chicago, bangkok, kolkata;
         List<GameBoardModels.Card> hand;
+        GameBoardModels.Card newYork, chennai, atlanta;
 
         [TestInitialize]
         public void SetupPlayer()
@@ -35,6 +36,9 @@ namespace SQADemicAppTest
             {
                 throw new InvalidOperationException("Set up failed");
             }
+            newYork = new GameBoardModels.Card("New York", GameBoardModels.CARDTYPE.Player, GameBoardModels.COLOR.blue);
+            chennai = new GameBoardModels.Card("chennai", GameBoardModels.CARDTYPE.Player, GameBoardModels.COLOR.black);
+            atlanta = new GameBoardModels.Card("atlanta", GameBoardModels.CARDTYPE.Player, GameBoardModels.COLOR.blue);
 
         }
 
@@ -43,6 +47,15 @@ namespace SQADemicAppTest
             hand = new List<GameBoardModels.Card>();
             List<String> returnList = PlayerActionsBL.DirectFlightOption(hand, chicago);
             List<String> correctList = new List<String>();
+            CollectionAssert.AreEqual(correctList, returnList);
+        }
+
+        [TestMethod]
+        public void TestDirectFlightOptionNewYork()
+        {
+            hand = new List<GameBoardModels.Card> { newYork };
+            List<String> returnList = PlayerActionsBL.DirectFlightOption(hand, chicago);
+            List<String> correctList = new List<String>{newYork.CityName};
             CollectionAssert.AreEqual(correctList, returnList);
         }
     }
