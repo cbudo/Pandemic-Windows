@@ -37,6 +37,12 @@ namespace SQADemicApp.BL
             return returnlist;
         }
 
+        /// <summary>
+        /// Determins if the player can use a Charter Flight
+        /// </summary>
+        /// <param name="hand"></param>
+        /// <param name="currentCity"></param>
+        /// <returns></returns>
         public static bool CharterFlightOption(List<GameBoardModels.Card> hand, City currentCity)
         {
             return (hand.Where(c => c.CityName == currentCity.Name).Count() == 1);
