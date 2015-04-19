@@ -34,9 +34,9 @@ namespace SQADemicAppTest
             }
             //Cards
             newYork = new GameBoardModels.Card("New York", GameBoardModels.CARDTYPE.Player, GameBoardModels.COLOR.blue);
-            chennai = new GameBoardModels.Card("chennai", GameBoardModels.CARDTYPE.Player, GameBoardModels.COLOR.black);
-            atlanta = new GameBoardModels.Card("atlanta", GameBoardModels.CARDTYPE.Player, GameBoardModels.COLOR.blue);
-            chicagoCard = new GameBoardModels.Card("chicago", GameBoardModels.CARDTYPE.Player, GameBoardModels.COLOR.blue);
+            chennai = new GameBoardModels.Card("Chennai", GameBoardModels.CARDTYPE.Player, GameBoardModels.COLOR.black);
+            atlanta = new GameBoardModels.Card("Atlanta", GameBoardModels.CARDTYPE.Player, GameBoardModels.COLOR.blue);
+            chicagoCard = new GameBoardModels.Card("Chicago", GameBoardModels.CARDTYPE.Player, GameBoardModels.COLOR.blue);
 
         }
 
@@ -71,7 +71,7 @@ namespace SQADemicAppTest
         {
             hand = new List<GameBoardModels.Card> { chicagoCard, atlanta, chennai };
             List<String> returnList = PlayerActionsBL.DirectFlightOption(hand, chicagoCity);
-            List<String> correctList = new List<String>{"atlanta", "chennai"};
+            List<String> correctList = new List<String> { atlanta.CityName, chennai.CityName};
             CollectionAssert.AreEqual(correctList, returnList);
         }
     }

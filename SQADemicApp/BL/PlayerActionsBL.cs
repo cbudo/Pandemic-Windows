@@ -26,10 +26,15 @@ namespace SQADemicApp.BL
         /// <returns></returns>
         public static List<String> DirectFlightOption(List<GameBoardModels.Card> hand, City currentCity)
         {
-           List<String> returnlist;
-           returnlist = hand.Count == 0 ? new List<String>(): (hand[0].CityName == "chicago" ?  new List<String>():
-            new List<String> { "New York" });
-           return returnlist;
+            var reducedHand = hand.Where(c => !c.CityName.Equals(currentCity.Name));
+
+            var returnlist = new List<String>();
+            foreach (GameBoardModels.Card card in reducedHand)
+            {
+                returnlist.Add(card.CityName);
+            }            
+
+            return returnlist;
         }
 
         public static bool CharterFlightOption(List<GameBoardModels.Card> hand, City currentCity)
