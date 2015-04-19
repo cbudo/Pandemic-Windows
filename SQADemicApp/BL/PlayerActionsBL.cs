@@ -26,7 +26,7 @@ namespace SQADemicApp.BL
         /// <returns></returns>
         public static List<String> DirectFlightOption(List<GameBoardModels.Card> hand, City currentCity)
         {
-            var reducedHand = hand.Where(c => !c.CityName.Equals(currentCity.Name));
+            var reducedHand = hand.Where(c => !c.CityName.Equals(currentCity.Name) && c.CardType == GameBoardModels.CARDTYPE.City );
 
             var returnlist = new List<String>();
             foreach (GameBoardModels.Card card in reducedHand)

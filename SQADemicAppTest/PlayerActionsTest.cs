@@ -84,6 +84,13 @@ namespace SQADemicAppTest
             List<String> returnList = PlayerActionsBL.DirectFlightOption(hand, chicagoCity);
             List<String> correctList = new List<String> { atlanta.CityName, chennai.CityName };
             CollectionAssert.AreEqual(correctList, returnList);
+            
         }
+            /**
+            //Print Statment
+            foreach (String name in returnList)
+            {
+                Console.Out.Write(name);
+            }**/
     }
 }

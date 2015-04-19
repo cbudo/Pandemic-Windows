@@ -64,8 +64,8 @@ namespace SQADemicApp
                 this.CardType = type;
             }
             public string CityName;
-            CARDTYPE CardType { get; set; }
-            COLOR CityColor { get; set; }
+            public  CARDTYPE CardType { get; set; }
+            public COLOR CityColor { get; set; }
 
             public override bool Equals(Object obj)
             {
