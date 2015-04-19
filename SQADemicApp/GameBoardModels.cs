@@ -29,7 +29,7 @@ namespace SQADemicApp
         }
 
         public enum COLOR{ red, black, blue, yellow }
-        public enum CARDTYPE { Infection, Player, Special }
+        public enum CARDTYPE { Infection, City, Special }
         public enum CURESTATE { NotCured, Cured, Sunset }
 
         public int InfectionRateCounter = 0;

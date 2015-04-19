@@ -33,10 +33,10 @@ namespace SQADemicAppTest
                 throw new InvalidOperationException("Set up failed");
             }
             //Cards
-            newYork = new GameBoardModels.Card("New York", GameBoardModels.CARDTYPE.Player, GameBoardModels.COLOR.blue);
-            chennai = new GameBoardModels.Card("Chennai", GameBoardModels.CARDTYPE.Player, GameBoardModels.COLOR.black);
-            atlanta = new GameBoardModels.Card("Atlanta", GameBoardModels.CARDTYPE.Player, GameBoardModels.COLOR.blue);
-            chicagoCard = new GameBoardModels.Card("Chicago", GameBoardModels.CARDTYPE.Player, GameBoardModels.COLOR.blue);
+            newYork = new GameBoardModels.Card("New York", GameBoardModels.CARDTYPE.City, GameBoardModels.COLOR.blue);
+            chennai = new GameBoardModels.Card("Chennai", GameBoardModels.CARDTYPE.City, GameBoardModels.COLOR.black);
+            atlanta = new GameBoardModels.Card("Atlanta", GameBoardModels.CARDTYPE.City, GameBoardModels.COLOR.blue);
+            chicagoCard = new GameBoardModels.Card("Chicago", GameBoardModels.CARDTYPE.City, GameBoardModels.COLOR.blue);
 
         }
 

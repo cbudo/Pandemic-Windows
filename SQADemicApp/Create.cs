@@ -179,7 +179,7 @@ namespace SQADemicApp
                 string cardName = line.Substring(0, line.IndexOf(";"));
                 string cardColor = line.Substring(line.IndexOf(";") + 2);
                 GameBoardModels.COLOR color = getColor(cardColor);
-                cardList.Add(new GameBoardModels.Card(cardName, GameBoardModels.CARDTYPE.Player, color));
+                cardList.Add(new GameBoardModels.Card(cardName, GameBoardModels.CARDTYPE.City, color));
             }
             cardList.Add(new SQADemicApp.GameBoardModels.Card("Airlift", SQADemicApp.GameBoardModels.CARDTYPE.Special));
             cardList.Add(new SQADemicApp.GameBoardModels.Card("One Quiet Night", SQADemicApp.GameBoardModels.CARDTYPE.Special));

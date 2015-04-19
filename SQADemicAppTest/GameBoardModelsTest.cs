@@ -15,7 +15,7 @@ namespace SQADemicAppTest
         public void TestThatCardListCorrectOneItem()
         {
             cardList = new List<SQADemicApp.GameBoardModels.Card>();
-            cardList.Add(new SQADemicApp.GameBoardModels.Card("test", SQADemicApp.GameBoardModels.CARDTYPE.Player, SQADemicApp.GameBoardModels.COLOR.blue));
+            cardList.Add(new SQADemicApp.GameBoardModels.Card("test", SQADemicApp.GameBoardModels.CARDTYPE.City, SQADemicApp.GameBoardModels.COLOR.blue));
             cardList.Add(new SQADemicApp.GameBoardModels.Card("Airlift", SQADemicApp.GameBoardModels.CARDTYPE.Special));
             cardList.Add(new SQADemicApp.GameBoardModels.Card("One Quiet Night", SQADemicApp.GameBoardModels.CARDTYPE.Special));
             cardList.Add(new SQADemicApp.GameBoardModels.Card("Resilient Population", SQADemicApp.GameBoardModels.CARDTYPE.Special));
@@ -28,8 +28,8 @@ namespace SQADemicAppTest
         public void TestThatCardListCorrectTwoItem()
         {
             cardList = new List<SQADemicApp.GameBoardModels.Card>();
-            cardList.Add(new SQADemicApp.GameBoardModels.Card("test", SQADemicApp.GameBoardModels.CARDTYPE.Player, SQADemicApp.GameBoardModels.COLOR.blue));
-            cardList.Add(new SQADemicApp.GameBoardModels.Card("test2", SQADemicApp.GameBoardModels.CARDTYPE.Player, SQADemicApp.GameBoardModels.COLOR.blue));
+            cardList.Add(new SQADemicApp.GameBoardModels.Card("test", SQADemicApp.GameBoardModels.CARDTYPE.City, SQADemicApp.GameBoardModels.COLOR.blue));
+            cardList.Add(new SQADemicApp.GameBoardModels.Card("test2", SQADemicApp.GameBoardModels.CARDTYPE.City, SQADemicApp.GameBoardModels.COLOR.blue));
             cardList.Add(new SQADemicApp.GameBoardModels.Card("Airlift", SQADemicApp.GameBoardModels.CARDTYPE.Special));
             cardList.Add(new SQADemicApp.GameBoardModels.Card("One Quiet Night", SQADemicApp.GameBoardModels.CARDTYPE.Special));
             cardList.Add(new SQADemicApp.GameBoardModels.Card("Resilient Population", SQADemicApp.GameBoardModels.CARDTYPE.Special));
@@ -42,9 +42,9 @@ namespace SQADemicAppTest
         public void TestThatCardListCorrectThreeItem()
         {
             cardList = new List<SQADemicApp.GameBoardModels.Card>();
-            cardList.Add(new SQADemicApp.GameBoardModels.Card("test", SQADemicApp.GameBoardModels.CARDTYPE.Player, SQADemicApp.GameBoardModels.COLOR.blue));
-            cardList.Add(new SQADemicApp.GameBoardModels.Card("test2", SQADemicApp.GameBoardModels.CARDTYPE.Player, SQADemicApp.GameBoardModels.COLOR.blue));
-            cardList.Add(new SQADemicApp.GameBoardModels.Card("test3", SQADemicApp.GameBoardModels.CARDTYPE.Player, SQADemicApp.GameBoardModels.COLOR.blue));
+            cardList.Add(new SQADemicApp.GameBoardModels.Card("test", SQADemicApp.GameBoardModels.CARDTYPE.City, SQADemicApp.GameBoardModels.COLOR.blue));
+            cardList.Add(new SQADemicApp.GameBoardModels.Card("test2", SQADemicApp.GameBoardModels.CARDTYPE.City, SQADemicApp.GameBoardModels.COLOR.blue));
+            cardList.Add(new SQADemicApp.GameBoardModels.Card("test3", SQADemicApp.GameBoardModels.CARDTYPE.City, SQADemicApp.GameBoardModels.COLOR.blue));
             cardList.Add(new SQADemicApp.GameBoardModels.Card("Airlift", SQADemicApp.GameBoardModels.CARDTYPE.Special));
             cardList.Add(new SQADemicApp.GameBoardModels.Card("One Quiet Night", SQADemicApp.GameBoardModels.CARDTYPE.Special));
             cardList.Add(new SQADemicApp.GameBoardModels.Card("Resilient Population", SQADemicApp.GameBoardModels.CARDTYPE.Special));
