@@ -23,7 +23,7 @@ namespace SQADemicApp.BL
         public List<String> getNeighborNames(String cityName)
         {
             List<String> ls = new List<String>();
-            List<City> cityls = Create.dictOfNeighbors[cityName].getAdjacentCities();
+            HashSet<City> cityls = Create.dictOfNeighbors[cityName].getAdjacentCities();
             foreach (var city in cityls)
             {
                 ls.Add(city.Name);
@@ -44,7 +44,7 @@ namespace SQADemicApp.BL
             return ls;
         }
 
-        public List<City> getAdjacentCities(string name)
+        public HashSet<City> getAdjacentCities(string name)
         {
             City city = Create.dictOfNeighbors[name];
             return city.getAdjacentCities();

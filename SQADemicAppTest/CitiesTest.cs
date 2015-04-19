@@ -14,7 +14,7 @@ namespace SQADemicAppTest
     [TestClass]
     public class CitiesTest
     {
-        static Create create = new Create();
+        Create create;
         static CityBL bl = new CityBL();
 
         [TestInitialize()]
@@ -54,8 +54,8 @@ namespace SQADemicAppTest
         {
             StringReader r = new StringReader("San Francisco;Tokyo,Manila,Chicago,Los Angeles");
             create.setAdjacentCities(r);
-            List<City> result = bl.getAdjacentCities("San Francisco");
-            List<City> expected = new List<City>();
+            HashSet<City> result = bl.getAdjacentCities("San Francisco");
+            HashSet<City> expected = new HashSet<City>();
             City tokyo = new City(GameBoardModels.COLOR.red, "Tokyo");
             City manila = new City(GameBoardModels.COLOR.red, "Manila");
             City chicago = new City(GameBoardModels.COLOR.blue, "Chicago");
@@ -64,7 +64,7 @@ namespace SQADemicAppTest
             expected.Add(manila);
             expected.Add(chicago);
             expected.Add(losAngeles);
-            CollectionAssert.AreEqual(result, expected);
+            CollectionAssert.AreEqual(result.ToList<City>(), expected.ToList<City>());
         }
 
         [TestMethod]
@@ -72,8 +72,8 @@ namespace SQADemicAppTest
         {
             StringReader r = new StringReader("New York;Montreal,Washington,London,Madrid");
             create.setAdjacentCities(r);
-            List<City> result = bl.getAdjacentCities("New York");
-            List<City> expected = new List<City>();
+            HashSet<City> result = bl.getAdjacentCities("New York");
+            HashSet<City> expected = new HashSet<City>();
             City montreal = new City(GameBoardModels.COLOR.blue, "Montreal");
             City washington = new City(GameBoardModels.COLOR.blue, "Washington");
             City london = new City(GameBoardModels.COLOR.blue, "London");
@@ -82,7 +82,7 @@ namespace SQADemicAppTest
             expected.Add(washington);
             expected.Add(london);
             expected.Add(madrid);
-            CollectionAssert.AreEqual(result, expected);
+            CollectionAssert.AreEqual(result.ToList<City>(), expected.ToList<City>());
         }
 
         [TestMethod]
@@ -90,15 +90,15 @@ namespace SQADemicAppTest
         {
             StringReader r = new StringReader("Montreal;New York,Washington,Chicago");
             create.setAdjacentCities(r);
-            List<City> result = bl.getAdjacentCities("Montreal");
-            List<City> e = new List<City>();
+            HashSet<City> result = bl.getAdjacentCities("Montreal");
+            HashSet<City> e = new HashSet<City>();
             City newYork = new City(GameBoardModels.COLOR.blue, "New York");
             City washington = new City(GameBoardModels.COLOR.blue, "Washington");
             City chicago = new City(GameBoardModels.COLOR.blue, "Chicago");
             e.Add(newYork);
             e.Add(washington);
             e.Add(chicago);
-            CollectionAssert.AreEqual(result, e);
+            CollectionAssert.AreEqual(result.ToList<City>(), e.ToList<City>());
         }
 
         [TestMethod]
@@ -106,8 +106,8 @@ namespace SQADemicAppTest
         {
             StringReader r = new StringReader("Chicago;San Francisco,Los Angeles,Atlanta,Montreal");
             create.setAdjacentCities(r);
-            List<City> res = bl.getAdjacentCities("Chicago");
-            List<City> e = new List<City>();
+            HashSet<City> res = bl.getAdjacentCities("Chicago");
+            HashSet<City> e = new HashSet<City>();
             City sanFrancisco = new City(GameBoardModels.COLOR.blue, "San Francisco");
             City losAngeles = new City(GameBoardModels.COLOR.yellow, "Los Angeles");
             City atlanta = new City(GameBoardModels.COLOR.blue, "Atlanta");
@@ -116,7 +116,7 @@ namespace SQADemicAppTest
             e.Add(losAngeles);
             e.Add(atlanta);
             e.Add(montreal);
-            CollectionAssert.AreEqual(res, e);
+            CollectionAssert.AreEqual(res.ToList<City>(), e.ToList<City>());
         }
 
         [TestMethod]
@@ -124,15 +124,15 @@ namespace SQADemicAppTest
         {
             StringReader r = new StringReader("Atlanta;Chicago,Washington,Miami");
             create.setAdjacentCities(r);
-            List<City> res = bl.getAdjacentCities("Atlanta");
-            List<City> e = new List<City>();
+            HashSet<City> res = bl.getAdjacentCities("Atlanta");
+            HashSet<City> e = new HashSet<City>();
             City chicago = new City(GameBoardModels.COLOR.blue, "Chicago");
             City washington = new City(GameBoardModels.COLOR.blue, "Washington");
             City miami = new City(GameBoardModels.COLOR.yellow, "Miami");
             e.Add(chicago);
             e.Add(washington);
             e.Add(miami);
-            CollectionAssert.AreEqual(res, e);
+            CollectionAssert.AreEqual(res.ToList<City>(), e.ToList<City>());
         }
 
         [TestMethod]
@@ -140,8 +140,8 @@ namespace SQADemicAppTest
         {
             StringReader r = new StringReader("Washington;Miami,Atlanta,Montreal,New York");
             create.setAdjacentCities(r);
-            List<City> res = bl.getAdjacentCities("Washington");
-            List<City> e = new List<City>();
+            HashSet<City> res = bl.getAdjacentCities("Washington");
+            HashSet<City> e = new HashSet<City>();
             City miami = new City(GameBoardModels.COLOR.yellow, "Miami");
             City atlanta = new City(GameBoardModels.COLOR.blue, "Atlanta");
             City montreal = new City(GameBoardModels.COLOR.blue, "Montreal");
@@ -150,7 +150,7 @@ namespace SQADemicAppTest
             e.Add(atlanta);
             e.Add(montreal);
             e.Add(newYork);
-            CollectionAssert.AreEqual(res, e);
+            CollectionAssert.AreEqual(res.ToList<City>(), e.ToList<City>());
 
         }
 

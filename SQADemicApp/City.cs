@@ -15,7 +15,8 @@ namespace SQADemicApp
         private int blueCubes = 0;
         private int yellowCubes = 0;
         public bool researchStation = false;
-        public List<City> adjacentCities;
+        public HashSet<City> adjacentCities;
+        //public List<City> adjacentCities;
         public City()
         {
 
@@ -23,21 +24,21 @@ namespace SQADemicApp
         public City(GameBoardModels.COLOR color)
         {
             this.color = color;
-            adjacentCities = new List<City>();
+            adjacentCities = new HashSet<City>();
         }
         public City(GameBoardModels.COLOR color, String name)
         {
             this.color = color;
             this.Name = name;
-            adjacentCities = new List<City>();
+            adjacentCities = new HashSet<City>();
         }
 
-        public void setAdjacentCities(List<City> cities)
+        public void setAdjacentCities(HashSet<City> cities)
         {
             this.adjacentCities = cities;
         }
 
-        public List<City> getAdjacentCities()
+        public HashSet<City> getAdjacentCities()
         {
             return adjacentCities;
         }

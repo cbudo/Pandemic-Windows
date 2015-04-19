@@ -13,7 +13,7 @@ namespace SQADemicApp.BL
         /// </summary>
         /// <param name="currentCity"></param>
         /// <returns>List of Cities</returns>
-        public static List<City> DiveOptions(City currentCity)
+        public static HashSet<City> DiveOptions(City currentCity)
         {
             return currentCity.getAdjacentCities();
         }
