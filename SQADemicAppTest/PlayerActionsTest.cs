@@ -58,10 +58,20 @@ namespace SQADemicAppTest
         }
 
         [TestMethod]
-        public void TestDirectFlightCurrentCity()
+        public void TestDirectFlightCurrentCityChicago()
         {
             hand = new List<GameBoardModels.Card> { chicagoCard };
             List<String> returnList = PlayerActionsBL.DirectFlightOption(hand, chicagoCity);
+            List<String> correctList = new List<String>();
+            CollectionAssert.AreEqual(correctList, returnList);
+        }
+
+        [TestMethod]
+        public void TestDirectFlightMultipleCities()
+        {
+            hand = new List<GameBoardModels.Card> { chicagoCard, atlanta, chennai };
+            List<String> returnList = PlayerActionsBL.DirectFlightOption(hand, chicagoCity);
+            List<String> correctList = new List<String>{"atlanta", "chennai"};
             CollectionAssert.AreEqual(correctList, returnList);
         }
     }
