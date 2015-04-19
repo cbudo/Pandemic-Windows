@@ -98,7 +98,7 @@ namespace SQADemicAppTest
         public void TestCharterFlightFalseOption()
         {
             hand = new List<GameBoardModels.Card> { airlift, atlanta, chennai };
-            bool returendBool = PlayerActionsBL.ShuttleFlightOption(hand, chicagoCity);
+            bool returendBool = PlayerActionsBL.CharterFlightOption(hand, chicagoCity);
             bool correctBool = false;
             Assert.AreEqual(correctBool, returendBool);
         }
@@ -107,7 +107,7 @@ namespace SQADemicAppTest
         public void TestCharterFlightTrue()
         {
             hand = new List<GameBoardModels.Card> { airlift, atlanta, chicagoCard };
-            bool returendBool = PlayerActionsBL.ShuttleFlightOption(hand, chicagoCity);
+            bool returendBool = PlayerActionsBL.CharterFlightOption(hand, chicagoCity);
             bool correctBool = true;
             Assert.AreEqual(correctBool, returendBool);
         }  

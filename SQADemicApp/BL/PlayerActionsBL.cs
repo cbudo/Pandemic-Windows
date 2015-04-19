@@ -39,7 +39,7 @@ namespace SQADemicApp.BL
 
         public static bool CharterFlightOption(List<GameBoardModels.Card> hand, City currentCity)
         {
-            return false;
+            return (hand.Where(c => c.CityName == currentCity.Name).Count() == 1);
         }
 
         public static bool ShuttleFlightOption(List<GameBoardModels.Card> hand, City currentCity)
