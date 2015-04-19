@@ -42,7 +42,7 @@ namespace SQADemicApp.BL
             return false;
         }
 
-        public static bool ShuttleFlightOption()
+        public static bool ShuttleFlightOption(List<GameBoardModels.Card> hand, City currentCity)
         {
             //need list of cities that have research centers
             return false;

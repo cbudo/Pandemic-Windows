@@ -86,11 +86,21 @@ namespace SQADemicAppTest
             CollectionAssert.AreEqual(correctList, returnList);
             
         }
+
             /**
             //Print Statment
             foreach (String name in returnList)
             {
                 Console.Out.Write(name);
             }**/
+
+        [TestMethod]
+        public void TestCharterFlightFalseOption()
+        {
+            hand = new List<GameBoardModels.Card> { airlift, atlanta, chennai };
+            bool returendBool = PlayerActionsBL.ShuttleFlightOption(hand, chicagoCity);
+            bool correctBool = false;
+            Assert.AreEqual(correctBool, returendBool);
+        }    
     }
 }
