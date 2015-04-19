@@ -13,7 +13,7 @@ namespace SQADemicAppTest
         private LinkedList<String> pile;
         private int infectionRate;
         private int infectionIndex;
-        
+
         [TestInitialize]
         public void SetUpArrays()
         {

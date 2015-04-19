@@ -32,7 +32,7 @@ namespace SQADemicApp.BL
             foreach (GameBoardModels.Card card in reducedHand)
             {
                 returnlist.Add(card.CityName);
-            }            
+            }
 
             return returnlist;
         }

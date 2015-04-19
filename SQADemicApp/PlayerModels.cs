@@ -13,12 +13,12 @@ namespace SQADemicApp
             public City location { get; set; }
             public Player()
             {
-                    
+
             }
             public void move(City destination)
             {
 
             }
-        }       
+        }
     }
 }

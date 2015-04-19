@@ -15,7 +15,7 @@ namespace SQADemicAppTest
     {
         City chicagoCity, bangkok, kolkata;
         List<GameBoardModels.Card> hand;
-        GameBoardModels.Card newYork, chennai, atlanta, chicagoCard;
+        GameBoardModels.Card newYork, chennai, atlanta, chicagoCard, airlift;
 
         [TestInitialize]
         public void SetupPlayer()
@@ -37,11 +37,13 @@ namespace SQADemicAppTest
             chennai = new GameBoardModels.Card("Chennai", GameBoardModels.CARDTYPE.City, GameBoardModels.COLOR.black);
             atlanta = new GameBoardModels.Card("Atlanta", GameBoardModels.CARDTYPE.City, GameBoardModels.COLOR.blue);
             chicagoCard = new GameBoardModels.Card("Chicago", GameBoardModels.CARDTYPE.City, GameBoardModels.COLOR.blue);
+            airlift = new SQADemicApp.GameBoardModels.Card("Airlift", SQADemicApp.GameBoardModels.CARDTYPE.Special);
 
         }
 
         [TestMethod]
-        public void TestDirectFlightOptionsNone(){
+        public void TestDirectFlightOptionsNone()
+        {
             hand = new List<GameBoardModels.Card>();
             List<String> returnList = PlayerActionsBL.DirectFlightOption(hand, chicagoCity);
             List<String> correctList = new List<String>();
@@ -53,7 +55,7 @@ namespace SQADemicAppTest
         {
             hand = new List<GameBoardModels.Card> { newYork };
             List<String> returnList = PlayerActionsBL.DirectFlightOption(hand, chicagoCity);
-            List<String> correctList = new List<String>{newYork.CityName};
+            List<String> correctList = new List<String> { newYork.CityName };
             CollectionAssert.AreEqual(correctList, returnList);
         }
 
@@ -71,8 +73,14 @@ namespace SQADemicAppTest
         {
             hand = new List<GameBoardModels.Card> { chicagoCard, atlanta, chennai };
             List<String> returnList = PlayerActionsBL.DirectFlightOption(hand, chicagoCity);
-            List<String> correctList = new List<String> { atlanta.CityName, chennai.CityName};
+            List<String> correctList = new List<String> { atlanta.CityName, chennai.CityName };
             CollectionAssert.AreEqual(correctList, returnList);
+        }
+
+        [TestMethod]
+        public void TestDirectFlightWithNonCityCardInHand()
+        {
+
         }
     }
 }

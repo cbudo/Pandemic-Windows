@@ -10,7 +10,7 @@ namespace SQADemicAppTest
     {
         List<SQADemicApp.GameBoardModels.Card> returnedList = new List<SQADemicApp.GameBoardModels.Card>();
         List<SQADemicApp.GameBoardModels.Card> cardList = new List<SQADemicApp.GameBoardModels.Card>();
-        SQADemicApp.Create createTestClass = new SQADemicApp.Create(); 
+        SQADemicApp.Create createTestClass = new SQADemicApp.Create();
         [TestMethod]
         public void TestThatCardListCorrectOneItem()
         {

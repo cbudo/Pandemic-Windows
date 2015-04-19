@@ -26,7 +26,7 @@ namespace SQADemicApp.BL
         public static List<SQADemicApp.GameBoardModels.Card> shuffleArray(List<SQADemicApp.GameBoardModels.Card> unshuffledArry)
         {
             RNGCryptoServiceProvider rnd = new RNGCryptoServiceProvider();
-            List<SQADemicApp.GameBoardModels.Card> shuffledarray = unshuffledArry.OrderBy(x => GetNextInt32(rnd)).ToList < SQADemicApp.GameBoardModels.Card>();
+            List<SQADemicApp.GameBoardModels.Card> shuffledarray = unshuffledArry.OrderBy(x => GetNextInt32(rnd)).ToList<SQADemicApp.GameBoardModels.Card>();
             return shuffledarray;
         }
         private static int GetNextInt32(RNGCryptoServiceProvider rnd)

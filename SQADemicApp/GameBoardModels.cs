@@ -28,12 +28,12 @@ namespace SQADemicApp
             return cubes;
         }
 
-        public enum COLOR{ red, black, blue, yellow }
+        public enum COLOR { red, black, blue, yellow }
         public enum CARDTYPE { Infection, City, Special }
         public enum CURESTATE { NotCured, Cured, Sunset }
 
         public int InfectionRateCounter = 0;
-        
+
 
         public CURESTATE[] getCures()
         {
@@ -64,7 +64,7 @@ namespace SQADemicApp
                 this.CardType = type;
             }
             public string CityName;
-            CARDTYPE CardType {get;set;}
+            CARDTYPE CardType { get; set; }
             COLOR CityColor { get; set; }
 
             public override bool Equals(Object obj)
@@ -82,7 +82,7 @@ namespace SQADemicApp
         }
         public class Cures
         {
-            public CURESTATE RedCure{get;set;}
+            public CURESTATE RedCure { get; set; }
             public CURESTATE BlueCure { get; set; }
             public CURESTATE BlackCure { get; set; }
             public CURESTATE YellowCure { get; set; }
