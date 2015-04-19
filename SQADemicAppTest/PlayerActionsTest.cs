@@ -80,7 +80,10 @@ namespace SQADemicAppTest
         [TestMethod]
         public void TestDirectFlightWithNonCityCardInHand()
         {
-
+            hand = new List<GameBoardModels.Card> { airlift, atlanta, chennai };
+            List<String> returnList = PlayerActionsBL.DirectFlightOption(hand, chicagoCity);
+            List<String> correctList = new List<String> { atlanta.CityName, chennai.CityName };
+            CollectionAssert.AreEqual(correctList, returnList);
         }
     }
 }
