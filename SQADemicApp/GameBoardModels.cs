@@ -12,6 +12,7 @@ namespace SQADemicApp
         public Card[] playerDeck = new Card[58];
         int playerDeckPoint = -1;
         public PlayerModels.Player CurrentPlayer;
+        public static List<String> citiesWithResearchStations;
         public GameBoardModels()
         {
 
