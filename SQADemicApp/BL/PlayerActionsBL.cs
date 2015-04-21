@@ -13,7 +13,7 @@ namespace SQADemicApp.BL
         /// </summary>
         /// <param name="currentCity"></param>
         /// <returns>List of Cities</returns>
-        public static HashSet<City> DiveOptions(City currentCity)
+        public static HashSet<City> DriveOptions(City currentCity)
         {
             return currentCity.getAdjacentCities();
         }
@@ -48,6 +48,7 @@ namespace SQADemicApp.BL
             return (hand.Where(c => c.CityName == currentCity.Name).Count() == 1);
         }
 
+        //TODO: TODAY
         public static bool ShuttleFlightOption(List<GameBoardModels.Card> hand, City currentCity)
         {
             //need list of cities that have research centers
@@ -80,7 +81,17 @@ namespace SQADemicApp.BL
             //need all of the players
             return false;
         }
-
+        
+        /// <summary>
+        /// Moves the player to the given city, updating the hand if needed
+        /// </summary>
+        /// <param name="player"></param>
+        /// <param name="cityname"></param>
+        /// <returns>true if move worked and false it failed</returns>
+        public static bool moveplayer(PlayerModels.Player player, string cityname)
+        {
+            return false;
+        }
 
 
 
