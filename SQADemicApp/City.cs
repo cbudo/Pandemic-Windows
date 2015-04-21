@@ -10,26 +10,22 @@ namespace SQADemicApp
 
         public string Name;
         public GameBoardModels.COLOR color;
-        private int redCubes = 0;
-        private int blackCubes = 0;
-        private int blueCubes = 0;
-        private int yellowCubes = 0;
+        public int redCubes { get; set; }
+        public int blackCubes { get; set; }
+        public int blueCubes  { get; set; }
+        public int yellowCubes  { get; set; }
         public bool researchStation = false;
         public HashSet<City> adjacentCities;
         //public List<City> adjacentCities;
-        public City()
-        {
 
-        }
-        public City(GameBoardModels.COLOR color)
-        {
-            this.color = color;
-            adjacentCities = new HashSet<City>();
-        }
         public City(GameBoardModels.COLOR color, String name)
         {
             this.color = color;
             this.Name = name;
+            redCubes = 0;
+            blackCubes = 0;
+            blueCubes = 0;
+            yellowCubes = 0;
             adjacentCities = new HashSet<City>();
         }
 
@@ -41,16 +37,6 @@ namespace SQADemicApp
         public HashSet<City> getAdjacentCities()
         {
             return adjacentCities;
-        }
-
-        public void infectCity(string color, int numToAdd)
-        {
-
-        }
-
-        public void cureCity(string color, int numToRemove)
-        {
-
         }
 
         public override bool Equals(object obj)
