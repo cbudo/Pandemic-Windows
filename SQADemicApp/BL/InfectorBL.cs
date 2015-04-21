@@ -63,5 +63,16 @@ namespace SQADemicApp.BL
 
             return 0;
         }
+        /// <summary>
+        /// Deals with outbreaks for Infect City
+        /// </summary>
+        /// <param name="city"></param>
+        /// <param name="color"></param>
+        /// <returns></returns>
+        private static int InfectCity(SQADemicApp.City city, GameBoardModels.COLOR color)
+        {
+
+            return 0;
+        }
     }
 }
