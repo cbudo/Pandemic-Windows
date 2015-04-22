@@ -202,5 +202,14 @@ namespace SQADemicAppTest
             Assert.AreEqual(2, numYellowCubes);
             
         }
+
+        [TestMethod]
+        public void TestRedWithTwoInfect()
+        {
+            SQADemicApp.City tokyo = new SQADemicApp.City(GameBoardModels.COLOR.red, "Tokyo");
+            tokyo.redCubes = 2;
+            int numRedCubes = SQADemicApp.BL.InfectorBL.InfectCity(tokyo);
+            Assert.AreEqual(3, numRedCubes);
+        }
     }
 }
