@@ -15,7 +15,7 @@ namespace SQADemicApp
         public static List<String> citiesWithResearchStations;
         public GameBoardModels()
         {
-
+             
             cubeCount = new infectionCubeCount();
             cubeCount.blackCubes = cubeCount.redCubes = cubeCount.blueCubes = cubeCount.yellowCubes = 24;
             CURESTATUS = new Cures();
