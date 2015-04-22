@@ -254,12 +254,38 @@ namespace SQADemicAppTest
             HashSet<City> infected = new HashSet<City>();
             SQADemicApp.City lima = new SQADemicApp.City(COLOR.yellow, "Lima");
             SQADemicApp.City santiago = new SQADemicApp.City(COLOR.yellow, "Santiago");
-            //infected.Add(santiago);
+            infected.Add(santiago);
             santiago.adjacentCities.Add(lima);
             santiago.yellowCubes = 3;
             GameBoardModels.outbreakMarker += 5;
             SQADemicApp.BL.InfectorBL.Outbreak(santiago, COLOR.yellow, santiago.adjacentCities, infected);
             Assert.AreEqual(6, GameBoardModels.outbreakMarker);
+        }
+
+        [TestMethod]
+        public void TestOneOutbreakSetOffAnotherAndOverFlowsToDifferentColor()
+        {
+            HashSet<City> infected = new HashSet<City>();
+            SQADemicApp.City montreal = new SQADemicApp.City(COLOR.blue, "Montreal");
+            SQADemicApp.City ny = new SQADemicApp.City(COLOR.blue, "New York");
+            SQADemicApp.City washington = new SQADemicApp.City(COLOR.blue, "Washington");
+            SQADemicApp.City chicago = new SQADemicApp.City(COLOR.blue, "Chicago");
+            SQADemicApp.City atlanta = new SQADemicApp.City(COLOR.blue, "Atlanta");
+            SQADemicApp.City miami = new SQADemicApp.City(COLOR.yellow, "Miami");
+            montreal.blueCubes = 3;
+            washington.blueCubes = 3;
+            montreal.adjacentCities.Add(chicago);
+            montreal.adjacentCities.Add(washington);
+            montreal.adjacentCities.Add(ny);
+            washington.adjacentCities.Add(ny);
+            washington.adjacentCities.Add(montreal);
+            washington.adjacentCities.Add(atlanta);
+            washington.adjacentCities.Add(miami);
+            infected.Add(montreal);
+            SQADemicApp.BL.InfectorBL.Outbreak(montreal, COLOR.blue, montreal.adjacentCities, infected);
+            Assert.AreEqual(2, GameBoardModels.outbreakMarker); //counts both outbreaks
+            Assert.AreEqual(1, miami.blueCubes); //ensures miami gets a blue overflow cube
+            Assert.AreEqual(1, ny.blueCubes); //ensures new york only gets infected once
         }
     }
 }

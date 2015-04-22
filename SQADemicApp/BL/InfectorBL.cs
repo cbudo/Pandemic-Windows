@@ -63,10 +63,7 @@ namespace SQADemicApp.BL
         /// <param name="city"></param>
         /// <param name="color"></param>
         /// <returns></returns> number of blocks of that color
-        //get cities from infectcities, infect each individually
-        //place 1 disease cube matching color onto city
-        //if city has 3 already, then outbreak (do not place 4th cube_
-        //for outbreaks, move outbreak marker up one position
+        
         //place one cube of disease color on every neighboring city
         //if already has 3, then outbreak that city too
         //don't infect same city twice
