@@ -192,5 +192,15 @@ namespace SQADemicAppTest
             int numBlueCubes = SQADemicApp.BL.InfectorBL.InfectCity(chicago);
             Assert.AreEqual(3, numBlueCubes);
         }
+
+        [TestMethod]
+        public void TestDiffColorInfectCityWithOneCube()
+        {
+            SQADemicApp.City lima = new SQADemicApp.City(GameBoardModels.COLOR.yellow, "Lima");
+            lima.yellowCubes = 1;
+            int numYellowCubes = SQADemicApp.BL.InfectorBL.InfectCity(lima);
+            Assert.AreEqual(2, numYellowCubes);
+            
+        }
     }
 }
