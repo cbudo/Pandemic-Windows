@@ -76,7 +76,11 @@ namespace SQADemicApp.BL
             {
                 return 1;
             }
-            return 2;
+            else if (city.blueCubes == 1)
+            {
+                return 2;
+            }
+            return 3;
         }
     }
 }
