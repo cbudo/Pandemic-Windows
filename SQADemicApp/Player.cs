@@ -7,12 +7,11 @@ namespace SQADemicApp
     public enum ROLE { Dispatcher, Medic, OpExpert, Researcher, Scientist };
     public class Player
     {
-
-        public List<GameBoardModels.Card> hand = new List<GameBoardModels.Card>();
+        public readonly ROLE role;
         public City location { get; set; }
-        public Player()
+        public Player(ROLE role)
         {
-
+            this.role = role;
         }
         public void move(City destination)
         {

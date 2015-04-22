@@ -14,60 +14,60 @@ namespace SQADemicApp
         }
 
         //create the blues
-        City sanFrancisco = new City(GameBoardModels.COLOR.blue, "San Francisco");
-        City chicago = new City(GameBoardModels.COLOR.blue, "Chicago");
-        City montreal = new City(GameBoardModels.COLOR.blue, "Montreal");
-        City newYork = new City(GameBoardModels.COLOR.blue, "New York");
-        City washington = new City(GameBoardModels.COLOR.blue, "Washington");
-        City atlanta = new City(GameBoardModels.COLOR.blue, "Atlanta");
-        City london = new City(GameBoardModels.COLOR.blue, "London");
-        City madrid = new City(GameBoardModels.COLOR.blue, "Madrid");
-        City paris = new City(GameBoardModels.COLOR.blue, "Paris");
-        City milan = new City(GameBoardModels.COLOR.blue, "Milan");
-        City stPetersburg = new City(GameBoardModels.COLOR.blue, "Saint Petersburg");
-        City essen = new City(GameBoardModels.COLOR.blue, "Essen");
+        City sanFrancisco = new City(COLOR.blue, "San Francisco");
+        City chicago = new City(COLOR.blue, "Chicago");
+        City montreal = new City(COLOR.blue, "Montreal");
+        City newYork = new City(COLOR.blue, "New York");
+        City washington = new City(COLOR.blue, "Washington");
+        City atlanta = new City(COLOR.blue, "Atlanta");
+        City london = new City(COLOR.blue, "London");
+        City madrid = new City(COLOR.blue, "Madrid");
+        City paris = new City(COLOR.blue, "Paris");
+        City milan = new City(COLOR.blue, "Milan");
+        City stPetersburg = new City(COLOR.blue, "Saint Petersburg");
+        City essen = new City(COLOR.blue, "Essen");
 
         //create the yellows
-        City losAngeles = new City(GameBoardModels.COLOR.yellow, "Los Angeles");
-        City mexicoCity = new City(GameBoardModels.COLOR.yellow, "Mexico City");
-        City miami = new City(GameBoardModels.COLOR.yellow, "Miami");
-        City bogota = new City(GameBoardModels.COLOR.yellow, "Bogota");
-        City lima = new City(GameBoardModels.COLOR.yellow, "Lima");
-        City saoPaulo = new City(GameBoardModels.COLOR.yellow, "Sao Paulo");
-        City buenosAires = new City(GameBoardModels.COLOR.yellow, "Buenos Aires");
-        City santiago = new City(GameBoardModels.COLOR.yellow, "Santiago");
-        City lagos = new City(GameBoardModels.COLOR.yellow, "Lagos");
-        City khartoum = new City(GameBoardModels.COLOR.yellow, "Khartoum");
-        City kinshasa = new City(GameBoardModels.COLOR.yellow, "Kinshasa");
-        City johannesburg = new City(GameBoardModels.COLOR.yellow, "Johannesburg");
+        City losAngeles = new City(COLOR.yellow, "Los Angeles");
+        City mexicoCity = new City(COLOR.yellow, "Mexico City");
+        City miami = new City(COLOR.yellow, "Miami");
+        City bogota = new City(COLOR.yellow, "Bogota");
+        City lima = new City(COLOR.yellow, "Lima");
+        City saoPaulo = new City(COLOR.yellow, "Sao Paulo");
+        City buenosAires = new City(COLOR.yellow, "Buenos Aires");
+        City santiago = new City(COLOR.yellow, "Santiago");
+        City lagos = new City(COLOR.yellow, "Lagos");
+        City khartoum = new City(COLOR.yellow, "Khartoum");
+        City kinshasa = new City(COLOR.yellow, "Kinshasa");
+        City johannesburg = new City(COLOR.yellow, "Johannesburg");
 
         //create the blacks
-        City algiers = new City(GameBoardModels.COLOR.black, "Algiers");
-        City cairo = new City(GameBoardModels.COLOR.black, "Cairo");
-        City istanbul = new City(GameBoardModels.COLOR.black, "Istanbul");
-        City moscow = new City(GameBoardModels.COLOR.black, "Moscow");
-        City baghdad = new City(GameBoardModels.COLOR.black, "Baghdad");
-        City riyadh = new City(GameBoardModels.COLOR.black, "Riyadh");
-        City tehran = new City(GameBoardModels.COLOR.black, "Tehran");
-        City karachi = new City(GameBoardModels.COLOR.black, "Karachi");
-        City delhi = new City(GameBoardModels.COLOR.black, "Delhi");
-        City mumbai = new City(GameBoardModels.COLOR.black, "Mumbai");
-        City chennai = new City(GameBoardModels.COLOR.black, "Chennai");
-        City kolkata = new City(GameBoardModels.COLOR.black, "Kolkata");
+        City algiers = new City(COLOR.black, "Algiers");
+        City cairo = new City(COLOR.black, "Cairo");
+        City istanbul = new City(COLOR.black, "Istanbul");
+        City moscow = new City(COLOR.black, "Moscow");
+        City baghdad = new City(COLOR.black, "Baghdad");
+        City riyadh = new City(COLOR.black, "Riyadh");
+        City tehran = new City(COLOR.black, "Tehran");
+        City karachi = new City(COLOR.black, "Karachi");
+        City delhi = new City(COLOR.black, "Delhi");
+        City mumbai = new City(COLOR.black, "Mumbai");
+        City chennai = new City(COLOR.black, "Chennai");
+        City kolkata = new City(COLOR.black, "Kolkata");
 
         //create the reds
-        City beijing = new City(GameBoardModels.COLOR.red, "Beijing");
-        City seoul = new City(GameBoardModels.COLOR.red, "Seoul");
-        City shanghai = new City(GameBoardModels.COLOR.red, "Shanghai");
-        City tokyo = new City(GameBoardModels.COLOR.red, "Tokyo");
-        City osaka = new City(GameBoardModels.COLOR.red, "Osaka");
-        City taipei = new City(GameBoardModels.COLOR.red, "Taipei");
-        City hongKong = new City(GameBoardModels.COLOR.red, "Hong Kong");
-        City bangkok = new City(GameBoardModels.COLOR.red, "Bangkok");
-        City manila = new City(GameBoardModels.COLOR.red, "Manila");
-        City hoChiMinhCity = new City(GameBoardModels.COLOR.red, "Ho Chi Minh City");
-        City jakarta = new City(GameBoardModels.COLOR.red, "Jakarta");
-        City sydney = new City(GameBoardModels.COLOR.red, "Sydney");
+        City beijing = new City(COLOR.red, "Beijing");
+        City seoul = new City(COLOR.red, "Seoul");
+        City shanghai = new City(COLOR.red, "Shanghai");
+        City tokyo = new City(COLOR.red, "Tokyo");
+        City osaka = new City(COLOR.red, "Osaka");
+        City taipei = new City(COLOR.red, "Taipei");
+        City hongKong = new City(COLOR.red, "Hong Kong");
+        City bangkok = new City(COLOR.red, "Bangkok");
+        City manila = new City(COLOR.red, "Manila");
+        City hoChiMinhCity = new City(COLOR.red, "Ho Chi Minh City");
+        City jakarta = new City(COLOR.red, "Jakarta");
+        City sydney = new City(COLOR.red, "Sydney");
 
         public static Dictionary<string, City> dictOfNeighbors = new Dictionary<string, City>();
 
@@ -147,16 +147,16 @@ namespace SQADemicApp
 
         }
 
-        public GameBoardModels.Card[] makePlayerDeck()
+        public Card[] makePlayerDeck()
         {
-            GameBoardModels.Card[] deck = new GameBoardModels.Card[58];
+            Card[] deck = new Card[58];
             Random rand = new Random();
-            deck[rand.Next(0, 9)] = new GameBoardModels.Card("EPIDEMIC", GameBoardModels.CARDTYPE.Special);
-            deck[rand.Next(10, 19)] = new GameBoardModels.Card("EPIDEMIC", GameBoardModels.CARDTYPE.Special);
-            deck[rand.Next(20, 29)] = new GameBoardModels.Card("EPIDEMIC", GameBoardModels.CARDTYPE.Special);
-            deck[rand.Next(30, 39)] = new GameBoardModels.Card("EPIDEMIC", GameBoardModels.CARDTYPE.Special);
-            deck[rand.Next(40, 58)] = new GameBoardModels.Card("EPIDEMIC", GameBoardModels.CARDTYPE.Special);
-            List<GameBoardModels.Card> cardList = makeCardList(new StringReader(SQADemicApp.Properties.Resources.CityList));
+            deck[rand.Next(0, 9)] = new Card("EPIDEMIC", Card.CARDTYPE.Special);
+            deck[rand.Next(10, 19)] = new Card("EPIDEMIC", Card.CARDTYPE.Special);
+            deck[rand.Next(20, 29)] = new Card("EPIDEMIC", Card.CARDTYPE.Special);
+            deck[rand.Next(30, 39)] = new Card("EPIDEMIC", Card.CARDTYPE.Special);
+            deck[rand.Next(40, 58)] = new Card("EPIDEMIC", Card.CARDTYPE.Special);
+            List<Card> cardList = makeCardList(new StringReader(SQADemicApp.Properties.Resources.CityList));
             cardList = HelperBL.shuffleArray(cardList);
             int j = 0;
             for (int i = 0; i < 58; i++)
@@ -170,36 +170,36 @@ namespace SQADemicApp
 
             return deck;
         }
-        public List<GameBoardModels.Card> makeCardList(StringReader stringReader)
+        public List<Card> makeCardList(StringReader stringReader)
         {
-            List<GameBoardModels.Card> cardList = new List<GameBoardModels.Card>();
+            List<Card> cardList = new List<Card>();
             string line;
             while ((line = stringReader.ReadLine()) != null)
             {
                 string cardName = line.Substring(0, line.IndexOf(";"));
                 string cardColor = line.Substring(line.IndexOf(";") + 2);
-                GameBoardModels.COLOR color = getColor(cardColor);
-                cardList.Add(new GameBoardModels.Card(cardName, GameBoardModels.CARDTYPE.City, color));
+                COLOR color = getColor(cardColor);
+                cardList.Add(new Card(cardName, Card.CARDTYPE.City, color));
             }
-            cardList.Add(new SQADemicApp.GameBoardModels.Card("Airlift", SQADemicApp.GameBoardModels.CARDTYPE.Special));
-            cardList.Add(new SQADemicApp.GameBoardModels.Card("One Quiet Night", SQADemicApp.GameBoardModels.CARDTYPE.Special));
-            cardList.Add(new SQADemicApp.GameBoardModels.Card("Resilient Population", SQADemicApp.GameBoardModels.CARDTYPE.Special));
-            cardList.Add(new SQADemicApp.GameBoardModels.Card("Government Grant", SQADemicApp.GameBoardModels.CARDTYPE.Special));
-            cardList.Add(new SQADemicApp.GameBoardModels.Card("Forecast", SQADemicApp.GameBoardModels.CARDTYPE.Special));
+            cardList.Add(new Card("Airlift", Card.CARDTYPE.Special));
+            cardList.Add(new Card("One Quiet Night", Card.CARDTYPE.Special));
+            cardList.Add(new Card("Resilient Population", Card.CARDTYPE.Special));
+            cardList.Add(new Card("Government Grant", Card.CARDTYPE.Special));
+            cardList.Add(new Card("Forecast", Card.CARDTYPE.Special));
             return cardList;
         }
-        public GameBoardModels.COLOR getColor(string color)
+        public COLOR getColor(string color)
         {
             switch (color.ToLower())
             {
                 case "red":
-                    return GameBoardModels.COLOR.red;
+                    return COLOR.red;
                 case "black":
-                    return GameBoardModels.COLOR.black;
+                    return COLOR.black;
                 case "yellow":
-                    return GameBoardModels.COLOR.yellow;
+                    return COLOR.yellow;
                 default:
-                    return GameBoardModels.COLOR.blue;
+                    return COLOR.blue;
             }
 
         }

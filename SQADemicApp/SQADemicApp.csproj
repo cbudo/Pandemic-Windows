@@ -47,6 +47,7 @@
     <Compile Include="BL\CityBL.cs" />
     <Compile Include="BL\HelperBL.cs" />
     <Compile Include="BL\PlayerActionsBL.cs" />
+    <Compile Include="Card.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
