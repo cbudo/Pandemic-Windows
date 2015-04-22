@@ -56,10 +56,10 @@ namespace SQADemicAppTest
             create.setAdjacentCities(r);
             HashSet<City> result = bl.getAdjacentCities("San Francisco");
             HashSet<City> expected = new HashSet<City>();
-            City tokyo = new City(GameBoardModels.COLOR.red, "Tokyo");
-            City manila = new City(GameBoardModels.COLOR.red, "Manila");
-            City chicago = new City(GameBoardModels.COLOR.blue, "Chicago");
-            City losAngeles = new City(GameBoardModels.COLOR.yellow, "Los Angeles");
+            City tokyo = new City(COLOR.red, "Tokyo");
+            City manila = new City(COLOR.red, "Manila");
+            City chicago = new City(COLOR.blue, "Chicago");
+            City losAngeles = new City(COLOR.yellow, "Los Angeles");
             expected.Add(tokyo);
             expected.Add(manila);
             expected.Add(chicago);
@@ -74,10 +74,10 @@ namespace SQADemicAppTest
             create.setAdjacentCities(r);
             HashSet<City> result = bl.getAdjacentCities("New York");
             HashSet<City> expected = new HashSet<City>();
-            City montreal = new City(GameBoardModels.COLOR.blue, "Montreal");
-            City washington = new City(GameBoardModels.COLOR.blue, "Washington");
-            City london = new City(GameBoardModels.COLOR.blue, "London");
-            City madrid = new City(GameBoardModels.COLOR.blue, "Madrid");
+            City montreal = new City(COLOR.blue, "Montreal");
+            City washington = new City(COLOR.blue, "Washington");
+            City london = new City(COLOR.blue, "London");
+            City madrid = new City(COLOR.blue, "Madrid");
             expected.Add(montreal);
             expected.Add(washington);
             expected.Add(london);
@@ -92,9 +92,9 @@ namespace SQADemicAppTest
             create.setAdjacentCities(r);
             HashSet<City> result = bl.getAdjacentCities("Montreal");
             HashSet<City> e = new HashSet<City>();
-            City newYork = new City(GameBoardModels.COLOR.blue, "New York");
-            City washington = new City(GameBoardModels.COLOR.blue, "Washington");
-            City chicago = new City(GameBoardModels.COLOR.blue, "Chicago");
+            City newYork = new City(COLOR.blue, "New York");
+            City washington = new City(COLOR.blue, "Washington");
+            City chicago = new City(COLOR.blue, "Chicago");
             e.Add(newYork);
             e.Add(washington);
             e.Add(chicago);
@@ -108,10 +108,10 @@ namespace SQADemicAppTest
             create.setAdjacentCities(r);
             HashSet<City> res = bl.getAdjacentCities("Chicago");
             HashSet<City> e = new HashSet<City>();
-            City sanFrancisco = new City(GameBoardModels.COLOR.blue, "San Francisco");
-            City losAngeles = new City(GameBoardModels.COLOR.yellow, "Los Angeles");
-            City atlanta = new City(GameBoardModels.COLOR.blue, "Atlanta");
-            City montreal = new City(GameBoardModels.COLOR.blue, "Montreal");
+            City sanFrancisco = new City(COLOR.blue, "San Francisco");
+            City losAngeles = new City(COLOR.yellow, "Los Angeles");
+            City atlanta = new City(COLOR.blue, "Atlanta");
+            City montreal = new City(COLOR.blue, "Montreal");
             e.Add(sanFrancisco);
             e.Add(losAngeles);
             e.Add(atlanta);
@@ -126,9 +126,9 @@ namespace SQADemicAppTest
             create.setAdjacentCities(r);
             HashSet<City> res = bl.getAdjacentCities("Atlanta");
             HashSet<City> e = new HashSet<City>();
-            City chicago = new City(GameBoardModels.COLOR.blue, "Chicago");
-            City washington = new City(GameBoardModels.COLOR.blue, "Washington");
-            City miami = new City(GameBoardModels.COLOR.yellow, "Miami");
+            City chicago = new City(COLOR.blue, "Chicago");
+            City washington = new City(COLOR.blue, "Washington");
+            City miami = new City(COLOR.yellow, "Miami");
             e.Add(chicago);
             e.Add(washington);
             e.Add(miami);
@@ -142,10 +142,10 @@ namespace SQADemicAppTest
             create.setAdjacentCities(r);
             HashSet<City> res = bl.getAdjacentCities("Washington");
             HashSet<City> e = new HashSet<City>();
-            City miami = new City(GameBoardModels.COLOR.yellow, "Miami");
-            City atlanta = new City(GameBoardModels.COLOR.blue, "Atlanta");
-            City montreal = new City(GameBoardModels.COLOR.blue, "Montreal");
-            City newYork = new City(GameBoardModels.COLOR.blue, "New York");
+            City miami = new City(COLOR.yellow, "Miami");
+            City atlanta = new City(COLOR.blue, "Atlanta");
+            City montreal = new City(COLOR.blue, "Montreal");
+            City newYork = new City(COLOR.blue, "New York");
             e.Add(miami);
             e.Add(atlanta);
             e.Add(montreal);
@@ -159,7 +159,7 @@ namespace SQADemicAppTest
         {
             Create.dictOfNeighbors["Atlanta"].researchStation = true;
             List<City> ls = new List<City>();
-            City a = new City(GameBoardModels.COLOR.blue, "Atlanta");
+            City a = new City(COLOR.blue, "Atlanta");
             a.researchStation = true;
             ls.Add(a);
             List<City> result = bl.getCitiesWithResearchStations();
@@ -170,10 +170,10 @@ namespace SQADemicAppTest
         public void TestGetNeighborNames()
         {
             List<String> e = new List<String>();
-            City miami = new City(GameBoardModels.COLOR.yellow, "Miami");
-            City atlanta = new City(GameBoardModels.COLOR.blue, "Atlanta");
-            City montreal = new City(GameBoardModels.COLOR.blue, "Montreal");
-            City newYork = new City(GameBoardModels.COLOR.blue, "New York");
+            City miami = new City(COLOR.yellow, "Miami");
+            City atlanta = new City(COLOR.blue, "Atlanta");
+            City montreal = new City(COLOR.blue, "Montreal");
+            City newYork = new City(COLOR.blue, "New York");
             e.Add(miami.Name);
             e.Add(atlanta.Name);
             e.Add(montreal.Name);
