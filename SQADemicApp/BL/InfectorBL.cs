@@ -72,8 +72,11 @@ namespace SQADemicApp.BL
         //don't infect same city twice
         public static int InfectCity(SQADemicApp.City city)
         {
-
-            return 1;
+            if (city.blueCubes == 0)
+            {
+                return 1;
+            }
+            return 2;
         }
     }
 }
