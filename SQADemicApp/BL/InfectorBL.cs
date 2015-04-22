@@ -70,9 +70,8 @@ namespace SQADemicApp.BL
         //place one cube of disease color on every neighboring city
         //if already has 3, then outbreak that city too
         //don't infect same city twice
-        public static int InfectCity(SQADemicApp.City city)
+        public static int InfectCity(SQADemicApp.City city, HashSet<City> alreadyInfected)
         {
-            List<City> infected = new List<City>();
             switch (city.color)
             {
                 case GameBoardModels.COLOR.blue:
@@ -81,9 +80,8 @@ namespace SQADemicApp.BL
                         city.blueCubes++;
                         return city.blueCubes;
                     }
-                    Outbreak(city, city.color, city.adjacentCities, infected);
+                    Outbreak(city, city.color, city.adjacentCities, alreadyInfected);
                     return city.blueCubes;
-
                 case GameBoardModels.COLOR.yellow:
                     if(city.yellowCubes < 3)
                     {
@@ -114,8 +112,16 @@ namespace SQADemicApp.BL
         }
 
         //returns a list of the cities that have already been infected
-        public static List<City> Outbreak(City city, GameBoardModels.COLOR color, HashSet<City> adjacentCities, List<City> alreadyInfected)
+        public static HashSet<City> Outbreak(City city, GameBoardModels.COLOR color, HashSet<City> adjacentCities, HashSet<City> alreadyInfected)
         {
+            foreach (var neighbor in adjacentCities)
+            {
+                if (!alreadyInfected.Contains(neighbor))
+                {
+                    InfectCity(neighbor, alreadyInfected);
+                    alreadyInfected.Add(neighbor);
+                }
+            }
             return alreadyInfected;
         }
     }

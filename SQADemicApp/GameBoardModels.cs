@@ -13,6 +13,7 @@ namespace SQADemicApp
         int playerDeckPoint = -1;
         public PlayerModels.Player CurrentPlayer;
         public static List<String> citiesWithResearchStations;
+        public static int outbreakMarker = 0;
         public GameBoardModels()
         {
              

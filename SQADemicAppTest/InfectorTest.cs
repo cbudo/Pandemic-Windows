@@ -171,7 +171,7 @@ namespace SQADemicAppTest
         public void TestInfectCityWithNoBlocks()
         {
             SQADemicApp.City chicago = new SQADemicApp.City(GameBoardModels.COLOR.blue, "Chicago");
-            int numOfBlueCubes = SQADemicApp.BL.InfectorBL.InfectCity(chicago);
+            int numOfBlueCubes = SQADemicApp.BL.InfectorBL.InfectCity(chicago, new HashSet<City>());
             Assert.AreEqual(1, numOfBlueCubes);
         }
 
@@ -180,7 +180,7 @@ namespace SQADemicAppTest
         {
             SQADemicApp.City chicago = new SQADemicApp.City(GameBoardModels.COLOR.blue, "Chicago");
             chicago.blueCubes = 1;
-            int numBlueCubes = SQADemicApp.BL.InfectorBL.InfectCity(chicago);
+            int numBlueCubes = SQADemicApp.BL.InfectorBL.InfectCity(chicago, new HashSet<City>());
             Assert.AreEqual(2, numBlueCubes);
         }
 
@@ -189,7 +189,7 @@ namespace SQADemicAppTest
         {
             SQADemicApp.City chicago = new SQADemicApp.City(GameBoardModels.COLOR.blue, "Chicago");
             chicago.blueCubes = 2;
-            int numBlueCubes = SQADemicApp.BL.InfectorBL.InfectCity(chicago);
+            int numBlueCubes = SQADemicApp.BL.InfectorBL.InfectCity(chicago, new HashSet<City>());
             Assert.AreEqual(3, numBlueCubes);
         }
 
@@ -198,7 +198,7 @@ namespace SQADemicAppTest
         {
             SQADemicApp.City lima = new SQADemicApp.City(GameBoardModels.COLOR.yellow, "Lima");
             lima.yellowCubes = 1;
-            int numYellowCubes = SQADemicApp.BL.InfectorBL.InfectCity(lima);
+            int numYellowCubes = SQADemicApp.BL.InfectorBL.InfectCity(lima, new HashSet<City>());
             Assert.AreEqual(2, numYellowCubes);
             
         }
@@ -208,7 +208,7 @@ namespace SQADemicAppTest
         {
             SQADemicApp.City tokyo = new SQADemicApp.City(GameBoardModels.COLOR.red, "Tokyo");
             tokyo.redCubes = 2;
-            int numRedCubes = SQADemicApp.BL.InfectorBL.InfectCity(tokyo);
+            int numRedCubes = SQADemicApp.BL.InfectorBL.InfectCity(tokyo, new HashSet<City>());
             Assert.AreEqual(3, numRedCubes);
         }
 
@@ -217,14 +217,14 @@ namespace SQADemicAppTest
         {
             SQADemicApp.City chicago = new SQADemicApp.City(GameBoardModels.COLOR.blue, "Chicago");
             chicago.blueCubes = 3;
-            int numBlueCubes = SQADemicApp.BL.InfectorBL.InfectCity(chicago);
+            int numBlueCubes = SQADemicApp.BL.InfectorBL.InfectCity(chicago, new HashSet<City>());
             Assert.AreEqual(3, numBlueCubes);
         }
 
         [TestMethod]
         public void TestOutbreakSimple()
         {
-            List<City> infected = new List<City>();
+            HashSet<City> infected = new HashSet<City>();
             SQADemicApp.City lima = new SQADemicApp.City(GameBoardModels.COLOR.yellow, "Lima");
             SQADemicApp.City santiago = new SQADemicApp.City(GameBoardModels.COLOR.yellow, "Santiago");
             infected.Add(santiago);
@@ -232,11 +232,19 @@ namespace SQADemicAppTest
             santiago.yellowCubes = 3;
             SQADemicApp.BL.InfectorBL.Outbreak(santiago, GameBoardModels.COLOR.yellow, santiago.adjacentCities, infected);
             Assert.AreEqual(1, lima.yellowCubes);
-            infected.Add(lima);
-            List<City> check = new List<City>();
-            check.Add(santiago);
-            check.Add(lima);
-            Assert.AreEqual(check, infected);
+        }
+
+        [TestMethod]
+        public void TestIncrementOutbreakMarker()
+        {
+            HashSet<City> infected = new HashSet<City>();
+            SQADemicApp.City lima = new SQADemicApp.City(GameBoardModels.COLOR.yellow, "Lima");
+            SQADemicApp.City santiago = new SQADemicApp.City(GameBoardModels.COLOR.yellow, "Santiago");
+            infected.Add(santiago);
+            santiago.adjacentCities.Add(lima);
+            santiago.yellowCubes = 3;
+            SQADemicApp.BL.InfectorBL.Outbreak(santiago, GameBoardModels.COLOR.yellow, santiago.adjacentCities, infected);
+            Assert.AreEqual(1, GameBoardModels.outbreakMarker);
         }
     }
 }
