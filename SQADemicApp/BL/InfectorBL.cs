@@ -67,46 +67,54 @@ namespace SQADemicApp.BL
         //place one cube of disease color on every neighboring city
         //if already has 3, then outbreak that city too
         //don't infect same city twice
-        public static int InfectCity(SQADemicApp.City city, HashSet<City> alreadyInfected)
+        public static int InfectCity(SQADemicApp.City city, HashSet<City> alreadyInfected, Boolean causedByOutbreak, COLOR outbreakColor)
         {
-            switch (city.color)
+
+            if (!causedByOutbreak)
             {
-                case COLOR.blue:
-                    if (city.blueCubes < 3)
-                    {
-                        city.blueCubes++;
+                switch (city.color)
+                {
+                    case COLOR.blue:
+                        if (city.blueCubes < 3)
+                        {
+                            city.blueCubes++;
+                            return city.blueCubes;
+                        }
+                        Outbreak(city, city.color, city.adjacentCities, alreadyInfected);
                         return city.blueCubes;
-                    }
-                    Outbreak(city, city.color, city.adjacentCities, alreadyInfected);
-                    return city.blueCubes;
-                case COLOR.yellow:
-                    if(city.yellowCubes < 3)
-                    {
-                        city.yellowCubes++;
+                    case COLOR.yellow:
+                        if (city.yellowCubes < 3)
+                        {
+                            city.yellowCubes++;
+                            return city.yellowCubes;
+
+                        }
+                        Outbreak(city, city.color, city.adjacentCities, alreadyInfected);
                         return city.yellowCubes;
 
-                    }
-                    Outbreak(city, city.color, city.adjacentCities, alreadyInfected);
-                    return city.yellowCubes;
+                    case COLOR.black:
+                        if (city.blackCubes < 3)
+                        {
+                            city.blackCubes++;
+                            return city.blackCubes;
 
-                case COLOR.black:
-                    if (city.blackCubes < 3)
-                    {
-                        city.blackCubes++;
+                        }
+                        Outbreak(city, city.color, city.adjacentCities, alreadyInfected);
                         return city.blackCubes;
 
-                    }Outbreak(city, city.color, city.adjacentCities, alreadyInfected);
-                    return city.blackCubes;
+                    default:
+                        if (city.redCubes < 3)
+                        {
+                            city.redCubes++;
+                            return city.redCubes;
 
-                default:
-                    if(city.redCubes < 3)
-                    {
-                        city.redCubes++;
+                        }
+                        Outbreak(city, city.color, city.adjacentCities, alreadyInfected);
                         return city.redCubes;
-
-                    }Outbreak(city, city.color, city.adjacentCities, alreadyInfected);
-                    return city.redCubes;
-            }
+                }
+            } // will reach here if this infection was caused by an outbreak.
+            //need to increment cubes of outbreak color, which aren't necessarily the city color
+            return 0;
         }
 
         //returns a list of the cities that have already been infected
@@ -116,7 +124,7 @@ namespace SQADemicApp.BL
             {
                 if (!alreadyInfected.Contains(neighbor))
                 {
-                    InfectCity(neighbor, alreadyInfected);
+                    InfectCity(neighbor, alreadyInfected, true, color);
                     alreadyInfected.Add(neighbor);
                 }
             }

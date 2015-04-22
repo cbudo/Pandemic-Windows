@@ -172,7 +172,7 @@ namespace SQADemicAppTest
         public void TestInfectCityWithNoBlocks()
         {
             SQADemicApp.City chicago = new SQADemicApp.City(COLOR.blue, "Chicago");
-            int numOfBlueCubes = SQADemicApp.BL.InfectorBL.InfectCity(chicago, new HashSet<City>());
+            int numOfBlueCubes = SQADemicApp.BL.InfectorBL.InfectCity(chicago, new HashSet<City>(), false, COLOR.blue);
             Assert.AreEqual(1, numOfBlueCubes);
         }
 
@@ -181,7 +181,7 @@ namespace SQADemicAppTest
         {
             SQADemicApp.City chicago = new SQADemicApp.City(COLOR.blue, "Chicago");
             chicago.blueCubes = 1;
-            int numBlueCubes = SQADemicApp.BL.InfectorBL.InfectCity(chicago, new HashSet<City>());
+            int numBlueCubes = SQADemicApp.BL.InfectorBL.InfectCity(chicago, new HashSet<City>(), false, COLOR.blue);
             Assert.AreEqual(2, numBlueCubes);
         }
 
@@ -190,7 +190,7 @@ namespace SQADemicAppTest
         {
             SQADemicApp.City chicago = new SQADemicApp.City(COLOR.blue, "Chicago");
             chicago.blueCubes = 2;
-            int numBlueCubes = SQADemicApp.BL.InfectorBL.InfectCity(chicago, new HashSet<City>());
+            int numBlueCubes = SQADemicApp.BL.InfectorBL.InfectCity(chicago, new HashSet<City>(), false, COLOR.blue);
             Assert.AreEqual(3, numBlueCubes);
         }
 
@@ -199,7 +199,7 @@ namespace SQADemicAppTest
         {
             SQADemicApp.City lima = new SQADemicApp.City(COLOR.yellow, "Lima");
             lima.yellowCubes = 1;
-            int numYellowCubes = SQADemicApp.BL.InfectorBL.InfectCity(lima, new HashSet<City>());
+            int numYellowCubes = SQADemicApp.BL.InfectorBL.InfectCity(lima, new HashSet<City>(), false, COLOR.yellow);
             Assert.AreEqual(2, numYellowCubes);
             
         }
@@ -209,7 +209,7 @@ namespace SQADemicAppTest
         {
             SQADemicApp.City tokyo = new SQADemicApp.City(COLOR.red, "Tokyo");
             tokyo.redCubes = 2;
-            int numRedCubes = SQADemicApp.BL.InfectorBL.InfectCity(tokyo, new HashSet<City>());
+            int numRedCubes = SQADemicApp.BL.InfectorBL.InfectCity(tokyo, new HashSet<City>(), false, COLOR.red);
             Assert.AreEqual(3, numRedCubes);
         }
 
@@ -218,7 +218,7 @@ namespace SQADemicAppTest
         {
             SQADemicApp.City chicago = new SQADemicApp.City(COLOR.blue, "Chicago");
             chicago.blueCubes = 3;
-            int numBlueCubes = SQADemicApp.BL.InfectorBL.InfectCity(chicago, new HashSet<City>());
+            int numBlueCubes = SQADemicApp.BL.InfectorBL.InfectCity(chicago, new HashSet<City>(), false, COLOR.blue);
             Assert.AreEqual(3, numBlueCubes);
         }
 
@@ -282,7 +282,7 @@ namespace SQADemicAppTest
             washington.adjacentCities.Add(atlanta);
             washington.adjacentCities.Add(miami);
             infected.Add(montreal);
-            SQADemicApp.BL.InfectorBL.Outbreak(montreal, COLOR.blue, montreal.adjacentCities, infected);
+            SQADemicApp.BL.InfectorBL.InfectCity(montreal, infected, false, COLOR.blue);
             Assert.AreEqual(2, GameBoardModels.outbreakMarker); //counts both outbreaks
             Assert.AreEqual(1, miami.blueCubes); //ensures miami gets a blue overflow cube
             Assert.AreEqual(1, ny.blueCubes); //ensures new york only gets infected once
