@@ -81,7 +81,6 @@ namespace SQADemicApp.BL
                         return city.blueCubes;
                     }
                     Outbreak(city, city.color, city.adjacentCities, alreadyInfected);
-                    GameBoardModels.outbreakMarker++;
                     return city.blueCubes;
                 case GameBoardModels.COLOR.yellow:
                     if(city.yellowCubes < 3)
@@ -90,6 +89,7 @@ namespace SQADemicApp.BL
                         return city.yellowCubes;
 
                     }
+                    Outbreak(city, city.color, city.adjacentCities, alreadyInfected);
                     return city.yellowCubes;
 
                 case GameBoardModels.COLOR.black:
@@ -98,7 +98,7 @@ namespace SQADemicApp.BL
                         city.blackCubes++;
                         return city.blackCubes;
 
-                    }
+                    }Outbreak(city, city.color, city.adjacentCities, alreadyInfected);
                     return city.blackCubes;
 
                 default:
@@ -107,7 +107,7 @@ namespace SQADemicApp.BL
                         city.redCubes++;
                         return city.redCubes;
 
-                    }
+                    }Outbreak(city, city.color, city.adjacentCities, alreadyInfected);
                     return city.redCubes;
             }
         }
@@ -123,6 +123,7 @@ namespace SQADemicApp.BL
                     alreadyInfected.Add(neighbor);
                 }
             }
+            GameBoardModels.outbreakMarker++;
             return alreadyInfected;
         }
     }

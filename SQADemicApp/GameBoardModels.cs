@@ -13,10 +13,10 @@ namespace SQADemicApp
         int playerDeckPoint = -1;
         public PlayerModels.Player CurrentPlayer;
         public static List<String> citiesWithResearchStations;
-        public static int outbreakMarker = 0;
+        public static int outbreakMarker{get;set;} 
         public GameBoardModels()
         {
-             
+            outbreakMarker = 0;
             cubeCount = new infectionCubeCount();
             cubeCount.blackCubes = cubeCount.redCubes = cubeCount.blueCubes = cubeCount.yellowCubes = 24;
             CURESTATUS = new Cures();
@@ -24,6 +24,7 @@ namespace SQADemicApp
             Create createHelper = new Create();
             playerDeck = createHelper.makePlayerDeck();
         }
+
         public int[] getCubes()
         {
             int[] cubes = { cubeCount.blackCubes, cubeCount.redCubes, cubeCount.blueCubes, cubeCount.yellowCubes };

@@ -18,6 +18,7 @@ namespace SQADemicAppTest
         [TestInitialize]
         public void SetUpArrays()
         {
+            GameBoardModels.outbreakMarker = 0;
             deck = new LinkedList<string>();
             pile = new LinkedList<string>();
             infectionRate = 3;
@@ -240,11 +241,25 @@ namespace SQADemicAppTest
             HashSet<City> infected = new HashSet<City>();
             SQADemicApp.City lima = new SQADemicApp.City(GameBoardModels.COLOR.yellow, "Lima");
             SQADemicApp.City santiago = new SQADemicApp.City(GameBoardModels.COLOR.yellow, "Santiago");
-            infected.Add(santiago);
+            //infected.Add(santiago);
             santiago.adjacentCities.Add(lima);
             santiago.yellowCubes = 3;
             SQADemicApp.BL.InfectorBL.Outbreak(santiago, GameBoardModels.COLOR.yellow, santiago.adjacentCities, infected);
             Assert.AreEqual(1, GameBoardModels.outbreakMarker);
+        }
+
+        [TestMethod]
+        public void TestIncrementOutbreakMarker2()
+        {
+            HashSet<City> infected = new HashSet<City>();
+            SQADemicApp.City lima = new SQADemicApp.City(GameBoardModels.COLOR.yellow, "Lima");
+            SQADemicApp.City santiago = new SQADemicApp.City(GameBoardModels.COLOR.yellow, "Santiago");
+            //infected.Add(santiago);
+            santiago.adjacentCities.Add(lima);
+            santiago.yellowCubes = 3;
+            GameBoardModels.outbreakMarker += 5;
+            SQADemicApp.BL.InfectorBL.Outbreak(santiago, GameBoardModels.COLOR.yellow, santiago.adjacentCities, infected);
+            Assert.AreEqual(6, GameBoardModels.outbreakMarker);
         }
     }
 }
