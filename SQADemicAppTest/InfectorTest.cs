@@ -211,5 +211,32 @@ namespace SQADemicAppTest
             int numRedCubes = SQADemicApp.BL.InfectorBL.InfectCity(tokyo);
             Assert.AreEqual(3, numRedCubes);
         }
+
+        [TestMethod]
+        public void TestBlueInfectAndOutbreak()
+        {
+            SQADemicApp.City chicago = new SQADemicApp.City(GameBoardModels.COLOR.blue, "Chicago");
+            chicago.blueCubes = 3;
+            int numBlueCubes = SQADemicApp.BL.InfectorBL.InfectCity(chicago);
+            Assert.AreEqual(3, numBlueCubes);
+        }
+
+        [TestMethod]
+        public void TestOutbreakSimple()
+        {
+            List<City> infected = new List<City>();
+            SQADemicApp.City lima = new SQADemicApp.City(GameBoardModels.COLOR.yellow, "Lima");
+            SQADemicApp.City santiago = new SQADemicApp.City(GameBoardModels.COLOR.yellow, "Santiago");
+            infected.Add(santiago);
+            santiago.adjacentCities.Add(lima);
+            santiago.yellowCubes = 3;
+            SQADemicApp.BL.InfectorBL.Outbreak(santiago, GameBoardModels.COLOR.yellow, santiago.adjacentCities, infected);
+            Assert.AreEqual(1, lima.yellowCubes);
+            infected.Add(lima);
+            List<City> check = new List<City>();
+            check.Add(santiago);
+            check.Add(lima);
+            Assert.AreEqual(check, infected);
+        }
     }
 }

@@ -72,20 +72,24 @@ namespace SQADemicApp.BL
         //don't infect same city twice
         public static int InfectCity(SQADemicApp.City city)
         {
-
+            List<City> infected = new List<City>();
             switch (city.color)
             {
                 case GameBoardModels.COLOR.blue:
                     if (city.blueCubes < 3)
                     {
                         city.blueCubes++;
+                        return city.blueCubes;
                     }
+                    Outbreak(city, city.color, city.adjacentCities, infected);
                     return city.blueCubes;
 
                 case GameBoardModels.COLOR.yellow:
                     if(city.yellowCubes < 3)
                     {
                         city.yellowCubes++;
+                        return city.yellowCubes;
+
                     }
                     return city.yellowCubes;
 
@@ -93,6 +97,8 @@ namespace SQADemicApp.BL
                     if (city.blackCubes < 3)
                     {
                         city.blackCubes++;
+                        return city.blackCubes;
+
                     }
                     return city.blackCubes;
 
@@ -100,9 +106,17 @@ namespace SQADemicApp.BL
                     if(city.redCubes < 3)
                     {
                         city.redCubes++;
+                        return city.redCubes;
+
                     }
                     return city.redCubes;
             }
+        }
+
+        //returns a list of the cities that have already been infected
+        public static List<City> Outbreak(City city, GameBoardModels.COLOR color, HashSet<City> adjacentCities, List<City> alreadyInfected)
+        {
+            return alreadyInfected;
         }
     }
 }
