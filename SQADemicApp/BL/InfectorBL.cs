@@ -74,7 +74,7 @@ namespace SQADemicApp.BL
         {
             switch (city.color)
             {
-                case GameBoardModels.COLOR.blue:
+                case COLOR.blue:
                     if (city.blueCubes < 3)
                     {
                         city.blueCubes++;
@@ -82,7 +82,7 @@ namespace SQADemicApp.BL
                     }
                     Outbreak(city, city.color, city.adjacentCities, alreadyInfected);
                     return city.blueCubes;
-                case GameBoardModels.COLOR.yellow:
+                case COLOR.yellow:
                     if(city.yellowCubes < 3)
                     {
                         city.yellowCubes++;
@@ -92,7 +92,7 @@ namespace SQADemicApp.BL
                     Outbreak(city, city.color, city.adjacentCities, alreadyInfected);
                     return city.yellowCubes;
 
-                case GameBoardModels.COLOR.black:
+                case COLOR.black:
                     if (city.blackCubes < 3)
                     {
                         city.blackCubes++;
@@ -113,7 +113,7 @@ namespace SQADemicApp.BL
         }
 
         //returns a list of the cities that have already been infected
-        public static HashSet<City> Outbreak(City city, GameBoardModels.COLOR color, HashSet<City> adjacentCities, HashSet<City> alreadyInfected)
+        public static HashSet<City> Outbreak(City city, COLOR color, HashSet<City> adjacentCities, HashSet<City> alreadyInfected)
         {
             foreach (var neighbor in adjacentCities)
             {
