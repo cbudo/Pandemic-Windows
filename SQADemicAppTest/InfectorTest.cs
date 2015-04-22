@@ -284,7 +284,7 @@ namespace SQADemicAppTest
             infected.Add(montreal);
             SQADemicApp.BL.InfectorBL.InfectCity(montreal, infected, false, COLOR.blue);
             Assert.AreEqual(2, GameBoardModels.outbreakMarker); //counts both outbreaks
-            Assert.AreEqual(1, miami.blueCubes); //ensures miami gets a blue overflow cube
+            Assert.AreEqual(1, miami.blueCubes); //ensures miami gets a blue overflow cube, even though it's a yellow city
             Assert.AreEqual(1, ny.blueCubes); //ensures new york only gets infected once
         }
     }
