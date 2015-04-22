@@ -23,10 +23,10 @@ namespace SQADemicApp.BL
             string[] shuffledarray = unshuffledArry.OrderBy(x => GetNextInt32(rnd)).ToArray();
             return shuffledarray;
         }
-        public static List<SQADemicApp.GameBoardModels.Card> shuffleArray(List<SQADemicApp.GameBoardModels.Card> unshuffledArry)
+        public static List<SQADemicApp.Card> shuffleArray(List<SQADemicApp.Card> unshuffledArry)
         {
             RNGCryptoServiceProvider rnd = new RNGCryptoServiceProvider();
-            List<SQADemicApp.GameBoardModels.Card> shuffledarray = unshuffledArry.OrderBy(x => GetNextInt32(rnd)).ToList<SQADemicApp.GameBoardModels.Card>();
+            List<SQADemicApp.Card> shuffledarray = unshuffledArry.OrderBy(x => GetNextInt32(rnd)).ToList<Card>();
             return shuffledarray;
         }
         private static int GetNextInt32(RNGCryptoServiceProvider rnd)
@@ -35,18 +35,18 @@ namespace SQADemicApp.BL
             rnd.GetBytes(randomInt);
             return Convert.ToInt32(randomInt[0]);
         }
-        public static GameBoardModels.COLOR getColor(string color)
+        public static COLOR getColor(string color)
         {
             switch (color.ToLower())
             {
                 case "red":
-                    return GameBoardModels.COLOR.red;
+                    return COLOR.red;
                 case "black":
-                    return GameBoardModels.COLOR.black;
+                    return COLOR.black;
                 case "yellow":
-                    return GameBoardModels.COLOR.yellow;
+                    return COLOR.yellow;
                 default:
-                    return GameBoardModels.COLOR.blue;
+                    return COLOR.blue;
             }
         }
     }

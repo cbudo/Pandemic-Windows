@@ -9,7 +9,7 @@ namespace SQADemicApp
     {
 
         public string Name;
-        public GameBoardModels.COLOR color;
+        public COLOR color;
         public int redCubes { get; set; }
         public int blackCubes { get; set; }
         public int blueCubes  { get; set; }
@@ -18,7 +18,7 @@ namespace SQADemicApp
         public HashSet<City> adjacentCities;
         //public List<City> adjacentCities;
 
-        public City(GameBoardModels.COLOR color, String name)
+        public City(COLOR color, String name)
         {
             this.color = color;
             this.Name = name;

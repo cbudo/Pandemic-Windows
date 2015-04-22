@@ -41,7 +41,7 @@ namespace SQADemicApp
 
         private void button49_Click(object sender, EventArgs e)
         {
-            GameBoardModels.Card drawnCard = boardModel.drawCard();
+            Card drawnCard = boardModel.drawCard();
             form3.listBox1.Items.Add(drawnCard.CityName);
         }
 

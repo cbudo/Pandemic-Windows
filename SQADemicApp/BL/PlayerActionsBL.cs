@@ -24,12 +24,12 @@ namespace SQADemicApp.BL
         /// <param name="hand"></param>
         /// <param name="currentCity"></param>
         /// <returns></returns>
-        public static List<String> DirectFlightOption(List<GameBoardModels.Card> hand, City currentCity)
+        public static List<String> DirectFlightOption(List<Card> hand, City currentCity)
         {
-            var reducedHand = hand.Where(c => !c.CityName.Equals(currentCity.Name) && c.CardType == GameBoardModels.CARDTYPE.City );
+            var reducedHand = hand.Where(c => !c.CityName.Equals(currentCity.Name) && c.CardType == Card.CARDTYPE.City );
 
             var returnlist = new List<String>();
-            foreach (GameBoardModels.Card card in reducedHand)
+            foreach (Card card in reducedHand)
             {
                 returnlist.Add(card.CityName);
             }
@@ -43,19 +43,19 @@ namespace SQADemicApp.BL
         /// <param name="hand"></param>
         /// <param name="currentCity"></param>
         /// <returns></returns>
-        public static bool CharterFlightOption(List<GameBoardModels.Card> hand, City currentCity)
+        public static bool CharterFlightOption(List<Card> hand, City currentCity)
         {
             return (hand.Where(c => c.CityName == currentCity.Name).Count() == 1);
         }
 
         //TODO: TODAY
-        public static bool ShuttleFlightOption(List<GameBoardModels.Card> hand, City currentCity)
+        public static bool ShuttleFlightOption(List<Card> hand, City currentCity)
         {
             //need list of cities that have research centers
             return false;
         }
 
-        public static bool BuildAResearchStationOption(List<GameBoardModels.Card> hand, City currentCity, PlayerModels.ROLE role)
+        public static bool BuildAResearchStationOption(List<Card> hand, City currentCity, ROLE role)
         {
             //need list of cities with reaserch centers for:
             //count
@@ -64,19 +64,19 @@ namespace SQADemicApp.BL
             return false;
         }
 
-        public static bool CureOption(List<GameBoardModels.Card> hand, City currentCity, PlayerModels.ROLE role)
+        public static bool CureOption(List<Card> hand, City currentCity, ROLE role)
         {
             //need a list of existing cures
             return false;
         }
 
-        public static bool TreatDiseaseOption(City currentCity, PlayerModels.ROLE role)
+        public static bool TreatDiseaseOption(City currentCity, ROLE role)
         {
             //need list of cures
             return false;
         }
 
-        public static bool ShareKnowledgeOption(City currentCity, PlayerModels.ROLE role)
+        public static bool ShareKnowledgeOption(City currentCity, ROLE role)
         {
             //need all of the players
             return false;
@@ -88,7 +88,7 @@ namespace SQADemicApp.BL
         /// <param name="player"></param>
         /// <param name="cityname"></param>
         /// <returns>true if move worked and false it failed</returns>
-        public static bool moveplayer(PlayerModels.Player player, string cityname)
+        public static bool moveplayer(Player player, string cityname)
         {
             return false;
         }
