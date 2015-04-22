@@ -81,6 +81,7 @@ namespace SQADemicApp.BL
                         return city.blueCubes;
                     }
                     Outbreak(city, city.color, city.adjacentCities, alreadyInfected);
+                    GameBoardModels.outbreakMarker++;
                     return city.blueCubes;
                 case GameBoardModels.COLOR.yellow:
                     if(city.yellowCubes < 3)
