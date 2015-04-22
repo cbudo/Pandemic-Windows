@@ -11,7 +11,7 @@ namespace SQADemicApp
         Cures CURESTATUS;
         public Card[] playerDeck = new Card[58];
         int playerDeckPoint = -1;
-        public PlayerModels.Player CurrentPlayer;
+        public Player CurrentPlayer;
         public static List<String> citiesWithResearchStations;
         public static int outbreakMarker = 0;
         public GameBoardModels()

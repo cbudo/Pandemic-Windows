@@ -55,7 +55,7 @@ namespace SQADemicApp.BL
             return false;
         }
 
-        public static bool BuildAResearchStationOption(List<GameBoardModels.Card> hand, City currentCity, PlayerModels.ROLE role)
+        public static bool BuildAResearchStationOption(List<GameBoardModels.Card> hand, City currentCity, ROLE role)
         {
             //need list of cities with reaserch centers for:
             //count
@@ -64,19 +64,19 @@ namespace SQADemicApp.BL
             return false;
         }
 
-        public static bool CureOption(List<GameBoardModels.Card> hand, City currentCity, PlayerModels.ROLE role)
+        public static bool CureOption(List<GameBoardModels.Card> hand, City currentCity, ROLE role)
         {
             //need a list of existing cures
             return false;
         }
 
-        public static bool TreatDiseaseOption(City currentCity, PlayerModels.ROLE role)
+        public static bool TreatDiseaseOption(City currentCity, ROLE role)
         {
             //need list of cures
             return false;
         }
 
-        public static bool ShareKnowledgeOption(City currentCity, PlayerModels.ROLE role)
+        public static bool ShareKnowledgeOption(City currentCity, ROLE role)
         {
             //need all of the players
             return false;
@@ -88,7 +88,7 @@ namespace SQADemicApp.BL
         /// <param name="player"></param>
         /// <param name="cityname"></param>
         /// <returns>true if move worked and false it failed</returns>
-        public static bool moveplayer(PlayerModels.Player player, string cityname)
+        public static bool moveplayer(Player player, string cityname)
         {
             return false;
         }
