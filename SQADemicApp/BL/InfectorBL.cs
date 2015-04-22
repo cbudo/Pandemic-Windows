@@ -72,15 +72,37 @@ namespace SQADemicApp.BL
         //don't infect same city twice
         public static int InfectCity(SQADemicApp.City city)
         {
-            if (city.blueCubes == 0)
+
+            switch (city.color)
             {
-                return 1;
+                case GameBoardModels.COLOR.blue:
+                    if (city.blueCubes < 3)
+                    {
+                        city.blueCubes++;
+                    }
+                    return city.blueCubes;
+
+                case GameBoardModels.COLOR.yellow:
+                    if(city.yellowCubes < 3)
+                    {
+                        city.yellowCubes++;
+                    }
+                    return city.yellowCubes;
+
+                case GameBoardModels.COLOR.black:
+                    if (city.blackCubes < 3)
+                    {
+                        city.blackCubes++;
+                    }
+                    return city.blackCubes;
+
+                default:
+                    if(city.redCubes < 3)
+                    {
+                        city.redCubes++;
+                    }
+                    return city.redCubes;
             }
-            else if (city.blueCubes == 1)
-            {
-                return 2;
-            }
-            return 3;
         }
     }
 }
