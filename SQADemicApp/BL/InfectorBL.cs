@@ -73,7 +73,7 @@ namespace SQADemicApp.BL
         public static int InfectCity(SQADemicApp.City city)
         {
 
-            return 0;
+            return 1;
         }
     }
 }
