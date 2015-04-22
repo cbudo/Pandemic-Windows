@@ -173,7 +173,15 @@ namespace SQADemicAppTest
             SQADemicApp.City chicago = new SQADemicApp.City(GameBoardModels.COLOR.blue, "Chicago");
             int numOfBlueCubes = SQADemicApp.BL.InfectorBL.InfectCity(chicago);
             Assert.AreEqual(1, numOfBlueCubes);
+        }
 
+        [TestMethod]
+        public void TestInfectCityWithOneCube()
+        {
+            SQADemicApp.City chicago = new SQADemicApp.City(GameBoardModels.COLOR.blue, "Chicago");
+            chicago.blueCubes = 1;
+            int numBlueCubes = SQADemicApp.BL.InfectorBL.InfectCity(chicago);
+            Assert.AreEqual(2, numBlueCubes);
         }
     }
 }
