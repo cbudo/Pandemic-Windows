@@ -3,6 +3,7 @@ using SQADemicApp.BL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using SQADemicApp;
 
 namespace SQADemicAppTest
 {
@@ -164,6 +165,15 @@ namespace SQADemicAppTest
             deck.AddFirst("Chicago");
             string lastcity = InfectorBL.Epidemic(deck, pile, ref infectionIndex, ref infectionRate);
             Assert.AreEqual(lastcity, deck.First.Value);
+        }
+
+        [TestMethod]
+        public void TestInfectCityWithNoBlocks()
+        {
+            SQADemicApp.City chicago = new SQADemicApp.City(GameBoardModels.COLOR.blue, "Chicago");
+            int numOfBlueCubes = SQADemicApp.BL.InfectorBL.InfectCity(chicago);
+            Assert.AreEqual(1, numOfBlueCubes);
+
         }
     }
 }
