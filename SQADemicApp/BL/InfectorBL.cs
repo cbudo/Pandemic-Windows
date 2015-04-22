@@ -82,6 +82,7 @@ namespace SQADemicApp.BL
                         }
                         Outbreak(city, city.color, city.adjacentCities, alreadyInfected);
                         return city.blueCubes;
+
                     case COLOR.yellow:
                         if (city.yellowCubes < 3)
                         {
@@ -114,7 +115,46 @@ namespace SQADemicApp.BL
                 }
             } // will reach here if this infection was caused by an outbreak.
             //need to increment cubes of outbreak color, which aren't necessarily the city color
-            return 0;
+            switch (outbreakColor)
+            {
+                case COLOR.blue:
+                    if (city.blueCubes < 3)
+                        {
+                            city.blueCubes++;
+                            return city.blueCubes;
+                        }
+                        Outbreak(city, city.color, city.adjacentCities, alreadyInfected);
+                        return city.blueCubes;
+
+                case COLOR.yellow:
+                    if (city.yellowCubes < 3)
+                        {
+                            city.yellowCubes++;
+                            return city.yellowCubes;
+
+                        }
+                        Outbreak(city, city.color, city.adjacentCities, alreadyInfected);
+                        return city.yellowCubes;
+
+                case COLOR.black:
+                        if (city.blackCubes < 3)
+                        {
+                            city.blackCubes++;
+                            return city.blackCubes;
+
+                        }
+                        Outbreak(city, city.color, city.adjacentCities, alreadyInfected);
+                        return city.blackCubes;
+
+                default:
+                    if (city.redCubes < 3)
+                    {
+                        city.redCubes++;
+                        return city.redCubes;
+                    }
+                    Outbreak(city, city.color, city.adjacentCities, alreadyInfected);
+                    return city.redCubes;
+            }
         }
 
         //returns a list of the cities that have already been infected
