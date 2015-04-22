@@ -9,8 +9,8 @@ namespace SQADemicApp
     public class GameBoardModels
     {
         #region Public Vars
-        infectionCubeCount cubeCount;
-        Cures CURESTATUS;
+        public static InfectionCubeCount cubeCount;
+        public static Cures CURESTATUS;
         public Card[] playerDeck = new Card[58];
         int playerDeckPoint = -1;
         public Player CurrentPlayer;
@@ -18,19 +18,17 @@ namespace SQADemicApp
         public static int outbreakMarker = 0;
         public int InfectionRateCounter = 0;
         #endregion
+
         public GameBoardModels()
         {
              
-            cubeCount = new infectionCubeCount();
+            cubeCount = new InfectionCubeCount();
             cubeCount.blackCubes = cubeCount.redCubes = cubeCount.blueCubes = cubeCount.yellowCubes = 24;
             CURESTATUS = new Cures();
             CURESTATUS.BlackCure = CURESTATUS.BlueCure = CURESTATUS.RedCure = CURESTATUS.YellowCure = Cures.CURESTATE.NotCured;
             Create createHelper = new Create();
             playerDeck = createHelper.makePlayerDeck();
         }
- 
-        
-        
 
         public Card drawCard()
         {
@@ -42,7 +40,7 @@ namespace SQADemicApp
         }
 
         #region Storage Classes
-        public class infectionCubeCount
+        public class InfectionCubeCount
         {
             public int redCubes { get; set; }
             public int blackCubes { get; set; }
