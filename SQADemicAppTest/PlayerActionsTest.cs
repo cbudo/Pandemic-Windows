@@ -16,6 +16,7 @@ namespace SQADemicAppTest
         City chicagoCity, bangkok, kolkata;
         List<Card> hand;
         Card newYork, chennai, atlanta, chicagoCard, airlift;
+        Player dispatcher, medic, opExpert, researcher, scientist;
 
         [TestInitialize]
         public void SetupPlayer()
@@ -38,7 +39,8 @@ namespace SQADemicAppTest
             atlanta = new Card("Atlanta", Card.CARDTYPE.City, COLOR.blue);
             chicagoCard = new Card("Chicago", Card.CARDTYPE.City, COLOR.blue);
             airlift = new SQADemicApp.Card("Airlift", SQADemicApp.Card.CARDTYPE.Special);
-
+            //Players
+            scientist = new Player(ROLE.Scientist);
         }
 
         [TestMethod]
@@ -115,7 +117,9 @@ namespace SQADemicAppTest
         [TestMethod]
         public void TestMoverPlayerAdjacentCity()
         {
-
+            scientist.currentCity = chicagoCity;
+            PlayerActionsBL.moveplayer(scientist, "San Francisco");
+            Assert.Equals(scientist.currentCity.Name, "San Francisco");
         }
     }
 }
