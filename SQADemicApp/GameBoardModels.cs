@@ -17,9 +17,10 @@ namespace SQADemicApp
         public static List<String> citiesWithResearchStations;
         public static int outbreakMarker = 0;
         public int InfectionRateCounter = 0;
+        public static Player[] players;
         #endregion
 
-        public GameBoardModels()
+        public GameBoardModels(string[] playersroles)
         {
             outbreakMarker = 0;
             
@@ -30,6 +31,10 @@ namespace SQADemicApp
             cubeCount.blackCubes = cubeCount.redCubes = cubeCount.blueCubes = cubeCount.yellowCubes = 24;            
             CURESTATUS.BlackCure = CURESTATUS.BlueCure = CURESTATUS.RedCure = CURESTATUS.YellowCure = Cures.CURESTATE.NotCured;            
             playerDeck = createHelper.makePlayerDeck();
+
+            //build players
+
+
         }
 
         public Card drawCard()
