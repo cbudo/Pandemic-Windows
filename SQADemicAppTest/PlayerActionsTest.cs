@@ -14,7 +14,7 @@ namespace SQADemicAppTest
     public class PlayerActionsTest
     {
         City chicagoCity, bangkok, kolkata, sanFran;
-        List<Card> hand;
+        List<Card> hand, pile;
         Card newYork, chennai, atlanta, chicagoCard, airlift;
         Player dispatcher, medic, opExpert, researcher, scientist;
 
@@ -117,11 +117,33 @@ namespace SQADemicAppTest
         }  
 
         [TestMethod]
-        public void TestMoverPlayerAdjacentCity()
+        public void TestMoverPlayerAdjacentCitySanFran()
         {
             scientist.currentCity = chicagoCity;
             PlayerActionsBL.moveplayer(scientist,sanFran);
             Assert.AreEqual(scientist.currentCity.Name, sanFran.Name);
+        }
+
+      /**  [TestMethod]
+        public void TestMoverPlayerAdjacentCityChicago()
+        {
+            scientist.currentCity = sanFran;
+            PlayerActionsBL.moveplayer(scientist, chicagoCity);
+            Assert.AreEqual(scientist.currentCity.Name, chicagoCity.Name);
+        }**/
+
+        [TestMethod]
+        public void TestMoverPlayerDirectFlight()
+        {
+            
+            scientist.currentCity = bangkok;
+            hand = new List<Card> { airlift, chicagoCard, chennai };
+            pile = new List<Card>();
+            scientist.hand = hand;
+            PlayerActionsBL.moveplayer(scientist, chicagoCity);
+            hand = new List<Card> { airlift, chennai };
+            Assert.AreEqual(scientist.currentCity.Name, chicagoCity.Name);
+
         }
     }
 }
