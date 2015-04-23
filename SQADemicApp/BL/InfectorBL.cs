@@ -63,10 +63,6 @@ namespace SQADemicApp.BL
         /// <param name="city"></param>
         /// <param name="color"></param>
         /// <returns></returns> number of blocks of that color
-        
-        //place one cube of disease color on every neighboring city
-        //if already has 3, then outbreak that city too
-        //don't infect same city twice
         public static int InfectCity(SQADemicApp.City city, HashSet<City> alreadyInfected, Boolean causedByOutbreak, COLOR outbreakColor)
         {
 
