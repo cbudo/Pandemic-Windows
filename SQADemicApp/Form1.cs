@@ -12,8 +12,8 @@ namespace SQADemicApp
         {
             SetupGameForm setupForm = new SetupGameForm();
             setupForm.Show();
-            
-            boardModel = new GameBoardModels();
+            string[] rolesDefault = { "Dispatcher", "Scientist" };
+            boardModel = new GameBoardModels(rolesDefault);
             InitializeComponent();
             form2.Show();
             form3.Show();
