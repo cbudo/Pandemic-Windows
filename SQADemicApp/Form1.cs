@@ -23,7 +23,7 @@ namespace SQADemicApp
             SetupGameForm setupForm = new SetupGameForm();
             setupForm.Show();
 
-            boardModel = new GameBoardModels();
+            boardModel = new GameBoardModels(playerRoles);
             
             InitializeComponent();
             form2.Show();
