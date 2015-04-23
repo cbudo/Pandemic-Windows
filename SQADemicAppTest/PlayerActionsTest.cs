@@ -13,7 +13,7 @@ namespace SQADemicAppTest
     [TestClass]
     public class PlayerActionsTest
     {
-        City chicagoCity, bangkok, kolkata;
+        City chicagoCity, bangkok, kolkata, sanFran;
         List<Card> hand;
         Card newYork, chennai, atlanta, chicagoCard, airlift;
         Player dispatcher, medic, opExpert, researcher, scientist;
@@ -27,9 +27,11 @@ namespace SQADemicAppTest
             setup.setAdjacentCities(new StringReader("Chicago;San Francisco,Los Angeles,Atlanta,Montreal"));
             setup.setAdjacentCities(new StringReader("Bangkok;Kolkata,Hong Kong,Ho Chi Minh City,Jakarta,Chennai"));
             setup.setAdjacentCities(new StringReader("Kolkata;Delhi,Chennai,Bangkok,Hong Kong"));
+            setup.setAdjacentCities(new StringReader("San Francisco;Tokyo,Manila,Chicago,Los Angeles"));
             if (!Create.cityDictionary.TryGetValue("Chicago", out chicagoCity) ||
                 !Create.cityDictionary.TryGetValue("Bangkok", out bangkok) ||
-                !Create.cityDictionary.TryGetValue("Kolkata", out kolkata))
+                !Create.cityDictionary.TryGetValue("Kolkata", out kolkata)||
+                !Create.cityDictionary.TryGetValue("San Francisco", out sanFran))
             {
                 throw new InvalidOperationException("Set up failed");
             }
@@ -118,8 +120,8 @@ namespace SQADemicAppTest
         public void TestMoverPlayerAdjacentCity()
         {
             scientist.currentCity = chicagoCity;
-            PlayerActionsBL.moveplayer(scientist, "San Francisco");
-            Assert.Equals(scientist.currentCity.Name, "San Francisco");
+            PlayerActionsBL.moveplayer(scientist,sanFran);
+            Assert.Equals(scientist.currentCity.Name, sanFran);
         }
     }
 }
