@@ -22,10 +22,13 @@ namespace SQADemicApp
         public GameBoardModels()
         {
             outbreakMarker = 0;
-            cubeCount.blackCubes = cubeCount.redCubes = cubeCount.blueCubes = cubeCount.yellowCubes = 24;
+            
             CURESTATUS = new Cures();
-            CURESTATUS.BlackCure = CURESTATUS.BlueCure = CURESTATUS.RedCure = CURESTATUS.YellowCure = Cures.CURESTATE.NotCured;
             Create createHelper = new Create();
+            cubeCount = new InfectionCubeCount();
+            
+            cubeCount.blackCubes = cubeCount.redCubes = cubeCount.blueCubes = cubeCount.yellowCubes = 24;            
+            CURESTATUS.BlackCure = CURESTATUS.BlueCure = CURESTATUS.RedCure = CURESTATUS.YellowCure = Cures.CURESTATE.NotCured;            
             playerDeck = createHelper.makePlayerDeck();
         }
 
