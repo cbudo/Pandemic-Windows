@@ -69,60 +69,60 @@ namespace SQADemicApp
         City jakarta = new City(COLOR.red, "Jakarta");
         City sydney = new City(COLOR.red, "Sydney");
 
-        public static Dictionary<string, City> dictOfNeighbors = new Dictionary<string, City>();
+        public static Dictionary<string, City> cityDictionary = new Dictionary<string, City>();
 
         public void createDictionary()
         {
             try
             {
-                dictOfNeighbors.Add("San Francisco", sanFrancisco);
-                dictOfNeighbors.Add("Chicago", chicago);
-                dictOfNeighbors.Add("Montreal", montreal);
-                dictOfNeighbors.Add("New York", newYork);
-                dictOfNeighbors.Add("Atlanta", atlanta);
-                dictOfNeighbors.Add("Washington", washington);
-                dictOfNeighbors.Add("London", london);
-                dictOfNeighbors.Add("Essen", essen);
-                dictOfNeighbors.Add("Saint Petersburg", stPetersburg);
-                dictOfNeighbors.Add("Milan", milan);
-                dictOfNeighbors.Add("Paris", paris);
-                dictOfNeighbors.Add("Madrid", madrid);
-                dictOfNeighbors.Add("Los Angeles", losAngeles);
-                dictOfNeighbors.Add("Mexico City", mexicoCity);
-                dictOfNeighbors.Add("Miami", miami);
-                dictOfNeighbors.Add("Bogota", bogota);
-                dictOfNeighbors.Add("Lima", lima);
-                dictOfNeighbors.Add("Santiago", santiago);
-                dictOfNeighbors.Add("Buenos Aires", buenosAires);
-                dictOfNeighbors.Add("Sao Paulo", saoPaulo);
-                dictOfNeighbors.Add("Lagos", lagos);
-                dictOfNeighbors.Add("Kinshasa", kinshasa);
-                dictOfNeighbors.Add("Johannesburg", johannesburg);
-                dictOfNeighbors.Add("Khartoum", khartoum);
-                dictOfNeighbors.Add("Moscow", moscow);
-                dictOfNeighbors.Add("Tehran", tehran);
-                dictOfNeighbors.Add("Delhi", delhi);
-                dictOfNeighbors.Add("Kolkata", kolkata);
-                dictOfNeighbors.Add("Istanbul", istanbul);
-                dictOfNeighbors.Add("Baghdad", baghdad);
-                dictOfNeighbors.Add("Karachi", karachi);
-                dictOfNeighbors.Add("Algiers", algiers);
-                dictOfNeighbors.Add("Cairo", cairo);
-                dictOfNeighbors.Add("Riyadh", riyadh);
-                dictOfNeighbors.Add("Mumbai", mumbai);
-                dictOfNeighbors.Add("Chennai", chennai);
-                dictOfNeighbors.Add("Beijing", beijing);
-                dictOfNeighbors.Add("Seoul", seoul);
-                dictOfNeighbors.Add("Shanghai", shanghai);
-                dictOfNeighbors.Add("Tokyo", tokyo);
-                dictOfNeighbors.Add("Osaka", osaka);
-                dictOfNeighbors.Add("Taipei", taipei);
-                dictOfNeighbors.Add("Hong Kong", hongKong);
-                dictOfNeighbors.Add("Bangkok", bangkok);
-                dictOfNeighbors.Add("Manila", manila);
-                dictOfNeighbors.Add("Ho Chi Minh City", hoChiMinhCity);
-                dictOfNeighbors.Add("Jakarta", jakarta);
-                dictOfNeighbors.Add("Sydney", sydney);
+                cityDictionary.Add("San Francisco", sanFrancisco);
+                cityDictionary.Add("Chicago", chicago);
+                cityDictionary.Add("Montreal", montreal);
+                cityDictionary.Add("New York", newYork);
+                cityDictionary.Add("Atlanta", atlanta);
+                cityDictionary.Add("Washington", washington);
+                cityDictionary.Add("London", london);
+                cityDictionary.Add("Essen", essen);
+                cityDictionary.Add("Saint Petersburg", stPetersburg);
+                cityDictionary.Add("Milan", milan);
+                cityDictionary.Add("Paris", paris);
+                cityDictionary.Add("Madrid", madrid);
+                cityDictionary.Add("Los Angeles", losAngeles);
+                cityDictionary.Add("Mexico City", mexicoCity);
+                cityDictionary.Add("Miami", miami);
+                cityDictionary.Add("Bogota", bogota);
+                cityDictionary.Add("Lima", lima);
+                cityDictionary.Add("Santiago", santiago);
+                cityDictionary.Add("Buenos Aires", buenosAires);
+                cityDictionary.Add("Sao Paulo", saoPaulo);
+                cityDictionary.Add("Lagos", lagos);
+                cityDictionary.Add("Kinshasa", kinshasa);
+                cityDictionary.Add("Johannesburg", johannesburg);
+                cityDictionary.Add("Khartoum", khartoum);
+                cityDictionary.Add("Moscow", moscow);
+                cityDictionary.Add("Tehran", tehran);
+                cityDictionary.Add("Delhi", delhi);
+                cityDictionary.Add("Kolkata", kolkata);
+                cityDictionary.Add("Istanbul", istanbul);
+                cityDictionary.Add("Baghdad", baghdad);
+                cityDictionary.Add("Karachi", karachi);
+                cityDictionary.Add("Algiers", algiers);
+                cityDictionary.Add("Cairo", cairo);
+                cityDictionary.Add("Riyadh", riyadh);
+                cityDictionary.Add("Mumbai", mumbai);
+                cityDictionary.Add("Chennai", chennai);
+                cityDictionary.Add("Beijing", beijing);
+                cityDictionary.Add("Seoul", seoul);
+                cityDictionary.Add("Shanghai", shanghai);
+                cityDictionary.Add("Tokyo", tokyo);
+                cityDictionary.Add("Osaka", osaka);
+                cityDictionary.Add("Taipei", taipei);
+                cityDictionary.Add("Hong Kong", hongKong);
+                cityDictionary.Add("Bangkok", bangkok);
+                cityDictionary.Add("Manila", manila);
+                cityDictionary.Add("Ho Chi Minh City", hoChiMinhCity);
+                cityDictionary.Add("Jakarta", jakarta);
+                cityDictionary.Add("Sydney", sydney);
             }
             catch (Exception e)
             {
@@ -141,7 +141,7 @@ namespace SQADemicApp
 
                 foreach (var city in adjCityList)
                 {
-                    dictOfNeighbors[cityname].adjacentCities.Add(dictOfNeighbors[city]);
+                    cityDictionary[cityname].adjacentCities.Add(cityDictionary[city]);
                 }
             }
 

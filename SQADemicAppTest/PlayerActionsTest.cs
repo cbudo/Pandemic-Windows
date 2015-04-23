@@ -26,9 +26,9 @@ namespace SQADemicAppTest
             setup.setAdjacentCities(new StringReader("Chicago;San Francisco,Los Angeles,Atlanta,Montreal"));
             setup.setAdjacentCities(new StringReader("Bangkok;Kolkata,Hong Kong,Ho Chi Minh City,Jakarta,Chennai"));
             setup.setAdjacentCities(new StringReader("Kolkata;Delhi,Chennai,Bangkok,Hong Kong"));
-            if (!Create.dictOfNeighbors.TryGetValue("Chicago", out chicagoCity) ||
-                !Create.dictOfNeighbors.TryGetValue("Bangkok", out bangkok) ||
-                !Create.dictOfNeighbors.TryGetValue("Kolkata", out kolkata))
+            if (!Create.cityDictionary.TryGetValue("Chicago", out chicagoCity) ||
+                !Create.cityDictionary.TryGetValue("Bangkok", out bangkok) ||
+                !Create.cityDictionary.TryGetValue("Kolkata", out kolkata))
             {
                 throw new InvalidOperationException("Set up failed");
             }
@@ -87,7 +87,7 @@ namespace SQADemicAppTest
             
         }
 
-            /**
+            /** PRINTING STUFF
             //Print Statment
             foreach (String name in returnList)
             {
@@ -111,5 +111,11 @@ namespace SQADemicAppTest
             bool correctBool = true;
             Assert.AreEqual(correctBool, returendBool);
         }  
+
+        [TestMethod]
+        public void TestMoverPlayerAdjacentCity()
+        {
+
+        }
     }
 }

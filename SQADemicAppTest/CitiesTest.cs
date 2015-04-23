@@ -157,7 +157,7 @@ namespace SQADemicAppTest
         [TestMethod]
         public void TestResearchCityList()
         {
-            Create.dictOfNeighbors["Atlanta"].researchStation = true;
+            Create.cityDictionary["Atlanta"].researchStation = true;
             List<City> ls = new List<City>();
             City a = new City(COLOR.blue, "Atlanta");
             a.researchStation = true;

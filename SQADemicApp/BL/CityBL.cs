@@ -23,7 +23,7 @@ namespace SQADemicApp.BL
         public List<String> getNeighborNames(String cityName)
         {
             List<String> ls = new List<String>();
-            HashSet<City> cityls = Create.dictOfNeighbors[cityName].getAdjacentCities();
+            HashSet<City> cityls = Create.cityDictionary[cityName].getAdjacentCities();
             foreach (var city in cityls)
             {
                 ls.Add(city.Name);
@@ -34,11 +34,11 @@ namespace SQADemicApp.BL
         public List<City> getCitiesWithResearchStations()
         {
             List<City> ls = new List<City>();
-            foreach (var key in Create.dictOfNeighbors.Keys)
+            foreach (var key in Create.cityDictionary.Keys)
             {
-                if (Create.dictOfNeighbors[key].researchStation == true)
+                if (Create.cityDictionary[key].researchStation == true)
                 {
-                    ls.Add(Create.dictOfNeighbors[key]);
+                    ls.Add(Create.cityDictionary[key]);
                 }
             }
             return ls;
@@ -46,7 +46,7 @@ namespace SQADemicApp.BL
 
         public HashSet<City> getAdjacentCities(string name)
         {
-            City city = Create.dictOfNeighbors[name];
+            City city = Create.cityDictionary[name];
             return city.getAdjacentCities();
         }
 
