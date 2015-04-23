@@ -121,7 +121,7 @@ namespace SQADemicAppTest
         {
             scientist.currentCity = chicagoCity;
             PlayerActionsBL.moveplayer(scientist,sanFran);
-            Assert.Equals(scientist.currentCity.Name, sanFran);
+            Assert.AreEqual(scientist.currentCity.Name, sanFran.Name);
         }
     }
 }

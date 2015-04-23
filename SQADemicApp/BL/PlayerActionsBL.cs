@@ -85,11 +85,12 @@ namespace SQADemicApp.BL
         /// <summary>
         /// Moves the player to the given city, updating the hand if needed
         /// </summary>
-        /// <param name="player"></param>
-        /// <param name="cityname"></param>
+        /// <param name="player">Current Player or if dispatcher, player trying to move</param>
+        /// <param name="city">City to move to</param>
         /// <returns>true if move worked and false it failed</returns>
-        public static bool moveplayer(Player player, string cityname)
+        public static bool moveplayer(Player player, City city)
         {
+            player.currentCity = city;
             return false;
         }
 
