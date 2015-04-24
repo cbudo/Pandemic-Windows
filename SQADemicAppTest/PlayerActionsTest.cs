@@ -46,6 +46,14 @@ namespace SQADemicAppTest
         }
 
         [TestMethod]
+        public void TestDriveOptions()
+        {
+            HashSet<City> returnedSet = PlayerActionsBL.DriveOptions(chicagoCity);
+            HashSet<City> correctSet = chicagoCity.getAdjacentCities();
+            CollectionAssert.AreEqual(returnedSet.ToArray(), correctSet.ToArray());
+        }
+
+        [TestMethod]
         public void TestDirectFlightOptionsNone()
         {
             hand = new List<Card>();

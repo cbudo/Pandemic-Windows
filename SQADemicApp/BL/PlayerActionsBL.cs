@@ -47,8 +47,8 @@ namespace SQADemicApp.BL
         {
             return (hand.Where(c => c.CityName == currentCity.Name).Count() == 1);
         }
-
-        //TODO: TODAY
+        #region not implemented
+        /**
         public static bool ShuttleFlightOption(List<Card> hand, City currentCity)
         {
             //need list of cities that have research centers
@@ -80,7 +80,8 @@ namespace SQADemicApp.BL
         {
             //need all of the players
             return false;
-        }
+        }**/
+#endregion
         
         /// <summary>
         /// Moves the player to the given city, updating the hand if needed
