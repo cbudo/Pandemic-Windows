@@ -13,7 +13,7 @@ namespace SQADemicApp
         public static Cures CURESTATUS;
         public Card[] playerDeck = new Card[58];
         int playerDeckPoint = -1;
-        public Player CurrentPlayer;
+        public int CurrentPlayerIndex;
         public static List<String> citiesWithResearchStations;
         public static int outbreakMarker = 0;
         public int InfectionRateCounter = 0;
@@ -23,6 +23,35 @@ namespace SQADemicApp
         public GameBoardModels(string[] playersroles)
         {
             outbreakMarker = 0;
+
+            players = new Player[playersroles.Length];
+            int i = 0;   
+            foreach(var role in playersroles)
+            {
+                switch (role)
+                {
+                    case "Dispatcher":
+                        players[i] = new Player(ROLE.Dispatcher);
+                        break;
+                    case "Operations Expert":
+                        players[i] = new Player(ROLE.OpExpert);
+                        break;
+                    case "Scientist":
+                        players[i] = new Player(ROLE.Scientist);
+                        break;
+                    case "Medic":
+                        players[i] = new Player(ROLE.Medic);
+                        break;
+                    case "Researcher":
+                        players[i] = new Player(ROLE.Researcher);
+                        break;
+                    default:
+                        players[i] = null;
+                        break;
+                }
+                i++;
+            }
+            CurrentPlayerIndex = 0;
             
             CURESTATUS = new Cures();
             Create createHelper = new Create();
@@ -32,6 +61,7 @@ namespace SQADemicApp
             CURESTATUS.BlackCure = CURESTATUS.BlueCure = CURESTATUS.RedCure = CURESTATUS.YellowCure = Cures.CURESTATE.NotCured;            
             playerDeck = createHelper.makePlayerDeck();
 
+            Create c = new Create();
             //build players
 
 
@@ -44,6 +74,15 @@ namespace SQADemicApp
                 return playerDeck[playerDeckPoint];
             else  //gameover
                 throw new Exception("Game Over");
+        }
+        
+        public void NextPlayer()
+        {
+            CurrentPlayerIndex++;
+            if(CurrentPlayerIndex == players.Length)
+            {
+                CurrentPlayerIndex = 0;
+            }
         }
 
         #region Storage Classes

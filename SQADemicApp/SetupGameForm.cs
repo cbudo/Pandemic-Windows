@@ -37,8 +37,21 @@ namespace SQADemicApp
                 sb.Append(Player4ComboBox.SelectedItem+",");
             }
             sb.Remove(sb.ToString().LastIndexOf(','),1);
+            string[] rolesArray = sb.ToString().Split(',');
+            var duplicates = rolesArray.GroupBy(z => z).Where(g => g.Count() > 1).Select(g => g.Key);
+            if(duplicates.Count() > 0)
+            {
+                string duplicateWords = "";
+                foreach(var dup in duplicates)
+                {
+                    duplicateWords += dup + ", ";
+                }
+
+                MessageBox.Show("You cannot have more than one: " + duplicateWords.Substring(0,duplicateWords.Length-2));
+                return;
+            }
             this.Hide();
-            Form1 form1 = new Form1(sb.ToString().Split(','));
+            Form1 form1 = new Form1(rolesArray);
             form1.Show();
         }
     }

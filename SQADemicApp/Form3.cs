@@ -27,5 +27,10 @@ namespace SQADemicApp
 
         }
 
+        private void MoveButton_Click(object sender, EventArgs e)
+        {
+            Form1.CurrentState = Form1.STATE.Move;
+        }
+
     }
 }

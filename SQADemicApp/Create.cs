@@ -11,6 +11,7 @@ namespace SQADemicApp
     {
         public Create()
         {
+            createDictionary();
         }
 
         //create the blues

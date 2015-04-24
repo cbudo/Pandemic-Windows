@@ -31,6 +31,7 @@
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.label1 = new System.Windows.Forms.Label();
             this.listBox1 = new System.Windows.Forms.ListBox();
+            this.MoveButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // progressBar1
@@ -59,11 +60,22 @@
             this.listBox1.TabIndex = 2;
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
+            // MoveButton
+            // 
+            this.MoveButton.Location = new System.Drawing.Point(46, 55);
+            this.MoveButton.Name = "MoveButton";
+            this.MoveButton.Size = new System.Drawing.Size(75, 40);
+            this.MoveButton.TabIndex = 3;
+            this.MoveButton.Text = "Move";
+            this.MoveButton.UseVisualStyleBackColor = true;
+            this.MoveButton.Click += new System.EventHandler(this.MoveButton_Click);
+            // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(286, 612);
+            this.Controls.Add(this.MoveButton);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.progressBar1);
@@ -80,5 +92,6 @@
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Label label1;
         public System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.Button MoveButton;
     }
 }
