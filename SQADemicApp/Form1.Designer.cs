@@ -89,7 +89,7 @@
             this.SanFrancisco.TabIndex = 0;
             this.SanFrancisco.Text = " San Francisco";
             this.SanFrancisco.UseVisualStyleBackColor = false;
-            this.SanFrancisco.Click += new System.EventHandler(this.Jakarta_Click);
+            this.SanFrancisco.Click += new System.EventHandler(this.City_Click);
             // 
             // Chicago
             // 
@@ -100,7 +100,7 @@
             this.Chicago.TabIndex = 2;
             this.Chicago.Text = " Chicago";
             this.Chicago.UseVisualStyleBackColor = false;
-            this.Chicago.Click += new System.EventHandler(this.Jakarta_Click);
+            this.Chicago.Click += new System.EventHandler(this.City_Click);
             // 
             // Montreal
             // 
@@ -111,7 +111,7 @@
             this.Montreal.TabIndex = 3;
             this.Montreal.Text = " Montreal";
             this.Montreal.UseVisualStyleBackColor = false;
-            this.Montreal.Click += new System.EventHandler(this.Jakarta_Click);
+            this.Montreal.Click += new System.EventHandler(this.City_Click);
             // 
             // LosAngeles
             // 
@@ -121,7 +121,7 @@
             this.LosAngeles.TabIndex = 4;
             this.LosAngeles.Text = " Los Angeles";
             this.LosAngeles.UseVisualStyleBackColor = true;
-            this.LosAngeles.Click += new System.EventHandler(this.Jakarta_Click);
+            this.LosAngeles.Click += new System.EventHandler(this.City_Click);
             // 
             // MexicoCity
             // 
@@ -131,7 +131,7 @@
             this.MexicoCity.TabIndex = 5;
             this.MexicoCity.Text = " Mexico City";
             this.MexicoCity.UseVisualStyleBackColor = true;
-            this.MexicoCity.Click += new System.EventHandler(this.Jakarta_Click);
+            this.MexicoCity.Click += new System.EventHandler(this.City_Click);
             // 
             // Miami
             // 
@@ -141,7 +141,7 @@
             this.Miami.TabIndex = 6;
             this.Miami.Text = " Miami";
             this.Miami.UseVisualStyleBackColor = true;
-            this.Miami.Click += new System.EventHandler(this.Jakarta_Click);
+            this.Miami.Click += new System.EventHandler(this.City_Click);
             // 
             // Atlanta
             // 
@@ -152,7 +152,7 @@
             this.Atlanta.TabIndex = 7;
             this.Atlanta.Text = " Atlanta";
             this.Atlanta.UseVisualStyleBackColor = false;
-            this.Atlanta.Click += new System.EventHandler(this.Jakarta_Click);
+            this.Atlanta.Click += new System.EventHandler(this.City_Click);
             // 
             // Washington
             // 
@@ -163,7 +163,7 @@
             this.Washington.TabIndex = 8;
             this.Washington.Text = " Washington";
             this.Washington.UseVisualStyleBackColor = false;
-            this.Washington.Click += new System.EventHandler(this.Jakarta_Click);
+            this.Washington.Click += new System.EventHandler(this.City_Click);
             // 
             // NewYork
             // 
@@ -174,7 +174,7 @@
             this.NewYork.TabIndex = 9;
             this.NewYork.Text = " New York";
             this.NewYork.UseVisualStyleBackColor = false;
-            this.NewYork.Click += new System.EventHandler(this.Jakarta_Click);
+            this.NewYork.Click += new System.EventHandler(this.City_Click);
             // 
             // London
             // 
@@ -185,7 +185,7 @@
             this.London.TabIndex = 10;
             this.London.Text = " London";
             this.London.UseVisualStyleBackColor = false;
-            this.London.Click += new System.EventHandler(this.Jakarta_Click);
+            this.London.Click += new System.EventHandler(this.City_Click);
             // 
             // Madrid
             // 
@@ -196,7 +196,7 @@
             this.Madrid.TabIndex = 11;
             this.Madrid.Text = " Madrid";
             this.Madrid.UseVisualStyleBackColor = false;
-            this.Madrid.Click += new System.EventHandler(this.Jakarta_Click);
+            this.Madrid.Click += new System.EventHandler(this.City_Click);
             // 
             // Paris
             // 
@@ -207,7 +207,7 @@
             this.Paris.TabIndex = 12;
             this.Paris.Text = " Paris";
             this.Paris.UseVisualStyleBackColor = false;
-            this.Paris.Click += new System.EventHandler(this.Jakarta_Click);
+            this.Paris.Click += new System.EventHandler(this.City_Click);
             // 
             // Essen
             // 
@@ -218,7 +218,7 @@
             this.Essen.TabIndex = 13;
             this.Essen.Text = " Essen";
             this.Essen.UseVisualStyleBackColor = false;
-            this.Essen.Click += new System.EventHandler(this.Jakarta_Click);
+            this.Essen.Click += new System.EventHandler(this.City_Click);
             // 
             // StPetersburg
             // 
@@ -229,7 +229,7 @@
             this.StPetersburg.TabIndex = 14;
             this.StPetersburg.Text = " St Petersburg";
             this.StPetersburg.UseVisualStyleBackColor = false;
-            this.StPetersburg.Click += new System.EventHandler(this.Jakarta_Click);
+            this.StPetersburg.Click += new System.EventHandler(this.City_Click);
             // 
             // Bogota
             // 
@@ -239,7 +239,7 @@
             this.Bogota.TabIndex = 15;
             this.Bogota.Text = " Bogota";
             this.Bogota.UseVisualStyleBackColor = true;
-            this.Bogota.Click += new System.EventHandler(this.Jakarta_Click);
+            this.Bogota.Click += new System.EventHandler(this.City_Click);
             // 
             // Lima
             // 
@@ -249,7 +249,7 @@
             this.Lima.TabIndex = 16;
             this.Lima.Text = " Lima";
             this.Lima.UseVisualStyleBackColor = true;
-            this.Lima.Click += new System.EventHandler(this.Jakarta_Click);
+            this.Lima.Click += new System.EventHandler(this.City_Click);
             // 
             // Santiago
             // 
@@ -259,7 +259,7 @@
             this.Santiago.TabIndex = 17;
             this.Santiago.Text = " Santiago";
             this.Santiago.UseVisualStyleBackColor = true;
-            this.Santiago.Click += new System.EventHandler(this.Jakarta_Click);
+            this.Santiago.Click += new System.EventHandler(this.City_Click);
             // 
             // BuenosAires
             // 
@@ -269,7 +269,7 @@
             this.BuenosAires.TabIndex = 18;
             this.BuenosAires.Text = " Buenos Aires";
             this.BuenosAires.UseVisualStyleBackColor = true;
-            this.BuenosAires.Click += new System.EventHandler(this.Jakarta_Click);
+            this.BuenosAires.Click += new System.EventHandler(this.City_Click);
             // 
             // SaoPaulo
             // 
@@ -279,7 +279,7 @@
             this.SaoPaulo.TabIndex = 19;
             this.SaoPaulo.Text = " Sao Paulo";
             this.SaoPaulo.UseVisualStyleBackColor = true;
-            this.SaoPaulo.Click += new System.EventHandler(this.Jakarta_Click);
+            this.SaoPaulo.Click += new System.EventHandler(this.City_Click);
             // 
             // Lagos
             // 
@@ -289,7 +289,7 @@
             this.Lagos.TabIndex = 20;
             this.Lagos.Text = " Lagos";
             this.Lagos.UseVisualStyleBackColor = true;
-            this.Lagos.Click += new System.EventHandler(this.Jakarta_Click);
+            this.Lagos.Click += new System.EventHandler(this.City_Click);
             // 
             // Kinshasi
             // 
@@ -299,7 +299,7 @@
             this.Kinshasi.TabIndex = 21;
             this.Kinshasi.Text = " Kinshasi";
             this.Kinshasi.UseVisualStyleBackColor = true;
-            this.Kinshasi.Click += new System.EventHandler(this.Jakarta_Click);
+            this.Kinshasi.Click += new System.EventHandler(this.City_Click);
             // 
             // Johannesburg
             // 
@@ -309,7 +309,7 @@
             this.Johannesburg.TabIndex = 22;
             this.Johannesburg.Text = " Johannesburg";
             this.Johannesburg.UseVisualStyleBackColor = true;
-            this.Johannesburg.Click += new System.EventHandler(this.Johannesburg_Click);
+            this.Johannesburg.Click += new System.EventHandler(this.City_Click);
             // 
             // Khartoum
             // 
@@ -320,7 +320,7 @@
             this.Khartoum.TabIndex = 23;
             this.Khartoum.Text = " Khartoum";
             this.Khartoum.UseVisualStyleBackColor = false;
-            this.Khartoum.Click += new System.EventHandler(this.Khartoum_Click);
+            this.Khartoum.Click += new System.EventHandler(this.City_Click);
             // 
             // Milan
             // 
@@ -331,7 +331,7 @@
             this.Milan.TabIndex = 24;
             this.Milan.Text = " Milan";
             this.Milan.UseVisualStyleBackColor = false;
-            this.Milan.Click += new System.EventHandler(this.Milan_Click);
+            this.Milan.Click += new System.EventHandler(this.City_Click);
             // 
             // Algiers
             // 
@@ -342,7 +342,7 @@
             this.Algiers.TabIndex = 25;
             this.Algiers.Text = " Algiers";
             this.Algiers.UseVisualStyleBackColor = false;
-            this.Algiers.Click += new System.EventHandler(this.Algiers_Click);
+            this.Algiers.Click += new System.EventHandler(this.City_Click);
             // 
             // Cairo
             // 
@@ -353,7 +353,7 @@
             this.Cairo.TabIndex = 26;
             this.Cairo.Text = " Cairo";
             this.Cairo.UseVisualStyleBackColor = false;
-            this.Cairo.Click += new System.EventHandler(this.Cairo_Click);
+            this.Cairo.Click += new System.EventHandler(this.City_Click);
             // 
             // Istanbul
             // 
@@ -364,7 +364,7 @@
             this.Istanbul.TabIndex = 27;
             this.Istanbul.Text = " Istanbul";
             this.Istanbul.UseVisualStyleBackColor = false;
-            this.Istanbul.Click += new System.EventHandler(this.Istanbul_Click);
+            this.Istanbul.Click += new System.EventHandler(this.City_Click);
             // 
             // Moscow
             // 
@@ -375,7 +375,7 @@
             this.Moscow.TabIndex = 28;
             this.Moscow.Text = " Moscow";
             this.Moscow.UseVisualStyleBackColor = false;
-            this.Moscow.Click += new System.EventHandler(this.Moscow_Click);
+            this.Moscow.Click += new System.EventHandler(this.City_Click);
             // 
             // Baghdad
             // 
@@ -386,7 +386,7 @@
             this.Baghdad.TabIndex = 29;
             this.Baghdad.Text = " Baghdad";
             this.Baghdad.UseVisualStyleBackColor = false;
-            this.Baghdad.Click += new System.EventHandler(this.Baghdad_Click);
+            this.Baghdad.Click += new System.EventHandler(this.City_Click);
             // 
             // Riyadh
             // 
@@ -397,7 +397,7 @@
             this.Riyadh.TabIndex = 30;
             this.Riyadh.Text = " Riyadh";
             this.Riyadh.UseVisualStyleBackColor = false;
-            this.Riyadh.Click += new System.EventHandler(this.Riyadh_Click);
+            this.Riyadh.Click += new System.EventHandler(this.City_Click);
             // 
             // Tehran
             // 
@@ -408,7 +408,7 @@
             this.Tehran.TabIndex = 31;
             this.Tehran.Text = " Tehran";
             this.Tehran.UseVisualStyleBackColor = false;
-            this.Tehran.Click += new System.EventHandler(this.Tehran_Click);
+            this.Tehran.Click += new System.EventHandler(this.City_Click);
             // 
             // Karachi
             // 
@@ -419,7 +419,7 @@
             this.Karachi.TabIndex = 32;
             this.Karachi.Text = " Karachi";
             this.Karachi.UseVisualStyleBackColor = false;
-            this.Karachi.Click += new System.EventHandler(this.Karachi_Click);
+            this.Karachi.Click += new System.EventHandler(this.City_Click);
             // 
             // Mumbai
             // 
@@ -430,7 +430,7 @@
             this.Mumbai.TabIndex = 33;
             this.Mumbai.Text = " Mumbai";
             this.Mumbai.UseVisualStyleBackColor = false;
-            this.Mumbai.Click += new System.EventHandler(this.Mumbai_Click);
+            this.Mumbai.Click += new System.EventHandler(this.City_Click);
             // 
             // Delhi
             // 
@@ -441,7 +441,7 @@
             this.Delhi.TabIndex = 34;
             this.Delhi.Text = " Delhi";
             this.Delhi.UseVisualStyleBackColor = false;
-            this.Delhi.Click += new System.EventHandler(this.Delhi_Click);
+            this.Delhi.Click += new System.EventHandler(this.City_Click);
             // 
             // Chennai
             // 
@@ -452,7 +452,7 @@
             this.Chennai.TabIndex = 35;
             this.Chennai.Text = " Chennai";
             this.Chennai.UseVisualStyleBackColor = false;
-            this.Chennai.Click += new System.EventHandler(this.Chennai_Click);
+            this.Chennai.Click += new System.EventHandler(this.City_Click);
             // 
             // Kolkata
             // 
@@ -463,7 +463,7 @@
             this.Kolkata.TabIndex = 36;
             this.Kolkata.Text = " Kolkata";
             this.Kolkata.UseVisualStyleBackColor = false;
-            this.Kolkata.Click += new System.EventHandler(this.Kolkata_Click);
+            this.Kolkata.Click += new System.EventHandler(this.City_Click);
             // 
             // Beijing
             // 
@@ -474,7 +474,7 @@
             this.Beijing.TabIndex = 37;
             this.Beijing.Text = " Beijing";
             this.Beijing.UseVisualStyleBackColor = false;
-            this.Beijing.Click += new System.EventHandler(this.Beijing_Click);
+            this.Beijing.Click += new System.EventHandler(this.City_Click);
             // 
             // Seoul
             // 
@@ -485,7 +485,7 @@
             this.Seoul.TabIndex = 38;
             this.Seoul.Text = " Seoul";
             this.Seoul.UseVisualStyleBackColor = false;
-            this.Seoul.Click += new System.EventHandler(this.Seoul_Click);
+            this.Seoul.Click += new System.EventHandler(this.City_Click);
             // 
             // Shanghai
             // 
@@ -496,7 +496,7 @@
             this.Shanghai.TabIndex = 39;
             this.Shanghai.Text = " Shanghai";
             this.Shanghai.UseVisualStyleBackColor = false;
-            this.Shanghai.Click += new System.EventHandler(this.Shanghai_Click);
+            this.Shanghai.Click += new System.EventHandler(this.City_Click);
             // 
             // Bangkok
             // 
@@ -507,7 +507,7 @@
             this.Bangkok.TabIndex = 40;
             this.Bangkok.Text = " Bangkok";
             this.Bangkok.UseVisualStyleBackColor = false;
-            this.Bangkok.Click += new System.EventHandler(this.Bangkok_Click);
+            this.Bangkok.Click += new System.EventHandler(this.City_Click);
             // 
             // Jakarta
             // 
@@ -518,7 +518,7 @@
             this.Jakarta.TabIndex = 41;
             this.Jakarta.Text = " Jakarta";
             this.Jakarta.UseVisualStyleBackColor = false;
-            this.Jakarta.Click += new System.EventHandler(this.Jakarta_Click);
+            this.Jakarta.Click += new System.EventHandler(this.City_Click);
             // 
             // HoChiMinhCity
             // 
@@ -529,7 +529,7 @@
             this.HoChiMinhCity.TabIndex = 42;
             this.HoChiMinhCity.Text = " Ho Chi Minh City";
             this.HoChiMinhCity.UseVisualStyleBackColor = false;
-            this.HoChiMinhCity.Click += new System.EventHandler(this.HoChiMinhCity_Click);
+            this.HoChiMinhCity.Click += new System.EventHandler(this.City_Click);
             // 
             // HongKong
             // 
@@ -540,7 +540,7 @@
             this.HongKong.TabIndex = 43;
             this.HongKong.Text = " Hong Kong";
             this.HongKong.UseVisualStyleBackColor = false;
-            this.HongKong.Click += new System.EventHandler(this.HongKong_Click);
+            this.HongKong.Click += new System.EventHandler(this.City_Click);
             // 
             // Taipei
             // 
@@ -551,7 +551,7 @@
             this.Taipei.TabIndex = 44;
             this.Taipei.Text = " Taipei";
             this.Taipei.UseVisualStyleBackColor = false;
-            this.Taipei.Click += new System.EventHandler(this.Taipei_Click);
+            this.Taipei.Click += new System.EventHandler(this.City_Click);
             // 
             // Tokyo
             // 
@@ -562,7 +562,7 @@
             this.Tokyo.TabIndex = 45;
             this.Tokyo.Text = " Tokyo";
             this.Tokyo.UseVisualStyleBackColor = false;
-            this.Tokyo.Click += new System.EventHandler(this.Tokyo_Click);
+            this.Tokyo.Click += new System.EventHandler(this.City_Click);
             // 
             // Osaka
             // 
@@ -573,7 +573,7 @@
             this.Osaka.TabIndex = 46;
             this.Osaka.Text = " Osaka";
             this.Osaka.UseVisualStyleBackColor = false;
-            this.Osaka.Click += new System.EventHandler(this.Osaka_Click);
+            this.Osaka.Click += new System.EventHandler(this.City_Click);
             // 
             // Manila
             // 
@@ -584,7 +584,7 @@
             this.Manila.TabIndex = 47;
             this.Manila.Text = " Manila";
             this.Manila.UseVisualStyleBackColor = false;
-            this.Manila.Click += new System.EventHandler(this.Manila_Click);
+            this.Manila.Click += new System.EventHandler(this.City_Click);
             // 
             // Sydney
             // 
@@ -595,7 +595,7 @@
             this.Sydney.TabIndex = 48;
             this.Sydney.Text = " Sydney";
             this.Sydney.UseVisualStyleBackColor = false;
-            this.Sydney.Click += new System.EventHandler(this.Sydney_Click);
+            this.Sydney.Click += new System.EventHandler(this.City_Click);
             // 
             // button49
             // 
