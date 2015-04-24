@@ -9,7 +9,7 @@ namespace SQADemicApp
         GameBoardModels boardModel;
         Form2 form2 = new Form2();
         Form3 form3 = new Form3();
-        public enum STATE {Initializing, Move, Draw, Cure}
+        public enum STATE { Initializing, Move, Draw, Cure }
         public static STATE CurrentState;
         public Form1()
         {
@@ -28,7 +28,7 @@ namespace SQADemicApp
             setupForm.Show();
 
             boardModel = new GameBoardModels(playerRoles);
-            
+
             InitializeComponent();
             form2.Show();
             form3.Show();
@@ -48,7 +48,7 @@ namespace SQADemicApp
         private void Atlanta_Click(object sender, EventArgs e)
         {
             Button pressed = sender as Button;
-            switch(CurrentState)
+            switch (CurrentState)
             {
                 case STATE.Initializing:
                     break;
@@ -57,7 +57,25 @@ namespace SQADemicApp
                 case STATE.Cure:
                     break;
                 case STATE.Move:
-                    PlayerActionsBL.moveplayer(GameBoardModels.players[boardModel.CurrentPlayerIndex], Create.cityDictionary[pressed.Text.Substring(1)]);
+                    if (PlayerActionsBL.moveplayer(GameBoardModels.players[boardModel.CurrentPlayerIndex], Create.cityDictionary[pressed.Text.Substring(1)]))
+                    {
+                        switch (boardModel.CurrentPlayerIndex)
+                        {
+                            case 3:
+                                form2.Player4.Text = "Player 4\n" + pressed.Text.Substring(1);
+                                break;
+                            case 2:
+                                form2.Player3.Text = "Player 3\n" + pressed.Text.Substring(1);
+                                break;
+                            case 1:
+                                form2.Player2.Text = "Player 2\n" + pressed.Text.Substring(1);
+                                break;
+                            default:
+                                form2.Player1.Text = "Player 1\n" + pressed.Text.Substring(1);
+                                break;
+                        }
+
+                    }
                     break;
             }
         }
@@ -74,7 +92,25 @@ namespace SQADemicApp
                 case STATE.Cure:
                     break;
                 case STATE.Move:
-                    PlayerActionsBL.moveplayer(GameBoardModels.players[boardModel.CurrentPlayerIndex], Create.cityDictionary[pressed.Text.Substring(1)]);
+                    if (PlayerActionsBL.moveplayer(GameBoardModels.players[boardModel.CurrentPlayerIndex], Create.cityDictionary[pressed.Text.Substring(1)]))
+                    {
+                        switch (boardModel.CurrentPlayerIndex)
+                        {
+                            case 3:
+                                form2.Player4.Text = "Player 4\n" + pressed.Text.Substring(1);
+                                break;
+                            case 2:
+                                form2.Player3.Text = "Player 3\n" + pressed.Text.Substring(1);
+                                break;
+                            case 1:
+                                form2.Player2.Text = "Player 2\n" + pressed.Text.Substring(1);
+                                break;
+                            default:
+                                form2.Player1.Text = "Player 1\n" + pressed.Text.Substring(1);
+                                break;
+                        }
+
+                    }
                     break;
             }
         }

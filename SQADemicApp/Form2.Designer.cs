@@ -41,7 +41,7 @@
             this.Player1.Name = "Player1";
             this.Player1.Size = new System.Drawing.Size(180, 93);
             this.Player1.TabIndex = 0;
-            this.Player1.Text = "Player 1";
+            this.Player1.Text = "Player 1\nAtlanta";
             this.Player1.UseVisualStyleBackColor = false;
             // 
             // Player2
@@ -50,7 +50,7 @@
             this.Player2.Name = "Player2";
             this.Player2.Size = new System.Drawing.Size(180, 93);
             this.Player2.TabIndex = 1;
-            this.Player2.Text = "Player 2";
+            this.Player2.Text = "Player 2\nAtlanta";
             this.Player2.UseVisualStyleBackColor = true;
             // 
             // Player3
@@ -59,7 +59,7 @@
             this.Player3.Name = "Player3";
             this.Player3.Size = new System.Drawing.Size(180, 93);
             this.Player3.TabIndex = 2;
-            this.Player3.Text = "Player 3";
+            this.Player3.Text = "Player 3\nAtlanta";
             this.Player3.UseVisualStyleBackColor = true;
             // 
             // Player4
@@ -68,7 +68,7 @@
             this.Player4.Name = "Player4";
             this.Player4.Size = new System.Drawing.Size(180, 93);
             this.Player4.TabIndex = 3;
-            this.Player4.Text = "Player 4";
+            this.Player4.Text = "Player 4\nAtlanta";
             this.Player4.UseVisualStyleBackColor = true;
             // 
             // Form2
@@ -88,9 +88,9 @@
 
         #endregion
 
-        private System.Windows.Forms.Button Player1;
-        private System.Windows.Forms.Button Player2;
-        private System.Windows.Forms.Button Player3;
-        private System.Windows.Forms.Button Player4;
+        public System.Windows.Forms.Button Player1;
+        public System.Windows.Forms.Button Player2;
+        public System.Windows.Forms.Button Player3;
+        public System.Windows.Forms.Button Player4;
     }
 }

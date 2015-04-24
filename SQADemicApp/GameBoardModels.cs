@@ -22,6 +22,7 @@ namespace SQADemicApp
 
         public GameBoardModels(string[] playersroles)
         {
+            Create c = new Create();
             outbreakMarker = 0;
 
             players = new Player[playersroles.Length];
@@ -61,7 +62,6 @@ namespace SQADemicApp
             CURESTATUS.BlackCure = CURESTATUS.BlueCure = CURESTATUS.RedCure = CURESTATUS.YellowCure = Cures.CURESTATE.NotCured;            
             playerDeck = createHelper.makePlayerDeck();
 
-            Create c = new Create();
             //build players
 
 

@@ -14,6 +14,7 @@ namespace SQADemicApp
         {
             this.role = role;
             List<Card> hand = new List<Card>();
+            currentCity = Create.cityDictionary["Atlanta"];
         }
         public void move(City destination)
         {

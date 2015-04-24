@@ -92,7 +92,7 @@ namespace SQADemicApp.BL
         public static bool moveplayer(Player player, City city)
         {
             player.currentCity = city;
-            return false;
+            return true;
         }
 
 
