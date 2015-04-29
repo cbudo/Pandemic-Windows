@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SQADemicApp.BL;
 using SQADemicApp;
@@ -195,14 +193,26 @@ namespace SQADemicAppTest
         [TestMethod]
         public void TestMoverPlayerDirectFlight()
         {
-
             scientist.currentCity = bangkok;
-            hand = new List<Card> { airlift, chicagoCard, chennai };
+            hand = new List<Card> { airlift, chicagoCard, chennai, atlanta };
             pile = new List<Card>();
             scientist.hand = hand;
             PlayerActionsBL.moveplayer(scientist, chicagoCity);
-            List<Card> correctHand = new List<Card> { airlift, chennai };
+            List<Card> correctHand = new List<Card> { airlift, chennai, atlanta };
             Assert.AreEqual(scientist.currentCity.Name, chicagoCity.Name);
+            CollectionAssert.AreEqual(correctHand, hand);
+        }
+
+        [TestMethod]
+        public void TestMoverPlayerCharterFlight()
+        {
+            scientist.currentCity = chicagoCity;
+            hand = new List<Card> { airlift, chicagoCard, chennai };
+            pile = new List<Card>();
+            scientist.hand = hand;
+            PlayerActionsBL.moveplayer(scientist, bangkok);
+            List<Card> correctHand = new List<Card> { airlift, chennai };
+            Assert.AreEqual(scientist.currentCity.Name, bangkok.Name);
             CollectionAssert.AreEqual(correctHand, hand);
         }
 
