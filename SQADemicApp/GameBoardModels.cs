@@ -70,7 +70,7 @@ namespace SQADemicApp
         }
         public void incTurnCount()
         {
-            
+            currentPlayerTurnCounter++;
         }
         public Card drawCard()
         {
