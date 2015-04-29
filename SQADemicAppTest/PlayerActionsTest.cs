@@ -175,7 +175,22 @@ namespace SQADemicAppTest
             kolkata.researchStation = false;
             bangkok.researchStation = false;
             List<String> expected = new List<String>{"Bangkok"};
-            CollectionAssert.AreEqual(result,expected);
+            CollectionAssert.AreEqual(expected , result);
+        }
+
+        [TestMethod]
+        public void TestShuttleFlightMultipleOptions()
+        {
+            scientist.currentCity = chicagoCity;
+            chicagoCity.researchStation = true;
+            kolkata.researchStation = true;
+            bangkok.researchStation = true;
+            List<String> result = PlayerActionsBL.ShuttleFlightOption(kolkata);
+            chicagoCity.researchStation = false;
+            kolkata.researchStation = false;
+            bangkok.researchStation = false;
+            List<String> expected = new List<String> { "Kolkata", "Bangkok" };
+            CollectionAssert.AreEqual(expected, result);
         }
     }
 }
