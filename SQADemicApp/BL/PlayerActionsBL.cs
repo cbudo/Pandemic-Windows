@@ -67,14 +67,7 @@ namespace SQADemicApp.BL
                     options.Add(city.Name);
                 }
             }
-            if (options.Count == 0)
-            {
-                return new List<string>();
-            }
-            else
-            {
-                return options;
-            }
+            return options;
         }
         #region not implemented
         /**
