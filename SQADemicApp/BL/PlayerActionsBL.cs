@@ -54,14 +54,12 @@ namespace SQADemicApp.BL
         //Determines if the player can use a Shuttle Flight and returns list of possibilities
         public static List<String> ShuttleFlightOption(City currentCity)
         {
-            //need list of cities that have research centers
             if (!currentCity.researchStation)
             {
                 return null;
             }
             List<String> options = new List<String>();
             List<City> stations = bl.getCitiesWithResearchStations();
-
             foreach (var city in stations)
             {
                 if (city.Name != currentCity.Name)
