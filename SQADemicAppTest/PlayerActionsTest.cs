@@ -18,6 +18,7 @@ namespace SQADemicAppTest
         Card newYork, chennai, atlanta, chicagoCard, airlift;
         Player dispatcher, medic, opExpert, researcher, scientist;
 
+
         [TestInitialize]
         public void SetupPlayer()
         {
@@ -161,7 +162,7 @@ namespace SQADemicAppTest
             kolkata.researchStation = true;
             List<String> result = PlayerActionsBL.ShuttleFlightOption(kolkata);
             kolkata.researchStation = false;
-            Assert.AreEqual(result , null);
+            Assert.AreEqual(null , result);
         }
 
         [TestMethod]
@@ -174,7 +175,7 @@ namespace SQADemicAppTest
             kolkata.researchStation = false;
             bangkok.researchStation = false;
             List<String> expected = new List<String>{"Bangkok"};
-            Assert.AreEqual(result,expected);
+            CollectionAssert.AreEqual(result,expected);
         }
     }
 }
