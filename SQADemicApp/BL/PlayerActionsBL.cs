@@ -8,6 +8,9 @@ namespace SQADemicApp.BL
 {
     public class PlayerActionsBL
     {
+
+        static CityBL bl = new CityBL();
+
         /// <summary>
         /// Finds the possible cities a player can move to
         /// </summary>
@@ -26,7 +29,7 @@ namespace SQADemicApp.BL
         /// <returns></returns>
         public static List<String> DirectFlightOption(List<Card> hand, City currentCity)
         {
-            var reducedHand = hand.Where(c => !c.CityName.Equals(currentCity.Name) && c.CardType == Card.CARDTYPE.City );
+            var reducedHand = hand.Where(c => !c.CityName.Equals(currentCity.Name) && c.CardType == Card.CARDTYPE.City);
 
             var returnlist = new List<String>();
             foreach (Card card in reducedHand)
@@ -47,14 +50,27 @@ namespace SQADemicApp.BL
         {
             return (hand.Where(c => c.CityName == currentCity.Name).Count() == 1);
         }
+
+        //Determines if the player can use a Shuttle Flight and returns list of possibilities
+        public static List<String> ShuttleFlightOption(City currentCity)
+        {
+            if (!currentCity.researchStation)
+            {
+                return new List<string>();
+            }
+            List<String> options = new List<String>();
+            List<City> stations = bl.getCitiesWithResearchStations();
+            foreach (var city in stations)
+            {
+                if (city.Name != currentCity.Name)
+                {
+                    options.Add(city.Name);
+                }
+            }
+            return options;
+        }
         #region not implemented
         /**
-        public static bool ShuttleFlightOption(List<Card> hand, City currentCity)
-        {
-            //need list of cities that have research centers
-            return false;
-        }
-
         public static bool BuildAResearchStationOption(List<Card> hand, City currentCity, ROLE role)
         {
             //need list of cities with reaserch centers for:
@@ -81,8 +97,8 @@ namespace SQADemicApp.BL
             //need all of the players
             return false;
         }**/
-#endregion
-        
+        #endregion
+
         /// <summary>
         /// Moves the player to the given city, updating the hand if needed
         /// </summary>

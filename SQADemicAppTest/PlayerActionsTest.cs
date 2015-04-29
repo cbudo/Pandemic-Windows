@@ -18,6 +18,7 @@ namespace SQADemicAppTest
         Card newYork, chennai, atlanta, chicagoCard, airlift;
         Player dispatcher, medic, opExpert, researcher, scientist;
 
+
         [TestInitialize]
         public void SetupPlayer()
         {
@@ -152,6 +153,45 @@ namespace SQADemicAppTest
             hand = new List<Card> { airlift, chennai };
             Assert.AreEqual(scientist.currentCity.Name, chicagoCity.Name);
 
+        }
+
+        [TestMethod]
+        public void TestShuttleFlightNoOptions()
+        {
+            scientist.currentCity = kolkata;
+            kolkata.researchStation = true;
+            List<String> result = PlayerActionsBL.ShuttleFlightOption(kolkata);
+            kolkata.researchStation = false;
+            CollectionAssert.AreEqual(new List<string>(), result);
+        }
+
+        [TestMethod]
+        public void TestShuttleFlightOneOption()
+        {
+            scientist.currentCity = kolkata;
+            kolkata.researchStation = true;
+            bangkok.researchStation = true;
+            List<String> result = PlayerActionsBL.ShuttleFlightOption(kolkata);
+            kolkata.researchStation = false;
+            bangkok.researchStation = false;
+            List<String> expected = new List<String>{"Bangkok"};
+            CollectionAssert.AreEqual(expected , result);
+        }
+
+        [TestMethod]
+        public void TestShuttleFlightMultipleOptions()
+        {
+            scientist.currentCity = chicagoCity;
+            chicagoCity.Name = "Chicago";
+            chicagoCity.researchStation = true;
+            kolkata.researchStation = true;
+            bangkok.researchStation = true;
+            List<String> result = PlayerActionsBL.ShuttleFlightOption(chicagoCity);
+            chicagoCity.researchStation = false;
+            kolkata.researchStation = false;
+            bangkok.researchStation = false;
+            List<String> expected = new List<String> { "Kolkata" , "Bangkok"};
+            CollectionAssert.AreEqual(expected, result);
         }
     }
 }
