@@ -107,13 +107,16 @@ namespace SQADemicApp.BL
         /// <returns>true if move worked and false it failed</returns>
         public static bool moveplayer(Player player, City city)
         {
-            player.currentCity = city;
-            if(!city.Name.Equals("Chicago"))
+            if (DriveOptions(player.currentCity).Any(c => c.Name.Equals(city.Name))){
+                //Do Nothing
+            }
+            else{
                 player.hand.RemoveAll(x => x.CityName.Equals(city.Name));
+            }
+            player.currentCity = city;
             return true;
         }
-
-
-
     }
+    //                if (DirectFlightOption(player.hand, player.currentCity).Contains(city.Name))
+    //                return true;
 }
