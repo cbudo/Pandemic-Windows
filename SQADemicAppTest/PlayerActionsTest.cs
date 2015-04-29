@@ -181,13 +181,15 @@ namespace SQADemicAppTest
         }
 
         [TestMethod]
-        public void TestMoverPlayerAdjacentCityChicago()
+        public void TestMoverPlayerAdjacentCityChicagoWithCard()
         {
             scientist.currentCity = sanFran;
             hand = new List<Card> { airlift, chicagoCard, chennai };
+            List<Card> correctHand =new List<Card> { airlift, chicagoCard, chennai };
             scientist.hand = hand;
             PlayerActionsBL.moveplayer(scientist, chicagoCity);
-            Assert.AreEqual(scientist.currentCity.Name, chicagoCity.Name)
+            Assert.AreEqual(scientist.currentCity.Name, chicagoCity.Name);
+            CollectionAssert.AreEqual(correctHand, hand);
         }
 
         [TestMethod]
