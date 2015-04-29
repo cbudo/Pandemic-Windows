@@ -667,7 +667,6 @@
             this.Controls.Add(this.SanFrancisco);
             this.Name = "Form1";
             this.Text = "SQAdemic";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
 
         }

@@ -40,11 +40,6 @@ namespace SQADemicApp
             form3.listBox1.Items.Add(drawnCard.CityName);
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void City_Click(object sender, EventArgs e)
         {
             Button pressed = sender as Button;
@@ -74,7 +69,7 @@ namespace SQADemicApp
                                 form2.Player1.Text = "Player 1\n" + pressed.Text.Substring(1);
                                 break;
                         }
-
+                        boardModel.incTurnCount();
                     }
                     break;
             }

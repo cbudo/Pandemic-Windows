@@ -18,6 +18,7 @@ namespace SQADemicApp
         public static int outbreakMarker = 0;
         public int InfectionRateCounter = 0;
         public static Player[] players;
+        public int currentPlayerTurnCounter = 0;
         #endregion
 
         public GameBoardModels(string[] playersroles)
@@ -26,6 +27,7 @@ namespace SQADemicApp
             outbreakMarker = 0;
 
             players = new Player[playersroles.Length];
+            currentPlayerTurnCounter = 1;
             int i = 0;   
             foreach(var role in playersroles)
             {
@@ -66,7 +68,10 @@ namespace SQADemicApp
 
 
         }
-
+        public void incTurnCount()
+        {
+            
+        }
         public Card drawCard()
         {
             playerDeckPoint++;
@@ -78,11 +83,7 @@ namespace SQADemicApp
         
         public void NextPlayer()
         {
-            CurrentPlayerIndex++;
-            if(CurrentPlayerIndex == players.Length)
-            {
-                CurrentPlayerIndex = 0;
-            }
+            
         }
 
         #region Storage Classes

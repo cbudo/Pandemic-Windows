@@ -12,6 +12,7 @@ namespace SQADemicAppTest
         List<Card> returnedList = new List<Card>();
         List<Card> cardList = new List<Card>();
         SQADemicApp.Create createTestClass = new SQADemicApp.Create();
+        #region cardList
         [TestMethod]
         public void TestThatCardListCorrectOneItem()
         {
@@ -54,6 +55,8 @@ namespace SQADemicAppTest
             returnedList = createTestClass.makeCardList(new System.IO.StringReader("test; blue\ntest2; blue\ntest3; blue"));
             CollectionAssert.AreEqual(cardList, returnedList);
         }
+#endregion
+        #region testColor
         [TestMethod]
         public void TestThatGetsCorrectColorRed()
         {
@@ -80,5 +83,19 @@ namespace SQADemicAppTest
             Assert.AreEqual(COLOR.black, HelperBL.getColor("black"));
             Assert.AreEqual(COLOR.yellow, HelperBL.getColor("yellow"));
         }
+        #endregion
+        #region incrementPlayerTurn
+        [TestMethod]
+        public void TestThatPlayerTurnIncremented()
+        {
+            string[] players = {"Dispatcher","Scientist"};
+            GameBoardModels model = new GameBoardModels(players);
+            model.incTurnCount();
+            Assert.AreEqual(2, model.currentPlayerTurnCounter);
+        }
+        #endregion
+        #region nextPlayer
+
+        #endregion
     }
 }
