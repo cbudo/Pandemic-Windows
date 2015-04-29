@@ -162,7 +162,7 @@ namespace SQADemicAppTest
             kolkata.researchStation = true;
             List<String> result = PlayerActionsBL.ShuttleFlightOption(kolkata);
             kolkata.researchStation = false;
-            Assert.AreEqual(null , result);
+            CollectionAssert.AreEqual(new List<string>(), result);
         }
 
         [TestMethod]

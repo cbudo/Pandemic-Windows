@@ -56,7 +56,7 @@ namespace SQADemicApp.BL
         {
             if (!currentCity.researchStation)
             {
-                return null;
+                return new List<string>();
             }
             List<String> options = new List<String>();
             List<City> stations = bl.getCitiesWithResearchStations();
@@ -69,7 +69,7 @@ namespace SQADemicApp.BL
             }
             if (options.Count == 0)
             {
-                return null;
+                return new List<string>();
             }
             else
             {
