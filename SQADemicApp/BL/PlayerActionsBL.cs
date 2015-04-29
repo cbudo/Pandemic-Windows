@@ -110,16 +110,16 @@ namespace SQADemicApp.BL
             if (DriveOptions(player.currentCity).Any(c => c.Name.Equals(city.Name))){
                 //Do Nothing
             }
-            else if (DirectFlightOption(player.hand, player.currentCity).Any(c => c.Equals(city.Name)))
+            else if(ShuttleFlightOption(player.currentCity).Contains(city.Name)){
+                //Do Nothing
+            }
+            else if (DirectFlightOption(player.hand, player.currentCity).Contains(city.Name))
             {
                 player.hand.RemoveAll(x => x.CityName.Equals(city.Name));
             }
             else if (CharterFlightOption(player.hand, player.currentCity))
             {
                 player.hand.RemoveAll(x => x.CityName.Equals(player.currentCity.Name));
-            }
-            else if(false) {
-
             }
             else
             {
