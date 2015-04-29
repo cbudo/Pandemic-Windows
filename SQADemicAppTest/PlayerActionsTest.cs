@@ -217,6 +217,21 @@ namespace SQADemicAppTest
         }
 
         [TestMethod]
+        public void TestMoverPlayerShuttleFlightPreemptCard()
+        {
+            chicagoCity.researchStation = true;
+            bangkok.researchStation = true;
+            scientist.currentCity = chicagoCity;
+            hand = new List<Card> { airlift, atlanta, chennai, chicagoCard };
+            pile = new List<Card>();
+            scientist.hand = hand;
+            Assert.AreEqual(true, PlayerActionsBL.moveplayer(scientist, bangkok));
+            List<Card> correctHand = new List<Card> { airlift, atlanta, chennai, chicagoCard };
+            Assert.AreEqual(scientist.currentCity.Name, bangkok.Name);
+            CollectionAssert.AreEqual(correctHand, hand);
+        }
+
+        [TestMethod]
         public void TestMoverPlayerInvalid()
         {
             scientist.currentCity = chicagoCity;

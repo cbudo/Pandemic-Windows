@@ -118,6 +118,9 @@ namespace SQADemicApp.BL
             {
                 player.hand.RemoveAll(x => x.CityName.Equals(player.currentCity.Name));
             }
+            else if(false) {
+
+            }
             else
             {
                 return false;
