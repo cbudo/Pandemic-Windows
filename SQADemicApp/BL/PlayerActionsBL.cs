@@ -129,6 +129,4 @@ namespace SQADemicApp.BL
             return true;
         }
     }
-    //                if (DirectFlightOption(player.hand, player.currentCity).Contains(city.Name))
-    //                return true;
 }

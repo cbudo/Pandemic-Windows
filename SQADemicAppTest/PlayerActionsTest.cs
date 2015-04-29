@@ -245,10 +245,6 @@ namespace SQADemicAppTest
         }
 
         #endregion
-
-
-
-
     }
     /** PRINTING STUFF
     //Print Statment
