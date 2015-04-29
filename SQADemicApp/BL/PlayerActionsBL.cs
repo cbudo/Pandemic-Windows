@@ -108,7 +108,8 @@ namespace SQADemicApp.BL
         public static bool moveplayer(Player player, City city)
         {
             player.currentCity = city;
-            player.hand.RemoveAll(x => x.CityName.Equals(city.Name));
+            if(!city.Name.Equals("Chicago"))
+                player.hand.RemoveAll(x => x.CityName.Equals(city.Name));
             return true;
         }
 
