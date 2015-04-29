@@ -229,6 +229,8 @@ namespace SQADemicAppTest
             List<Card> correctHand = new List<Card> { airlift, atlanta, chennai, chicagoCard };
             Assert.AreEqual(scientist.currentCity.Name, bangkok.Name);
             CollectionAssert.AreEqual(correctHand, hand);
+            chicagoCity.researchStation = false;
+            bangkok.researchStation = false;
         }
 
         [TestMethod]
