@@ -153,5 +153,15 @@ namespace SQADemicAppTest
             Assert.AreEqual(scientist.currentCity.Name, chicagoCity.Name);
 
         }
+
+        [TestMethod]
+        public void TestShuttleFlightNoOptions()
+        {
+            scientist.currentCity = kolkata;
+            kolkata.researchStation = true;
+            List<String> result = PlayerActionsBL.ShuttleFlightOption(kolkata);
+            kolkata.researchStation = false;
+            Assert.AreEqual(result , null);
+        }
     }
 }

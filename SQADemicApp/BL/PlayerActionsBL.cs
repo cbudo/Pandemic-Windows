@@ -47,14 +47,15 @@ namespace SQADemicApp.BL
         {
             return (hand.Where(c => c.CityName == currentCity.Name).Count() == 1);
         }
-        #region not implemented
-        /**
-        public static bool ShuttleFlightOption(List<Card> hand, City currentCity)
+        
+        //Determines if the player can use a Shuttle Flight and returns list of possibilities
+        public static List<String> ShuttleFlightOption(City currentCity)
         {
             //need list of cities that have research centers
-            return false;
+            return null;
         }
-
+        #region not implemented
+        /**
         public static bool BuildAResearchStationOption(List<Card> hand, City currentCity, ROLE role)
         {
             //need list of cities with reaserch centers for:
