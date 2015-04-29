@@ -216,6 +216,19 @@ namespace SQADemicAppTest
             CollectionAssert.AreEqual(correctHand, hand);
         }
 
+        [TestMethod]
+        public void TestMoverPlayerInvalid()
+        {
+            scientist.currentCity = chicagoCity;
+            hand = new List<Card> { airlift, atlanta, chennai };
+            pile = new List<Card>();
+            scientist.hand = hand;
+            Assert.Equals(false,PlayerActionsBL.moveplayer(scientist, bangkok));
+            List<Card> correctHand = new List<Card> { airlift, atlanta, chennai };
+            Assert.AreEqual(scientist.currentCity.Name, chicagoCity.Name);
+            CollectionAssert.AreEqual(correctHand, hand);
+        }
+
         #endregion
 
 
