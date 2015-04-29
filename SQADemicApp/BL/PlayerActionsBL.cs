@@ -113,13 +113,15 @@ namespace SQADemicApp.BL
             else if (DirectFlightOption(player.hand, player.currentCity).Any(c => c.Equals(city.Name)))
             {
                 player.hand.RemoveAll(x => x.CityName.Equals(city.Name));
-                Console.WriteLine("hit");
             }
             else if (CharterFlightOption(player.hand, player.currentCity))
             {
                 player.hand.RemoveAll(x => x.CityName.Equals(player.currentCity.Name));
             }
-            Console.WriteLine("hit");
+            else
+            {
+                return false;
+            }
             player.currentCity = city;
             return true;
         }
