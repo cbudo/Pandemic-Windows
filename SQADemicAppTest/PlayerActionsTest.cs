@@ -325,7 +325,7 @@ namespace SQADemicAppTest
 
         #endregion
 
-        #region
+        #region Cure
         //To test:
         //Not enough cards
         //already cured
@@ -373,6 +373,20 @@ namespace SQADemicAppTest
             opExpert.currentCity = chicagoCity;
             chicagoCity.researchStation = true;
             Assert.AreEqual(false, PlayerActionsBL.Cure(opExpert, cardsToSpend, COLOR.blue));
+            CollectionAssert.AreEqual(correctHand, hand);
+            chicagoCity.researchStation = false;
+        }
+
+        [TestMethod]
+        public void TestInvalidCards()
+        {
+            hand = new List<Card> { chennai, newYork, atlanta, chicagoCard, london, paris, airlift };
+            opExpert.hand = hand;
+            List<String> cardsToSpend = new List<String> { chennai.CityName, atlanta.CityName, chicagoCard.CityName, london.CityName, paris.CityName };
+            List<Card> correctHand = new List<Card> { chennai, newYork, atlanta, chicagoCard, london, paris, airlift };
+            opExpert.currentCity = chicagoCity;
+            chicagoCity.researchStation = true;
+            Assert.AreEqual(true, PlayerActionsBL.Cure(opExpert, cardsToSpend, COLOR.blue));
             CollectionAssert.AreEqual(correctHand, hand);
             chicagoCity.researchStation = false;
         }
