@@ -157,7 +157,8 @@ namespace SQADemicApp.BL
             var cards = player.hand.Where(x => x.CityColor == color && cardsToSpend.Contains(x.CityName));
             if (player.role == ROLE.Scientist)
             {
-                //Do Nothing
+                if (cards.Count() != 4)
+                    return false;
             }
             else if (cards.Count() != 5)
                 return false;
