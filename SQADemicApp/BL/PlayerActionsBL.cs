@@ -127,8 +127,12 @@ namespace SQADemicApp.BL
         /// <returns>If the research station was build></returns>
         public static bool BuildAResearchStationOption(Player player)
         {
-            player.hand.RemoveAll(x => x.CityName.Equals(player.currentCity.Name));
-            return true;
+            if (!CityBL.getCitiesWithResearchStations().Contains(player.currentCity))
+            {
+                player.hand.RemoveAll(x => x.CityName.Equals(player.currentCity.Name));
+                return true;
+            }
+            return false;
         }
     }
 }

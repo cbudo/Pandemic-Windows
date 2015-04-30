@@ -277,11 +277,13 @@ namespace SQADemicAppTest
         public void buildStationFailExisting()
         {
             scientist.currentCity = chicagoCity;
+            chicagoCity.researchStation = true;
             hand = new List<Card> { airlift, chicagoCard, chennai };
             scientist.hand = hand;
             List<Card> correctHand = new List<Card> { airlift, chicagoCard, chennai };
             Assert.AreEqual(false, PlayerActionsBL.BuildAResearchStationOption(scientist));
             CollectionAssert.AreEqual(correctHand, hand);
+            chicagoCity.researchStation = false;
         }
 
         #endregion
