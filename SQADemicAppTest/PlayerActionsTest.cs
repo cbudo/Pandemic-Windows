@@ -346,6 +346,8 @@ namespace SQADemicAppTest
             Assert.AreEqual(true, PlayerActionsBL.Cure(opExpert, cardsToSpend, COLOR.blue));
             CollectionAssert.AreEqual(correctHand, hand);
             chicagoCity.researchStation = false;
+            Assert.AreEqual(GameBoardModels.CURESTATUS.getCureStatus(COLOR.blue), GameBoardModels.Cures.CURESTATE.Cured);
+            GameBoardModels.CURESTATUS.setCureStatus(COLOR.blue, GameBoardModels.Cures.CURESTATE.NotCured);
             
         }
 
