@@ -286,6 +286,18 @@ namespace SQADemicAppTest
             chicagoCity.researchStation = false;
         }
 
+        [TestMethod]
+        public void buildStationOpExpert()
+        {
+            opExpert.currentCity = chicagoCity;
+            hand = new List<Card> { airlift, chicagoCard, chennai };
+            scientist.hand = hand;
+            List<Card> correctHand = new List<Card> { airlift, chicagoCard, chennai };
+            Assert.AreEqual(true, PlayerActionsBL.BuildAResearchStationOption(opExpert));
+            CollectionAssert.AreEqual(correctHand, hand);
+        }
+
+
         #endregion
     }
     /** PRINTING STUFF
