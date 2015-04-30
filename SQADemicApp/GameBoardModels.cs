@@ -68,6 +68,7 @@ namespace SQADemicApp
 
 
         }
+
         public void incTurnCount()
         {
             if (currentPlayerTurnCounter == 4)
@@ -113,6 +114,43 @@ namespace SQADemicApp
             public CURESTATE BlueCure { get; set; }
             public CURESTATE BlackCure { get; set; }
             public CURESTATE YellowCure { get; set; }
+
+            public CURESTATE getCureStatus(COLOR color)
+            {
+                switch (color)
+                {
+                    case COLOR.red:
+                        return RedCure;
+                    case COLOR.blue:
+                        return BlueCure;
+                    case COLOR.yellow:
+                        return YellowCure;
+                    case COLOR.black:
+                        return BlackCure;
+                    default:
+                        throw new ArgumentException("Not a vaild color");
+                }
+            }
+            public void getCureStatus(COLOR color, CURESTATE curestate)
+            {
+                switch (color)
+                {
+                    case COLOR.red:
+                        RedCure = curestate;
+                        break;
+                    case COLOR.blue:
+                        BlueCure = curestate;
+                        break;
+                    case COLOR.yellow:
+                        YellowCure = curestate;
+                        break;
+                    case COLOR.black:
+                        BlackCure = curestate;
+                        break;
+                    default:
+                        throw new ArgumentException("Not a vaild color");
+                }
+            }
         }
         #endregion
     }
