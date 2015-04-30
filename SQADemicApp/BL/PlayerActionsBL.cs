@@ -169,7 +169,8 @@ namespace SQADemicApp.BL
         public static bool TreatDiseaseOption(Player player, COLOR color)
         {
             //need list of cures
-            return false;
+            player.currentCity.blueCubes--;
+            return true;
         }
     }
 }

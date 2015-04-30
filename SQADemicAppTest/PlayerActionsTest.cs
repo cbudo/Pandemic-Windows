@@ -459,13 +459,12 @@ namespace SQADemicAppTest
         #region Treat Diseases
 
         [TestMethod]
-        public void TestTreatDiseaseBasic()
+        public void TestTreatDiseaseBasicBlue()
         {
             opExpert.currentCity = chicagoCity;
             chicagoCity.redCubes = 2;
             chicagoCity.blueCubes = 2;
             Assert.AreEqual(true, PlayerActionsBL.TreatDiseaseOption(opExpert, COLOR.blue));
-            Assert.AreEqual(chicagoCity.redCubes, 2);
             Assert.AreEqual(chicagoCity.blueCubes, 1);
         }
 
