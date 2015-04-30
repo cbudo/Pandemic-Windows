@@ -153,7 +153,8 @@ namespace SQADemicAppTest
             CollectionAssert.AreEqual(res.ToList<City>(), e.ToList<City>());
 
         }
-
+        
+        //might fail if other tests fail and don't reset research stations
         [TestMethod]
         public void TestResearchCityList()
         {

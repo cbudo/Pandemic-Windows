@@ -13,7 +13,7 @@ namespace SQADemicAppTest
     {
         City chicagoCity, bangkok, kolkata, sanFran;
         List<Card> hand, pile;
-        Card chennai, newYork, atlanta, chicagoCard,  london, paris, airlift;
+        Card chennai, newYork, atlanta, chicagoCard, london, paris, milan, airlift;
         Player dispatcher, medic, opExpert, researcher, scientist;
 
 
@@ -41,7 +41,9 @@ namespace SQADemicAppTest
             chicagoCard = new Card("Chicago", Card.CARDTYPE.City, COLOR.blue);
             paris = new Card("Paris", Card.CARDTYPE.City, COLOR.blue);
             london = new Card("London", Card.CARDTYPE.City, COLOR.blue);
-            airlift = new SQADemicApp.Card("Airlift", SQADemicApp.Card.CARDTYPE.Special);
+            milan = new Card("Milan", Card.CARDTYPE.City);
+            airlift = new Card("Airlift",Card.CARDTYPE.Special);
+           
             //Players
             scientist = new Player(ROLE.Scientist);
             opExpert = new Player(ROLE.OpExpert);
@@ -341,7 +343,7 @@ namespace SQADemicAppTest
             List<Card> correctHand = new List<Card> { chennai, airlift };
             opExpert.currentCity = chicagoCity;
             chicagoCity.researchStation = true;
-            Assert.AreEqual(true, PlayerActionsBL.Cure(opExpert, cardsToSpend));
+            Assert.AreEqual(true, PlayerActionsBL.Cure(opExpert, cardsToSpend, COLOR.blue));
             CollectionAssert.AreEqual(correctHand, hand);
             chicagoCity.researchStation = false;
             
@@ -356,7 +358,7 @@ namespace SQADemicAppTest
             chicagoCity.researchStation = true;
             List<String> cardsToSpend = new List<String> { newYork.CityName, chicagoCard.CityName };
             List<Card> correctHand = new List<Card> { newYork, chennai, atlanta, chicagoCard, airlift };
-            Assert.AreEqual(false, PlayerActionsBL.Cure(opExpert, cardsToSpend));
+            Assert.AreEqual(false, PlayerActionsBL.Cure(opExpert, cardsToSpend, COLOR.blue));
             CollectionAssert.AreEqual(correctHand, hand);
             chicagoCity.researchStation = false;
         }
