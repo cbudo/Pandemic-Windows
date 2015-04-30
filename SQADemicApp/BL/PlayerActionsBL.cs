@@ -129,9 +129,11 @@ namespace SQADemicApp.BL
         {
             if (CityBL.getCitiesWithResearchStations().Contains(player.currentCity))
                 return false;
-            else if(player.hand.Any(c => c.CityName.Equals(player.currentCity.Name))){
-                if(player.role != ROLE.OpExpert)
-                    player.hand.RemoveAll(x => x.CityName.Equals(player.currentCity.Name));
+            else if (player.role == ROLE.OpExpert)
+                return true;
+            else if (player.hand.Any(c => c.CityName.Equals(player.currentCity.Name)))
+            {
+                player.hand.RemoveAll(x => x.CityName.Equals(player.currentCity.Name));
                 return true;
             }
             return false;
