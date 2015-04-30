@@ -155,7 +155,11 @@ namespace SQADemicApp.BL
             if (!player.currentCity.researchStation)
                 return false;
             var cards = player.hand.Where(x => x.CityColor == color && cardsToSpend.Contains(x.CityName));
-            if (cards.Count() != 5)
+            if (player.role == ROLE.Scientist)
+            {
+                //Do Nothing
+            }
+            else if (cards.Count() != 5)
                 return false;
             player.hand.RemoveAll(x => cards.Contains(x));
             //need a list of existing cures --- deal with later
