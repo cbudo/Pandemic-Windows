@@ -42,6 +42,7 @@ namespace SQADemicAppTest
             airlift = new SQADemicApp.Card("Airlift", SQADemicApp.Card.CARDTYPE.Special);
             //Players
             scientist = new Player(ROLE.Scientist);
+            opExpert = new Player(ROLE.OpExpert);
         }
 
         [TestMethod]
@@ -245,6 +246,23 @@ namespace SQADemicAppTest
             Assert.AreEqual(scientist.currentCity.Name, chicagoCity.Name);
             CollectionAssert.AreEqual(correctHand, hand);
         }
+
+        #endregion
+
+        #region BuildAResearchStation
+
+        [TestMethod]
+        public void buildStationNormal()
+        {
+            scientist.currentCity = chicagoCity;
+            hand = new List<Card> { airlift, chicagoCard, chennai };
+            scientist.hand = hand;
+            List<Card> correctHand = new List<Card> { airlift, chennai };
+            Assert.AreEqual(true, PlayerActionsBL.BuildAResearchStationOption(scientist));
+            CollectionAssert.AreEqual(correctHand, hand);
+        }
+
+
 
         #endregion
     }
