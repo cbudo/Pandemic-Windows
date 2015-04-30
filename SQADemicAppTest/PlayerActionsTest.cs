@@ -327,12 +327,12 @@ namespace SQADemicAppTest
 
         #region Cure
         //To test:
-        //Not enough cards
+        //DONE: Not enough cards
         //already cured
-        //enough cards 5 cards
+        //DONE: enough cards 5 cards
         //enougn cured with scientist 4 cards
         //not at reasearch center
-        //Test too many blue card
+        //DONE:Test too many blue card
 
         [TestMethod]
         public void TestSimpleCure()
@@ -389,6 +389,19 @@ namespace SQADemicAppTest
             Assert.AreEqual(false, PlayerActionsBL.Cure(opExpert, cardsToSpend, COLOR.blue));
             CollectionAssert.AreEqual(correctHand, hand);
             chicagoCity.researchStation = false;
+        }
+
+        [TestMethod]
+        public void TestNotInResearchStation()
+        {
+            hand = new List<Card> { chennai, newYork, atlanta, chicagoCard, london, paris, airlift };
+            opExpert.hand = hand;
+            List<String> cardsToSpend = new List<String> { newYork.CityName, atlanta.CityName, chicagoCard.CityName, london.CityName, paris.CityName };
+            List<Card> correctHand = new List<Card> { chennai, newYork, atlanta, chicagoCard, london, paris, airlift };
+            opExpert.currentCity = chicagoCity;
+            chicagoCity.researchStation = false;
+            Assert.AreEqual(false, PlayerActionsBL.Cure(opExpert, cardsToSpend, COLOR.blue));
+            CollectionAssert.AreEqual(correctHand, hand);
         }
 
         #endregion
