@@ -119,6 +119,23 @@ namespace SQADemicAppTest
             model.incTurnCount();
             Assert.AreEqual(1, model.CurrentPlayerIndex);
         }
+        [TestMethod]
+        public void TestFullPlayerRotation()
+        {
+            string[] players = { "Dispatcher", "Scientist" };
+            GameBoardModels model = new GameBoardModels(players);
+            // four moves in a player turn
+            model.incTurnCount();
+            model.incTurnCount();
+            model.incTurnCount();
+            model.incTurnCount();
+            // moves for player 2 turn
+            model.incTurnCount();
+            model.incTurnCount();
+            model.incTurnCount();
+            model.incTurnCount();
+            Assert.AreEqual(0, model.CurrentPlayerIndex);
+        }
         #endregion
     }
 }
