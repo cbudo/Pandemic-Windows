@@ -15,7 +15,7 @@ namespace SQADemicAppTest
     public class CitiesTest
     {
         Create create;
-        static CityBL bl = new CityBL();
+        static CityBL CityBL = new CityBL();
 
         [TestInitialize()]
         public void TestInitialize()
@@ -54,7 +54,7 @@ namespace SQADemicAppTest
         {
             StringReader r = new StringReader("San Francisco;Tokyo,Manila,Chicago,Los Angeles");
             create.setAdjacentCities(r);
-            HashSet<City> result = bl.getAdjacentCities("San Francisco");
+            HashSet<City> result = CityBL.getAdjacentCities("San Francisco");
             HashSet<City> expected = new HashSet<City>();
             City tokyo = new City(COLOR.red, "Tokyo");
             City manila = new City(COLOR.red, "Manila");
@@ -72,7 +72,7 @@ namespace SQADemicAppTest
         {
             StringReader r = new StringReader("New York;Montreal,Washington,London,Madrid");
             create.setAdjacentCities(r);
-            HashSet<City> result = bl.getAdjacentCities("New York");
+            HashSet<City> result = CityBL.getAdjacentCities("New York");
             HashSet<City> expected = new HashSet<City>();
             City montreal = new City(COLOR.blue, "Montreal");
             City washington = new City(COLOR.blue, "Washington");
@@ -90,7 +90,7 @@ namespace SQADemicAppTest
         {
             StringReader r = new StringReader("Montreal;New York,Washington,Chicago");
             create.setAdjacentCities(r);
-            HashSet<City> result = bl.getAdjacentCities("Montreal");
+            HashSet<City> result = CityBL.getAdjacentCities("Montreal");
             HashSet<City> e = new HashSet<City>();
             City newYork = new City(COLOR.blue, "New York");
             City washington = new City(COLOR.blue, "Washington");
@@ -106,7 +106,7 @@ namespace SQADemicAppTest
         {
             StringReader r = new StringReader("Chicago;San Francisco,Los Angeles,Atlanta,Montreal");
             create.setAdjacentCities(r);
-            HashSet<City> res = bl.getAdjacentCities("Chicago");
+            HashSet<City> res = CityBL.getAdjacentCities("Chicago");
             HashSet<City> e = new HashSet<City>();
             City sanFrancisco = new City(COLOR.blue, "San Francisco");
             City losAngeles = new City(COLOR.yellow, "Los Angeles");
@@ -124,7 +124,7 @@ namespace SQADemicAppTest
         {
             StringReader r = new StringReader("Atlanta;Chicago,Washington,Miami");
             create.setAdjacentCities(r);
-            HashSet<City> res = bl.getAdjacentCities("Atlanta");
+            HashSet<City> res = CityBL.getAdjacentCities("Atlanta");
             HashSet<City> e = new HashSet<City>();
             City chicago = new City(COLOR.blue, "Chicago");
             City washington = new City(COLOR.blue, "Washington");
@@ -140,7 +140,7 @@ namespace SQADemicAppTest
         {
             StringReader r = new StringReader("Washington;Miami,Atlanta,Montreal,New York");
             create.setAdjacentCities(r);
-            HashSet<City> res = bl.getAdjacentCities("Washington");
+            HashSet<City> res = CityBL.getAdjacentCities("Washington");
             HashSet<City> e = new HashSet<City>();
             City miami = new City(COLOR.yellow, "Miami");
             City atlanta = new City(COLOR.blue, "Atlanta");
@@ -162,7 +162,7 @@ namespace SQADemicAppTest
             City a = new City(COLOR.blue, "Atlanta");
             a.researchStation = true;
             ls.Add(a);
-            List<City> result = bl.getCitiesWithResearchStations();
+            List<City> result = CityBL.getCitiesWithResearchStations();
             CollectionAssert.AreEqual(ls, result);
         }
 
@@ -178,7 +178,7 @@ namespace SQADemicAppTest
             e.Add(atlanta.Name);
             e.Add(montreal.Name);
             e.Add(newYork.Name);
-            List<String> result = bl.getNeighborNames("Washington");
+            List<String> result = CityBL.getNeighborNames("Washington");
             CollectionAssert.AreEqual(e, result);
         }
 

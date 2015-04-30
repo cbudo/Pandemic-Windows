@@ -9,8 +9,6 @@ namespace SQADemicApp.BL
     public class PlayerActionsBL
     {
 
-        static CityBL bl = new CityBL();
-
         /// <summary>
         /// Finds the possible cities a player can move to
         /// </summary>
@@ -59,7 +57,7 @@ namespace SQADemicApp.BL
                 return new List<string>();
             }
             List<String> options = new List<String>();
-            List<City> stations = bl.getCitiesWithResearchStations();
+            List<City> stations = CityBL.getCitiesWithResearchStations();
             foreach (var city in stations)
             {
                 if (city.Name != currentCity.Name)
@@ -71,15 +69,6 @@ namespace SQADemicApp.BL
         }
         #region not implemented
         /**
-        public static bool BuildAResearchStationOption(List<Card> hand, City currentCity, ROLE role)
-        {
-            //need list of cities with reaserch centers for:
-            //count
-            //don't double build
-
-            return false;
-        }
-
         public static bool CureOption(List<Card> hand, City currentCity, ROLE role)
         {
             //need a list of existing cures
@@ -127,6 +116,21 @@ namespace SQADemicApp.BL
             }
             player.currentCity = city;
             return true;
+        }
+
+
+        //In Progress
+        /// <summary>
+        ///  Builds a Research Station should the conditions be meet
+        /// </summary>
+        /// <param name="player">Current Player</param>
+        /// <returns>If the research station was build></returns>
+        public static bool BuildAResearchStationOption(Player player)
+        {
+            //need list of cities with reaserch centers for:
+            //count
+            //don't double builds
+            return false;
         }
     }
 }
