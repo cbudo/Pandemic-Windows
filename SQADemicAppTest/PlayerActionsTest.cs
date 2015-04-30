@@ -363,6 +363,19 @@ namespace SQADemicAppTest
             chicagoCity.researchStation = false;
         }
 
+        [TestMethod]
+        public void TestToManyCards()
+        {
+            hand = new List<Card> { chennai, newYork, atlanta, chicagoCard, london, paris, milan, airlift };
+            opExpert.hand = hand;
+            List<String> cardsToSpend = new List<String> { newYork.CityName, atlanta.CityName, chicagoCard.CityName, london.CityName, paris.CityName, milan.CityName };
+            List<Card> correctHand = new List<Card> { chennai, newYork, atlanta, chicagoCard, london, paris, milan, airlift };
+            opExpert.currentCity = chicagoCity;
+            chicagoCity.researchStation = true;
+            Assert.AreEqual(false, PlayerActionsBL.Cure(opExpert, cardsToSpend, COLOR.blue));
+            CollectionAssert.AreEqual(correctHand, hand);
+            chicagoCity.researchStation = false;
+        }
 
         #endregion
     }
