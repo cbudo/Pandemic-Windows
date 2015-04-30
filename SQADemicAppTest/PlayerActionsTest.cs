@@ -262,13 +262,24 @@ namespace SQADemicAppTest
             CollectionAssert.AreEqual(correctHand, hand);
         }
 
+        //[TestMethod]
+        //public void buildStationFailLackCard()
+        //{
+        //    scientist.currentCity = chicagoCity;
+        //    hand = new List<Card> { airlift, chennai };
+        //    scientist.hand = hand;
+        //    List<Card> correctHand = new List<Card> { airlift, chennai };
+        //    Assert.AreEqual(false, PlayerActionsBL.BuildAResearchStationOption(scientist));
+        //    CollectionAssert.AreEqual(correctHand, hand);
+        //}
+
         [TestMethod]
         public void buildStationFailExisting()
         {
             scientist.currentCity = chicagoCity;
-            hand = new List<Card> { airlift, chennai };
+            hand = new List<Card> { airlift, chicagoCard, chennai };
             scientist.hand = hand;
-            List<Card> correctHand = new List<Card> { airlift, chennai };
+            List<Card> correctHand = new List<Card> { airlift, chicagoCard, chennai };
             Assert.AreEqual(false, PlayerActionsBL.BuildAResearchStationOption(scientist));
             CollectionAssert.AreEqual(correctHand, hand);
         }
