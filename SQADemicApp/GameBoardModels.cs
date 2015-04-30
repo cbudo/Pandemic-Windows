@@ -92,6 +92,10 @@ namespace SQADemicApp
         {
             currentPlayerTurnCounter = 1;
             CurrentPlayerIndex++;
+            if (CurrentPlayerIndex == players.Length)
+            {
+                CurrentPlayerIndex = 0;
+            }
         }
 
         #region Storage Classes
