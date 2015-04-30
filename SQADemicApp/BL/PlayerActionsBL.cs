@@ -129,10 +129,14 @@ namespace SQADemicApp.BL
             if (CityBL.getCitiesWithResearchStations().Contains(player.currentCity))
                 return false;
             else if (player.role == ROLE.OpExpert)
+            {
+                player.currentCity.researchStation = true;
                 return true;
+            }
             else if (player.hand.Any(c => c.CityName.Equals(player.currentCity.Name)))
             {
                 player.hand.RemoveAll(x => x.CityName.Equals(player.currentCity.Name));
+                player.currentCity.researchStation = true;
                 return true;
             }
             return false;
@@ -146,7 +150,7 @@ namespace SQADemicApp.BL
         /// <param name="currentCity"></param>
         /// <param name="role"></param>
         /// <returns></returns>
-        public static bool Cure(List<Card> hand, City currentCity, ROLE role)
+        public static bool Cure(Player player)
         {
             //need a list of existing cures
             return false;

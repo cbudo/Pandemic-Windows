@@ -13,7 +13,7 @@ namespace SQADemicAppTest
     {
         City chicagoCity, bangkok, kolkata, sanFran;
         List<Card> hand, pile;
-        Card newYork, chennai, atlanta, chicagoCard, airlift;
+        Card chennai, newYork, atlanta, chicagoCard,  london, paris, airlift;
         Player dispatcher, medic, opExpert, researcher, scientist;
 
 
@@ -35,10 +35,12 @@ namespace SQADemicAppTest
                 throw new InvalidOperationException("Set up failed");
             }
             //Cards
-            newYork = new Card("New York", Card.CARDTYPE.City, COLOR.blue);
             chennai = new Card("Chennai", Card.CARDTYPE.City, COLOR.black);
+            newYork = new Card("New York", Card.CARDTYPE.City, COLOR.blue);
             atlanta = new Card("Atlanta", Card.CARDTYPE.City, COLOR.blue);
             chicagoCard = new Card("Chicago", Card.CARDTYPE.City, COLOR.blue);
+            paris = new Card("Paris", Card.CARDTYPE.City, COLOR.blue);
+            london = new Card("London", Card.CARDTYPE.City, COLOR.blue);
             airlift = new SQADemicApp.Card("Airlift", SQADemicApp.Card.CARDTYPE.Special);
             //Players
             scientist = new Player(ROLE.Scientist);
@@ -257,11 +259,14 @@ namespace SQADemicAppTest
         public void buildStationNormal()
         {
             scientist.currentCity = chicagoCity;
+            chicagoCity.researchStation = false;
             hand = new List<Card> { airlift, chicagoCard, chennai };
             scientist.hand = hand;
             List<Card> correctHand = new List<Card> { airlift, chennai };
             Assert.AreEqual(true, PlayerActionsBL.BuildAResearchStationOption(scientist));
             CollectionAssert.AreEqual(correctHand, hand);
+            Assert.AreEqual(true, chicagoCity.researchStation);
+            chicagoCity.researchStation = false;
         }
 
         [TestMethod]
@@ -292,22 +297,28 @@ namespace SQADemicAppTest
         public void buildStationOpExpert()
         {
             opExpert.currentCity = chicagoCity;
+            chicagoCity.researchStation = false;
             hand = new List<Card> { airlift, chicagoCard, chennai };
             opExpert.hand = hand;
             List<Card> correctHand = new List<Card> { airlift, chicagoCard, chennai };
             Assert.AreEqual(true, PlayerActionsBL.BuildAResearchStationOption(opExpert));
             CollectionAssert.AreEqual(correctHand, hand);
+            Assert.AreEqual(true, chicagoCity.researchStation);
+            chicagoCity.researchStation = false;
         }
 
         [TestMethod]
         public void buildStationOpExpertWithoutCard()
         {
             opExpert.currentCity = chicagoCity;
+            chicagoCity.researchStation = false;
             hand = new List<Card> { airlift, chennai };
             opExpert.hand = hand;
             List<Card> correctHand = new List<Card> { airlift, chennai };
             Assert.AreEqual(true, PlayerActionsBL.BuildAResearchStationOption(opExpert));
             CollectionAssert.AreEqual(correctHand, hand);
+            Assert.AreEqual(true, chicagoCity.researchStation);
+            chicagoCity.researchStation = false;
         }
 
         #endregion
@@ -319,6 +330,21 @@ namespace SQADemicAppTest
         //enough cards 5 cards
         //enougn cured with scientist 4 cards
         //not at reasearch center
+        //Test too many blue card
+
+        [TestMethod]
+        public void TestSimpleCure()
+        {
+            hand = new List<Card> { chennai, newYork, atlanta, chicagoCard, london, paris, airlift };
+            opExpert.hand = hand;
+            List<Card> correctHand = new List<Card> { chennai, airlift };
+            opExpert.currentCity = chicagoCity;
+            chicagoCity.researchStation = true;
+            Assert.AreEqual(true, PlayerActionsBL.Cure(opExpert));
+            CollectionAssert.AreEqual(correctHand, hand);
+            chicagoCity.researchStation = false;
+            
+        }
 
         [TestMethod]
         public void TestNotEnoughCards()
@@ -326,6 +352,11 @@ namespace SQADemicAppTest
             hand = new List<Card> { newYork, chennai, atlanta, chicagoCard, airlift };
             opExpert.hand = hand;
             opExpert.currentCity = chicagoCity;
+            chicagoCity.researchStation = true;
+            List<Card> correctHand = new List<Card> { newYork, chennai, atlanta, chicagoCard, airlift };
+            Assert.AreEqual(false, PlayerActionsBL.Cure(opExpert));
+            CollectionAssert.AreEqual(correctHand, hand);
+            chicagoCity.researchStation = false;
         }
 
 
