@@ -54,7 +54,7 @@ namespace SQADemicApp.BL
         {
             if (!currentCity.researchStation)
             {
-                return new List<string>();
+                throw new InvalidOperationException();
             }
             List<String> options = new List<String>();
             List<City> stations = CityBL.getCitiesWithResearchStations();
