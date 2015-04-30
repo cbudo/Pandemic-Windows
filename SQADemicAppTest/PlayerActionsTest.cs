@@ -123,12 +123,11 @@ namespace SQADemicAppTest
 
         #region Shuttle Flight
         [TestMethod]
-        [ExpectedException(typeof(InvalidOperationException))]
         public void TestShuttleFlightNotInStation()
         {
             scientist.currentCity = kolkata;
             List<String> result = PlayerActionsBL.ShuttleFlightOption(kolkata);
-            
+            CollectionAssert.Equals(result, new List<String>());
         }
 
         [TestMethod]
