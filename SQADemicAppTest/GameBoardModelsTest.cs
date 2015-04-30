@@ -93,6 +93,18 @@ namespace SQADemicAppTest
             model.incTurnCount();
             Assert.AreEqual(2, model.currentPlayerTurnCounter);
         }
+        [TestMethod]
+        public void TestThatPlayerTurnsResetAfter4moves()
+        {
+            string[] players = { "Dispatcher", "Scientist" };
+            GameBoardModels model = new GameBoardModels(players);
+            // four moves in a player turn
+            model.incTurnCount();
+            model.incTurnCount();
+            model.incTurnCount();
+            model.incTurnCount();
+            Assert.AreEqual(1, model.currentPlayerTurnCounter);
+        }
         #endregion
         #region nextPlayer
 
