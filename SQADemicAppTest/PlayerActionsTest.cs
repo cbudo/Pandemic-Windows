@@ -408,12 +408,12 @@ namespace SQADemicAppTest
         public void TestSimpleCureScientist()
         {
             hand = new List<Card> { chennai, newYork, atlanta, chicagoCard, london, paris, airlift };
-            opExpert.hand = hand;
+            scientist.hand = hand;
             List<String> cardsToSpend = new List<String> { newYork.CityName, atlanta.CityName, chicagoCard.CityName, london.CityName };
             List<Card> correctHand = new List<Card> { chennai, paris, airlift };
-            opExpert.currentCity = chicagoCity;
+            scientist.currentCity = chicagoCity;
             chicagoCity.researchStation = true;
-            Assert.AreEqual(true, PlayerActionsBL.Cure(opExpert, cardsToSpend, COLOR.blue));
+            Assert.AreEqual(true, PlayerActionsBL.Cure(scientist, cardsToSpend, COLOR.blue));
             CollectionAssert.AreEqual(correctHand, hand);
             chicagoCity.researchStation = false;
         }
