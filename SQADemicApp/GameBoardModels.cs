@@ -70,7 +70,14 @@ namespace SQADemicApp
         }
         public void incTurnCount()
         {
-            currentPlayerTurnCounter++;
+            if (currentPlayerTurnCounter == 4)
+            {
+                NextPlayer();
+            }
+            else
+            {
+                currentPlayerTurnCounter++;
+            }
         }
         public Card drawCard()
         {
@@ -83,7 +90,7 @@ namespace SQADemicApp
         
         public void NextPlayer()
         {
-            
+            currentPlayerTurnCounter = 1;
         }
 
         #region Storage Classes
