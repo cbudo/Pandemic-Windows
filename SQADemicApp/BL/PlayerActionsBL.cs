@@ -152,6 +152,8 @@ namespace SQADemicApp.BL
         /// <returns></returns>
         public static bool Cure(Player player, List<String> cardsToSpend, COLOR color)
         {
+            if (!player.currentCity.researchStation)
+                return false;
             var cards = player.hand.Where(x => x.CityColor == color && cardsToSpend.Contains(x.CityName));
             if (cards.Count() != 5)
                 return false;
