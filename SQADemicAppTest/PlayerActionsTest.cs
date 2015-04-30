@@ -486,7 +486,7 @@ namespace SQADemicAppTest
             chicagoCity.blackCubes= 3;
             Assert.AreEqual(true, PlayerActionsBL.TreatDiseaseOption(opExpert, COLOR.yellow));
             Assert.AreEqual(chicagoCity.redCubes, 2);
-            Assert.AreEqual(chicagoCity.blackCubes, 2);
+            Assert.AreEqual(chicagoCity.blueCubes, 2);
             Assert.AreEqual(chicagoCity.yellowCubes, 1);
             Assert.AreEqual(chicagoCity.blackCubes, 3);
         }

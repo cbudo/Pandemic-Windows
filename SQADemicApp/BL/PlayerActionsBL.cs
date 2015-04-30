@@ -169,8 +169,23 @@ namespace SQADemicApp.BL
         public static bool TreatDiseaseOption(Player player, COLOR color)
         {
             //need list of cures
-            player.currentCity.blueCubes--;
-            player.currentCity.redCubes--;
+            switch (color)
+            {
+                case COLOR.red:
+                    player.currentCity.redCubes--;
+                    break;
+                case COLOR.blue:
+                    player.currentCity.blueCubes--;
+                    break;
+                case COLOR.yellow:
+                    player.currentCity.yellowCubes--;
+                    break;
+                case COLOR.black:
+                    player.currentCity.blueCubes--;
+                    break;
+                default:
+                    return false;
+            }
             return true;
         }
     }
