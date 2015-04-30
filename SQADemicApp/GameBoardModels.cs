@@ -131,7 +131,7 @@ namespace SQADemicApp
                         throw new ArgumentException("Not a vaild color");
                 }
             }
-            public void getCureStatus(COLOR color, CURESTATE curestate)
+            public void setCureStatus(COLOR color, CURESTATE curestate)
             {
                 switch (color)
                 {

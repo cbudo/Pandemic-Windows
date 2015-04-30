@@ -156,6 +156,7 @@ namespace SQADemicApp.BL
             else if (cards.Count() != 5)
                 return false;
             player.hand.RemoveAll(x => cards.Contains(x));
+            GameBoardModels.CURESTATUS.setCureStatus(color, GameBoardModels.Cures.CURESTATE.Cured);
             return true;
         }
 
