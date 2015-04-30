@@ -464,7 +464,9 @@ namespace SQADemicAppTest
             opExpert.currentCity = chicagoCity;
             chicagoCity.redCubes = 2;
             chicagoCity.blueCubes = 2;
-            PlayerActionsBL.TreatDiseaseOption(opExpert, COLOR.blue);
+            Assert.AreEqual(true, PlayerActionsBL.TreatDiseaseOption(opExpert, COLOR.blue));
+            Assert.AreEqual(chicagoCity.redCubes, 2);
+            Assert.AreEqual(chicagoCity.blueCubes, 1);
         }
 
         #endregion
