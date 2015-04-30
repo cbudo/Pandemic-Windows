@@ -433,6 +433,19 @@ namespace SQADemicAppTest
         }
 
         #endregion
+
+        #region Treat Diseases
+
+        [TestMethod]
+        public void TestTreatDiseaseBasic()
+        {
+            opExpert.currentCity = chicagoCity;
+            chicagoCity.redCubes = 2;
+            chicagoCity.blueCubes = 2;
+            PlayerActionsBL.TreatDiseaseOption(opExpert, COLOR.blue);
+        }
+
+        #endregion
     }
     /** PRINTING STUFF
     //Print Statment
