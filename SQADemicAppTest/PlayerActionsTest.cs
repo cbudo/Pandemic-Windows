@@ -347,18 +347,19 @@ namespace SQADemicAppTest
             
         }
 
-        //[TestMethod]
-        //public void TestNotEnoughCards()
-        //{
-        //    hand = new List<Card> { newYork, chennai, atlanta, chicagoCard, airlift };
-        //    opExpert.hand = hand;
-        //    opExpert.currentCity = chicagoCity;
-        //    chicagoCity.researchStation = true;
-        //    List<Card> correctHand = new List<Card> { newYork, chennai, atlanta, chicagoCard, airlift };
-        //    Assert.AreEqual(false, PlayerActionsBL.Cure(opExpert));
-        //    CollectionAssert.AreEqual(correctHand, hand);
-        //    chicagoCity.researchStation = false;
-        //}
+        [TestMethod]
+        public void TestNotEnoughCards()
+        {
+            hand = new List<Card> { newYork, chennai, atlanta, chicagoCard, airlift };
+            opExpert.hand = hand;
+            opExpert.currentCity = chicagoCity;
+            chicagoCity.researchStation = true;
+            List<String> cardsToSpend = new List<String> { newYork.CityName, chicagoCard.CityName };
+            List<Card> correctHand = new List<Card> { newYork, chennai, atlanta, chicagoCard, airlift };
+            Assert.AreEqual(false, PlayerActionsBL.Cure(opExpert, cardsToSpend));
+            CollectionAssert.AreEqual(correctHand, hand);
+            chicagoCity.researchStation = false;
+        }
 
 
         #endregion
