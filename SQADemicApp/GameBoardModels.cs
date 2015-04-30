@@ -91,6 +91,7 @@ namespace SQADemicApp
         public void NextPlayer()
         {
             currentPlayerTurnCounter = 1;
+            CurrentPlayerIndex++;
         }
 
         #region Storage Classes
