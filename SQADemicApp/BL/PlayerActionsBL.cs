@@ -170,6 +170,7 @@ namespace SQADemicApp.BL
         {
             //need list of cures
             player.currentCity.blueCubes--;
+            player.currentCity.redCubes--;
             return true;
         }
     }
