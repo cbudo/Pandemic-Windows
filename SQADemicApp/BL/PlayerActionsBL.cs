@@ -49,7 +49,11 @@ namespace SQADemicApp.BL
             return (hand.Where(c => c.CityName == currentCity.Name).Count() == 1);
         }
 
-        //Determines if the player can use a Shuttle Flight and returns list of possibilities
+        /// <summary>
+        /// Determines if the player can use a Shuttle Flight and returns list of possibilities
+        /// </summary>
+        /// <param name="currentCity"></param>
+        /// <returns></returns>
         public static List<String> ShuttleFlightOption(City currentCity)
         {
             if (!currentCity.researchStation)
@@ -70,12 +74,6 @@ namespace SQADemicApp.BL
 
         #region not implemented
         /**
-        public static bool CureOption(List<Card> hand, City currentCity, ROLE role)
-        {
-            //need a list of existing cures
-            return false;
-        }
-
         public static bool TreatDiseaseOption(City currentCity, ROLE role)
         {
             //need list of cures

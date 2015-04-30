@@ -328,14 +328,14 @@ namespace SQADemicAppTest
         #region Cure
         //To test:
         //DONE: Not enough cards
-        //already cured
+        //TODO: already cured
         //DONE: enough cards 5 cards
-        //enougn cured with scientist 4 cards
+        //DONE: enougn cured with scientist 4 cards
         //DONE: not at reasearch center
-        //DONE:Test too many blue card
+        //DONE: Test too many blue card
 
         [TestMethod]
-        public void TestSimpleCure()
+        public void TestCureSimple()
         {
             hand = new List<Card> { chennai, newYork, atlanta, chicagoCard, london, paris, airlift };
             opExpert.hand = hand;
@@ -350,7 +350,7 @@ namespace SQADemicAppTest
         }
 
         [TestMethod]
-        public void TestNotEnoughCards()
+        public void TestCureNotEnoughCards()
         {
             hand = new List<Card> { newYork, chennai, atlanta, chicagoCard, airlift };
             opExpert.hand = hand;
@@ -364,7 +364,7 @@ namespace SQADemicAppTest
         }
 
         [TestMethod]
-        public void TestToManyValidCards()
+        public void TestCureToManyValidCards()
         {
             hand = new List<Card> { chennai, newYork, atlanta, chicagoCard, london, paris, milan, airlift };
             opExpert.hand = hand;
@@ -378,7 +378,7 @@ namespace SQADemicAppTest
         }
 
         [TestMethod]
-        public void TestInvalidCards()
+        public void TestCureInvalidCards()
         {
             hand = new List<Card> { chennai, newYork, atlanta, chicagoCard, london, paris, airlift };
             opExpert.hand = hand;
@@ -392,7 +392,7 @@ namespace SQADemicAppTest
         }
 
         [TestMethod]
-        public void TestNotInResearchStation()
+        public void TestCureNotInResearchStation()
         {
             hand = new List<Card> { chennai, newYork, atlanta, chicagoCard, london, paris, airlift };
             opExpert.hand = hand;
@@ -405,7 +405,7 @@ namespace SQADemicAppTest
         }
 
         [TestMethod]
-        public void TestSimpleCureScientist()
+        public void TestCureSimpleScientist()
         {
             hand = new List<Card> { chennai, newYork, atlanta, chicagoCard, london, paris, airlift };
             scientist.hand = hand;
@@ -419,7 +419,7 @@ namespace SQADemicAppTest
         }
 
         [TestMethod]
-        public void TestToManyValidCardsScientist()
+        public void TestCureToManyValidCardsScientist()
         {
             hand = new List<Card> { chennai, newYork, atlanta, chicagoCard, london, paris, airlift };
             scientist.hand = hand;
