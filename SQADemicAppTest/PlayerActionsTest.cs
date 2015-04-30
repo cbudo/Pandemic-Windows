@@ -432,6 +432,24 @@ namespace SQADemicAppTest
             chicagoCity.researchStation = false;
         }
 
+        [TestMethod]
+        public void TestCureSimpleAlreadyCured()
+        {
+            hand = new List<Card> { chennai, newYork, atlanta, chicagoCard, london, paris, airlift };
+            opExpert.hand = hand;
+            List<String> cardsToSpend = new List<String> { newYork.CityName, atlanta.CityName, chicagoCard.CityName, london.CityName, paris.CityName };
+            List<Card> correctHand = new List<Card> { chennai, newYork, atlanta, chicagoCard, london, paris, airlift };
+            opExpert.currentCity = chicagoCity;
+            chicagoCity.researchStation = true;
+            GameBoardModels.CURESTATUS.BlueCure = GameBoardModels.Cures.CURESTATE.Cured;
+            Assert.AreEqual(false, PlayerActionsBL.Cure(opExpert, cardsToSpend, COLOR.blue));
+            CollectionAssert.AreEqual(correctHand, hand);
+            chicagoCity.researchStation = false;
+            GameBoardModels.CURESTATUS.BlueCure = GameBoardModels.Cures.CURESTATE.NotCured;
+
+        }
+
+
         #endregion
 
         #region Treat Diseases
