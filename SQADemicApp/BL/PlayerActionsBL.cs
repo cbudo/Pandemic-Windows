@@ -136,7 +136,6 @@ namespace SQADemicApp.BL
         }
 
 
-        //STILL NEEDS TO CHECK IF ALREADY CURED!!
         /// <summary>
         /// Cures the color if possible
         /// </summary>
@@ -146,7 +145,7 @@ namespace SQADemicApp.BL
         /// <returns>Success Flag</returns>
         public static bool Cure(Player player, List<String> cardsToSpend, COLOR color)
         {
-            if (!player.currentCity.researchStation)
+            if (!player.currentCity.researchStation || GameBoardModels.CURESTATUS.getCureStatus(color) != GameBoardModels.Cures.CURESTATE.NotCured)
                 return false;
             var cards = player.hand.Where(x => x.CityColor == color && cardsToSpend.Contains(x.CityName));
             if (player.role == ROLE.Scientist)
@@ -157,7 +156,6 @@ namespace SQADemicApp.BL
             else if (cards.Count() != 5)
                 return false;
             player.hand.RemoveAll(x => cards.Contains(x));
-            //need a list of existing cures --- deal with later
             return true;
         }
 
