@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SQADemicApp.BL;
 using SQADemicApp;
@@ -31,7 +29,7 @@ namespace SQADemicAppTest
             setup.setAdjacentCities(new StringReader("San Francisco;Tokyo,Manila,Chicago,Los Angeles"));
             if (!Create.cityDictionary.TryGetValue("Chicago", out chicagoCity) ||
                 !Create.cityDictionary.TryGetValue("Bangkok", out bangkok) ||
-                !Create.cityDictionary.TryGetValue("Kolkata", out kolkata)||
+                !Create.cityDictionary.TryGetValue("Kolkata", out kolkata) ||
                 !Create.cityDictionary.TryGetValue("San Francisco", out sanFran))
             {
                 throw new InvalidOperationException("Set up failed");
@@ -54,6 +52,7 @@ namespace SQADemicAppTest
             CollectionAssert.AreEqual(returnedSet.ToArray(), correctSet.ToArray());
         }
 
+        #region Direct Flight
         [TestMethod]
         public void TestDirectFlightOptionsNone()
         {
@@ -97,16 +96,11 @@ namespace SQADemicAppTest
             List<String> returnList = PlayerActionsBL.DirectFlightOption(hand, chicagoCity);
             List<String> correctList = new List<String> { atlanta.CityName, chennai.CityName };
             CollectionAssert.AreEqual(correctList, returnList);
-            
+
         }
+        #endregion
 
-            /** PRINTING STUFF
-            //Print Statment
-            foreach (String name in returnList)
-            {
-                Console.Out.Write(name);
-            }**/
-
+        #region Charter Flight
         [TestMethod]
         public void TestCharterFlightFalseOption()
         {
@@ -123,36 +117,14 @@ namespace SQADemicAppTest
             bool returendBool = PlayerActionsBL.CharterFlightOption(hand, chicagoCity);
             bool correctBool = true;
             Assert.AreEqual(correctBool, returendBool);
-        }  
-
-        [TestMethod]
-        public void TestMoverPlayerAdjacentCitySanFran()
-        {
-            scientist.currentCity = chicagoCity;
-            PlayerActionsBL.moveplayer(scientist,sanFran);
-            Assert.AreEqual(scientist.currentCity.Name, sanFran.Name);
         }
+        #endregion
 
-      /**  [TestMethod]
-        public void TestMoverPlayerAdjacentCityChicago()
-        {
-            scientist.currentCity = sanFran;
-            PlayerActionsBL.moveplayer(scientist, chicagoCity);
-            Assert.AreEqual(scientist.currentCity.Name, chicagoCity.Name);
-        }**/
-
+        #region Shuttle Flight
         [TestMethod]
-        public void TestMoverPlayerDirectFlight()
+        public void TestShuttleFlightNotInStation()
         {
-            
-            scientist.currentCity = bangkok;
-            hand = new List<Card> { airlift, chicagoCard, chennai };
-            pile = new List<Card>();
-            scientist.hand = hand;
-            PlayerActionsBL.moveplayer(scientist, chicagoCity);
-            hand = new List<Card> { airlift, chennai };
-            Assert.AreEqual(scientist.currentCity.Name, chicagoCity.Name);
-
+            //For Emily to implement
         }
 
         [TestMethod]
@@ -174,8 +146,8 @@ namespace SQADemicAppTest
             List<String> result = PlayerActionsBL.ShuttleFlightOption(kolkata);
             kolkata.researchStation = false;
             bangkok.researchStation = false;
-            List<String> expected = new List<String>{"Bangkok"};
-            CollectionAssert.AreEqual(expected , result);
+            List<String> expected = new List<String> { "Bangkok" };
+            CollectionAssert.AreEqual(expected, result);
         }
 
         [TestMethod]
@@ -190,8 +162,96 @@ namespace SQADemicAppTest
             chicagoCity.researchStation = false;
             kolkata.researchStation = false;
             bangkok.researchStation = false;
-            List<String> expected = new List<String> { "Kolkata" , "Bangkok"};
+            List<String> expected = new List<String> { "Kolkata", "Bangkok" };
             CollectionAssert.AreEqual(expected, result);
         }
+        #endregion
+
+        #region Move Player
+        [TestMethod]
+        public void TestMoverPlayerAdjacentCitySanFran()
+        {
+            scientist.currentCity = chicagoCity;
+            hand = new List<Card> { airlift, chicagoCard, chennai };
+            scientist.hand = hand;
+            PlayerActionsBL.moveplayer(scientist, sanFran);
+            Assert.AreEqual(scientist.currentCity.Name, sanFran.Name);
+        }
+
+        [TestMethod]
+        public void TestMoverPlayerAdjacentCityChicagoWithCard()
+        {
+            scientist.currentCity = sanFran;
+            hand = new List<Card> { airlift, chicagoCard, chennai };
+            List<Card> correctHand =new List<Card> { airlift, chicagoCard, chennai };
+            scientist.hand = hand;
+            PlayerActionsBL.moveplayer(scientist, chicagoCity);
+            Assert.AreEqual(scientist.currentCity.Name, chicagoCity.Name);
+            CollectionAssert.AreEqual(correctHand, hand);
+        }
+
+        [TestMethod]
+        public void TestMoverPlayerDirectFlight()
+        {
+            scientist.currentCity = bangkok;
+            hand = new List<Card> { airlift, chicagoCard, chennai, atlanta };
+            pile = new List<Card>();
+            scientist.hand = hand;
+            PlayerActionsBL.moveplayer(scientist, chicagoCity);
+            List<Card> correctHand = new List<Card> { airlift, chennai, atlanta };
+            Assert.AreEqual(scientist.currentCity.Name, chicagoCity.Name);
+            CollectionAssert.AreEqual(correctHand, hand);
+        }
+
+        [TestMethod]
+        public void TestMoverPlayerCharterFlight()
+        {
+            scientist.currentCity = chicagoCity;
+            hand = new List<Card> { airlift, chicagoCard, chennai };
+            pile = new List<Card>();
+            scientist.hand = hand;
+            PlayerActionsBL.moveplayer(scientist, bangkok);
+            List<Card> correctHand = new List<Card> { airlift, chennai };
+            Assert.AreEqual(scientist.currentCity.Name, bangkok.Name);
+            CollectionAssert.AreEqual(correctHand, hand);
+        }
+
+        [TestMethod]
+        public void TestMoverPlayerShuttleFlightPreemptCard()
+        {
+            chicagoCity.researchStation = true;
+            bangkok.researchStation = true;
+            scientist.currentCity = chicagoCity;
+            hand = new List<Card> { airlift, atlanta, chennai, chicagoCard };
+            pile = new List<Card>();
+            scientist.hand = hand;
+            Assert.AreEqual(true, PlayerActionsBL.moveplayer(scientist, bangkok));
+            List<Card> correctHand = new List<Card> { airlift, atlanta, chennai, chicagoCard };
+            Assert.AreEqual(scientist.currentCity.Name, bangkok.Name);
+            CollectionAssert.AreEqual(correctHand, hand);
+            chicagoCity.researchStation = false;
+            bangkok.researchStation = false;
+        }
+
+        [TestMethod]
+        public void TestMoverPlayerInvalid()
+        {
+            scientist.currentCity = chicagoCity;
+            hand = new List<Card> { airlift, atlanta, chennai };
+            pile = new List<Card>();
+            scientist.hand = hand;
+            Assert.AreEqual(false, PlayerActionsBL.moveplayer(scientist, bangkok));
+            List<Card> correctHand = new List<Card> { airlift, atlanta, chennai };
+            Assert.AreEqual(scientist.currentCity.Name, chicagoCity.Name);
+            CollectionAssert.AreEqual(correctHand, hand);
+        }
+
+        #endregion
     }
+    /** PRINTING STUFF
+    //Print Statment
+    foreach (String name in returnList)
+    {
+        Console.Out.Write(name);
+    }**/
 }

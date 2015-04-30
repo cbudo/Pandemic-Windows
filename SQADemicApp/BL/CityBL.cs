@@ -16,10 +16,6 @@ namespace SQADemicApp.BL
         /// </summary>
         /// <param name="cityName"></param>
         /// <returns>List of Neigboring Cities names</returns>
-        public CityBL()
-        {
-
-        }
         public List<String> getNeighborNames(String cityName)
         {
             List<String> ls = new List<String>();
