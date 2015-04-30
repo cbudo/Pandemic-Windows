@@ -41,7 +41,7 @@ namespace SQADemicAppTest
             chicagoCard = new Card("Chicago", Card.CARDTYPE.City, COLOR.blue);
             paris = new Card("Paris", Card.CARDTYPE.City, COLOR.blue);
             london = new Card("London", Card.CARDTYPE.City, COLOR.blue);
-            milan = new Card("Milan", Card.CARDTYPE.City);
+            milan = new Card("Milan", Card.CARDTYPE.City, COLOR.blue);
             airlift = new Card("Airlift",Card.CARDTYPE.Special);
            
             //Players
@@ -364,7 +364,7 @@ namespace SQADemicAppTest
         }
 
         [TestMethod]
-        public void TestToManyCards()
+        public void TestToManyValidCards()
         {
             hand = new List<Card> { chennai, newYork, atlanta, chicagoCard, london, paris, milan, airlift };
             opExpert.hand = hand;
@@ -386,7 +386,7 @@ namespace SQADemicAppTest
             List<Card> correctHand = new List<Card> { chennai, newYork, atlanta, chicagoCard, london, paris, airlift };
             opExpert.currentCity = chicagoCity;
             chicagoCity.researchStation = true;
-            Assert.AreEqual(true, PlayerActionsBL.Cure(opExpert, cardsToSpend, COLOR.blue));
+            Assert.AreEqual(false, PlayerActionsBL.Cure(opExpert, cardsToSpend, COLOR.blue));
             CollectionAssert.AreEqual(correctHand, hand);
             chicagoCity.researchStation = false;
         }
