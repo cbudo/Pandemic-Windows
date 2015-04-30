@@ -291,7 +291,7 @@ namespace SQADemicAppTest
         {
             opExpert.currentCity = chicagoCity;
             hand = new List<Card> { airlift, chicagoCard, chennai };
-            scientist.hand = hand;
+            opExpert.hand = hand;
             List<Card> correctHand = new List<Card> { airlift, chicagoCard, chennai };
             Assert.AreEqual(true, PlayerActionsBL.BuildAResearchStationOption(opExpert));
             CollectionAssert.AreEqual(correctHand, hand);
