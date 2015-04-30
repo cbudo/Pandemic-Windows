@@ -150,10 +150,11 @@ namespace SQADemicApp.BL
         /// <param name="currentCity"></param>
         /// <param name="role"></param>
         /// <returns></returns>
-        public static bool Cure(Player player)
+        public static bool Cure(Player player, List<String> cardsToSpend)
         {
+            player.hand.RemoveAll(x => cardsToSpend.Contains(x.CityName));
             //need a list of existing cures
-            return false;
+            return true;
         }
     }
 }
