@@ -311,6 +311,25 @@ namespace SQADemicAppTest
         }
 
         #endregion
+
+        #region
+        //To test:
+        //Not enough cards
+        //already cured
+        //enough cards 5 cards
+        //enougn cured with scientist 4 cards
+        //not at reasearch center
+
+        [TestMethod]
+        public void TestNotEnoughCards()
+        {
+            hand = new List<Card> { newYork, chennai, atlanta, chicagoCard, airlift };
+            opExpert.hand = hand;
+            opExpert.currentCity = chicagoCity;
+        }
+
+
+        #endregion
     }
     /** PRINTING STUFF
     //Print Statment

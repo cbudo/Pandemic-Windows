@@ -67,6 +67,7 @@ namespace SQADemicApp.BL
             }
             return options;
         }
+
         #region not implemented
         /**
         public static bool CureOption(List<Card> hand, City currentCity, ROLE role)
@@ -118,8 +119,6 @@ namespace SQADemicApp.BL
             return true;
         }
 
-
-        //In Progress
         /// <summary>
         ///  Builds a Research Station should the conditions be meet
         /// </summary>
@@ -138,6 +137,19 @@ namespace SQADemicApp.BL
             }
             return false;
 
+        }
+
+        /// <summary>
+        /// Cures the color if possible
+        /// </summary>
+        /// <param name="hand"></param>
+        /// <param name="currentCity"></param>
+        /// <param name="role"></param>
+        /// <returns></returns>
+        public static bool Cure(List<Card> hand, City currentCity, ROLE role)
+        {
+            //need a list of existing cures
+            return false;
         }
     }
 }
