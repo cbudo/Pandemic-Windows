@@ -474,7 +474,21 @@ namespace SQADemicAppTest
             chicagoCity.redCubes = 2;
             Assert.AreEqual(true, PlayerActionsBL.TreatDiseaseOption(opExpert, COLOR.red));
             Assert.AreEqual(chicagoCity.redCubes, 1);
+        }
 
+        [TestMethod]
+        public void TestTreatDiseaseBasicONLYellow()
+        {
+            opExpert.currentCity = chicagoCity;
+            chicagoCity.redCubes = 2; 
+            chicagoCity.blueCubes = 2;
+            chicagoCity.yellowCubes = 2;
+            chicagoCity.blackCubes= 3;
+            Assert.AreEqual(true, PlayerActionsBL.TreatDiseaseOption(opExpert, COLOR.yellow));
+            Assert.AreEqual(chicagoCity.redCubes, 2);
+            Assert.AreEqual(chicagoCity.blackCubes, 2);
+            Assert.AreEqual(chicagoCity.yellowCubes, 1);
+            Assert.AreEqual(chicagoCity.blackCubes, 3);
         }
 
         #endregion
