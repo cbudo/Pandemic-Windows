@@ -74,12 +74,6 @@ namespace SQADemicApp.BL
 
         #region not implemented
         /**
-        public static bool TreatDiseaseOption(City currentCity, ROLE role)
-        {
-            //need list of cures
-            return false;
-        }
-
         public static bool ShareKnowledgeOption(City currentCity, ROLE role)
         {
             //need all of the players
@@ -92,7 +86,7 @@ namespace SQADemicApp.BL
         /// </summary>
         /// <param name="player">Current Player or if dispatcher, player trying to move</param>
         /// <param name="city">City to move to</param>
-        /// <returns>true if move worked and false it failed</returns>
+        /// <returns>Success Flag/returns>
         public static bool moveplayer(Player player, City city)
         {
             if (DriveOptions(player.currentCity).Any(c => c.Name.Equals(city.Name))){
@@ -121,7 +115,7 @@ namespace SQADemicApp.BL
         ///  Builds a Research Station should the conditions be meet
         /// </summary>
         /// <param name="player">Current Player</param>
-        /// <returns>If the research station was build></returns>
+        /// <returns>Success Flag</returns>
         public static bool BuildAResearchStationOption(Player player)
         {
             if (CityBL.getCitiesWithResearchStations().Contains(player.currentCity))
@@ -141,16 +135,17 @@ namespace SQADemicApp.BL
 
         }
 
+
         /// <summary>
         /// Cures the color if possible
         /// </summary>
         /// <param name="hand"></param>
         /// <param name="currentCity"></param>
         /// <param name="role"></param>
-        /// <returns></returns>
+        /// <returns>Success Flag</returns>
         public static bool Cure(Player player, List<String> cardsToSpend, COLOR color)
         {
-            if (!player.currentCity.researchStation)
+            if (!player.currentCity.researchStation || GameBoardModels.CURESTATUS.getCureStatus(color) != GameBoardModels.Cures.CURESTATE.NotCured)
                 return false;
             var cards = player.hand.Where(x => x.CityColor == color && cardsToSpend.Contains(x.CityName));
             if (player.role == ROLE.Scientist)
@@ -161,7 +156,36 @@ namespace SQADemicApp.BL
             else if (cards.Count() != 5)
                 return false;
             player.hand.RemoveAll(x => cards.Contains(x));
-            //need a list of existing cures --- deal with later
+            GameBoardModels.CURESTATUS.setCureStatus(color, GameBoardModels.Cures.CURESTATE.Cured);
+            return true;
+        }
+
+        /// <summary>
+        /// Treates the Diesease if possible
+        /// </summary>
+        /// <param name="player"></param>
+        /// <param name="color"></param>
+        /// <returns>Success Flag</returns>
+        public static bool TreatDiseaseOption(Player player, COLOR color)
+        {
+            //need list of cures
+            switch (color)
+            {
+                case COLOR.red:
+                    player.currentCity.redCubes--;
+                    break;
+                case COLOR.blue:
+                    player.currentCity.blueCubes--;
+                    break;
+                case COLOR.yellow:
+                    player.currentCity.yellowCubes--;
+                    break;
+                case COLOR.black:
+                    player.currentCity.blackCubes--;
+                    break;
+                default:
+                    return false;
+            }
             return true;
         }
     }

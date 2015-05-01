@@ -346,6 +346,8 @@ namespace SQADemicAppTest
             Assert.AreEqual(true, PlayerActionsBL.Cure(opExpert, cardsToSpend, COLOR.blue));
             CollectionAssert.AreEqual(correctHand, hand);
             chicagoCity.researchStation = false;
+            Assert.AreEqual(GameBoardModels.CURESTATUS.getCureStatus(COLOR.blue), GameBoardModels.Cures.CURESTATE.Cured);
+            GameBoardModels.CURESTATUS.setCureStatus(COLOR.blue, GameBoardModels.Cures.CURESTATE.NotCured);
             
         }
 
@@ -416,6 +418,8 @@ namespace SQADemicAppTest
             Assert.AreEqual(true, PlayerActionsBL.Cure(scientist, cardsToSpend, COLOR.blue));
             CollectionAssert.AreEqual(correctHand, hand);
             chicagoCity.researchStation = false;
+            Assert.AreEqual(GameBoardModels.CURESTATUS.getCureStatus(COLOR.blue), GameBoardModels.Cures.CURESTATE.Cured);
+            GameBoardModels.CURESTATUS.setCureStatus(COLOR.blue, GameBoardModels.Cures.CURESTATE.NotCured);
         }
 
         [TestMethod]
@@ -431,6 +435,82 @@ namespace SQADemicAppTest
             CollectionAssert.AreEqual(correctHand, hand);
             chicagoCity.researchStation = false;
         }
+
+        [TestMethod]
+        public void TestCureSimpleAlreadyCured()
+        {
+            hand = new List<Card> { chennai, newYork, atlanta, chicagoCard, london, paris, airlift };
+            opExpert.hand = hand;
+            List<String> cardsToSpend = new List<String> { newYork.CityName, atlanta.CityName, chicagoCard.CityName, london.CityName, paris.CityName };
+            List<Card> correctHand = new List<Card> { chennai, newYork, atlanta, chicagoCard, london, paris, airlift };
+            opExpert.currentCity = chicagoCity;
+            chicagoCity.researchStation = true;
+            GameBoardModels.CURESTATUS.BlueCure = GameBoardModels.Cures.CURESTATE.Cured;
+            Assert.AreEqual(false, PlayerActionsBL.Cure(opExpert, cardsToSpend, COLOR.blue));
+            CollectionAssert.AreEqual(correctHand, hand);
+            chicagoCity.researchStation = false;
+            GameBoardModels.CURESTATUS.BlueCure = GameBoardModels.Cures.CURESTATE.NotCured;
+
+        }
+
+
+        #endregion
+
+        #region Treat Diseases
+
+        [TestMethod]
+        public void TestTreatDiseaseBasicBlue()
+        {
+            opExpert.currentCity = chicagoCity;
+            chicagoCity.blueCubes = 2;
+            Assert.AreEqual(true, PlayerActionsBL.TreatDiseaseOption(opExpert, COLOR.blue));
+            Assert.AreEqual(chicagoCity.blueCubes, 1);
+        }
+
+        [TestMethod]
+        public void TestTreatDiseaseBasicRed()
+        {
+            opExpert.currentCity = chicagoCity;
+            chicagoCity.redCubes = 2;
+            Assert.AreEqual(true, PlayerActionsBL.TreatDiseaseOption(opExpert, COLOR.red));
+            Assert.AreEqual(chicagoCity.redCubes, 1);
+        }
+
+        [TestMethod]
+        public void TestTreatDiseaseBasicONLYellow()
+        {
+            opExpert.currentCity = chicagoCity;
+            chicagoCity.redCubes = 2; 
+            chicagoCity.blueCubes = 2;
+            chicagoCity.yellowCubes = 2;
+            chicagoCity.blackCubes= 3;
+            Assert.AreEqual(true, PlayerActionsBL.TreatDiseaseOption(opExpert, COLOR.yellow));
+            Assert.AreEqual(chicagoCity.redCubes, 2);
+            Assert.AreEqual(chicagoCity.blueCubes, 2);
+            Assert.AreEqual(chicagoCity.yellowCubes, 1);
+            Assert.AreEqual(chicagoCity.blackCubes, 3);
+        }
+
+        [TestMethod]
+        public void TestTreatDiseaseBasicDecreaseAll()
+        {
+            opExpert.currentCity = chicagoCity;
+            chicagoCity.redCubes = 1;
+            chicagoCity.blueCubes = 2;
+            chicagoCity.yellowCubes = 2;
+            chicagoCity.blackCubes = 1;
+            Assert.AreEqual(true, PlayerActionsBL.TreatDiseaseOption(opExpert, COLOR.red));
+            Assert.AreEqual(true, PlayerActionsBL.TreatDiseaseOption(opExpert, COLOR.blue));
+            Assert.AreEqual(true, PlayerActionsBL.TreatDiseaseOption(opExpert, COLOR.yellow));
+            Assert.AreEqual(true, PlayerActionsBL.TreatDiseaseOption(opExpert, COLOR.black));
+            Assert.AreEqual(chicagoCity.redCubes, 0);
+            Assert.AreEqual(chicagoCity.blueCubes, 1);
+            Assert.AreEqual(chicagoCity.yellowCubes, 1);
+            Assert.AreEqual(chicagoCity.blackCubes, 0);
+        }
+
+
+
 
         #endregion
     }
