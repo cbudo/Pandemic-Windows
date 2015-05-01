@@ -181,7 +181,7 @@ namespace SQADemicApp.BL
                     player.currentCity.yellowCubes--;
                     break;
                 case COLOR.black:
-                    player.currentCity.blueCubes--;
+                    player.currentCity.blackCubes--;
                     break;
                 default:
                     return false;
