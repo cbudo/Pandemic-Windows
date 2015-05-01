@@ -37,7 +37,8 @@ namespace SQADemicApp
         private void button49_Click(object sender, EventArgs e)
         {
             Card drawnCard = boardModel.drawCard();
-            form3.listBox1.Items.Add(drawnCard.CityName);
+            GameBoardModels.players[GameBoardModels.CurrentPlayerIndex].hand.Add(drawnCard);
+            UpdateForm3();
         }
 
         private void City_Click(object sender, EventArgs e)
@@ -52,9 +53,9 @@ namespace SQADemicApp
                 case STATE.Cure:
                     break;
                 case STATE.Move:
-                    if (PlayerActionsBL.moveplayer(GameBoardModels.players[boardModel.CurrentPlayerIndex], Create.cityDictionary[pressed.Text.Substring(1)]))
+                    if (PlayerActionsBL.moveplayer(GameBoardModels.players[GameBoardModels.CurrentPlayerIndex], Create.cityDictionary[pressed.Text.Substring(1)]))
                     {
-                        switch (boardModel.CurrentPlayerIndex)
+                        switch (GameBoardModels.CurrentPlayerIndex)
                         {
                             case 3:
                                 form2.Player4.Text = "Player 4\n" + pressed.Text.Substring(1);
@@ -70,11 +71,18 @@ namespace SQADemicApp
                                 break;
                         }
                         boardModel.incTurnCount();
+                        UpdateForm3();
                     }
                     break;
             }
         }
-
+        public void UpdateForm3()
+        {
+            form3.progressBar1.Value = 100 * (boardModel.currentPlayerTurnCounter - 1) / 4;
+            form3.label1.Text = form3.label1.Text.Substring(0, form3.label1.Text.Length - 3) + (Convert.ToInt32(boardModel.currentPlayerTurnCounter) - 1) + "/" + 4;
+            form3.listBox1.Items.Clear();
+            form3.listBox1.Items.AddRange(GameBoardModels.players[GameBoardModels.CurrentPlayerIndex].handStringList().ToArray());
+        }
 
     }
 }

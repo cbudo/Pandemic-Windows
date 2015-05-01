@@ -13,7 +13,7 @@ namespace SQADemicApp
         public static Cures CURESTATUS;
         public Card[] playerDeck = new Card[58];
         int playerDeckPoint = -1;
-        public int CurrentPlayerIndex;
+        public static int CurrentPlayerIndex;
         public static List<String> citiesWithResearchStations;
         public static int outbreakMarker = 0;
         public int InfectionRateCounter = 0;

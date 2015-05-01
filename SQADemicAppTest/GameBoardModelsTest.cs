@@ -117,7 +117,7 @@ namespace SQADemicAppTest
             model.incTurnCount();
             model.incTurnCount();
             model.incTurnCount();
-            Assert.AreEqual(1, model.CurrentPlayerIndex);
+            Assert.AreEqual(1, GameBoardModels.CurrentPlayerIndex);
         }
         [TestMethod]
         public void TestFullPlayerRotation()
@@ -134,7 +134,7 @@ namespace SQADemicAppTest
             model.incTurnCount();
             model.incTurnCount();
             model.incTurnCount();
-            Assert.AreEqual(0, model.CurrentPlayerIndex);
+            Assert.AreEqual(0, GameBoardModels.CurrentPlayerIndex);
         }
         #endregion
     }

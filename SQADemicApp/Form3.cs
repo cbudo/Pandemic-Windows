@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SQADemicApp.BL;
 
 namespace SQADemicApp
 {
@@ -30,6 +31,24 @@ namespace SQADemicApp
         private void MoveButton_Click(object sender, EventArgs e)
         {
             Form1.CurrentState = Form1.STATE.Move;
+        }
+
+        private void ResearchButton_Click(object sender, EventArgs e)
+        {
+            if (PlayerActionsBL.BuildAResearchStationOption(GameBoardModels.players[GameBoardModels.CurrentPlayerIndex]))
+            {
+                
+            }
+        }
+
+        private void CreateCureButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CureCityButton_Click(object sender, EventArgs e)
+        {
+
         }
 
     }

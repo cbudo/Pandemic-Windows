@@ -12,6 +12,7 @@ namespace SQADemicApp
         public Create()
         {
             createDictionary();
+            setAdjacentCities(new StringReader(Properties.Resources.AdjacentNeighbors));
         }
 
         //create the blues
@@ -25,7 +26,7 @@ namespace SQADemicApp
         City madrid = new City(COLOR.blue, "Madrid");
         City paris = new City(COLOR.blue, "Paris");
         City milan = new City(COLOR.blue, "Milan");
-        City stPetersburg = new City(COLOR.blue, "Saint Petersburg");
+        City stPetersburg = new City(COLOR.blue, "St Petersburg");
         City essen = new City(COLOR.blue, "Essen");
 
         //create the yellows

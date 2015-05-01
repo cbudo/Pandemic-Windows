@@ -13,12 +13,25 @@ namespace SQADemicApp
         public Player(ROLE role)
         {
             this.role = role;
-            List<Card> hand = new List<Card>();
+            hand = new List<Card>();
             currentCity = Create.cityDictionary["Atlanta"];
         }
         public void move(City destination)
         {
 
+        }
+        public List<Object> handStringList()
+        {
+            List<Object> stringHand = new List<Object>();
+            if(hand.Equals(null))
+            {
+                return stringHand;
+            }
+            foreach(var card in hand)
+            {
+                stringHand.Add(card.CityName);
+            }
+            return stringHand;
         }
     }
 
