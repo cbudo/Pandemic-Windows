@@ -513,6 +513,14 @@ namespace SQADemicAppTest
 
 
         #endregion
+
+        #region TradeCards
+
+        #endregion
+
+        #region DispatcherMove
+
+        #endregion
     }
     /** PRINTING STUFF
     //Print Statment

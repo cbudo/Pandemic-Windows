@@ -112,6 +112,18 @@ namespace SQADemicApp.BL
         }
 
         /// <summary>
+        /// Moves the player to the destination city
+        /// </summary>
+        /// <param name="player">Player to be moved</param>
+        /// <param name="players">List of Players</param>
+        /// <param name="destination">Name of the City to be moved to</param>
+        /// <returns>Status Flag</returns>
+        public static bool DispatcherMovePlayer(Player player, List<Player> players, string destination)
+        {
+            return false;
+        }
+
+        /// <summary>
         ///  Builds a Research Station should the conditions be meet
         /// </summary>
         /// <param name="player">Current Player</param>
@@ -187,6 +199,19 @@ namespace SQADemicApp.BL
                     return false;
             }
             return true;
+        }
+
+        /// <summary>
+        /// Allows Players to Trade Cards
+        /// </summary>
+        /// <param name="sender">Player who holds the card</param>
+        /// <param name="reciver">Player who will recive the card</param>
+        /// <param name="cityname">Name on the card to be traded</param>
+        /// <returns>Sucess Flag</returns>
+        public static bool ShareKnowledgeOption(Player sender, Player reciver, string cityname)
+        {
+            //need all of the players
+            return false;
         }
     }
 }
