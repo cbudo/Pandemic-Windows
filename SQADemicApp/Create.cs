@@ -201,9 +201,9 @@ namespace SQADemicApp
         }
 
 
-        public static List<Card> makeInfectionDeck(StringReader r)
+        public static List<String> makeInfectionDeck(StringReader r)
         {
-            return new List<Card>();
+            return new List<String>();
         }
 
         /// <summary>

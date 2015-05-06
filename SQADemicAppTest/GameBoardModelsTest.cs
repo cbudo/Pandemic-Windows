@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 using SQADemicApp.BL;
 using SQADemicApp;
+using System.IO;
 
 namespace SQADemicAppTest
 {
@@ -147,5 +148,24 @@ namespace SQADemicAppTest
             Assert.AreEqual(0, GameBoardModels.CurrentPlayerIndex);
         }
         #endregion
+
+        [TestMethod]
+        public void TestInfectionDeckCorrectLength()
+        {
+            List<String> ls;
+            StringReader r = new StringReader("New York,Montreal,Washington,London,Madrid");
+            ls = Create.makeInfectionDeck(r);
+            Assert.AreEqual(5, ls.Count);
+        }
+
+        [TestMethod]
+        public void TestInfectionDeckDoesntHaveDuplicates()
+        {
+            List<String> ls;
+            StringReader r = new StringReader("New York,Montreal,Washington,London,Madrid");
+            ls = Create.makeInfectionDeck(r);
+            HashSet<String> hash = new HashSet<String>(ls);
+            Assert.AreEqual(5, hash.Count);
+        }
     }
 }
