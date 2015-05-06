@@ -43,7 +43,8 @@ namespace SQADemicApp
                 CURESTATUS = new Cures();
                 CURESTATUS.BlackCure = CURESTATUS.BlueCure = CURESTATUS.RedCure = CURESTATUS.YellowCure = Cures.CURESTATE.NotCured;
                 Card[] playerDeckArray;
-                Create.setUpCreate(out playerDeckArray);
+                List<String> infectionDeckList;
+                Create.setUpCreate(out playerDeckArray, out infectionDeckList);
                 playerDeck = new Stack<Card>(playerDeckArray);
             }
 

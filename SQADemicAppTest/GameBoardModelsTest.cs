@@ -149,6 +149,7 @@ namespace SQADemicAppTest
         }
         #endregion
 
+        #region InfectionDeck
         [TestMethod]
         public void TestInfectionDeckCorrectLength()
         {
@@ -167,5 +168,6 @@ namespace SQADemicAppTest
             HashSet<String> hash = new HashSet<String>(ls);
             Assert.AreEqual(5, hash.Count);
         }
+        #endregion
     }
 }

@@ -17,7 +17,7 @@ namespace SQADemicApp
         /// </summary>
         /// <param name="playerdeck"></param>
         /// <returns>status flag</returns>
-        public static bool setUpCreate(out Card[] playerdeck)
+        public static bool setUpCreate(out Card[] playerdeck, out List<String> infectionDeck)
         {
             //Keep from making duplicates
             //if (alreadySetUp)
@@ -25,6 +25,7 @@ namespace SQADemicApp
             createDictionary();
             setAdjacentCities(new StringReader(Properties.Resources.AdjacentNeighbors));
             playerdeck = makePlayerDeck();
+            infectionDeck = makeInfectionDeck(new StringReader(Properties.Resources.InfectionDeck));
 
             return true;
         }
@@ -200,7 +201,11 @@ namespace SQADemicApp
             return deck;
         }
 
-
+        /// <summary>
+        /// PUBLIC FOR TESTING ONLY
+        /// </summary>
+        /// <param name="r"></param>
+        /// <returns></returns>
         public static List<String> makeInfectionDeck(StringReader r)
         {
             String line;
