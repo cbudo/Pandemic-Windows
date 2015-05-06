@@ -203,7 +203,14 @@ namespace SQADemicApp
 
         public static List<String> makeInfectionDeck(StringReader r)
         {
-            return new List<String>();
+            String line;
+            string[] infectionDeckArray = null;
+            while ((line = r.ReadLine()) != null)
+            {
+                infectionDeckArray = line.Split(',');
+            }
+            string[] shuffledDeck = HelperBL.shuffleArray(infectionDeckArray);
+            return shuffledDeck.ToList();
         }
 
         /// <summary>
