@@ -20,13 +20,14 @@ namespace SQADemicAppTest
         [TestInitialize]
         public void SetupPlayer()
         {
+            //set up GameboardModels if not already
+            var g = new GameBoardModels(new string[] {"dispatcher", "medic"});
             //cities
-            Create setup = new Create();
-            setup.createDictionary();
-            setup.setAdjacentCities(new StringReader("Chicago;San Francisco,Los Angeles,Atlanta,Montreal"));
-            setup.setAdjacentCities(new StringReader("Bangkok;Kolkata,Hong Kong,Ho Chi Minh City,Jakarta,Chennai"));
-            setup.setAdjacentCities(new StringReader("Kolkata;Delhi,Chennai,Bangkok,Hong Kong"));
-            setup.setAdjacentCities(new StringReader("San Francisco;Tokyo,Manila,Chicago,Los Angeles"));
+            Create.createDictionary();
+            Create.setAdjacentCities(new StringReader("Chicago;San Francisco,Los Angeles,Atlanta,Montreal"));
+            Create.setAdjacentCities(new StringReader("Bangkok;Kolkata,Hong Kong,Ho Chi Minh City,Jakarta,Chennai"));
+            Create.setAdjacentCities(new StringReader("Kolkata;Delhi,Chennai,Bangkok,Hong Kong"));
+            Create.setAdjacentCities(new StringReader("San Francisco;Tokyo,Manila,Chicago,Los Angeles"));
             if (!Create.cityDictionary.TryGetValue("Chicago", out chicagoCity) ||
                 !Create.cityDictionary.TryGetValue("Bangkok", out bangkok) ||
                 !Create.cityDictionary.TryGetValue("Kolkata", out kolkata) ||

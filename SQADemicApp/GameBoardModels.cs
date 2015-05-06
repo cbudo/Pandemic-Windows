@@ -8,21 +8,23 @@ namespace SQADemicApp
     public enum COLOR { red, black, blue, yellow }
     public class GameBoardModels
     {
-        #region Public Vars
+        #region Public Static Vars
         public static InfectionCubeCount cubeCount;
-        public static Cures CURESTATUS;
-        public static Card[] playerDeck = new Card[58];
-        public static int CurrentPlayerIndex;
+        public static Cures CURESTATUS;        
         public static List<String> citiesWithResearchStations;
-        public static int outbreakMarker = 0;
-        public static int InfectionRateCounter = 0;
+        public static int outbreakMarker = 0;       
         public static Player[] players;
-        public static int currentPlayerTurnCounter = 0;
+        public static int CurrentPlayerIndex;
+        #endregion
+
+        #region Public Vars
+        public int InfectionRateCounter;
+        public int currentPlayerTurnCounter;
         #endregion
 
         #region private vars
-        int playerDeckPoint = -1;
         private bool alreadySetUp = false;
+        public static Stack<Card> playerDeck;
         #endregion
 
         /// <summary>
@@ -32,12 +34,22 @@ namespace SQADemicApp
         public GameBoardModels(string[] playersroles)
         {
             //Keep from making duplicates
-            if (alreadySetUp)
-                return;
+            if (!alreadySetUp)
+            {
+                //set vars
+                outbreakMarker = 0;
+                cubeCount = new InfectionCubeCount();
+                cubeCount.blackCubes = cubeCount.redCubes = cubeCount.blueCubes = cubeCount.yellowCubes = 24;
+                CURESTATUS = new Cures();
+                CURESTATUS.BlackCure = CURESTATUS.BlueCure = CURESTATUS.RedCure = CURESTATUS.YellowCure = Cures.CURESTATE.NotCured;
+                Card[] playerDeckArray;
+                Create.setUpCreate(out playerDeckArray);
+                playerDeck = new Stack<Card>(playerDeckArray);
+            }
 
-            //Players setup
+            //Players setup allows existing players to be overwritten
             players = new Player[playersroles.Length];
-            currentPlayerTurnCounter = 1;
+            currentPlayerTurnCounter = 0;
             CurrentPlayerIndex = 0;
             for (int i = 0; i < playersroles.Count(); i++)
             {
@@ -63,47 +75,35 @@ namespace SQADemicApp
                         break;
                 }
             }
-            //set vars
-            outbreakMarker = 0;            
-            cubeCount = new InfectionCubeCount();
-            cubeCount.blackCubes = cubeCount.redCubes = cubeCount.blueCubes = cubeCount.yellowCubes = 24;
-            CURESTATUS = new Cures();
-            CURESTATUS.BlackCure = CURESTATUS.BlueCure = CURESTATUS.RedCure = CURESTATUS.YellowCure = Cures.CURESTATE.NotCured;
+            InfectionRateCounter = 0;
 
-            Create.setUpCreate(out playerDeck);
+
             alreadySetUp = true;
 
         }
 
         public void incTurnCount()
         {
-            if (currentPlayerTurnCounter == 4)
+            if (currentPlayerTurnCounter == 3)
             {
-                NextPlayer();
+                CurrentPlayerIndex = (CurrentPlayerIndex + 1) % players.Count();
+                currentPlayerTurnCounter = 0;
             }
             else
-            {
                 currentPlayerTurnCounter++;
-            }
-        }
-        public Card drawCard()
-        {
-            playerDeckPoint++;
-            if (playerDeckPoint < 58)
-                return playerDeck[playerDeckPoint];
-            else  //gameover
-                throw new Exception("Game Over");
         }
 
-        public void NextPlayer()
+        public Card drawCard()
         {
-            currentPlayerTurnCounter = 1;
-            CurrentPlayerIndex++;
-            if (CurrentPlayerIndex == players.Length)
-            {
-                CurrentPlayerIndex = 0;
+            try{
+                return playerDeck.Pop();
+            }
+            catch(InvalidOperationException e){
+                throw new Exception("Game Over");
             }
         }
+
+      
 
         #region Storage Classes
         public class InfectionCubeCount

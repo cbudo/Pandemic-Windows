@@ -15,21 +15,24 @@ namespace SQADemicApp
         /// <summary>
         /// Sets up all of the dictionaries
         /// </summary>
-        /// <param name="cardList"></param>
+        /// <param name="playerdeck"></param>
         /// <returns>status flag</returns>
-        public static bool setUpCreate(out Card[] cardList)
+        public static bool setUpCreate(out Card[] playerdeck)
         {
             //Keep from making duplicates
             //if (alreadySetUp)
               //  return false;
             createDictionary();
             setAdjacentCities(new StringReader(Properties.Resources.AdjacentNeighbors));
-            cardList = makePlayerDeck();
+            playerdeck = makePlayerDeck();
 
             return true;
         }
 
-        private static void createDictionary()
+        /// <summary>
+        /// PUBLIC FOR TESTING ONLY
+        /// </summary>
+        public static void createDictionary()
         {
             #region Createcities
             //create the blues
@@ -148,7 +151,11 @@ namespace SQADemicApp
             }
         }
 
-        private static void setAdjacentCities(StringReader reader)
+        /// <summary>
+        /// PUBLIC FOR TESTING ONLY 
+        /// </summary>
+        /// <param name="reader"></param>
+        public static void setAdjacentCities(StringReader reader)
         {
             String line;
             while ((line = reader.ReadLine()) != null)
@@ -165,7 +172,11 @@ namespace SQADemicApp
 
         }
 
-        private  static Card[] makePlayerDeck()
+        /// <summary>
+        /// PUBLIC FOR TESTING ONLY
+        /// </summary>
+        /// <returns></returns>
+        public  static Card[] makePlayerDeck()
         {
             Card[] deck = new Card[58];
             Random rand = new Random();
@@ -189,7 +200,12 @@ namespace SQADemicApp
             return deck;
         }
 
-        private static List<Card> makeCardList(StringReader stringReader)
+        /// <summary>
+        /// PUBLIC FOR TESTING ONLY
+        /// </summary>
+        /// <param name="stringReader"></param>
+        /// <returns></returns>
+        public static List<Card> makeCardList(StringReader stringReader)
         {
             List<Card> cardList = new List<Card>();
             string line;
