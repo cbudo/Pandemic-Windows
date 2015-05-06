@@ -10,14 +10,26 @@ namespace SQADemicApp
     public class Create
     {
         public static Dictionary<string, City> cityDictionary = new Dictionary<string, City>();
+        private static bool alreadySetUp = false;
 
-        public Create()
+        /// <summary>
+        /// Sets up all of the dictionaries
+        /// </summary>
+        /// <param name="cardList"></param>
+        /// <returns>status flag</returns>
+        public static bool setUpCreate(out Card[] cardList)
         {
+            //Keep from making duplicates
+            //if (alreadySetUp)
+              //  return false;
             createDictionary();
             setAdjacentCities(new StringReader(Properties.Resources.AdjacentNeighbors));
+            cardList = makePlayerDeck();
+
+            return true;
         }
 
-        public void createDictionary()
+        private static void createDictionary()
         {
             #region Createcities
             //create the blues
@@ -136,7 +148,7 @@ namespace SQADemicApp
             }
         }
 
-        public void setAdjacentCities(StringReader reader)
+        private static void setAdjacentCities(StringReader reader)
         {
             String line;
             while ((line = reader.ReadLine()) != null)
@@ -153,7 +165,7 @@ namespace SQADemicApp
 
         }
 
-        public Card[] makePlayerDeck()
+        private  static Card[] makePlayerDeck()
         {
             Card[] deck = new Card[58];
             Random rand = new Random();
@@ -176,7 +188,8 @@ namespace SQADemicApp
 
             return deck;
         }
-        public List<Card> makeCardList(StringReader stringReader)
+
+        private static List<Card> makeCardList(StringReader stringReader)
         {
             List<Card> cardList = new List<Card>();
             string line;
@@ -194,7 +207,8 @@ namespace SQADemicApp
             cardList.Add(new Card("Forecast", Card.CARDTYPE.Special));
             return cardList;
         }
-        public COLOR getColor(string color)
+
+        private static COLOR getColor(string color)
         {
             switch (color.ToLower())
             {

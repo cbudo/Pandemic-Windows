@@ -11,27 +11,37 @@ namespace SQADemicApp
         #region Public Vars
         public static InfectionCubeCount cubeCount;
         public static Cures CURESTATUS;
-        public Card[] playerDeck = new Card[58];
-        int playerDeckPoint = -1;
+        public static Card[] playerDeck = new Card[58];
         public static int CurrentPlayerIndex;
         public static List<String> citiesWithResearchStations;
         public static int outbreakMarker = 0;
-        public int InfectionRateCounter = 0;
+        public static int InfectionRateCounter = 0;
         public static Player[] players;
-        public int currentPlayerTurnCounter = 0;
+        public static int currentPlayerTurnCounter = 0;
         #endregion
 
+        #region private vars
+        int playerDeckPoint = -1;
+        private bool alreadySetUp = false;
+        #endregion
+
+        /// <summary>
+        /// Acts as a Main function. Sets up the game and the board state
+        /// </summary>
+        /// <param name="playersroles"></param>
         public GameBoardModels(string[] playersroles)
         {
-            Create c = new Create();
-            outbreakMarker = 0;
+            //Keep from making duplicates
+            if (alreadySetUp)
+                return;
 
+            //Players setup
             players = new Player[playersroles.Length];
             currentPlayerTurnCounter = 1;
-            int i = 0;   
-            foreach(var role in playersroles)
+            CurrentPlayerIndex = 0;
+            for (int i = 0; i < playersroles.Count(); i++)
             {
-                switch (role)
+                switch (playersroles[i])
                 {
                     case "Dispatcher":
                         players[i] = new Player(ROLE.Dispatcher);
@@ -52,20 +62,16 @@ namespace SQADemicApp
                         players[i] = null;
                         break;
                 }
-                i++;
             }
-            CurrentPlayerIndex = 0;
-            
-            CURESTATUS = new Cures();
-            Create createHelper = new Create();
+            //set vars
+            outbreakMarker = 0;            
             cubeCount = new InfectionCubeCount();
-            
-            cubeCount.blackCubes = cubeCount.redCubes = cubeCount.blueCubes = cubeCount.yellowCubes = 24;            
-            CURESTATUS.BlackCure = CURESTATUS.BlueCure = CURESTATUS.RedCure = CURESTATUS.YellowCure = Cures.CURESTATE.NotCured;            
-            playerDeck = createHelper.makePlayerDeck();
+            cubeCount.blackCubes = cubeCount.redCubes = cubeCount.blueCubes = cubeCount.yellowCubes = 24;
+            CURESTATUS = new Cures();
+            CURESTATUS.BlackCure = CURESTATUS.BlueCure = CURESTATUS.RedCure = CURESTATUS.YellowCure = Cures.CURESTATE.NotCured;
 
-            //build players
-
+            Create.setUpCreate(out playerDeck);
+            alreadySetUp = true;
 
         }
 
@@ -88,7 +94,7 @@ namespace SQADemicApp
             else  //gameover
                 throw new Exception("Game Over");
         }
-        
+
         public void NextPlayer()
         {
             currentPlayerTurnCounter = 1;
@@ -101,7 +107,7 @@ namespace SQADemicApp
 
         #region Storage Classes
         public class InfectionCubeCount
-            {
+        {
             public int redCubes { get; set; }
             public int blackCubes { get; set; }
             public int blueCubes { get; set; }
