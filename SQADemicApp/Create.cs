@@ -200,6 +200,12 @@ namespace SQADemicApp
             return deck;
         }
 
+
+        public static List<Card> makeInfectionDeck(StringReader r)
+        {
+            return new List<Card>();
+        }
+
         /// <summary>
         /// PUBLIC FOR TESTING ONLY
         /// </summary>

@@ -33,6 +33,7 @@ Algiers;Madrid,Paris,Istanbul,Cairo
 Cairo;Algiers,Istanbul,Baghdad,Riyadh
 Riyadh;Cairo,Baghdad,Karachi
 Mumbai;Karachi,Delhi,Chennai
+Chennai;Mumbai,Delhi,Kolkata,Bangkok,Jakarta
 Beijing;Seoul,Shanghai
 Seoul;Beijing,Shanghai,Tokyo
 Shanghai;Beijing,Seoul,Tokyo,Taipei,Hong Kong
