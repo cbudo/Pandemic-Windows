@@ -539,7 +539,8 @@ namespace SQADemicAppTest
             scientist.hand = new List<Card> { chennai, newYork };
             opExpert.hand = new List<Card> { atlanta, london, chicagoCard };
             scientist.currentCity = chicagoCity;
-            opExpert.currentCity = chicagoCity;
+            opExpert.currentCity = bangkok;
+            Assert.AreEqual(false, PlayerActionsBL.ShareKnowledgeOption(opExpert, scientist, chicagoCard.CityName));
             CollectionAssert.AreEqual(scientist.hand, hand1);
             CollectionAssert.AreEqual(opExpert.hand, hand2);
         }
