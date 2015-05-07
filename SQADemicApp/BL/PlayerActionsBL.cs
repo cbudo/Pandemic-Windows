@@ -210,7 +210,8 @@ namespace SQADemicApp.BL
         /// <returns>Sucess Flag</returns>
         public static bool ShareKnowledgeOption(Player sender, Player reciver, string cityname)
         {
-            if (sender.currentCity != reciver.currentCity || !reciver.currentCity.Name.Equals(cityname))
+            if (sender.currentCity != reciver.currentCity || 
+                (!reciver.currentCity.Name.Equals(cityname) && sender.role != ROLE.Researcher))
                 return false;
             int index = sender.hand.FindIndex(x => x.CityName.Equals(cityname));
             reciver.hand.Add(sender.hand[index]);
