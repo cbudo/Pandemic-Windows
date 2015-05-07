@@ -210,8 +210,10 @@ namespace SQADemicApp.BL
         /// <returns>Sucess Flag</returns>
         public static bool ShareKnowledgeOption(Player sender, Player reciver, string cityname)
         {
-            //need all of the players
-            return false;
+            int index = sender.hand.FindIndex(x => x.CityName.Equals(cityname));
+            reciver.hand.Add(sender.hand[index]);
+            sender.hand.RemoveAt(index);
+            return true;
         }
     }
 }
