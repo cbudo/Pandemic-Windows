@@ -530,6 +530,21 @@ namespace SQADemicAppTest
             CollectionAssert.AreEqual(scientist.hand, hand1);
             CollectionAssert.AreEqual(opExpert.hand, hand2);
         }
+
+        [TestMethod]
+        public void TestShareChicagosimpleDiffrentCityFAIL()
+        {
+            List<Card> hand1 = new List<Card> { chennai, newYork };
+            List<Card> hand2 = new List<Card> { atlanta, london, chicagoCard };
+            scientist.hand = new List<Card> { chennai, newYork };
+            opExpert.hand = new List<Card> { atlanta, london, chicagoCard };
+            scientist.currentCity = chicagoCity;
+            opExpert.currentCity = chicagoCity;
+            CollectionAssert.AreEqual(scientist.hand, hand1);
+            CollectionAssert.AreEqual(opExpert.hand, hand2);
+        }
+
+
         #endregion
 
         #region DispatcherMove
