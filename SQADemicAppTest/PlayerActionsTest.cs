@@ -49,6 +49,7 @@ namespace SQADemicAppTest
             scientist = new Player(ROLE.Scientist);
             opExpert = new Player(ROLE.OpExpert);
             researcher = new Player(ROLE.Researcher);
+            medic = new Player(ROLE.Medic);
         }
 
         [TestMethod]
@@ -537,7 +538,23 @@ namespace SQADemicAppTest
             Assert.AreEqual(chicagoCity.blackCubes, 0);
         }
 
-
+        [TestMethod]
+        public void TestTreatDiseaseMedicDecreaseAll()
+        {
+            medic.currentCity = chicagoCity;
+            chicagoCity.redCubes = 1;
+            chicagoCity.blueCubes = 2;
+            chicagoCity.yellowCubes = 3;
+            chicagoCity.blackCubes = 1;
+            Assert.AreEqual(true, PlayerActionsBL.TreatDiseaseOption(medic, COLOR.red));
+            Assert.AreEqual(true, PlayerActionsBL.TreatDiseaseOption(medic, COLOR.blue));
+            Assert.AreEqual(true, PlayerActionsBL.TreatDiseaseOption(medic, COLOR.yellow));
+            Assert.AreEqual(true, PlayerActionsBL.TreatDiseaseOption(medic, COLOR.black));
+            Assert.AreEqual(chicagoCity.redCubes, 0);
+            Assert.AreEqual(chicagoCity.blueCubes, 0);
+            Assert.AreEqual(chicagoCity.yellowCubes, 0);
+            Assert.AreEqual(chicagoCity.blackCubes, 0);
+        }
 
         #endregion
 
