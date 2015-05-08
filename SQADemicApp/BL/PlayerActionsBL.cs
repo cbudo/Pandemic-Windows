@@ -215,16 +215,16 @@ namespace SQADemicApp.BL
             switch (color)
             {
                 case COLOR.red:
-                    city.redCubes= number;
+                    city.redCubes = GameBoardModels.CURESTATUS.RedCure == GameBoardModels.Cures.CURESTATE.Cured ? 0 : number;
                     break;
                 case COLOR.blue:
-                    city.blueCubes = number;
+                    city.blueCubes = GameBoardModels.CURESTATUS.BlueCure == GameBoardModels.Cures.CURESTATE.Cured ? 0 : number;
                     break;
                 case COLOR.yellow:
-                    city.yellowCubes = number;
+                    city.yellowCubes = GameBoardModels.CURESTATUS.YellowCure == GameBoardModels.Cures.CURESTATE.Cured ? 0 : number;
                     break;
                 case COLOR.black:
-                    city.blackCubes = number;
+                    city.blackCubes = GameBoardModels.CURESTATUS.BlackCure == GameBoardModels.Cures.CURESTATE.Cured ? 0 : number;
                     break;
                 default:
                     throw new ArgumentException("invalid color");
