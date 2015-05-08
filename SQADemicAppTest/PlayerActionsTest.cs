@@ -511,6 +511,31 @@ namespace SQADemicAppTest
             Assert.AreEqual(chicagoCity.blackCubes, 0);
         }
 
+        [TestMethod]
+        public void TestTreateDiesaseCuresExist()
+        {
+            opExpert.currentCity = chicagoCity;
+            chicagoCity.redCubes = 1;
+            chicagoCity.blueCubes = 2;
+            chicagoCity.yellowCubes = 2;
+            chicagoCity.blackCubes = 3;
+            GameBoardModels.CURESTATUS.BlackCure = GameBoardModels.Cures.CURESTATE.Cured;
+            GameBoardModels.CURESTATUS.BlueCure = GameBoardModels.Cures.CURESTATE.Cured;
+            GameBoardModels.CURESTATUS.RedCure = GameBoardModels.Cures.CURESTATE.Cured;
+            GameBoardModels.CURESTATUS.YellowCure= GameBoardModels.Cures.CURESTATE.Cured;
+            Assert.AreEqual(true, PlayerActionsBL.TreatDiseaseOption(opExpert, COLOR.red));
+            Assert.AreEqual(true, PlayerActionsBL.TreatDiseaseOption(opExpert, COLOR.blue));
+            Assert.AreEqual(true, PlayerActionsBL.TreatDiseaseOption(opExpert, COLOR.yellow));
+            Assert.AreEqual(true, PlayerActionsBL.TreatDiseaseOption(opExpert, COLOR.black));
+            GameBoardModels.CURESTATUS.BlackCure = GameBoardModels.Cures.CURESTATE.NotCured;
+            GameBoardModels.CURESTATUS.BlueCure = GameBoardModels.Cures.CURESTATE.NotCured;
+            GameBoardModels.CURESTATUS.RedCure = GameBoardModels.Cures.CURESTATE.NotCured;
+            GameBoardModels.CURESTATUS.YellowCure = GameBoardModels.Cures.CURESTATE.NotCured;
+            Assert.AreEqual(chicagoCity.redCubes, 0);
+            Assert.AreEqual(chicagoCity.blueCubes, 0);
+            Assert.AreEqual(chicagoCity.yellowCubes, 0);
+            Assert.AreEqual(chicagoCity.blackCubes, 0);
+        }
 
 
 
