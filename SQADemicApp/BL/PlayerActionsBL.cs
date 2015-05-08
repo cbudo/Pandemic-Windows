@@ -177,7 +177,7 @@ namespace SQADemicApp.BL
         /// <returns>Success Flag</returns>
         public static bool TreatDiseaseOption(Player player, COLOR color)
         {
-            int number = getDiseaseCubes(player.currentCity, color);
+            int number = player.role == ROLE.Medic ? 1 : getDiseaseCubes(player.currentCity, color);
             setDiseaseCubes(player.currentCity, color, --number);
             return true;
         }
