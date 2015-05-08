@@ -574,6 +574,19 @@ namespace SQADemicAppTest
             CollectionAssert.AreEqual(researcher.hand, hand2);
         }
 
+        [TestMethod]
+        public void TestShareChicagoMissingCardFail()
+        {
+            List<Card> hand1 = new List<Card> { chennai, newYork };
+            List<Card> hand2 = new List<Card> { atlanta, london };
+            scientist.hand = new List<Card> { chennai, newYork };
+            opExpert.hand = new List<Card> { atlanta, london};
+            scientist.currentCity = chicagoCity;
+            opExpert.currentCity = chicagoCity;
+            Assert.AreEqual(false, PlayerActionsBL.ShareKnowledgeOption(opExpert, scientist, chicagoCard.CityName));
+            CollectionAssert.AreEqual(scientist.hand, hand1);
+            CollectionAssert.AreEqual(opExpert.hand, hand2);
+        }
 
         #endregion
 
