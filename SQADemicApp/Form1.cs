@@ -9,29 +9,27 @@ namespace SQADemicApp
         GameBoardModels boardModel;
         Form2 form2 = new Form2();
         Form3 form3 = new Form3();
-        public enum STATE { Initializing, Move, Draw, Cure }
+        public enum STATE { Initializing, Move, Draw, Cure, Default }
         public static STATE CurrentState;
         public Form1()
         {
             CurrentState = STATE.Initializing;
-            SetupGameForm setupForm = new SetupGameForm();
-            setupForm.Show();
             string[] rolesDefault = { "Dispatcher", "Scientist" };
             boardModel = new GameBoardModels(rolesDefault);
             InitializeComponent();
             form2.Show();
             form3.Show();
+            CurrentState = STATE.Default;
         }
         public Form1(string[] playerRoles)
         {
-            SetupGameForm setupForm = new SetupGameForm();
-            setupForm.Show();
 
             boardModel = new GameBoardModels(playerRoles);
 
             InitializeComponent();
             form2.Show();
             form3.Show();
+            CurrentState = STATE.Default;
         }
 
         private void button49_Click(object sender, EventArgs e)
@@ -74,7 +72,12 @@ namespace SQADemicApp
                         UpdateForm3();
                     }
                     break;
+                default:
+                    CityPageForm CPForm = new CityPageForm(Create.cityDictionary[pressed.Text.Substring(1)]);
+                    CPForm.Show();
+                    break;
             }
+            CurrentState = STATE.Default;
         }
         public void UpdateForm3()
         {

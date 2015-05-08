@@ -48,6 +48,12 @@
     <Compile Include="BL\HelperBL.cs" />
     <Compile Include="BL\PlayerActionsBL.cs" />
     <Compile Include="Card.cs" />
+    <Compile Include="CityPageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CityPageForm.Designer.cs">
+      <DependentUpon>CityPageForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -78,7 +84,22 @@
     <Compile Include="SetupGameForm.Designer.cs">
       <DependentUpon>SetupGameForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ShareCardForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShareCardForm.Designer.cs">
+      <DependentUpon>ShareCardForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TreatDiseaseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TreatDiseaseForm.Designer.cs">
+      <DependentUpon>TreatDiseaseForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="WS\InfectorWS.cs" />
+    <EmbeddedResource Include="CityPageForm.resx">
+      <DependentUpon>CityPageForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -101,6 +122,12 @@
     <Compile Include="BL\InfectorBL.cs" />
     <EmbeddedResource Include="SetupGameForm.resx">
       <DependentUpon>SetupGameForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShareCardForm.resx">
+      <DependentUpon>ShareCardForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TreatDiseaseForm.resx">
+      <DependentUpon>TreatDiseaseForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

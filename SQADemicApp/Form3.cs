@@ -47,10 +47,10 @@ namespace SQADemicApp
             selectedCards = listBox1.SelectedItems.Cast<string>().ToList<string>();
             PlayerActionsBL.Cure(GameBoardModels.players[GameBoardModels.CurrentPlayerIndex], selectedCards, Create.cityDictionary[listBox1.SelectedItems[0].ToString()].color);
         }
-
         private void CureCityButton_Click(object sender, EventArgs e)
         {
-
+            TreatDiseaseForm TDForm = new TreatDiseaseForm();
+            TDForm.Show();
         }
 
     }
