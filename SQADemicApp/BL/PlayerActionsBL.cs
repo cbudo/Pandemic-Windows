@@ -72,15 +72,6 @@ namespace SQADemicApp.BL
             return options;
         }
 
-        #region not implemented
-        /**
-        public static bool ShareKnowledgeOption(City currentCity, ROLE role)
-        {
-            //need all of the players
-            return false;
-        }**/
-        #endregion
-
         /// <summary>
         /// Moves the player to the given city, updating the hand if needed
         /// </summary>
@@ -186,26 +177,60 @@ namespace SQADemicApp.BL
         /// <returns>Success Flag</returns>
         public static bool TreatDiseaseOption(Player player, COLOR color)
         {
-            //need list of cures
+            int number = getDiseaseCubes(player.currentCity, color);
+            setDiseaseCubes(player.currentCity, color, --number);
+            return true;
+        }
+
+        /// <summary>
+        /// Helper method for Treat Disease Option
+        /// </summary>
+        /// <param name="city"></param>
+        /// <param name="color"></param>
+        /// <returns>number of disease cubes in the city</returns>
+        private static int getDiseaseCubes(City city, COLOR color){
             switch (color)
             {
                 case COLOR.red:
-                    player.currentCity.redCubes--;
+                   return city.redCubes;
+                case COLOR.blue:
+                   return city.blueCubes;
+                case COLOR.yellow:
+                   return city.yellowCubes;
+                case COLOR.black:
+                   return city.blackCubes;
+                default:
+                    throw new ArgumentException("invalid color"); 
+            }
+        }
+
+        /// <summary>
+        /// Helper method for Treat Disease Option
+        /// </summary>
+        /// <param name="city"></param>
+        /// <param name="color"></param>
+        /// <param name="number"></param>
+        private static void setDiseaseCubes(City city, COLOR color, int number)
+        {
+            switch (color)
+            {
+                case COLOR.red:
+                    city.redCubes= number;
                     break;
                 case COLOR.blue:
-                    player.currentCity.blueCubes--;
+                    city.blueCubes = number;
                     break;
                 case COLOR.yellow:
-                    player.currentCity.yellowCubes--;
+                    city.yellowCubes = number;
                     break;
                 case COLOR.black:
-                    player.currentCity.blackCubes--;
+                    city.blackCubes = number;
                     break;
                 default:
-                    return false;
+                    throw new ArgumentException("invalid color");
             }
-            return true;
         }
+
 
         /// <summary>
         /// Allows Players to Trade Cards
