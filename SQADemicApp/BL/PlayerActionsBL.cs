@@ -214,6 +214,8 @@ namespace SQADemicApp.BL
                 (!reciver.currentCity.Name.Equals(cityname) && sender.role != ROLE.Researcher))
                 return false;
             int index = sender.hand.FindIndex(x => x.CityName.Equals(cityname));
+            if (index == -1)
+                return false;
             reciver.hand.Add(sender.hand[index]);
             sender.hand.RemoveAt(index);
             return true;
