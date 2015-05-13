@@ -132,6 +132,10 @@ namespace SQADemicApp.BL
                 case COLOR.blue:
                     if (city.blueCubes < 3)
                         {
+                            if (GameBoardModels.cubeCount.blueCubes <= 1)
+                            {
+                                throw new Exception("Game Over");
+                            }
                             city.blueCubes++;
                             return city.blueCubes;
                         }
@@ -141,6 +145,10 @@ namespace SQADemicApp.BL
                 case COLOR.yellow:
                     if (city.yellowCubes < 3)
                         {
+                            if (GameBoardModels.cubeCount.yellowCubes <= 1)
+                            {
+                                throw new Exception("Game Over");
+                            }
                             city.yellowCubes++;
                             return city.yellowCubes;
 
@@ -151,6 +159,10 @@ namespace SQADemicApp.BL
                 case COLOR.black:
                         if (city.blackCubes < 3)
                         {
+                            if (GameBoardModels.cubeCount.blackCubes <= 1)
+                            {
+                                throw new Exception("Game Over");
+                            }
                             city.blackCubes++;
                             return city.blackCubes;
 
@@ -161,6 +173,10 @@ namespace SQADemicApp.BL
                 default:
                     if (city.redCubes < 3)
                     {
+                        if (GameBoardModels.cubeCount.redCubes <= 1)
+                        {
+                            throw new Exception("Game Over");
+                        }
                         city.redCubes++;
                         return city.redCubes;
                     }
