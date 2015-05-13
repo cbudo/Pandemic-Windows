@@ -73,6 +73,10 @@ namespace SQADemicApp.BL
                     case COLOR.blue:
                         if (city.blueCubes < 3)
                         {
+                            if (GameBoardModels.cubeCount.blueCubes <= 0)
+                            {
+                                throw new Exception("Game Over");
+                            }
                             city.blueCubes++;
                             return city.blueCubes;
                         }

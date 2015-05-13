@@ -287,5 +287,15 @@ namespace SQADemicAppTest
             Assert.AreEqual(1, miami.blueCubes); //ensures miami gets a blue overflow cube, even though it's a yellow city
             Assert.AreEqual(1, ny.blueCubes); //ensures new york only gets infected once
         }
+
+
+        [TestMethod]
+        public void TestRedWithTwoInfectWithNewException()
+        {
+            SQADemicApp.City tokyo = new SQADemicApp.City(COLOR.red, "Tokyo");
+            tokyo.redCubes = 2;
+            int numRedCubes = SQADemicApp.BL.InfectorBL.InfectCity(tokyo, new HashSet<City>(), false, COLOR.red);
+            Assert.AreEqual(3, numRedCubes);
+        }
     }
 }
