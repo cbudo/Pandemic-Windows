@@ -295,8 +295,22 @@ namespace SQADemicAppTest
         {
             SQADemicApp.City tokyo = new SQADemicApp.City(COLOR.red, "Tokyo");
             tokyo.redCubes = 2;
-            GameBoardModels.cubeCount.redCubes = 0;
+            GameBoardModels.cubeCount.redCubes = 1;
             int numRedCubes = SQADemicApp.BL.InfectorBL.InfectCity(tokyo, new HashSet<City>(), false, COLOR.red);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(Exception))]
+        public void TestOutbreakSimpleException()
+        {
+            HashSet<City> infected = new HashSet<City>();
+            SQADemicApp.City lima = new SQADemicApp.City(COLOR.yellow, "Lima");
+            SQADemicApp.City santiago = new SQADemicApp.City(COLOR.yellow, "Santiago");
+            infected.Add(santiago);
+            santiago.adjacentCities.Add(lima);
+            GameBoardModels.cubeCount.yellowCubes = 1;
+            santiago.yellowCubes = 3;
+            SQADemicApp.BL.InfectorBL.Outbreak(santiago, COLOR.yellow, santiago.adjacentCities, infected);
         }
     }
 }
