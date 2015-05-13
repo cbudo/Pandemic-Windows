@@ -312,5 +312,19 @@ namespace SQADemicAppTest
             santiago.yellowCubes = 3;
             SQADemicApp.BL.InfectorBL.Outbreak(santiago, COLOR.yellow, santiago.adjacentCities, infected);
         }
+
+        [TestMethod]
+        [ExpectedException(typeof(Exception))]
+        public void TestIncrementOutbreakMarkerToThrowException()
+        {
+            HashSet<City> infected = new HashSet<City>();
+            SQADemicApp.City lima = new SQADemicApp.City(COLOR.yellow, "Lima");
+            SQADemicApp.City santiago = new SQADemicApp.City(COLOR.yellow, "Santiago");
+            infected.Add(santiago);
+            santiago.adjacentCities.Add(lima);
+            santiago.yellowCubes = 3;
+            GameBoardModels.outbreakMarker = 7;
+            SQADemicApp.BL.InfectorBL.Outbreak(santiago, COLOR.yellow, santiago.adjacentCities, infected);
+        }
     }
 }
