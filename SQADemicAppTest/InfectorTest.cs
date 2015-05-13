@@ -290,12 +290,13 @@ namespace SQADemicAppTest
 
 
         [TestMethod]
+        [ExpectedException(typeof(Exception))]
         public void TestRedWithTwoInfectWithNewException()
         {
             SQADemicApp.City tokyo = new SQADemicApp.City(COLOR.red, "Tokyo");
             tokyo.redCubes = 2;
+            GameBoardModels.cubeCount.redCubes = 0;
             int numRedCubes = SQADemicApp.BL.InfectorBL.InfectCity(tokyo, new HashSet<City>(), false, COLOR.red);
-            Assert.AreEqual(3, numRedCubes);
         }
     }
 }
