@@ -19,6 +19,10 @@ namespace SQADemicAppTest
         public void SetUpArrays()
         {
             GameBoardModels.outbreakMarker = 0;
+            GameBoardModels.cubeCount.yellowCubes = 24;
+            GameBoardModels.cubeCount.blueCubes = 24;
+            GameBoardModels.cubeCount.blackCubes = 24;
+            GameBoardModels.cubeCount.redCubes = 24;
             deck = new LinkedList<string>();
             pile = new LinkedList<string>();
             infectionRate = 3;
