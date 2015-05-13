@@ -197,6 +197,10 @@ namespace SQADemicApp.BL
                 }
             }
             GameBoardModels.outbreakMarker++;
+            if (GameBoardModels.outbreakMarker == 8)
+            {
+                throw new Exception("Game Over");
+            }
             return alreadyInfected;
         }
     }
