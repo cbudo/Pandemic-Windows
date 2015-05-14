@@ -119,6 +119,7 @@ namespace SQADemicApp.BL
                             {
                                 throw new Exception("Game Over");
                             }
+                            GameBoardModels.cubeCount.redCubes--;
                             city.redCubes++;
                             return city.redCubes;
 
