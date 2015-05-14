@@ -361,5 +361,15 @@ namespace SQADemicAppTest
             SQADemicApp.BL.InfectorBL.InfectCity(chicago, new HashSet<City>(), false, COLOR.blue);
             Assert.AreEqual(21, GameBoardModels.cubeCount.blueCubes);
         }
+
+        [TestMethod]
+        public void TestDecrementTotalBlackCubes()
+        {
+            SQADemicApp.City kolkata = new SQADemicApp.City(COLOR.black, "Kolkata");
+            kolkata.blackCubes = 2;
+            GameBoardModels.cubeCount.blackCubes = 22;
+            SQADemicApp.BL.InfectorBL.InfectCity(kolkata, new HashSet<City>(), false, COLOR.black);
+            Assert.AreEqual(21, GameBoardModels.cubeCount.blackCubes);
+        }
     }
 }
