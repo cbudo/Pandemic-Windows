@@ -77,7 +77,7 @@ namespace SQADemicApp.BL
                             {
                                 throw new Exception("Game Over");
                             }
-                            
+                            GameBoardModels.cubeCount.blueCubes--;
                             city.blueCubes++;
                             return city.blueCubes;
                         }
@@ -139,6 +139,7 @@ namespace SQADemicApp.BL
                             {
                                 throw new Exception("Game Over");
                             }
+                            GameBoardModels.cubeCount.blueCubes--;
                             city.blueCubes++;
                             return city.blueCubes;
                         }
