@@ -330,5 +330,15 @@ namespace SQADemicAppTest
             GameBoardModels.outbreakMarker = 7;
             SQADemicApp.BL.InfectorBL.Outbreak(santiago, COLOR.yellow, santiago.adjacentCities, infected);
         }
+
+        [TestMethod]
+        public void TestDecrementTotalRedCubes()
+        {
+            SQADemicApp.City tokyo = new SQADemicApp.City(COLOR.red, "Tokyo");
+            tokyo.redCubes = 2;
+            GameBoardModels.cubeCount.redCubes = 24;
+            SQADemicApp.BL.InfectorBL.InfectCity(tokyo, new HashSet<City>(), false, COLOR.red);
+            Assert.AreEqual(23, GameBoardModels.cubeCount.redCubes);
+        }
     }
 }

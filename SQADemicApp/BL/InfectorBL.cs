@@ -77,6 +77,7 @@ namespace SQADemicApp.BL
                             {
                                 throw new Exception("Game Over");
                             }
+                            
                             city.blueCubes++;
                             return city.blueCubes;
                         }
