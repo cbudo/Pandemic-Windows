@@ -73,12 +73,12 @@ namespace SQADemicApp.BL
                     case COLOR.blue:
                         if (city.blueCubes < 3)
                         {
-                            if (GameBoardModels.cubeCount.blueCubes <= 1)
+                            GameBoardModels.cubeCount.blueCubes--;
+                            city.blueCubes++;
+                            if (GameBoardModels.cubeCount.blueCubes <= 0)
                             {
                                 throw new Exception("Game Over");
                             }
-                            GameBoardModels.cubeCount.blueCubes--;
-                            city.blueCubes++;
                             return city.blueCubes;
                         }
                         Outbreak(city, city.color, city.adjacentCities, alreadyInfected);
@@ -87,12 +87,12 @@ namespace SQADemicApp.BL
                     case COLOR.yellow:
                         if (city.yellowCubes < 3)
                         {
-                            if (GameBoardModels.cubeCount.yellowCubes <= 1)
+                            GameBoardModels.cubeCount.yellowCubes--;
+                            city.yellowCubes++;
+                            if (GameBoardModels.cubeCount.yellowCubes <= 0)
                             {
                                 throw new Exception("Game Over");
                             }
-                            GameBoardModels.cubeCount.yellowCubes--;
-                            city.yellowCubes++;
                             return city.yellowCubes;
 
                         }
@@ -102,12 +102,12 @@ namespace SQADemicApp.BL
                     case COLOR.black:
                         if (city.blackCubes < 3)
                         {
-                            if (GameBoardModels.cubeCount.blackCubes <= 1)
+                            GameBoardModels.cubeCount.blackCubes--;
+                            city.blackCubes++;
+                            if (GameBoardModels.cubeCount.blackCubes <= 0)
                             {
                                 throw new Exception("Game Over");
                             }
-                            GameBoardModels.cubeCount.blackCubes--;
-                            city.blackCubes++;
                             return city.blackCubes;
 
                         }
@@ -117,12 +117,12 @@ namespace SQADemicApp.BL
                     default:
                         if (city.redCubes < 3)
                         {
-                            if (GameBoardModels.cubeCount.redCubes <= 1)
+                            GameBoardModels.cubeCount.redCubes--;
+                            city.redCubes++;
+                            if (GameBoardModels.cubeCount.redCubes <= 0)
                             {
                                 throw new Exception("Game Over");
                             }
-                            GameBoardModels.cubeCount.redCubes--;
-                            city.redCubes++;
                             return city.redCubes;
 
                         }
@@ -136,12 +136,12 @@ namespace SQADemicApp.BL
                 case COLOR.blue:
                     if (city.blueCubes < 3)
                         {
-                            if (GameBoardModels.cubeCount.blueCubes <= 1)
+                            GameBoardModels.cubeCount.blueCubes--;
+                            city.blueCubes++;
+                            if (GameBoardModels.cubeCount.blueCubes <= 0)
                             {
                                 throw new Exception("Game Over");
                             }
-                            GameBoardModels.cubeCount.blueCubes--;
-                            city.blueCubes++;
                             return city.blueCubes;
                         }
                         Outbreak(city, city.color, city.adjacentCities, alreadyInfected);
@@ -150,12 +150,12 @@ namespace SQADemicApp.BL
                 case COLOR.yellow:
                     if (city.yellowCubes < 3)
                         {
-                            if (GameBoardModels.cubeCount.yellowCubes <= 1)
+                            GameBoardModels.cubeCount.yellowCubes--;
+                            city.yellowCubes++;
+                            if (GameBoardModels.cubeCount.yellowCubes <= 0)
                             {
                                 throw new Exception("Game Over");
                             }
-                            GameBoardModels.cubeCount.yellowCubes--;
-                            city.yellowCubes++;
                             return city.yellowCubes;
 
                         }
@@ -165,12 +165,12 @@ namespace SQADemicApp.BL
                 case COLOR.black:
                         if (city.blackCubes < 3)
                         {
-                            if (GameBoardModels.cubeCount.blackCubes <= 1)
+                            GameBoardModels.cubeCount.blackCubes--;
+                            city.blackCubes++;
+                            if (GameBoardModels.cubeCount.blackCubes <= 0)
                             {
                                 throw new Exception("Game Over");
                             }
-                            GameBoardModels.cubeCount.blackCubes--;
-                            city.blackCubes++;
                             return city.blackCubes;
 
                         }
@@ -180,12 +180,12 @@ namespace SQADemicApp.BL
                 default:
                     if (city.redCubes < 3)
                     {
-                        if (GameBoardModels.cubeCount.redCubes <= 1)
+                        GameBoardModels.cubeCount.redCubes--;
+                        city.redCubes++;
+                        if (GameBoardModels.cubeCount.redCubes <= 0)
                         {
                             throw new Exception("Game Over");
                         }
-                        GameBoardModels.cubeCount.redCubes--;
-                        city.redCubes++;
                         return city.redCubes;
                     }
                     Outbreak(city, city.color, city.adjacentCities, alreadyInfected);
