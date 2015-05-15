@@ -13,6 +13,7 @@ namespace SQADemicAppTest
     {
         City chicagoCity, bangkok, kolkata, sanFran;
         List<Card> hand, pile;
+        List<Player> players;
         Card chennai, newYork, atlanta, chicagoCard, london, paris, milan, airlift;
         Player dispatcher, medic, opExpert, researcher, scientist;
 
@@ -50,6 +51,7 @@ namespace SQADemicAppTest
             opExpert = new Player(ROLE.OpExpert);
             researcher = new Player(ROLE.Researcher);
             medic = new Player(ROLE.Medic);
+            players = new List<Player> { scientist, opExpert, researcher, medic };
         }
 
         [TestMethod]
@@ -652,6 +654,16 @@ namespace SQADemicAppTest
         #endregion
 
         #region DispatcherMove
+
+        [TestMethod]
+        public void TestDispatcherMoverAdjacentCitySanFran()
+        {
+            scientist.currentCity = chicagoCity;
+            hand = new List<Card> { airlift, chicagoCard, chennai };
+            scientist.hand = hand;
+            PlayerActionsBL.DispatcherMovePlayer(scientist, players, sanFran);
+            Assert.AreEqual(scientist.currentCity.Name, sanFran.Name);
+        }
 
         #endregion
     }

@@ -109,7 +109,7 @@ namespace SQADemicApp.BL
         /// <param name="players">List of Players</param>
         /// <param name="destination">Name of the City to be moved to</param>
         /// <returns>Status Flag</returns>
-        public static bool DispatcherMovePlayer(Player player, List<Player> players, string destination)
+        public static bool DispatcherMovePlayer(Player player, List<Player> players, City destination)
         {
             //rules:
             /**
