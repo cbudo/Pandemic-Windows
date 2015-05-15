@@ -659,8 +659,6 @@ namespace SQADemicAppTest
         public void TestDispatcherMoveAdjacentCitySanFran()
         {
             scientist.currentCity = chicagoCity;
-            hand = new List<Card> { airlift, chicagoCard, chennai };
-            scientist.hand = hand;
             Assert.AreEqual(PlayerActionsBL.DispatcherMovePlayer(scientist, players, sanFran), true);
             Assert.AreEqual(scientist.currentCity.Name, sanFran.Name);
         }
@@ -670,8 +668,6 @@ namespace SQADemicAppTest
         public void TestDispatcherMoveInvalidCityKolkata()
         {
             scientist.currentCity = chicagoCity;
-            hand = new List<Card> { airlift, chicagoCard, chennai };
-            scientist.hand = hand;
             Assert.AreEqual(PlayerActionsBL.DispatcherMovePlayer(scientist, players, kolkata), false);
             Assert.AreEqual(scientist.currentCity.Name, chicagoCity.Name);
         }
@@ -681,11 +677,23 @@ namespace SQADemicAppTest
         {
             scientist.currentCity = chicagoCity;
             opExpert.currentCity = bangkok; 
-            hand = new List<Card> { airlift, chicagoCard, chennai };
-            scientist.hand = hand;
             Assert.AreEqual(PlayerActionsBL.DispatcherMovePlayer(scientist, players, bangkok), true);
             Assert.AreEqual(scientist.currentCity.Name, bangkok.Name);
+            opExpert.currentCity = chicagoCity;
         }
+
+        [TestMethod]
+        public void TestDispatcherMoveShuttleFlightd()
+        {
+            chicagoCity.researchStation = true;
+            bangkok.researchStation = true;
+            scientist.currentCity = chicagoCity;
+            Assert.AreEqual(true, PlayerActionsBL.DispatcherMovePlayer(scientist, players, bangkok));
+            Assert.AreEqual(scientist.currentCity.Name, bangkok.Name);
+            chicagoCity.researchStation = false;
+            bangkok.researchStation = false;
+        }
+
 
         #endregion
     }
