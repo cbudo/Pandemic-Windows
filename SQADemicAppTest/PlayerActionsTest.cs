@@ -676,6 +676,17 @@ namespace SQADemicAppTest
             Assert.AreEqual(scientist.currentCity.Name, chicagoCity.Name);
         }
 
+        [TestMethod]
+        public void TestDispatcherMoveToOtherPlayer()
+        {
+            scientist.currentCity = chicagoCity;
+            opExpert.currentCity = bangkok; 
+            hand = new List<Card> { airlift, chicagoCard, chennai };
+            scientist.hand = hand;
+            Assert.AreEqual(PlayerActionsBL.DispatcherMovePlayer(scientist, players, bangkok), true);
+            Assert.AreEqual(scientist.currentCity.Name, bangkok.Name);
+        }
+
         #endregion
     }
     /** PRINTING STUFF
