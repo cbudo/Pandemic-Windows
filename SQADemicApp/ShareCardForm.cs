@@ -44,12 +44,7 @@ namespace SQADemicApp
             listBox1.Items.Clear();
             listBox1.Items.AddRange(GameBoardModels.players[GameBoardModels.CurrentPlayerIndex].handStringList().ToArray());
         }
-
-        private void ShareCardForm_Load(object sender, EventArgs e)
-        {
-            
-        }
-
+        
         private void P1T_Click(object sender, EventArgs e)
         {
             switch (GameBoardModels.CurrentPlayerIndex)

@@ -95,7 +95,6 @@
             this.Controls.Add(this.listBox1);
             this.Name = "ShareCardForm";
             this.Text = "ShareCardForm";
-            this.Load += new System.EventHandler(this.ShareCardForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
