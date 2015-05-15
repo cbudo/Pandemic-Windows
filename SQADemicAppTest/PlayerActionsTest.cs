@@ -683,7 +683,7 @@ namespace SQADemicAppTest
         }
 
         [TestMethod]
-        public void TestDispatcherMoveShuttleFlightd()
+        public void TestDispatcherMoveShuttleFlight()
         {
             chicagoCity.researchStation = true;
             bangkok.researchStation = true;

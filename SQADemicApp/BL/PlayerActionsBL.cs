@@ -119,11 +119,16 @@ namespace SQADemicApp.BL
              **/
             if (DriveOptions(player.currentCity).Any(p => p.Name.Equals(destination.Name)))
             {
-                //do nothing
+                //Do nothing
             }
             else if(players.Any(p => p.currentCity.Name.Equals(destination.Name))){
-                //do nothing
-            }else{
+                //Do nothing
+            }
+            else if (ShuttleFlightOption(player.currentCity).Contains(destination.Name))
+            {
+                //Do Nothing
+            }
+            else{
                 return false;
             }
             player.currentCity = destination;
