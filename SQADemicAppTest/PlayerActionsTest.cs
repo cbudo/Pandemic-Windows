@@ -697,6 +697,16 @@ namespace SQADemicAppTest
 
 
         #endregion
+
+        [TestMethod]
+        public void TestGovernmentGrant()
+        {
+            scientist.currentCity = chicagoCity;
+            chicagoCity.researchStation = false;
+            PlayerActionsBL.GovernmentGrant(chicagoCity.Name);
+            Assert.AreEqual(true, chicagoCity.researchStation);
+            chicagoCity.researchStation = false;
+        }
     }
     /** PRINTING STUFF
     //Print Statment

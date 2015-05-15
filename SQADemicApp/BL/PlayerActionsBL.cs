@@ -262,5 +262,10 @@ namespace SQADemicApp.BL
             sender.hand.RemoveAt(index);
             return true;
         }
+
+        public static void GovernmentGrant(string cityName)
+        {
+
+        }
     }
 }
