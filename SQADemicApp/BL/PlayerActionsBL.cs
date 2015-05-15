@@ -117,8 +117,11 @@ namespace SQADemicApp.BL
              * Move the player to other players
              * move the player using shuttle flight
              **/
+            if (!DriveOptions(player.currentCity).Any(c => c.Name.Equals(destination.Name)))
+            {
+                return false;
+            }
             player.currentCity = destination;
-
             return true;
         }
 
