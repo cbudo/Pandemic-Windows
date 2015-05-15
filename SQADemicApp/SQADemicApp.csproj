@@ -44,6 +44,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdvancedActions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdvancedActions.Designer.cs">
+      <DependentUpon>AdvancedActions.cs</DependentUpon>
+    </Compile>
     <Compile Include="BL\CityBL.cs" />
     <Compile Include="BL\HelperBL.cs" />
     <Compile Include="BL\PlayerActionsBL.cs" />
@@ -53,6 +59,12 @@
     </Compile>
     <Compile Include="CityPageForm.Designer.cs">
       <DependentUpon>CityPageForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CureForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CureForm.Designer.cs">
+      <DependentUpon>CureForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -97,8 +109,14 @@
       <DependentUpon>TreatDiseaseForm.cs</DependentUpon>
     </Compile>
     <Compile Include="WS\InfectorWS.cs" />
+    <EmbeddedResource Include="AdvancedActions.resx">
+      <DependentUpon>AdvancedActions.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CityPageForm.resx">
       <DependentUpon>CityPageForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CureForm.resx">
+      <DependentUpon>CureForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

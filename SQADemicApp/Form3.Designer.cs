@@ -33,8 +33,6 @@ namespace SQADemicApp
             this.label1 = new System.Windows.Forms.Label();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.MoveButton = new System.Windows.Forms.Button();
-            this.ResearchButton = new System.Windows.Forms.Button();
-            this.CreateCureButton = new System.Windows.Forms.Button();
             this.CureCityButton = new System.Windows.Forms.Button();
             this.RedCubes = new System.Windows.Forms.Label();
             this.BlueCubes = new System.Windows.Forms.Label();
@@ -43,7 +41,14 @@ namespace SQADemicApp
             this.InfectionRate = new System.Windows.Forms.Label();
             this.OutbreakCount = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.AAButton = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.RedCure = new System.Windows.Forms.Label();
+            this.BlackCure = new System.Windows.Forms.Label();
+            this.BlueCure = new System.Windows.Forms.Label();
+            this.YellowCure = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // progressBar1
@@ -82,29 +87,9 @@ namespace SQADemicApp
             this.MoveButton.UseVisualStyleBackColor = true;
             this.MoveButton.Click += new System.EventHandler(this.MoveButton_Click);
             // 
-            // ResearchButton
-            // 
-            this.ResearchButton.Location = new System.Drawing.Point(159, 12);
-            this.ResearchButton.Name = "ResearchButton";
-            this.ResearchButton.Size = new System.Drawing.Size(101, 63);
-            this.ResearchButton.TabIndex = 4;
-            this.ResearchButton.Text = "Build Research Station";
-            this.ResearchButton.UseVisualStyleBackColor = true;
-            this.ResearchButton.Click += new System.EventHandler(this.ResearchButton_Click);
-            // 
-            // CreateCureButton
-            // 
-            this.CreateCureButton.Location = new System.Drawing.Point(25, 100);
-            this.CreateCureButton.Name = "CreateCureButton";
-            this.CreateCureButton.Size = new System.Drawing.Size(101, 63);
-            this.CreateCureButton.TabIndex = 5;
-            this.CreateCureButton.Text = "Create Cure";
-            this.CreateCureButton.UseVisualStyleBackColor = true;
-            this.CreateCureButton.Click += new System.EventHandler(this.CreateCureButton_Click);
-            // 
             // CureCityButton
             // 
-            this.CureCityButton.Location = new System.Drawing.Point(159, 100);
+            this.CureCityButton.Location = new System.Drawing.Point(159, 12);
             this.CureCityButton.Name = "CureCityButton";
             this.CureCityButton.Size = new System.Drawing.Size(101, 63);
             this.CureCityButton.TabIndex = 6;
@@ -157,7 +142,7 @@ namespace SQADemicApp
             // 
             this.InfectionRate.AutoSize = true;
             this.InfectionRate.Font = new System.Drawing.Font("Courier New", 7.8F);
-            this.InfectionRate.Location = new System.Drawing.Point(68, 166);
+            this.InfectionRate.Location = new System.Drawing.Point(68, 160);
             this.InfectionRate.Name = "InfectionRate";
             this.InfectionRate.Size = new System.Drawing.Size(144, 17);
             this.InfectionRate.TabIndex = 11;
@@ -167,7 +152,7 @@ namespace SQADemicApp
             // 
             this.OutbreakCount.AutoSize = true;
             this.OutbreakCount.Font = new System.Drawing.Font("Courier New", 7.8F);
-            this.OutbreakCount.Location = new System.Drawing.Point(68, 183);
+            this.OutbreakCount.Location = new System.Drawing.Point(68, 177);
             this.OutbreakCount.Name = "OutbreakCount";
             this.OutbreakCount.Size = new System.Drawing.Size(144, 17);
             this.OutbreakCount.TabIndex = 12;
@@ -186,17 +171,75 @@ namespace SQADemicApp
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Remaining Cubes";
             // 
+            // AAButton
+            // 
+            this.AAButton.Location = new System.Drawing.Point(91, 81);
+            this.AAButton.Name = "AAButton";
+            this.AAButton.Size = new System.Drawing.Size(101, 63);
+            this.AAButton.TabIndex = 14;
+            this.AAButton.Text = "Advanced Actions";
+            this.AAButton.UseVisualStyleBackColor = true;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.YellowCure);
+            this.groupBox2.Controls.Add(this.BlueCure);
+            this.groupBox2.Controls.Add(this.BlackCure);
+            this.groupBox2.Controls.Add(this.RedCure);
+            this.groupBox2.Location = new System.Drawing.Point(13, 338);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(261, 57);
+            this.groupBox2.TabIndex = 15;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Cure Status";
+            // 
+            // RedCure
+            // 
+            this.RedCure.AutoSize = true;
+            this.RedCure.Location = new System.Drawing.Point(12, 18);
+            this.RedCure.Name = "RedCure";
+            this.RedCure.Size = new System.Drawing.Size(94, 17);
+            this.RedCure.TabIndex = 0;
+            this.RedCure.Text = "Red: No Cure";
+            // 
+            // BlackCure
+            // 
+            this.BlackCure.AutoSize = true;
+            this.BlackCure.Location = new System.Drawing.Point(12, 36);
+            this.BlackCure.Name = "BlackCure";
+            this.BlackCure.Size = new System.Drawing.Size(102, 17);
+            this.BlackCure.TabIndex = 1;
+            this.BlackCure.Text = "Black: No Cure";
+            // 
+            // BlueCure
+            // 
+            this.BlueCure.AutoSize = true;
+            this.BlueCure.Location = new System.Drawing.Point(144, 18);
+            this.BlueCure.Name = "BlueCure";
+            this.BlueCure.Size = new System.Drawing.Size(96, 17);
+            this.BlueCure.TabIndex = 2;
+            this.BlueCure.Text = "Blue: No Cure";
+            // 
+            // YellowCure
+            // 
+            this.YellowCure.AutoSize = true;
+            this.YellowCure.Location = new System.Drawing.Point(144, 36);
+            this.YellowCure.Name = "YellowCure";
+            this.YellowCure.Size = new System.Drawing.Size(108, 17);
+            this.YellowCure.TabIndex = 3;
+            this.YellowCure.Text = "Yellow: No Cure";
+            // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(286, 612);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.AAButton);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.OutbreakCount);
             this.Controls.Add(this.InfectionRate);
             this.Controls.Add(this.CureCityButton);
-            this.Controls.Add(this.CreateCureButton);
-            this.Controls.Add(this.ResearchButton);
             this.Controls.Add(this.MoveButton);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.label1);
@@ -206,6 +249,8 @@ namespace SQADemicApp
             this.Load += new System.EventHandler(this.Form3_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -217,8 +262,6 @@ namespace SQADemicApp
         public System.Windows.Forms.Label label1;
         public System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Button MoveButton;
-        private System.Windows.Forms.Button ResearchButton;
-        private System.Windows.Forms.Button CreateCureButton;
         private System.Windows.Forms.Button CureCityButton;
         public System.Windows.Forms.Label RedCubes;
         public System.Windows.Forms.Label BlueCubes;
@@ -227,5 +270,11 @@ namespace SQADemicApp
         public System.Windows.Forms.Label InfectionRate;
         public System.Windows.Forms.Label OutbreakCount;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button AAButton;
+        private System.Windows.Forms.GroupBox groupBox2;
+        public System.Windows.Forms.Label BlackCure;
+        public System.Windows.Forms.Label YellowCure;
+        public System.Windows.Forms.Label BlueCure;
+        public System.Windows.Forms.Label RedCure;
     }
 }
