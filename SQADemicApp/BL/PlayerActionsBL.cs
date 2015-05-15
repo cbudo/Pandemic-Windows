@@ -117,6 +117,8 @@ namespace SQADemicApp.BL
              * Move the player to other players
              * move the player using shuttle flight
              **/
+            player.currentCity = destination;
+
             return false;
         }
 
