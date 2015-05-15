@@ -9,7 +9,7 @@ namespace SQADemicApp
         GameBoardModels boardModel;
         Form2 form2 = new Form2();
         Form3 form3 = new Form3();
-        public enum STATE { Initializing, Move, Draw, Cure, Default }
+        public enum STATE { Dispatcher, Initializing, Move, Draw, Cure, Default }
         public static STATE CurrentState;
         public Form1()
         {
@@ -19,6 +19,7 @@ namespace SQADemicApp
             InitializeComponent();
             form2.Show();
             form3.Show();
+            UpdateForm3();
             CurrentState = STATE.Default;
         }
         public Form1(string[] playerRoles)
@@ -36,6 +37,7 @@ namespace SQADemicApp
         {
             Card drawnCard = boardModel.drawCard();
             GameBoardModels.players[GameBoardModels.CurrentPlayerIndex].hand.Add(drawnCard);
+            button49.Text = String.Format("Draw\n{0}", boardModel.playerDeckSize());
             UpdateForm3();
         }
 
@@ -44,12 +46,6 @@ namespace SQADemicApp
             Button pressed = sender as Button;
             switch (CurrentState)
             {
-                case STATE.Initializing:
-                    break;
-                case STATE.Draw:
-                    break;
-                case STATE.Cure:
-                    break;
                 case STATE.Move:
                     if (PlayerActionsBL.moveplayer(GameBoardModels.players[GameBoardModels.CurrentPlayerIndex], Create.cityDictionary[pressed.Text.Substring(1)]))
                     {
@@ -71,6 +67,10 @@ namespace SQADemicApp
                         boardModel.incTurnCount();
                         UpdateForm3();
                     }
+                    else
+                    {
+                        MessageBox.Show("Invalid City","Error",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
+                    }
                     break;
                 default:
                     CityPageForm CPForm = new CityPageForm(Create.cityDictionary[pressed.Text.Substring(1)]);
@@ -81,11 +81,23 @@ namespace SQADemicApp
         }
         public void UpdateForm3()
         {
-            form3.progressBar1.Value = 100 * (boardModel.currentPlayerTurnCounter - 1) / 4;
-            form3.label1.Text = form3.label1.Text.Substring(0, form3.label1.Text.Length - 3) + (Convert.ToInt32(boardModel.currentPlayerTurnCounter) - 1) + "/" + 4;
+            form3.progressBar1.Value = 100 * (boardModel.currentPlayerTurnCounter) / 4;
+            form3.label1.Text = form3.label1.Text.Substring(0, form3.label1.Text.Length - 3) + (Convert.ToInt32(boardModel.currentPlayerTurnCounter)) + "/" + 4;
             form3.listBox1.Items.Clear();
             form3.listBox1.Items.AddRange(GameBoardModels.players[GameBoardModels.CurrentPlayerIndex].handStringList().ToArray());
+            updateCubeCounts();
         }
-
+        private void updateCubeCounts()
+        {
+            form3.RedCubes.Text = String.Format(   "Red Cubes Remaining:    {0,-2}/24", GameBoardModels.cubeCount.redCubes);
+            form3.BlueCubes.Text = String.Format(  "Blue Cubes Remaining:   {0,-2}/24", GameBoardModels.cubeCount.blueCubes);
+            form3.BlackCubes.Text = String.Format( "Black Cubes Remaining:  {0,-2}/24", GameBoardModels.cubeCount.blackCubes);
+            form3.YellowCubes.Text = String.Format("Yellow Cubes Remaining: {0,-2}/24", GameBoardModels.cubeCount.yellowCubes);
+        }
+        private void updateCounters()
+        {
+            form3.InfectionRate.Text = string.Format("Infection Rate: {0}", boardModel.InfectionRateCounter);
+            form3.OutbreakCount.Text = string.Format("Outbreak Count: {0}", GameBoardModels.outbreakMarker);
+        }
     }
 }

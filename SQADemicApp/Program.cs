@@ -18,8 +18,8 @@ namespace SQADemicApp
             
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new SetupGameForm());
-            Form1 form1 = new Form1(rolesArray);
+            //Application.Run(new SetupGameForm());
+            Form1 form1 = new Form1();//rolesArray);
             Application.Run(form1);
         }
     }

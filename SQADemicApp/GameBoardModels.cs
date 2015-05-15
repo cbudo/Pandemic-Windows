@@ -10,9 +10,9 @@ namespace SQADemicApp
     {
         #region Public Static Vars
         public static InfectionCubeCount cubeCount;
-        public static Cures CURESTATUS;        
+        public static Cures CURESTATUS;
         public static List<String> citiesWithResearchStations;
-        public static int outbreakMarker = 0;       
+        public static int outbreakMarker = 0;
         public static Player[] players;
         public static int CurrentPlayerIndex;
         #endregion
@@ -96,15 +96,20 @@ namespace SQADemicApp
 
         public Card drawCard()
         {
-            try{
+            try
+            {
                 return playerDeck.Pop();
             }
-            catch(InvalidOperationException e){
+            catch (InvalidOperationException e)
+            {
                 throw new Exception("Game Over");
             }
         }
 
-      
+        public int playerDeckSize()
+        {
+            return playerDeck.Count();
+        }
 
         #region Storage Classes
         public class InfectionCubeCount
