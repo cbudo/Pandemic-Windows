@@ -11,16 +11,16 @@ using SQADemicApp.BL;
 
 namespace SQADemicApp
 {
-    public partial class Form3 : Form
+    public partial class PlayerPanel : Form
     {
-        public Form3()
+        public PlayerPanel()
         {
             InitializeComponent();
         }
         
         private void MoveButton_Click(object sender, EventArgs e)
         {
-            Form1.CurrentState = Form1.STATE.Move;
+            GameBoard.CurrentState = GameBoard.STATE.Move;
         }
 
         private void CureCityButton_Click(object sender, EventArgs e)

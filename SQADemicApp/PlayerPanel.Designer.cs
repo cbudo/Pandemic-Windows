@@ -1,7 +1,7 @@
 ﻿using System.Drawing;
 namespace SQADemicApp
 {
-    partial class Form3
+    partial class PlayerPanel
     {
         /// <summary>
         /// Required designer variable.
@@ -229,7 +229,7 @@ namespace SQADemicApp
             this.YellowCure.TabIndex = 3;
             this.YellowCure.Text = "Yellow: No Cure";
             // 
-            // Form3
+            // PlayerPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -244,7 +244,7 @@ namespace SQADemicApp
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.progressBar1);
-            this.Name = "Form3";
+            this.Name = "PlayerPanel";
             this.Text = "Player Turn";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

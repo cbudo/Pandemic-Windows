@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace SQADemicApp
 {
-    public partial class Form2 : Form
+    public partial class CharacterPane : Form
     {
-        public Form2()
+        public CharacterPane()
         {
             InitializeComponent();
         }

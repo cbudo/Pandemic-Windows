@@ -4,14 +4,14 @@ using SQADemicApp.BL;
 
 namespace SQADemicApp
 {
-    public partial class Form1 : Form
+    public partial class GameBoard : Form
     {
         GameBoardModels boardModel;
-        Form2 form2 = new Form2();
-        Form3 form3 = new Form3();
+        CharacterPane form2 = new CharacterPane();
+        PlayerPanel form3 = new PlayerPanel();
         public enum STATE { Dispatcher, Initializing, Move, Draw, Cure, Default }
         public static STATE CurrentState;
-        public Form1()
+        public GameBoard()
         {
             CurrentState = STATE.Initializing;
             string[] rolesDefault = { "Dispatcher", "Scientist" };
@@ -24,7 +24,7 @@ namespace SQADemicApp
             //GameBoardModels.cubeCount.blackCubes = 9;
             CurrentState = STATE.Default;
         }
-        public Form1(string[] playerRoles)
+        public GameBoard(string[] playerRoles)
         {
 
             boardModel = new GameBoardModels(playerRoles);

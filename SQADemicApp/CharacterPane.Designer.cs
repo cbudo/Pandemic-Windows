@@ -1,6 +1,6 @@
 ﻿namespace SQADemicApp
 {
-    partial class Form2
+    partial class CharacterPane
     {
         /// <summary>
         /// Required designer variable.
@@ -71,7 +71,7 @@
             this.Player4.Text = "Player 4\nAtlanta";
             this.Player4.UseVisualStyleBackColor = true;
             // 
-            // Form2
+            // CharacterPane
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -80,7 +80,7 @@
             this.Controls.Add(this.Player3);
             this.Controls.Add(this.Player2);
             this.Controls.Add(this.Player1);
-            this.Name = "Form2";
+            this.Name = "CharacterPane";
             this.Text = "Player Pane";
             this.ResumeLayout(false);
 
