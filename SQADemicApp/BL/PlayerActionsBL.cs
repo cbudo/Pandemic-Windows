@@ -111,12 +111,6 @@ namespace SQADemicApp.BL
         /// <returns>Status Flag</returns>
         public static bool DispatcherMovePlayer(Player player, List<Player> players, City destination)
         {
-            //rules:
-            /**
-             * Move the player to neigbors
-             * Move the player to other players
-             * move the player using shuttle flight
-             **/
             if (DriveOptions(player.currentCity).Any(p => p.Name.Equals(destination.Name)))
             {
                 //Do nothing
