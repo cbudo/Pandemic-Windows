@@ -703,9 +703,17 @@ namespace SQADemicAppTest
         {
             scientist.currentCity = chicagoCity;
             chicagoCity.researchStation = false;
-            PlayerActionsBL.GovernmentGrant(chicagoCity.Name);
+            PlayerActionsBL.GovernmentGrant(chicagoCity.Name, scientist.currentCity);
             Assert.AreEqual(true, chicagoCity.researchStation);
             chicagoCity.researchStation = false;
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(Exception))]
+        public void TestGovernmentGrant2()
+        {
+            scientist.currentCity = chicagoCity;
+            PlayerActionsBL.GovernmentGrant(kolkata.Name, scientist.currentCity);
         }
     }
     /** PRINTING STUFF

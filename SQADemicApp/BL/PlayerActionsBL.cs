@@ -263,7 +263,7 @@ namespace SQADemicApp.BL
             return true;
         }
 
-        public static void GovernmentGrant(string cityName)
+        public static void GovernmentGrant(string cityName, City currentCity)
         {
             Create.cityDictionary[cityName].researchStation = true;
         }
