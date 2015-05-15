@@ -720,10 +720,8 @@ namespace SQADemicAppTest
         [ExpectedException(typeof(Exception))]
         public void TestGovernmentGrant3()
         {
-            scientist.currentCity = chicagoCity;
-            chicagoCity.researchStation = true;
-            PlayerActionsBL.GovernmentGrant(chicagoCity.Name, scientist.currentCity = chicagoCity);
-            chicagoCity.researchStation = false;
+            scientist.currentCity = Create.cityDictionary["Atlanta"];
+            PlayerActionsBL.GovernmentGrant(scientist.currentCity.Name, scientist.currentCity);
         }
     }
     /** PRINTING STUFF
