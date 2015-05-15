@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SQADemicApp.BL;
 
 namespace SQADemicApp
 {
@@ -15,11 +16,6 @@ namespace SQADemicApp
         public AdvancedActions()
         {
             InitializeComponent();
-        }
-
-        private void AdvancedActions_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void ShareKnowledge_Click(object sender, EventArgs e)
@@ -31,7 +27,14 @@ namespace SQADemicApp
 
         private void BuildResearchStation_Click(object sender, EventArgs e)
         {
-
+            if (!PlayerActionsBL.BuildAResearchStationOption(GameBoardModels.players[GameBoardModels.CurrentPlayerIndex]))
+            {
+                MessageBox.Show("Research Station unable to be built");
+            }
+            else
+            {
+                this.Close();
+            }
         }
 
         private void CreateCure_Click(object sender, EventArgs e)

@@ -73,7 +73,6 @@
             this.Controls.Add(this.ShareKnowledge);
             this.Name = "AdvancedActions";
             this.Text = "AdvancedActions";
-            this.Load += new System.EventHandler(this.AdvancedActions_Load);
             this.ResumeLayout(false);
 
         }

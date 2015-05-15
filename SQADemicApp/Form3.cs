@@ -17,40 +17,22 @@ namespace SQADemicApp
         {
             InitializeComponent();
         }
-
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void Form3_Load(object sender, EventArgs e)
-        {
-
-        }
-
+        
         private void MoveButton_Click(object sender, EventArgs e)
         {
             Form1.CurrentState = Form1.STATE.Move;
         }
 
-        private void ResearchButton_Click(object sender, EventArgs e)
-        {
-            if (PlayerActionsBL.BuildAResearchStationOption(GameBoardModels.players[GameBoardModels.CurrentPlayerIndex]))
-            {
-                
-            }
-        }
-
-        private void CreateCureButton_Click(object sender, EventArgs e)
-        {
-            List<string> selectedCards = new List<string>();
-            selectedCards = listBox1.SelectedItems.Cast<string>().ToList<string>();
-            PlayerActionsBL.Cure(GameBoardModels.players[GameBoardModels.CurrentPlayerIndex], selectedCards, Create.cityDictionary[listBox1.SelectedItems[0].ToString()].color);
-        }
         private void CureCityButton_Click(object sender, EventArgs e)
         {
             TreatDiseaseForm TDForm = new TreatDiseaseForm();
             TDForm.Show();
+        }
+
+        private void AAButton_Click(object sender, EventArgs e)
+        {
+            AdvancedActions AAForm = new AdvancedActions();
+            AAForm.Show();
         }
 
     }

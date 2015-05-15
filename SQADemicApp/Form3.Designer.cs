@@ -75,7 +75,6 @@ namespace SQADemicApp
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(235, 116);
             this.listBox1.TabIndex = 2;
-            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // MoveButton
             // 
@@ -179,6 +178,7 @@ namespace SQADemicApp
             this.AAButton.TabIndex = 14;
             this.AAButton.Text = "Advanced Actions";
             this.AAButton.UseVisualStyleBackColor = true;
+            this.AAButton.Click += new System.EventHandler(this.AAButton_Click);
             // 
             // groupBox2
             // 
@@ -246,7 +246,6 @@ namespace SQADemicApp
             this.Controls.Add(this.progressBar1);
             this.Name = "Form3";
             this.Text = "Player Turn";
-            this.Load += new System.EventHandler(this.Form3_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
