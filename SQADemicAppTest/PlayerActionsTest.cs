@@ -656,13 +656,24 @@ namespace SQADemicAppTest
         #region DispatcherMove
 
         [TestMethod]
-        public void TestDispatcherMoverAdjacentCitySanFran()
+        public void TestDispatcherMoveAdjacentCitySanFran()
         {
             scientist.currentCity = chicagoCity;
             hand = new List<Card> { airlift, chicagoCard, chennai };
             scientist.hand = hand;
-            PlayerActionsBL.DispatcherMovePlayer(scientist, players, sanFran);
+            Assert.AreEqual(PlayerActionsBL.DispatcherMovePlayer(scientist, players, sanFran), true);
             Assert.AreEqual(scientist.currentCity.Name, sanFran.Name);
+        }
+
+
+        [TestMethod]
+        public void TestDispatcherMoveInvalidCityKolkata()
+        {
+            scientist.currentCity = chicagoCity;
+            hand = new List<Card> { airlift, chicagoCard, chennai };
+            scientist.hand = hand;
+            Assert.AreEqual(PlayerActionsBL.DispatcherMovePlayer(scientist, players, kolkata), false);
+            Assert.AreEqual(scientist.currentCity.Name, chicagoCity.Name);
         }
 
         #endregion

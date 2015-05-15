@@ -119,7 +119,7 @@ namespace SQADemicApp.BL
              **/
             player.currentCity = destination;
 
-            return false;
+            return true;
         }
 
         /// <summary>
