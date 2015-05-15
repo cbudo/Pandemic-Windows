@@ -715,6 +715,16 @@ namespace SQADemicAppTest
             scientist.currentCity = chicagoCity;
             PlayerActionsBL.GovernmentGrant(kolkata.Name, scientist.currentCity);
         }
+
+        [TestMethod]
+        [ExpectedException(typeof(Exception))]
+        public void TestGovernmentGrant3()
+        {
+            scientist.currentCity = chicagoCity;
+            chicagoCity.researchStation = true;
+            PlayerActionsBL.GovernmentGrant(chicagoCity.Name, scientist.currentCity = chicagoCity);
+            chicagoCity.researchStation = false;
+        }
     }
     /** PRINTING STUFF
     //Print Statment
