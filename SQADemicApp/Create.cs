@@ -26,7 +26,7 @@ namespace SQADemicApp
             setAdjacentCities(new StringReader(Properties.Resources.AdjacentNeighbors));
             playerdeck = makePlayerDeck();
             infectionDeck = makeInfectionDeck(new StringReader(Properties.Resources.InfectionDeck));
-
+            cityDictionary["Atlanta"].researchStation = true;
             return true;
         }
 

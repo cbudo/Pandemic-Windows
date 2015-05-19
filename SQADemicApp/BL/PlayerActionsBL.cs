@@ -262,5 +262,18 @@ namespace SQADemicApp.BL
             sender.hand.RemoveAt(index);
             return true;
         }
+
+        public static void GovernmentGrant(string cityName, City currentCity)
+        {
+            if (Create.cityDictionary[cityName] != currentCity)
+            {
+                throw new Exception("You cannot build a research station in a city you are not in.");
+            }
+            if (Create.cityDictionary[cityName].researchStation == true)
+            {
+                throw new Exception("This city already has a research station!");
+            }
+            Create.cityDictionary[cityName].researchStation = true;
+        }
     }
 }

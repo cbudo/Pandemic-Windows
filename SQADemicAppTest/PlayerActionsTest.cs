@@ -146,7 +146,8 @@ namespace SQADemicAppTest
             kolkata.researchStation = true;
             List<String> result = PlayerActionsBL.ShuttleFlightOption(kolkata);
             kolkata.researchStation = false;
-            CollectionAssert.AreEqual(new List<string>(), result);
+            List<String> expected = new List<String> { "Atlanta"};
+            CollectionAssert.AreEqual(expected, result);
         }
 
         [TestMethod]
@@ -158,7 +159,7 @@ namespace SQADemicAppTest
             List<String> result = PlayerActionsBL.ShuttleFlightOption(kolkata);
             kolkata.researchStation = false;
             bangkok.researchStation = false;
-            List<String> expected = new List<String> { "Bangkok" };
+            List<String> expected = new List<String> { "Atlanta", "Bangkok" };
             CollectionAssert.AreEqual(expected, result);
         }
 
@@ -174,7 +175,7 @@ namespace SQADemicAppTest
             chicagoCity.researchStation = false;
             kolkata.researchStation = false;
             bangkok.researchStation = false;
-            List<String> expected = new List<String> { "Kolkata", "Bangkok" };
+            List<String> expected = new List<String> { "Atlanta", "Kolkata", "Bangkok" };
             CollectionAssert.AreEqual(expected, result);
         }
         #endregion
@@ -696,6 +697,32 @@ namespace SQADemicAppTest
 
 
         #endregion
+
+        [TestMethod]
+        public void TestGovernmentGrant()
+        {
+            scientist.currentCity = chicagoCity;
+            chicagoCity.researchStation = false;
+            PlayerActionsBL.GovernmentGrant(chicagoCity.Name, scientist.currentCity);
+            Assert.AreEqual(true, chicagoCity.researchStation);
+            chicagoCity.researchStation = false;
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(Exception))]
+        public void TestGovernmentGrant2()
+        {
+            scientist.currentCity = chicagoCity;
+            PlayerActionsBL.GovernmentGrant(kolkata.Name, scientist.currentCity);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(Exception))]
+        public void TestGovernmentGrant3()
+        {
+            scientist.currentCity = Create.cityDictionary["Atlanta"];
+            PlayerActionsBL.GovernmentGrant(scientist.currentCity.Name, scientist.currentCity);
+        }
     }
     /** PRINTING STUFF
     //Print Statment
