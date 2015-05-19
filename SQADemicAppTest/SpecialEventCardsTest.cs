@@ -35,19 +35,21 @@ namespace SQADemicAppTest
 
 
         [TestMethod]
-        public void TestGovernmentGrant()
+        public void TestGovernmentGrantChicago()
         {
-            chicagoCity.researchStation = false;
-            Assert.AreEqual(true, SpecialEventCardsBL.GovernmentGrant(chicagoCity.Name, chicagoCity));
+            Assert.AreEqual(true, SpecialEventCardsBL.GovernmentGrant(chicagoCity.Name);
             Assert.AreEqual(true, chicagoCity.researchStation);
             chicagoCity.researchStation = false;
         }
 
         [TestMethod]
-        [ExpectedException(typeof(Exception))]
-        public void TestGovernmentGrant2()
+        public void TestGovernmentGrantkolkataFAILED()
         {
-            SpecialEventCardsBL.GovernmentGrant(kolkata.Name, chicagoCity);
+            //already has a research station should fail
+            kolkata.researchStation = true;
+            Assert.AreEqual(false, SpecialEventCardsBL.GovernmentGrant(kolkata.Name);
+            Assert.AreEqual(true, kolkata.researchStation);
+            kolkata.researchStation = false;
         }
     }
 }

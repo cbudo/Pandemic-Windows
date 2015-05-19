@@ -8,7 +8,7 @@ namespace SQADemicApp.BL
 {
     public class SpecialEventCardsBL
     {
-        public static bool GovernmentGrant(string cityName, City currentCity)
+        public static bool GovernmentGrant(string cityName)
         {
             if (Create.cityDictionary[cityName] != currentCity)
             {
