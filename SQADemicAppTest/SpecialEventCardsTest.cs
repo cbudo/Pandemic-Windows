@@ -13,7 +13,9 @@ namespace SQADemicAppTest
     public class SpecialEventCardsTest
     {
         City chicagoCity, bangkok, kolkata, sanFran;
+        LinkedList<String> pile;
         Player dispatcher;
+
         [TestInitialize]
         public void setUpCitiesandStations()
         {
@@ -34,6 +36,7 @@ namespace SQADemicAppTest
             }
             //players
             dispatcher = new Player(ROLE.Dispatcher);
+            pile = new LinkedList<String>();
         }
 
         #region GovernmentGrant
@@ -77,5 +80,20 @@ namespace SQADemicAppTest
 
         #endregion
 
+        #region
+        [TestMethod]
+        public void TestRPopNewYork()
+        {
+            pile.AddFirst("New York");
+            pile.AddFirst("Sydney");
+            pile.AddFirst("Saint Petersburg");
+            LinkedList<String> answer = new LinkedList<string>();
+            answer.AddFirst("New York");
+            answer.AddFirst("Sydney");            
+            string city = "Saint Petersburg";
+            Assert.AreEqual(true, SpecialEventCardsBL.ResilientPopulation(pile, city));
+            CollectionAssert.AreEqual(answer, pile);
+        }
+        #endregion
     }
 }
