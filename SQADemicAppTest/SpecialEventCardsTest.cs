@@ -84,12 +84,28 @@ namespace SQADemicAppTest
         [TestMethod]
         public void TestRPopNewYork()
         {
+            pile.Clear();
             pile.AddFirst("New York");
             pile.AddFirst("Sydney");
             pile.AddFirst("Saint Petersburg");
             LinkedList<String> answer = new LinkedList<string>();
             answer.AddFirst("New York");
             answer.AddFirst("Sydney");            
+            string city = "Saint Petersburg";
+            Assert.AreEqual(true, SpecialEventCardsBL.ResilientPopulation(pile, city));
+            CollectionAssert.AreEqual(answer, pile);
+        }
+
+        [TestMethod]
+        public void TestRPopNewYorkMiddleCard()
+        {
+            pile.Clear();
+            pile.AddFirst("New York");
+            pile.AddFirst("Saint Petersburg");
+            pile.AddFirst("Sydney");            
+            LinkedList<String> answer = new LinkedList<string>();
+            answer.AddFirst("New York");
+            answer.AddFirst("Sydney");
             string city = "Saint Petersburg";
             Assert.AreEqual(true, SpecialEventCardsBL.ResilientPopulation(pile, city));
             CollectionAssert.AreEqual(answer, pile);
