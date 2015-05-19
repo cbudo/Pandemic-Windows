@@ -110,6 +110,20 @@ namespace SQADemicAppTest
             Assert.AreEqual(true, SpecialEventCardsBL.ResilientPopulation(pile, city));
             CollectionAssert.AreEqual(answer, pile);
         }
+
+        [TestMethod]
+        public void TestRPopNewYorkNotInPileFAIL()
+        {
+            pile.Clear();
+            pile.AddFirst("New York");
+            pile.AddFirst("Sydney");
+            LinkedList<String> answer = new LinkedList<string>();
+            answer.AddFirst("New York");
+            answer.AddFirst("Sydney");
+            string city = "Saint Petersburg";
+            Assert.AreEqual(false, SpecialEventCardsBL.ResilientPopulation(pile, city));
+            CollectionAssert.AreEqual(answer, pile);
+        }
         #endregion
     }
 }
