@@ -45,8 +45,7 @@ namespace SQADemicApp.BL
         /// <returns>status flag</returns>
         public static bool ResilientPopulation(LinkedList<String> infectionPile, string cityname)
         {
-            infectionPile.Remove(cityname);
-            return true;
+            return infectionPile.Remove(cityname);
         }
     }
 }
