@@ -23,6 +23,8 @@ namespace SQADemicApp.BL
 
         public static bool Airlift(Player player, City destination)
         {
+            if (player.currentCity.Equals(destination))
+                return false;
             player.currentCity = destination;
             return true;
         }
