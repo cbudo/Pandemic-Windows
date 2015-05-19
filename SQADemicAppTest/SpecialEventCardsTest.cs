@@ -59,7 +59,7 @@ namespace SQADemicAppTest
             kolkata.researchStation = false;
         }
 
-#endregion
+        #endregion
 
         #region AirLift
         [TestMethod]
@@ -67,7 +67,7 @@ namespace SQADemicAppTest
         {
             dispatcher.currentCity = bangkok;
             Assert.AreEqual(true, SpecialEventCardsBL.Airlift(dispatcher, chicagoCity));
-            Assert.AreEqual(dispatcher.currentCity , chicagoCity);
+            Assert.AreEqual(dispatcher.currentCity, chicagoCity);
         }
 
         [TestMethod]
@@ -90,7 +90,7 @@ namespace SQADemicAppTest
             pile.AddFirst("Saint Petersburg");
             answer = new LinkedList<string>();
             answer.AddFirst("New York");
-            answer.AddFirst("Sydney");            
+            answer.AddFirst("Sydney");
             string city = "Saint Petersburg";
             Assert.AreEqual(true, SpecialEventCardsBL.ResilientPopulation(pile, city));
             CollectionAssert.AreEqual(answer, pile);
@@ -102,7 +102,7 @@ namespace SQADemicAppTest
             pile.Clear();
             pile.AddFirst("New York");
             pile.AddFirst("Saint Petersburg");
-            pile.AddFirst("Sydney");            
+            pile.AddFirst("Sydney");
             answer = new LinkedList<string>();
             answer.AddFirst("New York");
             answer.AddFirst("Sydney");
@@ -132,15 +132,15 @@ namespace SQADemicAppTest
         public void TestGetForcastCardsNoIssues()
         {
             deck = new LinkedList<String>(
-                    new List<String> { "Kolkata", "Delhi", "Chennai", "Bangkok", "Hong Kong", "Chicago", "San Francisco", "Los Angeles", "Atlanta", "Montreal"});
+                    new List<String> { "Kolkata", "Delhi", "Chennai", "Bangkok", "Hong Kong", "Chicago", "San Francisco", "Los Angeles", "Atlanta", "Montreal" });
             answer = new LinkedList<String>(
-                    new List<String> {"San Francisco", "Los Angeles", "Atlanta", "Montreal" });
+                    new List<String> { "San Francisco", "Los Angeles", "Atlanta", "Montreal" });
             List<string> returnedListAnswer = new List<string> { "Kolkata", "Delhi", "Chennai", "Bangkok", "Hong Kong", "Chicago" };
 
             List<string> returnedList = SpecialEventCardsBL.GetForcastCards(deck);
             CollectionAssert.AreEqual(returnedListAnswer, returnedList);
             CollectionAssert.AreEqual(answer, deck);
-           
+
         }
 
         [TestMethod]
@@ -154,7 +154,7 @@ namespace SQADemicAppTest
 
             Assert.AreEqual(true, SpecialEventCardsBL.CommitForcast(deck, orderedCards));
             CollectionAssert.AreEqual(answer, deck);
-         }
+        }
 
 
         [TestMethod]
@@ -166,7 +166,7 @@ namespace SQADemicAppTest
                     new List<String> { "San Francisco", "Los Angeles", "Atlanta", "Montreal" });
 
             //Too Few
-            List<string> orderedCards1 = new List<string> { "Kolkata", "Delhi", "Chennai", "Bangkok", "Hong Kong"};
+            List<string> orderedCards1 = new List<string> { "Kolkata", "Delhi", "Chennai", "Bangkok", "Hong Kong" };
             Assert.AreEqual(false, SpecialEventCardsBL.CommitForcast(deck, orderedCards1));
             CollectionAssert.AreEqual(answer, deck);
 
@@ -176,7 +176,17 @@ namespace SQADemicAppTest
             CollectionAssert.AreEqual(answer, deck);
         }
 
-
+        [TestMethod]
+        public void TestFocastFullCircle()
+        {
+            deck = new LinkedList<String>(
+                new List<String> { "Kolkata", "Delhi", "Chennai", "Bangkok", "Hong Kong", "Chicago", "San Francisco", "Los Angeles", "Atlanta", "Montreal" });
+            answer = new LinkedList<String>(
+                new List<String> { "Kolkata", "Delhi", "Chennai", "Bangkok", "Hong Kong", "Chicago", "San Francisco", "Los Angeles", "Atlanta", "Montreal" });
+            List<string> returnedList = SpecialEventCardsBL.GetForcastCards(deck);
+            Assert.AreEqual(true, SpecialEventCardsBL.CommitForcast(deck, returnedList));
+            CollectionAssert.AreEqual(answer, deck);
+        }
         #endregion
     }
 }
