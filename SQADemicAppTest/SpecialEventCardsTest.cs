@@ -154,7 +154,26 @@ namespace SQADemicAppTest
 
             Assert.AreEqual(true, SpecialEventCardsBL.CommitForcast(deck, orderedCards));
             CollectionAssert.AreEqual(answer, deck);
+         }
 
+
+        [TestMethod]
+        public void TestCommitForcastTooManyOrFewCards()
+        {
+            answer = new LinkedList<String>(
+                    new List<String> { "San Francisco", "Los Angeles", "Atlanta", "Montreal" });
+            deck = new LinkedList<String>(
+                    new List<String> { "San Francisco", "Los Angeles", "Atlanta", "Montreal" });
+
+            //Too Few
+            List<string> orderedCards1 = new List<string> { "Kolkata", "Delhi", "Chennai", "Bangkok", "Hong Kong"};
+            Assert.AreEqual(false, SpecialEventCardsBL.CommitForcast(deck, orderedCards1));
+            CollectionAssert.AreEqual(answer, deck);
+
+            //Too Many
+            List<string> orderedCards2 = new List<string> { "Kolkata", "Delhi", "Chennai", "Bangkok", "Hong Kong", "San Francisco", "Los Angeles" };
+            Assert.AreEqual(false, SpecialEventCardsBL.CommitForcast(deck, orderedCards2));
+            CollectionAssert.AreEqual(answer, deck);
         }
 
 
