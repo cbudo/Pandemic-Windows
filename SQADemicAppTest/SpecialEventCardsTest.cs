@@ -37,7 +37,7 @@ namespace SQADemicAppTest
         [TestMethod]
         public void TestGovernmentGrantChicago()
         {
-            Assert.AreEqual(true, SpecialEventCardsBL.GovernmentGrant(chicagoCity.Name);
+            Assert.AreEqual(true, SpecialEventCardsBL.GovernmentGrant(chicagoCity.Name));
             Assert.AreEqual(true, chicagoCity.researchStation);
             chicagoCity.researchStation = false;
         }
@@ -47,9 +47,10 @@ namespace SQADemicAppTest
         {
             //already has a research station should fail
             kolkata.researchStation = true;
-            Assert.AreEqual(false, SpecialEventCardsBL.GovernmentGrant(kolkata.Name);
+            Assert.AreEqual(false, SpecialEventCardsBL.GovernmentGrant(kolkata.Name));
             Assert.AreEqual(true, kolkata.researchStation);
             kolkata.researchStation = false;
         }
+
     }
 }
