@@ -74,6 +74,8 @@ namespace SQADemicApp.BL
         /// <returns>status flag</returns>
         public static bool CommitForcast(LinkedList<String> infectionDeck, List<String> orderedCards)
         {
+            if (orderedCards.Count != 6)
+                return false;
             for (int i = 5; i >= 0; i--)
             {
 
