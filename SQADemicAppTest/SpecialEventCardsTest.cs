@@ -1,0 +1,53 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using SQADemicApp.BL;
+using SQADemicApp;
+using System.IO;
+
+
+namespace SQADemicAppTest
+{
+    public class SpecialEventCardsTest
+    {
+        City chicagoCity, bangkok, kolkata, sanFran;
+
+        [TestInitialize]
+        public void setUpCitiesandStations()
+        {
+            //set up GameboardModels if not already
+            var g = new GameBoardModels(new string[] { "dispatcher", "medic" });
+            //cities
+            Create.createDictionary();
+            Create.setAdjacentCities(new StringReader("Chicago;San Francisco,Los Angeles,Atlanta,Montreal"));
+            Create.setAdjacentCities(new StringReader("Bangkok;Kolkata,Hong Kong,Ho Chi Minh City,Jakarta,Chennai"));
+            Create.setAdjacentCities(new StringReader("Kolkata;Delhi,Chennai,Bangkok,Hong Kong"));
+            Create.setAdjacentCities(new StringReader("San Francisco;Tokyo,Manila,Chicago,Los Angeles"));
+            if (!Create.cityDictionary.TryGetValue("Chicago", out chicagoCity) ||
+                !Create.cityDictionary.TryGetValue("Bangkok", out bangkok) ||
+                !Create.cityDictionary.TryGetValue("Kolkata", out kolkata) ||
+                !Create.cityDictionary.TryGetValue("San Francisco", out sanFran))
+            {
+                throw new InvalidOperationException("Set up failed");
+            }
+        }
+
+
+        [TestMethod]
+        public void TestGovernmentGrant()
+        {
+            chicagoCity.researchStation = false;
+            Assert.AreEqual(true, SpecialEventCardsBL.GovernmentGrant(chicagoCity.Name, chicagoCity));
+            Assert.AreEqual(true, chicagoCity.researchStation);
+            chicagoCity.researchStation = false;
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(Exception))]
+        public void TestGovernmentGrant2()
+        {
+            SpecialEventCardsBL.GovernmentGrant(kolkata.Name, chicagoCity);
+        }
+    }
+}
