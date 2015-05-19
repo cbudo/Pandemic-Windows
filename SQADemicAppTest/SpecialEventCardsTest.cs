@@ -33,6 +33,7 @@ namespace SQADemicAppTest
             }
         }
 
+        #region GovernmentGrant
 
         [TestMethod]
         public void TestGovernmentGrantChicago()
@@ -51,6 +52,10 @@ namespace SQADemicAppTest
             Assert.AreEqual(true, kolkata.researchStation);
             kolkata.researchStation = false;
         }
+
+#endregion
+
+
 
     }
 }
