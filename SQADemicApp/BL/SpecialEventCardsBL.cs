@@ -56,7 +56,14 @@ namespace SQADemicApp.BL
         /// <returns>Top 6 cards to be examined</returns>
         public static List<string> GetForcastCards(LinkedList<String> infectionDeck)
         {
-            return new List<string>();
+            List<string> returnList = new List<string>();
+
+            for (int _ = 0; _ < 6; _++)
+            {
+                returnList.Add(infectionDeck.First.Value);
+                infectionDeck.RemoveFirst();
+            }
+            return returnList;
         }
         /// <summary>
         /// Replaces the 6 cards on the infection deck

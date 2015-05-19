@@ -139,7 +139,7 @@ namespace SQADemicAppTest
 
             List<string> returnedList = SpecialEventCardsBL.GetForcastCards(deck);
             CollectionAssert.AreEqual(returnedListAnswer, returnedList);
-            Assert.AreEqual(answer, deck);
+            CollectionAssert.AreEqual(answer, deck);
            
         }
 
