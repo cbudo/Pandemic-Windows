@@ -47,5 +47,29 @@ namespace SQADemicApp.BL
         {
             return infectionPile.Remove(cityname);
         }
+
+        /// <summary>
+        /// Removes the top 6 cards from the Infection Deck
+        /// ~ Call this first
+        /// </summary>
+        /// <param name="infectionDeck"></param>
+        /// <returns>Top 6 cards to be examined</returns>
+        public static List<string> getForcastCards(LinkedList<String> infectionDeck)
+        {
+            return new List<string>();
+        }
+        /// <summary>
+        /// Replaces the 6 cards on the infection deck
+        /// ~ Call this second
+        /// </summary>
+        /// <param name="infectionDeck"></param>
+        /// <param name="orderedCards">6 cards in the order to be replaced</param>
+        /// <returns>status flag</returns>
+        public static bool commitForcast(LinkedList<String> infectionDeck, List<String> orderedCards)
+        {
+            return false;
+        }
+
+
     }
 }

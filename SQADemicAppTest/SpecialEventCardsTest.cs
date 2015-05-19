@@ -125,5 +125,11 @@ namespace SQADemicAppTest
             CollectionAssert.AreEqual(answer, pile);
         }
         #endregion
+
+
+        #region Forecast
+
+
+        #endregion
     }
 }
