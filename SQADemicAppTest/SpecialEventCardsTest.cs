@@ -12,7 +12,7 @@ namespace SQADemicAppTest
     public class SpecialEventCardsTest
     {
         City chicagoCity, bangkok, kolkata, sanFran;
-
+        Player dispatcher;
         [TestInitialize]
         public void setUpCitiesandStations()
         {
@@ -31,6 +31,8 @@ namespace SQADemicAppTest
             {
                 throw new InvalidOperationException("Set up failed");
             }
+            //players
+            dispatcher = new Player(ROLE.Dispatcher);
         }
 
         #region GovernmentGrant
@@ -55,7 +57,16 @@ namespace SQADemicAppTest
 
 #endregion
 
+        #region AirLift
+        [TestMethod]
+        public void TestAirliftBankokToChicago()
+        {
+            dispatcher.currentCity = bangkok;
+            Assert.AreEqual(true, SpecialEventCardsBL.Airlift(dispatcher, chicagoCity));
+            Assert.AreEqual(dispatcher.currentCity , chicagoCity);
+        }
 
+        #endregion
 
     }
 }

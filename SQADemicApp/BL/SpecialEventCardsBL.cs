@@ -20,5 +20,10 @@ namespace SQADemicApp.BL
             Create.cityDictionary[cityName].researchStation = true;
             return true;
         }
+
+        public static bool Airlift(Player player, City destination)
+        {
+            return false;
+        }
     }
 }
