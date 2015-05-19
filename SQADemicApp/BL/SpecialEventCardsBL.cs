@@ -10,14 +10,14 @@ namespace SQADemicApp.BL
     {
         public static bool GovernmentGrant(string cityName)
         {
-            if (Create.cityDictionary[cityName] != currentCity)
+            /**if (Create.cityDictionary[cityName] != currentCity)
             {
                 return false;
             }
             if (Create.cityDictionary[cityName].researchStation == true)
             {
                 return false;
-            }
+            }**/
             Create.cityDictionary[cityName].researchStation = true;
             return true;
         }
