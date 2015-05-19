@@ -54,7 +54,7 @@ namespace SQADemicApp.BL
         /// </summary>
         /// <param name="infectionDeck"></param>
         /// <returns>Top 6 cards to be examined</returns>
-        public static List<string> getForcastCards(LinkedList<String> infectionDeck)
+        public static List<string> GetForcastCards(LinkedList<String> infectionDeck)
         {
             return new List<string>();
         }
@@ -65,7 +65,7 @@ namespace SQADemicApp.BL
         /// <param name="infectionDeck"></param>
         /// <param name="orderedCards">6 cards in the order to be replaced</param>
         /// <returns>status flag</returns>
-        public static bool commitForcast(LinkedList<String> infectionDeck, List<String> orderedCards)
+        public static bool CommitForcast(LinkedList<String> infectionDeck, List<String> orderedCards)
         {
             return false;
         }

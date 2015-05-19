@@ -13,7 +13,7 @@ namespace SQADemicAppTest
     public class SpecialEventCardsTest
     {
         City chicagoCity, bangkok, kolkata, sanFran;
-        LinkedList<String> pile;
+        LinkedList<String> deck, pile, answer;
         Player dispatcher;
 
         [TestInitialize]
@@ -88,7 +88,7 @@ namespace SQADemicAppTest
             pile.AddFirst("New York");
             pile.AddFirst("Sydney");
             pile.AddFirst("Saint Petersburg");
-            LinkedList<String> answer = new LinkedList<string>();
+            answer = new LinkedList<string>();
             answer.AddFirst("New York");
             answer.AddFirst("Sydney");            
             string city = "Saint Petersburg";
@@ -103,7 +103,7 @@ namespace SQADemicAppTest
             pile.AddFirst("New York");
             pile.AddFirst("Saint Petersburg");
             pile.AddFirst("Sydney");            
-            LinkedList<String> answer = new LinkedList<string>();
+            answer = new LinkedList<string>();
             answer.AddFirst("New York");
             answer.AddFirst("Sydney");
             string city = "Saint Petersburg";
@@ -117,7 +117,7 @@ namespace SQADemicAppTest
             pile.Clear();
             pile.AddFirst("New York");
             pile.AddFirst("Sydney");
-            LinkedList<String> answer = new LinkedList<string>();
+            answer = new LinkedList<string>();
             answer.AddFirst("New York");
             answer.AddFirst("Sydney");
             string city = "Saint Petersburg";
@@ -128,7 +128,20 @@ namespace SQADemicAppTest
 
 
         #region Forecast
+        [TestMethod]
+        public void TestGetForcastCardsNoIssues()
+        {
+            deck = new LinkedList<String>(
+                    new List<String> { "Kolkata", "Delhi", "Chennai", "Bangkok", "Hong Kong", "Chicago", "San Francisco", "Los Angeles", "Atlanta", "Montreal"});
+            answer = new LinkedList<String>(
+                    new List<String> {"San Francisco", "Los Angeles", "Atlanta", "Montreal" });
+            List<string> returnedListAnswer = new List<string> { "Kolkata", "Delhi", "Chennai", "Bangkok", "Hong Kong", "Chicago" };
 
+            List<string> returnedList = SpecialEventCardsBL.GetForcastCards(deck);
+            CollectionAssert.AreEqual(returnedListAnswer, returnedList);
+            Assert.AreEqual(answer, deck);
+           
+        }
 
         #endregion
     }
