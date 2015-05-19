@@ -80,7 +80,7 @@ namespace SQADemicAppTest
 
         #endregion
 
-        #region
+        #region ResilientPopulation
         [TestMethod]
         public void TestRPopNewYork()
         {
