@@ -143,6 +143,21 @@ namespace SQADemicAppTest
            
         }
 
+        [TestMethod]
+        public void TestCommitForcastNoIssues()
+        {
+            answer = new LinkedList<String>(
+                    new List<String> { "Kolkata", "Delhi", "Chennai", "Bangkok", "Hong Kong", "Chicago", "San Francisco", "Los Angeles", "Atlanta", "Montreal" });
+            deck = new LinkedList<String>(
+                    new List<String> { "San Francisco", "Los Angeles", "Atlanta", "Montreal" });
+            List<string> orderedCards = new List<string> { "Kolkata", "Delhi", "Chennai", "Bangkok", "Hong Kong", "Chicago" };
+
+            Assert.AreEqual(true, SpecialEventCardsBL.CommitForcast(deck, orderedCards));
+            CollectionAssert.AreEqual(answer, deck);
+
+        }
+
+
         #endregion
     }
 }
