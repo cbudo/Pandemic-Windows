@@ -23,8 +23,8 @@ namespace SQADemicApp.BL
         }
 
         /// <summary>
-        /// Completes the special actios for the AirLift card
-        /// Moves the player to the destiation city if it is a diffrent city
+        /// Completes the special actions for the AirLift card
+        /// Moves a pawn to any city.
         /// </summary>
         /// <param name="player"></param>
         /// <param name="destination"></param>
@@ -35,6 +35,17 @@ namespace SQADemicApp.BL
                 return false;
             player.currentCity = destination;
             return true;
+        }
+
+        /// <summary>
+        /// Takes a carcd form the Infection Discard Pile and removes it from the game
+        /// </summary>
+        /// <param name="infectionPile">Infection Discard Pile</param>
+        /// <param name="cityname">Card to be removed</param>
+        /// <returns>status flag</returns>
+        public static bool ResilientPopulation(LinkedList<String> infectionPile, string cityname)
+        {
+            return false;
         }
     }
 }
