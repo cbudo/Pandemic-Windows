@@ -23,7 +23,8 @@ namespace SQADemicApp.BL
 
         public static bool Airlift(Player player, City destination)
         {
-            return false;
+            player.currentCity = destination;
+            return true;
         }
     }
 }

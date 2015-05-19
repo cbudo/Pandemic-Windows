@@ -9,6 +9,7 @@ using System.IO;
 
 namespace SQADemicAppTest
 {
+    [TestClass]
     public class SpecialEventCardsTest
     {
         City chicagoCity, bangkok, kolkata, sanFran;
