@@ -86,5 +86,10 @@ namespace SQADemicApp
                     break;
             }
         }
+
+        private void StealCardButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
