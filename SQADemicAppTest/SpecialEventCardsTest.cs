@@ -67,6 +67,14 @@ namespace SQADemicAppTest
             Assert.AreEqual(dispatcher.currentCity , chicagoCity);
         }
 
+        [TestMethod]
+        public void TestAirliftChicagoToChicagoFAIL()
+        {
+            dispatcher.currentCity = chicagoCity;
+            Assert.AreEqual(false, SpecialEventCardsBL.Airlift(dispatcher, chicagoCity));
+            Assert.AreEqual(dispatcher.currentCity, chicagoCity);
+        }
+
         #endregion
 
     }
