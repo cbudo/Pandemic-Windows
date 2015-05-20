@@ -35,5 +35,10 @@ namespace SQADemicApp
             AAForm.Show();
         }
 
+        private void DispatcherMove_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

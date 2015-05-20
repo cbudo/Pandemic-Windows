@@ -43,10 +43,12 @@ namespace SQADemicApp
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.AAButton = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.RedCure = new System.Windows.Forms.Label();
-            this.BlackCure = new System.Windows.Forms.Label();
-            this.BlueCure = new System.Windows.Forms.Label();
             this.YellowCure = new System.Windows.Forms.Label();
+            this.BlueCure = new System.Windows.Forms.Label();
+            this.BlackCure = new System.Windows.Forms.Label();
+            this.RedCure = new System.Windows.Forms.Label();
+            this.DispatcherMove = new System.Windows.Forms.Button();
+            this.EndSequenceBtn = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -172,7 +174,7 @@ namespace SQADemicApp
             // 
             // AAButton
             // 
-            this.AAButton.Location = new System.Drawing.Point(91, 81);
+            this.AAButton.Location = new System.Drawing.Point(159, 82);
             this.AAButton.Name = "AAButton";
             this.AAButton.Size = new System.Drawing.Size(101, 63);
             this.AAButton.TabIndex = 14;
@@ -193,23 +195,14 @@ namespace SQADemicApp
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Cure Status";
             // 
-            // RedCure
+            // YellowCure
             // 
-            this.RedCure.AutoSize = true;
-            this.RedCure.Location = new System.Drawing.Point(12, 18);
-            this.RedCure.Name = "RedCure";
-            this.RedCure.Size = new System.Drawing.Size(94, 17);
-            this.RedCure.TabIndex = 0;
-            this.RedCure.Text = "Red: No Cure";
-            // 
-            // BlackCure
-            // 
-            this.BlackCure.AutoSize = true;
-            this.BlackCure.Location = new System.Drawing.Point(12, 36);
-            this.BlackCure.Name = "BlackCure";
-            this.BlackCure.Size = new System.Drawing.Size(102, 17);
-            this.BlackCure.TabIndex = 1;
-            this.BlackCure.Text = "Black: No Cure";
+            this.YellowCure.AutoSize = true;
+            this.YellowCure.Location = new System.Drawing.Point(144, 36);
+            this.YellowCure.Name = "YellowCure";
+            this.YellowCure.Size = new System.Drawing.Size(108, 17);
+            this.YellowCure.TabIndex = 3;
+            this.YellowCure.Text = "Yellow: No Cure";
             // 
             // BlueCure
             // 
@@ -220,20 +213,50 @@ namespace SQADemicApp
             this.BlueCure.TabIndex = 2;
             this.BlueCure.Text = "Blue: No Cure";
             // 
-            // YellowCure
+            // BlackCure
             // 
-            this.YellowCure.AutoSize = true;
-            this.YellowCure.Location = new System.Drawing.Point(144, 36);
-            this.YellowCure.Name = "YellowCure";
-            this.YellowCure.Size = new System.Drawing.Size(108, 17);
-            this.YellowCure.TabIndex = 3;
-            this.YellowCure.Text = "Yellow: No Cure";
+            this.BlackCure.AutoSize = true;
+            this.BlackCure.Location = new System.Drawing.Point(12, 36);
+            this.BlackCure.Name = "BlackCure";
+            this.BlackCure.Size = new System.Drawing.Size(102, 17);
+            this.BlackCure.TabIndex = 1;
+            this.BlackCure.Text = "Black: No Cure";
+            // 
+            // RedCure
+            // 
+            this.RedCure.AutoSize = true;
+            this.RedCure.Location = new System.Drawing.Point(12, 18);
+            this.RedCure.Name = "RedCure";
+            this.RedCure.Size = new System.Drawing.Size(94, 17);
+            this.RedCure.TabIndex = 0;
+            this.RedCure.Text = "Red: No Cure";
+            // 
+            // DispatcherMove
+            // 
+            this.DispatcherMove.Location = new System.Drawing.Point(25, 82);
+            this.DispatcherMove.Name = "DispatcherMove";
+            this.DispatcherMove.Size = new System.Drawing.Size(102, 62);
+            this.DispatcherMove.TabIndex = 16;
+            this.DispatcherMove.Text = "Dispatch Other Player";
+            this.DispatcherMove.UseVisualStyleBackColor = true;
+            this.DispatcherMove.Click += new System.EventHandler(this.DispatcherMove_Click);
+            // 
+            // EndSequenceBtn
+            // 
+            this.EndSequenceBtn.Location = new System.Drawing.Point(25, 12);
+            this.EndSequenceBtn.Name = "EndSequenceBtn";
+            this.EndSequenceBtn.Size = new System.Drawing.Size(235, 132);
+            this.EndSequenceBtn.TabIndex = 17;
+            this.EndSequenceBtn.Text = "End Turn";
+            this.EndSequenceBtn.UseVisualStyleBackColor = true;
             // 
             // PlayerPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(286, 612);
+            this.Controls.Add(this.EndSequenceBtn);
+            this.Controls.Add(this.DispatcherMove);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.AAButton);
             this.Controls.Add(this.groupBox1);
@@ -269,11 +292,13 @@ namespace SQADemicApp
         public System.Windows.Forms.Label InfectionRate;
         public System.Windows.Forms.Label OutbreakCount;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button AAButton;
         private System.Windows.Forms.GroupBox groupBox2;
         public System.Windows.Forms.Label BlackCure;
         public System.Windows.Forms.Label YellowCure;
         public System.Windows.Forms.Label BlueCure;
         public System.Windows.Forms.Label RedCure;
+        public System.Windows.Forms.Button DispatcherMove;
+        public System.Windows.Forms.Button AAButton;
+        public System.Windows.Forms.Button EndSequenceBtn;
     }
 }

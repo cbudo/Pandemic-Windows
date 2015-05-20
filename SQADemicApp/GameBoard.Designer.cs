@@ -607,7 +607,7 @@
             this.button49.TabIndex = 49;
             this.button49.Text = "Draw";
             this.button49.UseVisualStyleBackColor = true;
-            this.button49.Click += new System.EventHandler(this.button49_Click);
+            //this.button49.Click += new System.EventHandler(this.DrawBtn_Click);
             // 
             // Form1
             // 
