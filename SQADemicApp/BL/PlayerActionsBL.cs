@@ -190,12 +190,13 @@ namespace SQADemicApp.BL
             if (number < 1)
                 return false;
             setDiseaseCubes(player.currentCity, color, player.role == ROLE.Medic ? 0 : --number);
+
             switch (color)
             {
                 case COLOR.red:
                     if (player.role == ROLE.Medic)
                     {
-                        GameBoardModels.cubeCount.redCubes += player.currentCity.redCubes;
+                        GameBoardModels.cubeCount.redCubes += number;
                         return true;
                     }
                     GameBoardModels.cubeCount.redCubes++;
@@ -203,7 +204,7 @@ namespace SQADemicApp.BL
                 case COLOR.blue:
                     if (player.role == ROLE.Medic)
                     {
-                        GameBoardModels.cubeCount.blueCubes += player.currentCity.blueCubes;
+                        GameBoardModels.cubeCount.blueCubes += number;
                         return true;
                     }
                     GameBoardModels.cubeCount.blueCubes++;
@@ -211,7 +212,7 @@ namespace SQADemicApp.BL
                 case COLOR.yellow:
                     if (player.role == ROLE.Medic)
                     {
-                        GameBoardModels.cubeCount.yellowCubes += player.currentCity.yellowCubes;
+                        GameBoardModels.cubeCount.yellowCubes += number;
                         return true;
                     }
                     GameBoardModels.cubeCount.yellowCubes++;
@@ -219,7 +220,7 @@ namespace SQADemicApp.BL
                 case COLOR.black:
                     if (player.role == ROLE.Medic)
                     {
-                        GameBoardModels.cubeCount.blackCubes += player.currentCity.blackCubes;
+                        GameBoardModels.cubeCount.blackCubes += number;
                         return true;
                     }
                     GameBoardModels.cubeCount.blackCubes++;

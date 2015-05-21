@@ -708,6 +708,28 @@ namespace SQADemicAppTest
             Assert.AreEqual(chicagoCity.blueCubes, 1);
             Assert.AreEqual(GameBoardModels.cubeCount.blueCubes, 23);
         }
+
+        [TestMethod]
+        public void TestIncrementAfterCureDiseaseRed()
+        {
+            opExpert.currentCity = chicagoCity;
+            GameBoardModels.cubeCount.redCubes = 22;
+            chicagoCity.redCubes = 2;
+            Assert.AreEqual(true, PlayerActionsBL.TreatDiseaseOption(opExpert, COLOR.red));
+            Assert.AreEqual(chicagoCity.redCubes, 1);
+            Assert.AreEqual(GameBoardModels.cubeCount.redCubes, 23);
+        }
+
+        [TestMethod]
+        public void TestIncrementAfterMedicCureDiseaseRed()
+        {
+            medic.currentCity = chicagoCity;
+            GameBoardModels.cubeCount.redCubes = 22;
+            chicagoCity.redCubes = 2;
+            Assert.AreEqual(true, PlayerActionsBL.TreatDiseaseOption(medic, COLOR.red));
+            Assert.AreEqual(chicagoCity.redCubes, 0);
+            Assert.AreEqual(GameBoardModels.cubeCount.redCubes, 24);
+        }
     }
     /** PRINTING STUFF
     //Print Statment
