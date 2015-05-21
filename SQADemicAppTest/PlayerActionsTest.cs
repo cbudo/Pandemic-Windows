@@ -698,6 +698,16 @@ namespace SQADemicAppTest
 
         #endregion
 
+        [TestMethod]
+        public void TestIncrementAfterCureDiseaseBasicBlue()
+        {
+            opExpert.currentCity = chicagoCity;
+            GameBoardModels.cubeCount.blueCubes = 22;
+            chicagoCity.blueCubes = 2;
+            Assert.AreEqual(true, PlayerActionsBL.TreatDiseaseOption(opExpert, COLOR.blue));
+            Assert.AreEqual(chicagoCity.blueCubes, 1);
+            Assert.AreEqual(GameBoardModels.cubeCount.blueCubes, 23);
+        }
     }
     /** PRINTING STUFF
     //Print Statment
