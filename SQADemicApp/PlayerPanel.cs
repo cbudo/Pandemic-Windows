@@ -13,11 +13,13 @@ namespace SQADemicApp
 {
     public partial class PlayerPanel : Form
     {
-        public PlayerPanel()
+        private GameBoard board;
+        public PlayerPanel(GameBoard board)
         {
+            this.board = board;
             InitializeComponent();
         }
-        
+
         private void MoveButton_Click(object sender, EventArgs e)
         {
             GameBoard.CurrentState = GameBoard.STATE.Move;
@@ -38,6 +40,50 @@ namespace SQADemicApp
         private void DispatcherMove_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void EndSequenceBtn_Click(object sender, EventArgs e)
+        {
+            if (GameBoard.turnpart == GameBoard.TURNPART.Draw)
+                drawcards();
+            else if (GameBoard.turnpart == GameBoard.TURNPART.Infect)
+                infectCities();
+            board.UpdatePlayerForm();
+        }
+
+        private void infectCities()
+        {
+            List<string> infectedcites = InfectorBL.InfectCities(GameBoardModels.infectionDeck, GameBoardModels.infectionPile, GameBoardModels.InfectionRateCounter);
+            GameBoard.turnpart = GameBoard.TURNPART.Action;
+        }
+
+        private void drawcards()
+        {
+            //Draw Two cards
+            Card drawCard1 = GameBoardModels.drawCard();
+            Card drawCard2 = GameBoardModels.drawCard();
+
+            //Epidemic code
+            if (drawCard1.CityName.Equals("EPIDEMIC"))
+            {
+                //do stuff
+            }
+            else if (drawCard1.CardType == Card.CARDTYPE.Special)
+                GameBoardModels.eventCards.Add(drawCard1);
+            else
+                GameBoardModels.players[GameBoardModels.CurrentPlayerIndex].hand.Add(drawCard1);
+
+            if (drawCard2.CityName.Equals("EPIDEMIC"))
+            {
+                //do stuff
+            }
+            else if (drawCard2.CardType == Card.CARDTYPE.Special)
+                GameBoardModels.eventCards.Add(drawCard2);
+            else
+                GameBoardModels.players[GameBoardModels.CurrentPlayerIndex].hand.Add(drawCard2);
+
+            //Move to infection phase
+            GameBoard.turnpart = GameBoard.TURNPART.Infect;
         }
 
     }

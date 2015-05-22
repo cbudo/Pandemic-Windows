@@ -15,10 +15,14 @@ namespace SQADemicApp
         public static int outbreakMarker = 0;
         public static Player[] players;
         public static int CurrentPlayerIndex;
+        public static List<Card> eventCards;
+        public static LinkedList<String> infectionDeck;
+        public static LinkedList<String> infectionPile;
+        public static int InfectionRateCounter;
         #endregion
 
         #region Public Vars
-        public int InfectionRateCounter;
+     
         public int currentPlayerTurnCounter;
         #endregion
 
@@ -46,6 +50,10 @@ namespace SQADemicApp
                 List<String> infectionDeckList;
                 Create.setUpCreate(out playerDeckArray, out infectionDeckList);
                 playerDeck = new Stack<Card>(playerDeckArray);
+                eventCards = new List<Card>();
+                infectionPile = new LinkedList<String>();
+                infectionDeck = new LinkedList<string> (Create.makeInfectionDeck(new StringReader(SQADemicApp.Properties.Resources.InfectionDeck)));
+
             }
 
             //Players setup allows existing players to be overwritten
@@ -76,7 +84,7 @@ namespace SQADemicApp
                         break;
                 }
             }
-            InfectionRateCounter = 0;
+            InfectionRateCounter = 2;
 
 
             alreadySetUp = true;
@@ -85,18 +93,20 @@ namespace SQADemicApp
 
         public bool incTurnCount()
         {
-            if (currentPlayerTurnCounter == 3)
-            {
-                //CurrentPlayerIndex = (CurrentPlayerIndex + 1) % players.Count();
-                currentPlayerTurnCounter = 0;
-                return true;
-            }
-            else
-                currentPlayerTurnCounter++;
-            return false;
+             if (currentPlayerTurnCounter == 3)
+              {
+                  //CurrentPlayerIndex = (CurrentPlayerIndex + 1) % players.Count();
+                  currentPlayerTurnCounter = 0;
+                  return true;
+              } 
+              else
+                  currentPlayerTurnCounter++;
+              return false;
+             
+            //currentPlayerTurnCounter++;
         }
 
-        public Card drawCard()
+        public static Card drawCard()
         {
             try
             {

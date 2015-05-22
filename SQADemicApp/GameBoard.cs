@@ -8,21 +8,27 @@ namespace SQADemicApp
     {
         GameBoardModels boardModel;
         CharacterPane form2 = new CharacterPane();
-        PlayerPanel playerForm = new PlayerPanel();
-        public enum STATE { Dispatcher, Initializing, Move, Draw, Cure, Default, EndPhase }
+        PlayerPanel playerForm;
+        public enum STATE { Dispatcher, Initializing, Move, Cure, Default }
         public static STATE CurrentState;
+        public enum TURNPART {Action, Draw, Infect };
+        public static TURNPART turnpart;
+
         public GameBoard()
         {
             CurrentState = STATE.Initializing;
             string[] rolesDefault = { "Dispatcher", "Scientist" };
             boardModel = new GameBoardModels(rolesDefault);
+            playerForm = new PlayerPanel(this);
             InitializeComponent();
             form2.Show();
             playerForm.Show();
             UpdatePlayerForm();
             //GameBoardModels.CURESTATUS.RedCure = GameBoardModels.Cures.CURESTATE.Cured;
             //GameBoardModels.cubeCount.blackCubes = 9;
+            
             CurrentState = STATE.Default;
+            turnpart = TURNPART.Action;
         }
         public GameBoard(string[] playerRoles)
         {
@@ -70,7 +76,9 @@ namespace SQADemicApp
                                 form2.Player1.Text = "Player 1\n" + pressed.Text.Substring(1);
                                 break;
                         }
-                        boardModel.incTurnCount();
+                        bool endofturn = boardModel.incTurnCount();
+                        if (endofturn)
+                            turnpart = TURNPART.Draw;
                         UpdatePlayerForm();
                     }
                     else
@@ -101,8 +109,14 @@ namespace SQADemicApp
                 playerForm.DispatcherMove.Hide();
                 playerForm.AAButton.Location = new System.Drawing.Point(91, 81);
             }
-            if (boardModel.currentPlayerTurnCounter == 4 )
+            if (turnpart == TURNPART.Draw )
             {
+                playerForm.EndSequenceBtn.Text = "Draw Cards";
+                playerForm.EndSequenceBtn.Show();
+            }
+            else if (turnpart == TURNPART.Infect)
+            {
+                playerForm.EndSequenceBtn.Text = "Infect";
                 playerForm.EndSequenceBtn.Show();
             }
             else
@@ -122,7 +136,7 @@ namespace SQADemicApp
         }
         private void updateCounters()
         {
-            playerForm.InfectionRate.Text = string.Format("Infection Rate: {0}", boardModel.InfectionRateCounter);
+            playerForm.InfectionRate.Text = string.Format("Infection Rate: {0}", GameBoardModels.InfectionRateCounter);
             playerForm.OutbreakCount.Text = string.Format("Outbreak Count: {0}", GameBoardModels.outbreakMarker);
         }
         private void updateCureStatus()
