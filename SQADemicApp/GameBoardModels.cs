@@ -19,11 +19,11 @@ namespace SQADemicApp
         public static List<Card> eventCards;
         public static LinkedList<String> infectionDeck;
         public static LinkedList<String> infectionPile;
-        public static int InfectionRateCounter;
+        public static int InfectionRate;
+        public static int InfectionRateIndex;
         #endregion
 
-        #region Public Vars
-     
+        #region Public Vars     
         public int currentPlayerTurnCounter;
         #endregion
 
@@ -84,7 +84,8 @@ namespace SQADemicApp
                         break;
                 }
             }
-            InfectionRateCounter = 2;
+            InfectionRate = 2;
+            InfectionRateIndex = 0;
             if (!alreadySetUp)
             {
                 startGameInfection();
