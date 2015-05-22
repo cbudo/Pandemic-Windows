@@ -207,12 +207,13 @@ namespace SQADemicApp.BL
         //returns a list of the cities that have already been infected
         public static HashSet<City> Outbreak(City city, COLOR color, HashSet<City> adjacentCities, HashSet<City> alreadyInfected)
         {
+            alreadyInfected.Add(city);
             foreach (var neighbor in adjacentCities)
             {
                 if (!alreadyInfected.Contains(neighbor))
                 {
-                    InfectCity(neighbor, alreadyInfected, true, color);
-                    alreadyInfected.Add(neighbor);
+                    //alreadyInfected.Add(neighbor);
+                    InfectCity(neighbor, alreadyInfected, true, color);                   
                 }
             }
             GameBoardModels.outbreakMarker++;

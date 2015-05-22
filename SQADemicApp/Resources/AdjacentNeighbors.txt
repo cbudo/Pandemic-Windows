@@ -7,7 +7,7 @@ Washington;Miami,Atlanta,Montreal,New York
 London;New York,Madrid,Paris,Essen
 Essen;London,Paris,Milan,Saint Petersburg
 Saint Petersburg;Essen,Istanbul,Moscow
-Madrid;Sao Paulo,New York,London,Paris,Essen
+Madrid;Sao Paulo,New York,London,Paris,Essen,Algiers
 Paris;London,Madrid,Algiers,Milan,Essen
 Milan;Essen,Paris,Istanbul
 Los Angeles;Sydney,San Francisco,Chicago,Mexico City
@@ -19,7 +19,7 @@ Santiago;Lima
 Buenos Aires;Bogota,Sao Paulo
 Sao Paulo;Buenos Aires,Bogota,Madrid,Lagos
 Lagos;Sao Paulo,Khartoum,Kinshasa
-Khartoum;Lagos,Kinshasa,Johannesburg
+Khartoum;Lagos,Kinshasa,Johannesburg,Cairo
 Kinshasa;Lagos,Khartoum,Johannesburg
 Johannesburg;Kinshasa,Khartoum
 Moscow;Saint Petersburg,Istanbul,Tehran
