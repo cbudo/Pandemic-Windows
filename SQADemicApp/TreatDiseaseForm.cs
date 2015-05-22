@@ -46,6 +46,7 @@ namespace SQADemicApp
             this.Dispose();
             this.Close();
             board.UpdatePlayerForm();
+            board.UpdateCityButtons(false);
         }
     }
 }

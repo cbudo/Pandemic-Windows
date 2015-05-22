@@ -47,7 +47,7 @@ namespace SQADemicApp
             City madrid = new City(COLOR.blue, "Madrid");
             City paris = new City(COLOR.blue, "Paris");
             City milan = new City(COLOR.blue, "Milan");
-            City stPetersburg = new City(COLOR.blue, "St Petersburg");
+            City stPetersburg = new City(COLOR.blue, "Saint Petersburg");
             City essen = new City(COLOR.blue, "Essen");
 
             //create the yellows
@@ -181,10 +181,10 @@ namespace SQADemicApp
         {
             Card[] deck = new Card[57];
             Random rand = new Random();
+            deck[rand.Next(0, 9)] = new Card("EPIDEMIC", Card.CARDTYPE.EPIDEMIC);
             deck[rand.Next(10, 19)] = new Card("EPIDEMIC", Card.CARDTYPE.EPIDEMIC);
             deck[rand.Next(20, 29)] = new Card("EPIDEMIC", Card.CARDTYPE.EPIDEMIC);
             deck[rand.Next(30, 39)] = new Card("EPIDEMIC", Card.CARDTYPE.EPIDEMIC);
-            deck[rand.Next(40, 57)] = new Card("EPIDEMIC", Card.CARDTYPE.EPIDEMIC);
             List<Card> cardList = makeCardList(new StringReader(SQADemicApp.Properties.Resources.CityList));
             cardList = HelperBL.shuffleArray(cardList);
             int j = 0;

@@ -97,6 +97,7 @@ namespace SQADemicApp
                         if (boardModel.incTurnCount())
                             turnpart = TURNPART.Draw;
                         UpdatePlayerForm();
+                        UpdateCityButtons(false);
                     }
                     else
                     {
@@ -125,6 +126,7 @@ namespace SQADemicApp
                         if (endofturn)
                             turnpart = TURNPART.Draw;
                         UpdatePlayerForm();
+                        UpdateCityButtons(false);
                     }
                     else
                     {

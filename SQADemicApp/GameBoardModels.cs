@@ -23,7 +23,7 @@ namespace SQADemicApp
         public static int InfectionRateIndex;
         #endregion
 
-        #region Public Vars     
+        #region Public Vars
         public int currentPlayerTurnCounter;
         #endregion
 
@@ -53,7 +53,7 @@ namespace SQADemicApp
                 playerDeck = new Stack<Card>(playerDeckArray);
                 eventCards = new List<Card>();
                 infectionPile = new LinkedList<String>();
-                infectionDeck = new LinkedList<string> (Create.makeInfectionDeck(new StringReader(SQADemicApp.Properties.Resources.InfectionDeck)));
+                infectionDeck = new LinkedList<string>(Create.makeInfectionDeck(new StringReader(SQADemicApp.Properties.Resources.InfectionDeck)));
             }
 
             //Players setup allows existing players to be overwritten
@@ -112,11 +112,20 @@ namespace SQADemicApp
         {
             int cardsPerPlayer = players.Count() == 4 ? 2 : players.Count() == 3 ? 3 : 4;
             foreach (Player player in players)
-            {                
+            {
                 for (int i = 0; i < cardsPerPlayer; i++)
                 {
                     Card card = drawCard();
-                    if (card.CardType == Card.CARDTYPE.Special)
+                    if (card.CardType.Equals(Card.CARDTYPE.EPIDEMIC))
+                    {
+                        string infectcityname = InfectorBL.Epidemic(GameBoardModels.infectionDeck, GameBoardModels.infectionPile, ref GameBoardModels.InfectionRateIndex, ref GameBoardModels.InfectionRate);
+                        new PicForm(false, infectcityname).Show();
+                        for (int j = 0; j < 3; j++)
+                        {
+                            InfectorBL.InfectCities(new List<string> { infectcityname });
+                        }
+                    }
+                    else if (card.CardType == Card.CARDTYPE.Special)
                         eventCards.Add(card);
                     else
                         player.hand.Add(card);
@@ -126,16 +135,16 @@ namespace SQADemicApp
 
         public bool incTurnCount()
         {
-             if (currentPlayerTurnCounter == 3)
-              {
-                  //CurrentPlayerIndex = (CurrentPlayerIndex + 1) % players.Count();
-                  currentPlayerTurnCounter = 0;
-                  return true;
-              } 
-              else
-                  currentPlayerTurnCounter++;
-              return false;
-             
+            if (currentPlayerTurnCounter == 3)
+            {
+                //CurrentPlayerIndex = (CurrentPlayerIndex + 1) % players.Count();
+                currentPlayerTurnCounter = 0;
+                return true;
+            }
+            else
+                currentPlayerTurnCounter++;
+            return false;
+
             //currentPlayerTurnCounter++;
         }
 
