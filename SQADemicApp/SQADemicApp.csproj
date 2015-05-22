@@ -73,6 +73,12 @@
     <Compile Include="DispatcherMove.Designer.cs">
       <DependentUpon>DispatcherMove.cs</DependentUpon>
     </Compile>
+    <Compile Include="EventCardForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EventCardForm.Designer.cs">
+      <DependentUpon>EventCardForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="GameBoard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -133,6 +139,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DispatcherMove.resx">
       <DependentUpon>DispatcherMove.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EventCardForm.resx">
+      <DependentUpon>EventCardForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GameBoard.resx">
       <DependentUpon>GameBoard.cs</DependentUpon>

@@ -55,8 +55,8 @@ namespace SQADemicApp
             catch (InvalidOperationException exc)
             {
                 //END OF GAME STUFF
-                MessageBox.Show("Have a great rest of your day");
                 MessageBox.Show("You Lost. That must suck...");
+                MessageBox.Show("Have a great rest of your day");
             }
         }
 
