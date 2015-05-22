@@ -28,7 +28,7 @@ namespace SQADemicApp
         #endregion
 
         #region private vars
-        private bool alreadySetUp = false;
+        private static bool alreadySetUp = false;
         public static Stack<Card> playerDeck;
         #endregion
 
