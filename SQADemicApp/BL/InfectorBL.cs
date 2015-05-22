@@ -57,13 +57,23 @@ namespace SQADemicApp.BL
             return epidmicCity;
 		}
 
+        public static void InfectCities(List<string> citiesToInfect)
+        {
+            foreach (string name in citiesToInfect)
+            {
+                InfectCity(Create.cityDictionary[name], new HashSet<City>(), false, Create.cityDictionary[name].color);
+            }
+        }
+
         /// <summary>
         /// Deals with outbreaks for Infect City
         /// </summary>
-        /// <param name="city"></param>
-        /// <param name="color"></param>
-        /// <returns></returns> number of blocks of that color
-        public static int InfectCity(SQADemicApp.City city, HashSet<City> alreadyInfected, Boolean causedByOutbreak, COLOR outbreakColor)
+        /// <param name="city">city to infect</param>
+        /// <param name="alreadyInfected"></param>
+        /// <param name="causedByOutbreak"></param>
+        /// <param name="outbreakColor"></param>
+        /// <returns></returns>
+        public static int InfectCity(SQADemicApp.City city, HashSet<City> alreadyInfected, bool causedByOutbreak, COLOR outbreakColor)
         {
 
             if (!causedByOutbreak)

@@ -65,17 +65,16 @@ namespace SQADemicApp
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(88, 567);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(111, 17);
+            this.label1.Size = new System.Drawing.Size(88, 13);
             this.label1.TabIndex = 1;
             this.label1.Text = "Move Count: 0/4";
             // 
             // listBox1
             // 
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 16;
             this.listBox1.Location = new System.Drawing.Point(25, 401);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(235, 116);
+            this.listBox1.Size = new System.Drawing.Size(235, 108);
             this.listBox1.TabIndex = 2;
             // 
             // MoveButton
@@ -104,7 +103,7 @@ namespace SQADemicApp
             this.RedCubes.Font = new System.Drawing.Font("Courier New", 7.8F);
             this.RedCubes.Location = new System.Drawing.Point(10, 23);
             this.RedCubes.Name = "RedCubes";
-            this.RedCubes.Size = new System.Drawing.Size(240, 17);
+            this.RedCubes.Size = new System.Drawing.Size(210, 14);
             this.RedCubes.TabIndex = 7;
             this.RedCubes.Text = "Red Cubes Remaining:    24/24";
             // 
@@ -114,7 +113,7 @@ namespace SQADemicApp
             this.BlueCubes.Font = new System.Drawing.Font("Courier New", 7.8F);
             this.BlueCubes.Location = new System.Drawing.Point(10, 48);
             this.BlueCubes.Name = "BlueCubes";
-            this.BlueCubes.Size = new System.Drawing.Size(240, 17);
+            this.BlueCubes.Size = new System.Drawing.Size(210, 14);
             this.BlueCubes.TabIndex = 8;
             this.BlueCubes.Text = "Blue Cubes Remaining:   24/24";
             // 
@@ -124,7 +123,7 @@ namespace SQADemicApp
             this.BlackCubes.Font = new System.Drawing.Font("Courier New", 7.8F);
             this.BlackCubes.Location = new System.Drawing.Point(10, 73);
             this.BlackCubes.Name = "BlackCubes";
-            this.BlackCubes.Size = new System.Drawing.Size(240, 17);
+            this.BlackCubes.Size = new System.Drawing.Size(210, 14);
             this.BlackCubes.TabIndex = 9;
             this.BlackCubes.Text = "Black Cubes Remaining:  24/24";
             this.BlackCubes.UseMnemonic = false;
@@ -135,7 +134,7 @@ namespace SQADemicApp
             this.YellowCubes.Font = new System.Drawing.Font("Courier New", 7.8F);
             this.YellowCubes.Location = new System.Drawing.Point(10, 98);
             this.YellowCubes.Name = "YellowCubes";
-            this.YellowCubes.Size = new System.Drawing.Size(240, 17);
+            this.YellowCubes.Size = new System.Drawing.Size(210, 14);
             this.YellowCubes.TabIndex = 10;
             this.YellowCubes.Text = "Yellow Cubes Remaining: 24/24";
             // 
@@ -145,7 +144,7 @@ namespace SQADemicApp
             this.InfectionRate.Font = new System.Drawing.Font("Courier New", 7.8F);
             this.InfectionRate.Location = new System.Drawing.Point(68, 160);
             this.InfectionRate.Name = "InfectionRate";
-            this.InfectionRate.Size = new System.Drawing.Size(144, 17);
+            this.InfectionRate.Size = new System.Drawing.Size(126, 14);
             this.InfectionRate.TabIndex = 11;
             this.InfectionRate.Text = "Infection Rate: 2";
             // 
@@ -155,7 +154,7 @@ namespace SQADemicApp
             this.OutbreakCount.Font = new System.Drawing.Font("Courier New", 7.8F);
             this.OutbreakCount.Location = new System.Drawing.Point(68, 177);
             this.OutbreakCount.Name = "OutbreakCount";
-            this.OutbreakCount.Size = new System.Drawing.Size(144, 17);
+            this.OutbreakCount.Size = new System.Drawing.Size(126, 14);
             this.OutbreakCount.TabIndex = 12;
             this.OutbreakCount.Text = "Outbreak Level: 0";
             // 
@@ -200,7 +199,7 @@ namespace SQADemicApp
             this.YellowCure.AutoSize = true;
             this.YellowCure.Location = new System.Drawing.Point(144, 36);
             this.YellowCure.Name = "YellowCure";
-            this.YellowCure.Size = new System.Drawing.Size(108, 17);
+            this.YellowCure.Size = new System.Drawing.Size(83, 13);
             this.YellowCure.TabIndex = 3;
             this.YellowCure.Text = "Yellow: No Cure";
             // 
@@ -209,7 +208,7 @@ namespace SQADemicApp
             this.BlueCure.AutoSize = true;
             this.BlueCure.Location = new System.Drawing.Point(144, 18);
             this.BlueCure.Name = "BlueCure";
-            this.BlueCure.Size = new System.Drawing.Size(96, 17);
+            this.BlueCure.Size = new System.Drawing.Size(73, 13);
             this.BlueCure.TabIndex = 2;
             this.BlueCure.Text = "Blue: No Cure";
             // 
@@ -218,7 +217,7 @@ namespace SQADemicApp
             this.BlackCure.AutoSize = true;
             this.BlackCure.Location = new System.Drawing.Point(12, 36);
             this.BlackCure.Name = "BlackCure";
-            this.BlackCure.Size = new System.Drawing.Size(102, 17);
+            this.BlackCure.Size = new System.Drawing.Size(79, 13);
             this.BlackCure.TabIndex = 1;
             this.BlackCure.Text = "Black: No Cure";
             // 
@@ -227,7 +226,7 @@ namespace SQADemicApp
             this.RedCure.AutoSize = true;
             this.RedCure.Location = new System.Drawing.Point(12, 18);
             this.RedCure.Name = "RedCure";
-            this.RedCure.Size = new System.Drawing.Size(94, 17);
+            this.RedCure.Size = new System.Drawing.Size(72, 13);
             this.RedCure.TabIndex = 0;
             this.RedCure.Text = "Red: No Cure";
             // 
@@ -247,7 +246,7 @@ namespace SQADemicApp
             this.EndSequenceBtn.Name = "EndSequenceBtn";
             this.EndSequenceBtn.Size = new System.Drawing.Size(235, 132);
             this.EndSequenceBtn.TabIndex = 17;
-            this.EndSequenceBtn.Text = "End Turn";
+            this.EndSequenceBtn.Text = "Draw Cards";
             this.EndSequenceBtn.UseVisualStyleBackColor = true;
             this.EndSequenceBtn.Click += new System.EventHandler(this.EndSequenceBtn_Click);
             // 
