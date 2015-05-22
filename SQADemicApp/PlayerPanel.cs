@@ -44,11 +44,18 @@ namespace SQADemicApp
 
         private void EndSequenceBtn_Click(object sender, EventArgs e)
         {
-            if (GameBoard.turnpart == GameBoard.TURNPART.Draw)
-                drawcards();
-            else if (GameBoard.turnpart == GameBoard.TURNPART.Infect)
-                infectCities();
-            board.UpdatePlayerForm();
+            try
+            {
+                if (GameBoard.turnpart == GameBoard.TURNPART.Draw)
+                    drawcards();
+                else if (GameBoard.turnpart == GameBoard.TURNPART.Infect)
+                    infectCities();
+                board.UpdatePlayerForm();
+            }
+            catch (InvalidOperationException exc)
+            {
+                //END OF GAME STUFF
+            }
         }
 
         private void infectCities()

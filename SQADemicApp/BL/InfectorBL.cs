@@ -88,7 +88,7 @@ namespace SQADemicApp.BL
                             city.blueCubes++;
                             if (GameBoardModels.cubeCount.blueCubes <= 0)
                             {
-                                throw new Exception("Game Over");
+                                throw new InvalidOperationException("Game Over");
                             }
                             return city.blueCubes;
                         }
@@ -102,7 +102,7 @@ namespace SQADemicApp.BL
                             city.yellowCubes++;
                             if (GameBoardModels.cubeCount.yellowCubes <= 0)
                             {
-                                throw new Exception("Game Over");
+                                throw new InvalidOperationException("Game Over");
                             }
                             return city.yellowCubes;
 
@@ -117,7 +117,7 @@ namespace SQADemicApp.BL
                             city.blackCubes++;
                             if (GameBoardModels.cubeCount.blackCubes <= 0)
                             {
-                                throw new Exception("Game Over");
+                                throw new InvalidOperationException("Game Over");
                             }
                             return city.blackCubes;
 
@@ -132,7 +132,7 @@ namespace SQADemicApp.BL
                             city.redCubes++;
                             if (GameBoardModels.cubeCount.redCubes <= 0)
                             {
-                                throw new Exception("Game Over");
+                                throw new InvalidOperationException("Game Over");
                             }
                             return city.redCubes;
 
@@ -151,7 +151,7 @@ namespace SQADemicApp.BL
                             city.blueCubes++;
                             if (GameBoardModels.cubeCount.blueCubes <= 0)
                             {
-                                throw new Exception("Game Over");
+                                throw new InvalidOperationException("Game Over");
                             }
                             return city.blueCubes;
                         }
@@ -165,7 +165,7 @@ namespace SQADemicApp.BL
                             city.yellowCubes++;
                             if (GameBoardModels.cubeCount.yellowCubes <= 0)
                             {
-                                throw new Exception("Game Over");
+                                throw new InvalidOperationException("Game Over");
                             }
                             return city.yellowCubes;
 
@@ -180,7 +180,7 @@ namespace SQADemicApp.BL
                             city.blackCubes++;
                             if (GameBoardModels.cubeCount.blackCubes <= 0)
                             {
-                                throw new Exception("Game Over");
+                                throw new InvalidOperationException("Game Over");
                             }
                             return city.blackCubes;
 
@@ -195,7 +195,7 @@ namespace SQADemicApp.BL
                         city.redCubes++;
                         if (GameBoardModels.cubeCount.redCubes <= 0)
                         {
-                            throw new Exception("Game Over");
+                            throw new InvalidOperationException("Game Over");
                         }
                         return city.redCubes;
                     }
@@ -219,7 +219,7 @@ namespace SQADemicApp.BL
             GameBoardModels.outbreakMarker++;
             if (GameBoardModels.outbreakMarker == 8)
             {
-                throw new Exception("Game Over");
+                throw new InvalidOperationException("Game Over");
             }
             return alreadyInfected;
         }
