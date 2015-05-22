@@ -49,7 +49,7 @@
             this.BuenosAires = new System.Windows.Forms.Button();
             this.SaoPaulo = new System.Windows.Forms.Button();
             this.Lagos = new System.Windows.Forms.Button();
-            this.Kinshasi = new System.Windows.Forms.Button();
+            this.Kinshasa = new System.Windows.Forms.Button();
             this.Johannesburg = new System.Windows.Forms.Button();
             this.Khartoum = new System.Windows.Forms.Button();
             this.Milan = new System.Windows.Forms.Button();
@@ -228,7 +228,7 @@
             this.StPetersburg.Name = "StPetersburg";
             this.StPetersburg.Size = new System.Drawing.Size(23, 23);
             this.StPetersburg.TabIndex = 14;
-            this.StPetersburg.Text = " St Petersburg";
+            this.StPetersburg.Text = " Saint Petersburg";
             this.StPetersburg.UseVisualStyleBackColor = false;
             this.StPetersburg.Click += new System.EventHandler(this.City_Click);
             // 
@@ -294,13 +294,13 @@
             // 
             // Kinshasi
             // 
-            this.Kinshasi.Location = new System.Drawing.Point(600, 508);
-            this.Kinshasi.Name = "Kinshasi";
-            this.Kinshasi.Size = new System.Drawing.Size(23, 23);
-            this.Kinshasi.TabIndex = 21;
-            this.Kinshasi.Text = " Kinshasi";
-            this.Kinshasi.UseVisualStyleBackColor = true;
-            this.Kinshasi.Click += new System.EventHandler(this.City_Click);
+            this.Kinshasa.Location = new System.Drawing.Point(600, 508);
+            this.Kinshasa.Name = "Kinshasa";
+            this.Kinshasa.Size = new System.Drawing.Size(23, 23);
+            this.Kinshasa.TabIndex = 21;
+            this.Kinshasa.Text = " Kinshasa";
+            this.Kinshasa.UseVisualStyleBackColor = true;
+            this.Kinshasa.Click += new System.EventHandler(this.City_Click);
             // 
             // Johannesburg
             // 
@@ -643,7 +643,7 @@
             this.Controls.Add(this.Milan);
             this.Controls.Add(this.Khartoum);
             this.Controls.Add(this.Johannesburg);
-            this.Controls.Add(this.Kinshasi);
+            this.Controls.Add(this.Kinshasa);
             this.Controls.Add(this.Lagos);
             this.Controls.Add(this.SaoPaulo);
             this.Controls.Add(this.BuenosAires);
@@ -692,7 +692,7 @@
         private System.Windows.Forms.Button BuenosAires;
         private System.Windows.Forms.Button SaoPaulo;
         private System.Windows.Forms.Button Lagos;
-        private System.Windows.Forms.Button Kinshasi;
+        private System.Windows.Forms.Button Kinshasa;
         private System.Windows.Forms.Button Johannesburg;
         private System.Windows.Forms.Button Khartoum;
         private System.Windows.Forms.Button Milan;
