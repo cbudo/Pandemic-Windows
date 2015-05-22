@@ -25,11 +25,6 @@ namespace SQADemicApp
         private void Cure_Click(object sender, EventArgs e)
         {
             List<string> selectedCards = new List<string>();
-            /**if(selectedCards.Count<5)
-            {
-               // MessageBox.Show("Not Enough Cards Selected", "Invalid Selection");
-                return;
-            }**/
             var citynamesWithColors = listBox2.Items;
             List<string> cityNames  = new List<string>();
             foreach (object o in citynamesWithColors)
@@ -50,10 +45,7 @@ namespace SQADemicApp
             }
 
             if (!cured)
-            {
                 MessageBox.Show("Invalid card selection", "Invalid Selection");
-                return;
-            }
             else
             {
             if (this.board.boardModel.incTurnCount())

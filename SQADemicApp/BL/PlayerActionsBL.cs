@@ -266,8 +266,7 @@ namespace SQADemicApp.BL
             }
             return true;
         }
-
-
+        
         /// <summary>
         /// Allows Players to Trade Cards
         /// </summary>
