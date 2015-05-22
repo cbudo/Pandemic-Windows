@@ -29,7 +29,7 @@ Kolkata;Delhi,Chennai,Bangkok,Hong Kong
 Istanbul;Milan,Saint Petersburg,Moscow,Baghdad,Cairo,Algiers
 Baghdad;Istanbul,Tehran,Karachi,Riyadh,Cairo
 Karachi;Tehran,Baghdad,Riyadh,Mumbai,Delhi
-Algiers;Madrid,Paris,Istanbul,Cairo
+Algiers;Madrid,Paris,Istanbul,Cairo,Khartoum
 Cairo;Algiers,Istanbul,Baghdad,Riyadh
 Riyadh;Cairo,Baghdad,Karachi
 Mumbai;Karachi,Delhi,Chennai

@@ -44,6 +44,7 @@ namespace SQADemicApp
                         GameBoard.CurrentState = GameBoard.STATE.Airlift;
                         break;
                     case "One Quiet Night":
+                        PlayerPanel.quietNight = true;
                         break;
                     case "Resilient Population":
                         DiscardPile dp = new DiscardPile(true);
@@ -57,6 +58,7 @@ namespace SQADemicApp
                         forecast.Show();
                         break;
                 }
+                GameBoardModels.eventCards.RemoveAll(x=> x.CityName ==  selectedCard);
                 UpdateEventCards();
             }
             catch (NullReferenceException)
