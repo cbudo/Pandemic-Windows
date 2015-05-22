@@ -30,7 +30,7 @@ Istanbul;Milan,Saint Petersburg,Moscow,Baghdad,Cairo,Algiers
 Baghdad;Istanbul,Tehran,Karachi,Riyadh,Cairo
 Karachi;Tehran,Baghdad,Riyadh,Mumbai,Delhi
 Algiers;Madrid,Paris,Istanbul,Cairo,Khartoum
-Cairo;Algiers,Istanbul,Baghdad,Riyadh
+Cairo;Algiers,Istanbul,Baghdad,Riyadh,Khartoum
 Riyadh;Cairo,Baghdad,Karachi
 Mumbai;Karachi,Delhi,Chennai
 Chennai;Mumbai,Delhi,Kolkata,Bangkok,Jakarta
