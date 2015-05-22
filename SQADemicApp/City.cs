@@ -29,6 +29,11 @@ namespace SQADemicApp
             adjacentCities = new HashSet<City>();
         }
 
+        public int allCubeCount()
+        {
+            return redCubes + blackCubes + blueCubes + yellowCubes;
+        }
+
         public void setAdjacentCities(HashSet<City> cities)
         {
             this.adjacentCities = cities;

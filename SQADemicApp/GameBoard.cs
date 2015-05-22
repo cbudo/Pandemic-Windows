@@ -32,8 +32,8 @@ namespace SQADemicApp
             form2.Show();
             playerForm.Show();
             UpdatePlayerForm();
-            //GameBoardModels.CURESTATUS.RedCure = GameBoardModels.Cures.CURESTATE.Cured;
-            //GameBoardModels.cubeCount.blackCubes = 9;
+            UpdateCityButtons(true);
+            
 
             CurrentState = STATE.Default;
             turnpart = TURNPART.Action;
@@ -51,6 +51,7 @@ namespace SQADemicApp
             form2.Show();
             playerForm.Show();
             UpdatePlayerForm();
+            UpdateCityButtons(true);
             CurrentState = STATE.Default;
             turnpart = TURNPART.Action; 
         }
@@ -66,7 +67,7 @@ namespace SQADemicApp
         private void City_Click(object sender, EventArgs e)
         {
             Button pressed = sender as Button;
-            var cityName = pressed.Text.Substring(1);
+            var cityName = pressed.Text.Substring(3);
             switch (CurrentState)
             {
                 case STATE.Airlift:
@@ -225,9 +226,9 @@ namespace SQADemicApp
         {
             // set value of cure label to status in game board
             // if status is NotCured, change to No Cure for nicer appearance
-            playerForm.RedCure.Text = String.Format("Red:  {0}", GameBoardModels.CURESTATUS.RedCure.ToString().Replace("NotCured", "No Cure"));
-            playerForm.BlueCure.Text = String.Format("Blue: {0}", GameBoardModels.CURESTATUS.BlueCure.ToString().Replace("NotCured", "No Cure"));
-            playerForm.BlackCure.Text = String.Format("Black:  {0}", GameBoardModels.CURESTATUS.BlackCure.ToString().Replace("NotCured", "No Cure"));
+            playerForm.RedCure.Text = String.Format(   "Red:  {0}", GameBoardModels.CURESTATUS.RedCure.ToString().Replace("NotCured", "No Cure"));
+            playerForm.BlueCure.Text = String.Format(  "Blue: {0}", GameBoardModels.CURESTATUS.BlueCure.ToString().Replace("NotCured", "No Cure"));
+            playerForm.BlackCure.Text = String.Format( "Black:  {0}", GameBoardModels.CURESTATUS.BlackCure.ToString().Replace("NotCured", "No Cure"));
             playerForm.YellowCure.Text = String.Format("Yellow: {0}", GameBoardModels.CURESTATUS.YellowCure.ToString().Replace("NotCured", "No Cure"));
         }
 
@@ -235,6 +236,28 @@ namespace SQADemicApp
         {
             DiscardPile dp = new DiscardPile(false);
             dp.Show();
+        }
+        public void UpdateCityButtons(bool firstRun)
+        {
+            foreach (var control in this.Controls)
+            {
+                if(control is Button)
+                {
+                    var button = control as Button;
+                    string cityName = button.Text.Substring(3);
+                    try
+                    {
+                        var city = Create.cityDictionary[cityName];
+                        button.Text = String.Format("{0,2} " + city.Name, city.allCubeCount());
+                        if(firstRun)
+                            button.Font = new System.Drawing.Font(button.Font.FontFamily, 5);
+                    }
+                    catch(KeyNotFoundException)
+                    {
+                        // not a button that needs to be updated
+                    }
+                }
+            }
         }
     }
 }

@@ -84,11 +84,12 @@
             // SanFrancisco
             // 
             this.SanFrancisco.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.SanFrancisco.Font = new System.Drawing.Font("Microsoft Sans Serif", 5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SanFrancisco.Location = new System.Drawing.Point(90, 284);
             this.SanFrancisco.Name = "SanFrancisco";
             this.SanFrancisco.Size = new System.Drawing.Size(23, 23);
             this.SanFrancisco.TabIndex = 0;
-            this.SanFrancisco.Text = " San Francisco";
+            this.SanFrancisco.Text = " 0 San Francisco";
             this.SanFrancisco.UseVisualStyleBackColor = false;
             this.SanFrancisco.Click += new System.EventHandler(this.City_Click);
             // 
@@ -99,7 +100,7 @@
             this.Chicago.Name = "Chicago";
             this.Chicago.Size = new System.Drawing.Size(23, 23);
             this.Chicago.TabIndex = 2;
-            this.Chicago.Text = " Chicago";
+            this.Chicago.Text = " 0 Chicago";
             this.Chicago.UseVisualStyleBackColor = false;
             this.Chicago.Click += new System.EventHandler(this.City_Click);
             // 
@@ -110,7 +111,7 @@
             this.Montreal.Name = "Montreal";
             this.Montreal.Size = new System.Drawing.Size(23, 23);
             this.Montreal.TabIndex = 3;
-            this.Montreal.Text = " Montreal";
+            this.Montreal.Text = " 0 Montreal";
             this.Montreal.UseVisualStyleBackColor = false;
             this.Montreal.Click += new System.EventHandler(this.City_Click);
             // 
@@ -120,7 +121,7 @@
             this.LosAngeles.Name = "LosAngeles";
             this.LosAngeles.Size = new System.Drawing.Size(23, 23);
             this.LosAngeles.TabIndex = 4;
-            this.LosAngeles.Text = " Los Angeles";
+            this.LosAngeles.Text = " 0 Los Angeles";
             this.LosAngeles.UseVisualStyleBackColor = true;
             this.LosAngeles.Click += new System.EventHandler(this.City_Click);
             // 
@@ -130,7 +131,7 @@
             this.MexicoCity.Name = "MexicoCity";
             this.MexicoCity.Size = new System.Drawing.Size(23, 23);
             this.MexicoCity.TabIndex = 5;
-            this.MexicoCity.Text = " Mexico City";
+            this.MexicoCity.Text = " 0 Mexico City";
             this.MexicoCity.UseVisualStyleBackColor = true;
             this.MexicoCity.Click += new System.EventHandler(this.City_Click);
             // 
@@ -140,7 +141,7 @@
             this.Miami.Name = "Miami";
             this.Miami.Size = new System.Drawing.Size(23, 23);
             this.Miami.TabIndex = 6;
-            this.Miami.Text = " Miami";
+            this.Miami.Text = " 0 Miami";
             this.Miami.UseVisualStyleBackColor = true;
             this.Miami.Click += new System.EventHandler(this.City_Click);
             // 
@@ -151,7 +152,7 @@
             this.Atlanta.Name = "Atlanta";
             this.Atlanta.Size = new System.Drawing.Size(23, 23);
             this.Atlanta.TabIndex = 7;
-            this.Atlanta.Text = " Atlanta";
+            this.Atlanta.Text = " 0 Atlanta";
             this.Atlanta.UseVisualStyleBackColor = false;
             this.Atlanta.Click += new System.EventHandler(this.City_Click);
             // 
@@ -162,7 +163,7 @@
             this.Washington.Name = "Washington";
             this.Washington.Size = new System.Drawing.Size(23, 23);
             this.Washington.TabIndex = 8;
-            this.Washington.Text = " Washington";
+            this.Washington.Text = " 0 Washington";
             this.Washington.UseVisualStyleBackColor = false;
             this.Washington.Click += new System.EventHandler(this.City_Click);
             // 
@@ -174,7 +175,7 @@
             this.NewYork.Name = "NewYork";
             this.NewYork.Size = new System.Drawing.Size(23, 23);
             this.NewYork.TabIndex = 9;
-            this.NewYork.Text = " New York";
+            this.NewYork.Text = " 0 New York";
             this.NewYork.UseVisualStyleBackColor = false;
             this.NewYork.Click += new System.EventHandler(this.City_Click);
             // 
@@ -185,7 +186,7 @@
             this.London.Name = "London";
             this.London.Size = new System.Drawing.Size(23, 23);
             this.London.TabIndex = 10;
-            this.London.Text = " London";
+            this.London.Text = " 0 London";
             this.London.UseVisualStyleBackColor = false;
             this.London.Click += new System.EventHandler(this.City_Click);
             // 
@@ -196,7 +197,7 @@
             this.Madrid.Name = "Madrid";
             this.Madrid.Size = new System.Drawing.Size(23, 23);
             this.Madrid.TabIndex = 11;
-            this.Madrid.Text = " Madrid";
+            this.Madrid.Text = " 0 Madrid";
             this.Madrid.UseVisualStyleBackColor = false;
             this.Madrid.Click += new System.EventHandler(this.City_Click);
             // 
@@ -207,7 +208,7 @@
             this.Paris.Name = "Paris";
             this.Paris.Size = new System.Drawing.Size(23, 23);
             this.Paris.TabIndex = 12;
-            this.Paris.Text = " Paris";
+            this.Paris.Text = " 0 Paris";
             this.Paris.UseVisualStyleBackColor = false;
             this.Paris.Click += new System.EventHandler(this.City_Click);
             // 
@@ -218,7 +219,7 @@
             this.Essen.Name = "Essen";
             this.Essen.Size = new System.Drawing.Size(23, 23);
             this.Essen.TabIndex = 13;
-            this.Essen.Text = " Essen";
+            this.Essen.Text = " 0 Essen";
             this.Essen.UseVisualStyleBackColor = false;
             this.Essen.Click += new System.EventHandler(this.City_Click);
             // 
@@ -229,7 +230,7 @@
             this.StPetersburg.Name = "StPetersburg";
             this.StPetersburg.Size = new System.Drawing.Size(23, 23);
             this.StPetersburg.TabIndex = 14;
-            this.StPetersburg.Text = " Saint Petersburg";
+            this.StPetersburg.Text = " 0 Saint Petersburg";
             this.StPetersburg.UseVisualStyleBackColor = false;
             this.StPetersburg.Click += new System.EventHandler(this.City_Click);
             // 
@@ -239,7 +240,7 @@
             this.Bogota.Name = "Bogota";
             this.Bogota.Size = new System.Drawing.Size(23, 23);
             this.Bogota.TabIndex = 15;
-            this.Bogota.Text = " Bogota";
+            this.Bogota.Text = " 0 Bogota";
             this.Bogota.UseVisualStyleBackColor = true;
             this.Bogota.Click += new System.EventHandler(this.City_Click);
             // 
@@ -249,7 +250,7 @@
             this.Lima.Name = "Lima";
             this.Lima.Size = new System.Drawing.Size(23, 23);
             this.Lima.TabIndex = 16;
-            this.Lima.Text = " Lima";
+            this.Lima.Text = " 0 Lima";
             this.Lima.UseVisualStyleBackColor = true;
             this.Lima.Click += new System.EventHandler(this.City_Click);
             // 
@@ -259,7 +260,7 @@
             this.Santiago.Name = "Santiago";
             this.Santiago.Size = new System.Drawing.Size(23, 23);
             this.Santiago.TabIndex = 17;
-            this.Santiago.Text = " Santiago";
+            this.Santiago.Text = " 0 Santiago";
             this.Santiago.UseVisualStyleBackColor = true;
             this.Santiago.Click += new System.EventHandler(this.City_Click);
             // 
@@ -269,7 +270,7 @@
             this.BuenosAires.Name = "BuenosAires";
             this.BuenosAires.Size = new System.Drawing.Size(23, 23);
             this.BuenosAires.TabIndex = 18;
-            this.BuenosAires.Text = " Buenos Aires";
+            this.BuenosAires.Text = " 0 Buenos Aires";
             this.BuenosAires.UseVisualStyleBackColor = true;
             this.BuenosAires.Click += new System.EventHandler(this.City_Click);
             // 
@@ -279,7 +280,7 @@
             this.SaoPaulo.Name = "SaoPaulo";
             this.SaoPaulo.Size = new System.Drawing.Size(23, 23);
             this.SaoPaulo.TabIndex = 19;
-            this.SaoPaulo.Text = " Sao Paulo";
+            this.SaoPaulo.Text = " 0 Sao Paulo";
             this.SaoPaulo.UseVisualStyleBackColor = true;
             this.SaoPaulo.Click += new System.EventHandler(this.City_Click);
             // 
@@ -289,7 +290,7 @@
             this.Lagos.Name = "Lagos";
             this.Lagos.Size = new System.Drawing.Size(23, 23);
             this.Lagos.TabIndex = 20;
-            this.Lagos.Text = " Lagos";
+            this.Lagos.Text = " 0 Lagos";
             this.Lagos.UseVisualStyleBackColor = true;
             this.Lagos.Click += new System.EventHandler(this.City_Click);
             // 
@@ -299,7 +300,7 @@
             this.Kinshasa.Name = "Kinshasa";
             this.Kinshasa.Size = new System.Drawing.Size(23, 23);
             this.Kinshasa.TabIndex = 21;
-            this.Kinshasa.Text = " Kinshasa";
+            this.Kinshasa.Text = " 0 Kinshasa";
             this.Kinshasa.UseVisualStyleBackColor = true;
             this.Kinshasa.Click += new System.EventHandler(this.City_Click);
             // 
@@ -309,7 +310,7 @@
             this.Johannesburg.Name = "Johannesburg";
             this.Johannesburg.Size = new System.Drawing.Size(23, 23);
             this.Johannesburg.TabIndex = 22;
-            this.Johannesburg.Text = " Johannesburg";
+            this.Johannesburg.Text = " 0 Johannesburg";
             this.Johannesburg.UseVisualStyleBackColor = true;
             this.Johannesburg.Click += new System.EventHandler(this.City_Click);
             // 
@@ -320,7 +321,7 @@
             this.Khartoum.Name = "Khartoum";
             this.Khartoum.Size = new System.Drawing.Size(23, 23);
             this.Khartoum.TabIndex = 23;
-            this.Khartoum.Text = " Khartoum";
+            this.Khartoum.Text = " 0 Khartoum";
             this.Khartoum.UseVisualStyleBackColor = false;
             this.Khartoum.Click += new System.EventHandler(this.City_Click);
             // 
@@ -331,139 +332,151 @@
             this.Milan.Name = "Milan";
             this.Milan.Size = new System.Drawing.Size(23, 23);
             this.Milan.TabIndex = 24;
-            this.Milan.Text = " Milan";
+            this.Milan.Text = " 0 Milan";
             this.Milan.UseVisualStyleBackColor = false;
             this.Milan.Click += new System.EventHandler(this.City_Click);
             // 
             // Algiers
             // 
             this.Algiers.BackColor = System.Drawing.SystemColors.WindowText;
+            this.Algiers.ForeColor = System.Drawing.Color.White;
             this.Algiers.Location = new System.Drawing.Point(577, 337);
             this.Algiers.Name = "Algiers";
             this.Algiers.Size = new System.Drawing.Size(23, 23);
             this.Algiers.TabIndex = 25;
-            this.Algiers.Text = " Algiers";
+            this.Algiers.Text = " 0 Algiers";
             this.Algiers.UseVisualStyleBackColor = false;
             this.Algiers.Click += new System.EventHandler(this.City_Click);
             // 
             // Cairo
             // 
             this.Cairo.BackColor = System.Drawing.SystemColors.MenuText;
+            this.Cairo.ForeColor = System.Drawing.Color.White;
             this.Cairo.Location = new System.Drawing.Point(638, 354);
             this.Cairo.Name = "Cairo";
             this.Cairo.Size = new System.Drawing.Size(23, 23);
             this.Cairo.TabIndex = 26;
-            this.Cairo.Text = " Cairo";
+            this.Cairo.Text = " 0 Cairo";
             this.Cairo.UseVisualStyleBackColor = false;
             this.Cairo.Click += new System.EventHandler(this.City_Click);
             // 
             // Istanbul
             // 
             this.Istanbul.BackColor = System.Drawing.SystemColors.MenuText;
+            this.Istanbul.ForeColor = System.Drawing.Color.White;
             this.Istanbul.Location = new System.Drawing.Point(649, 284);
             this.Istanbul.Name = "Istanbul";
             this.Istanbul.Size = new System.Drawing.Size(23, 23);
             this.Istanbul.TabIndex = 27;
-            this.Istanbul.Text = " Istanbul";
+            this.Istanbul.Text = " 0 Istanbul";
             this.Istanbul.UseVisualStyleBackColor = false;
             this.Istanbul.Click += new System.EventHandler(this.City_Click);
             // 
             // Moscow
             // 
             this.Moscow.BackColor = System.Drawing.SystemColors.MenuText;
+            this.Moscow.ForeColor = System.Drawing.Color.White;
             this.Moscow.Location = new System.Drawing.Point(716, 234);
             this.Moscow.Name = "Moscow";
             this.Moscow.Size = new System.Drawing.Size(23, 23);
             this.Moscow.TabIndex = 28;
-            this.Moscow.Text = " Moscow";
+            this.Moscow.Text = " 0 Moscow";
             this.Moscow.UseVisualStyleBackColor = false;
             this.Moscow.Click += new System.EventHandler(this.City_Click);
             // 
             // Baghdad
             // 
             this.Baghdad.BackColor = System.Drawing.SystemColors.WindowText;
+            this.Baghdad.ForeColor = System.Drawing.Color.White;
             this.Baghdad.Location = new System.Drawing.Point(708, 326);
             this.Baghdad.Name = "Baghdad";
             this.Baghdad.Size = new System.Drawing.Size(23, 23);
             this.Baghdad.TabIndex = 29;
-            this.Baghdad.Text = " Baghdad";
+            this.Baghdad.Text = " 0 Baghdad";
             this.Baghdad.UseVisualStyleBackColor = false;
             this.Baghdad.Click += new System.EventHandler(this.City_Click);
             // 
             // Riyadh
             // 
             this.Riyadh.BackColor = System.Drawing.SystemColors.WindowText;
+            this.Riyadh.ForeColor = System.Drawing.Color.White;
             this.Riyadh.Location = new System.Drawing.Point(718, 402);
             this.Riyadh.Name = "Riyadh";
             this.Riyadh.Size = new System.Drawing.Size(23, 23);
             this.Riyadh.TabIndex = 30;
-            this.Riyadh.Text = " Riyadh";
+            this.Riyadh.Text = " 0 Riyadh";
             this.Riyadh.UseVisualStyleBackColor = false;
             this.Riyadh.Click += new System.EventHandler(this.City_Click);
             // 
             // Tehran
             // 
             this.Tehran.BackColor = System.Drawing.SystemColors.MenuText;
+            this.Tehran.ForeColor = System.Drawing.Color.White;
             this.Tehran.Location = new System.Drawing.Point(771, 274);
             this.Tehran.Name = "Tehran";
             this.Tehran.Size = new System.Drawing.Size(23, 23);
             this.Tehran.TabIndex = 31;
-            this.Tehran.Text = " Tehran";
+            this.Tehran.Text = " 0 Tehran";
             this.Tehran.UseVisualStyleBackColor = false;
             this.Tehran.Click += new System.EventHandler(this.City_Click);
             // 
             // Karachi
             // 
             this.Karachi.BackColor = System.Drawing.SystemColors.MenuText;
+            this.Karachi.ForeColor = System.Drawing.Color.White;
             this.Karachi.Location = new System.Drawing.Point(787, 353);
             this.Karachi.Name = "Karachi";
             this.Karachi.Size = new System.Drawing.Size(23, 23);
             this.Karachi.TabIndex = 32;
-            this.Karachi.Text = " Karachi";
+            this.Karachi.Text = " 0 Karachi";
             this.Karachi.UseVisualStyleBackColor = false;
             this.Karachi.Click += new System.EventHandler(this.City_Click);
             // 
             // Mumbai
             // 
             this.Mumbai.BackColor = System.Drawing.SystemColors.MenuText;
+            this.Mumbai.ForeColor = System.Drawing.Color.White;
             this.Mumbai.Location = new System.Drawing.Point(797, 415);
             this.Mumbai.Name = "Mumbai";
             this.Mumbai.Size = new System.Drawing.Size(23, 23);
             this.Mumbai.TabIndex = 33;
-            this.Mumbai.Text = " Mumbai";
+            this.Mumbai.Text = " 0 Mumbai";
             this.Mumbai.UseVisualStyleBackColor = false;
             this.Mumbai.Click += new System.EventHandler(this.City_Click);
             // 
             // Delhi
             // 
             this.Delhi.BackColor = System.Drawing.SystemColors.MenuText;
+            this.Delhi.ForeColor = System.Drawing.Color.White;
             this.Delhi.Location = new System.Drawing.Point(847, 328);
             this.Delhi.Name = "Delhi";
             this.Delhi.Size = new System.Drawing.Size(23, 23);
             this.Delhi.TabIndex = 34;
-            this.Delhi.Text = " Delhi";
+            this.Delhi.Text = " 0 Delhi";
             this.Delhi.UseVisualStyleBackColor = false;
             this.Delhi.Click += new System.EventHandler(this.City_Click);
             // 
             // Chennai
             // 
             this.Chennai.BackColor = System.Drawing.SystemColors.MenuText;
+            this.Chennai.ForeColor = System.Drawing.Color.White;
             this.Chennai.Location = new System.Drawing.Point(859, 459);
             this.Chennai.Name = "Chennai";
             this.Chennai.Size = new System.Drawing.Size(23, 23);
             this.Chennai.TabIndex = 35;
-            this.Chennai.Text = " Chennai";
+            this.Chennai.Text = " 0 Chennai";
             this.Chennai.UseVisualStyleBackColor = false;
             this.Chennai.Click += new System.EventHandler(this.City_Click);
             // 
             // Kolkata
             // 
             this.Kolkata.BackColor = System.Drawing.SystemColors.MenuText;
+            this.Kolkata.ForeColor = System.Drawing.Color.White;
             this.Kolkata.Location = new System.Drawing.Point(906, 349);
             this.Kolkata.Name = "Kolkata";
             this.Kolkata.Size = new System.Drawing.Size(23, 23);
             this.Kolkata.TabIndex = 36;
-            this.Kolkata.Text = " Kolkata";
+            this.Kolkata.Text = " 0 Kolkata";
             this.Kolkata.UseVisualStyleBackColor = false;
             this.Kolkata.Click += new System.EventHandler(this.City_Click);
             // 
@@ -474,7 +487,7 @@
             this.Beijing.Name = "Beijing";
             this.Beijing.Size = new System.Drawing.Size(23, 23);
             this.Beijing.TabIndex = 37;
-            this.Beijing.Text = " Beijing";
+            this.Beijing.Text = " 0 Beijing";
             this.Beijing.UseVisualStyleBackColor = false;
             this.Beijing.Click += new System.EventHandler(this.City_Click);
             // 
@@ -485,7 +498,7 @@
             this.Seoul.Name = "Seoul";
             this.Seoul.Size = new System.Drawing.Size(23, 23);
             this.Seoul.TabIndex = 38;
-            this.Seoul.Text = " Seoul";
+            this.Seoul.Text = " 0 Seoul";
             this.Seoul.UseVisualStyleBackColor = false;
             this.Seoul.Click += new System.EventHandler(this.City_Click);
             // 
@@ -496,7 +509,7 @@
             this.Shanghai.Name = "Shanghai";
             this.Shanghai.Size = new System.Drawing.Size(23, 23);
             this.Shanghai.TabIndex = 39;
-            this.Shanghai.Text = " Shanghai";
+            this.Shanghai.Text = " 0 Shanghai";
             this.Shanghai.UseVisualStyleBackColor = false;
             this.Shanghai.Click += new System.EventHandler(this.City_Click);
             // 
@@ -507,7 +520,7 @@
             this.Bangkok.Name = "Bangkok";
             this.Bangkok.Size = new System.Drawing.Size(23, 23);
             this.Bangkok.TabIndex = 40;
-            this.Bangkok.Text = " Bangkok";
+            this.Bangkok.Text = " 0 Bangkok";
             this.Bangkok.UseVisualStyleBackColor = false;
             this.Bangkok.Click += new System.EventHandler(this.City_Click);
             // 
@@ -518,7 +531,7 @@
             this.Jakarta.Name = "Jakarta";
             this.Jakarta.Size = new System.Drawing.Size(23, 23);
             this.Jakarta.TabIndex = 41;
-            this.Jakarta.Text = " Jakarta";
+            this.Jakarta.Text = " 0 Jakarta";
             this.Jakarta.UseVisualStyleBackColor = false;
             this.Jakarta.Click += new System.EventHandler(this.City_Click);
             // 
@@ -529,7 +542,7 @@
             this.HoChiMinhCity.Name = "HoChiMinhCity";
             this.HoChiMinhCity.Size = new System.Drawing.Size(23, 23);
             this.HoChiMinhCity.TabIndex = 42;
-            this.HoChiMinhCity.Text = " Ho Chi Minh City";
+            this.HoChiMinhCity.Text = " 0 Ho Chi Minh City";
             this.HoChiMinhCity.UseVisualStyleBackColor = false;
             this.HoChiMinhCity.Click += new System.EventHandler(this.City_Click);
             // 
@@ -540,7 +553,7 @@
             this.HongKong.Name = "HongKong";
             this.HongKong.Size = new System.Drawing.Size(23, 23);
             this.HongKong.TabIndex = 43;
-            this.HongKong.Text = " Hong Kong";
+            this.HongKong.Text = " 0 Hong Kong";
             this.HongKong.UseVisualStyleBackColor = false;
             this.HongKong.Click += new System.EventHandler(this.City_Click);
             // 
@@ -551,7 +564,7 @@
             this.Taipei.Name = "Taipei";
             this.Taipei.Size = new System.Drawing.Size(23, 23);
             this.Taipei.TabIndex = 44;
-            this.Taipei.Text = " Taipei";
+            this.Taipei.Text = " 0 Taipei";
             this.Taipei.UseVisualStyleBackColor = false;
             this.Taipei.Click += new System.EventHandler(this.City_Click);
             // 
@@ -562,7 +575,7 @@
             this.Tokyo.Name = "Tokyo";
             this.Tokyo.Size = new System.Drawing.Size(23, 23);
             this.Tokyo.TabIndex = 45;
-            this.Tokyo.Text = " Tokyo";
+            this.Tokyo.Text = " 0 Tokyo";
             this.Tokyo.UseVisualStyleBackColor = false;
             this.Tokyo.Click += new System.EventHandler(this.City_Click);
             // 
@@ -573,7 +586,7 @@
             this.Osaka.Name = "Osaka";
             this.Osaka.Size = new System.Drawing.Size(23, 23);
             this.Osaka.TabIndex = 46;
-            this.Osaka.Text = " Osaka";
+            this.Osaka.Text = " 0 Osaka";
             this.Osaka.UseVisualStyleBackColor = false;
             this.Osaka.Click += new System.EventHandler(this.City_Click);
             // 
@@ -584,7 +597,7 @@
             this.Manila.Name = "Manila";
             this.Manila.Size = new System.Drawing.Size(23, 23);
             this.Manila.TabIndex = 47;
-            this.Manila.Text = " Manila";
+            this.Manila.Text = " 0 Manila";
             this.Manila.UseVisualStyleBackColor = false;
             this.Manila.Click += new System.EventHandler(this.City_Click);
             // 
@@ -595,7 +608,7 @@
             this.Sydney.Name = "Sydney";
             this.Sydney.Size = new System.Drawing.Size(23, 23);
             this.Sydney.TabIndex = 48;
-            this.Sydney.Text = " Sydney";
+            this.Sydney.Text = " 0 Sydney";
             this.Sydney.UseVisualStyleBackColor = false;
             this.Sydney.Click += new System.EventHandler(this.City_Click);
             // 
@@ -618,6 +631,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(180, 132);
             this.button1.TabIndex = 50;
+            this.button1.Text = "View Discard Pile";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 

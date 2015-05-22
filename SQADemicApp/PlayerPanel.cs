@@ -72,6 +72,7 @@ namespace SQADemicApp
                 quietNight = true;
             GameBoard.turnpart = GameBoard.TURNPART.Action;
             GameBoardModels.CurrentPlayerIndex = (GameBoardModels.CurrentPlayerIndex + 1) % GameBoardModels.players.Count();
+            board.UpdateCityButtons(false);
         }
 
         private void drawcards()
