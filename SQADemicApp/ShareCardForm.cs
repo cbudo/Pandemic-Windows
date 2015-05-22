@@ -42,9 +42,29 @@ namespace SQADemicApp
                     break;
                 default:
                     break;
-            } 
+            }
+            switch (GameBoardModels.players.Count())
+            {
+                case 2:
+                    P2T.Hide();
+                    goto case 3;
+                case 3:
+                    P3T.Hide();
+                    break;
+            }
             listBox1.Items.Clear();
             listBox1.Items.AddRange(GameBoardModels.players[GameBoardModels.CurrentPlayerIndex].handStringList().ToArray());
+            List<object> allHands = new List<object>();
+            foreach(var player in GameBoardModels.players)
+            {
+                if (player.role != GameBoardModels.players[GameBoardModels.CurrentPlayerIndex].role)
+                {
+                    allHands.AddRange(player.handStringList());
+                }
+                
+            }
+            listBox2.Items.Clear();
+            listBox2.Items.AddRange(allHands.ToArray());
         }
         
         private void P1T_Click(object sender, EventArgs e)
@@ -100,7 +120,29 @@ namespace SQADemicApp
 
         private void StealCardButton_Click(object sender, EventArgs e)
         {
-
+            var selectedItem = listBox2.SelectedItem.ToString();
+            var selectedCard = selectedItem.Substring(0,selectedItem.IndexOf('(')-1);
+            Player SelectedCardHolder = GameBoardModels.players[GameBoardModels.CurrentPlayerIndex];
+            foreach(var player in GameBoardModels.players)
+            {
+                if(player.hand.Any(c=>c.CityName == selectedCard))
+                {
+                    SelectedCardHolder = player;
+                    break;
+                }
+            }
+            if(PlayerActionsBL.ShareKnowledgeOption(SelectedCardHolder, GameBoardModels.players[GameBoardModels.CurrentPlayerIndex], selectedCard))
+            {
+                MessageBox.Show("Card Traded");
+                this.Dispose();
+                this.Close();
+                board.UpdatePlayerForm();
+            }
+            else
+            {
+                MessageBox.Show("Card unable to be traded");
+            }
+            
         }
     }
 }

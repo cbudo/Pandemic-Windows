@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using SQADemicApp.BL;
+using System.Collections.Generic;
 
 namespace SQADemicApp
 {
@@ -61,7 +62,7 @@ namespace SQADemicApp
             switch (CurrentState)
             {
                 case STATE.Dispatcher:
-                    if (PlayerActionsBL.moveplayer(GameBoardModels.players[dispatcherMoveIndex], Create.cityDictionary[pressed.Text.Substring(1)]))
+                    if (PlayerActionsBL.DispatcherMovePlayer(GameBoardModels.players[dispatcherMoveIndex],new List<Player>(GameBoardModels.players), Create.cityDictionary[pressed.Text.Substring(1)]))
                     {
                         switch (dispatcherMoveIndex)
                         {
