@@ -34,9 +34,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 28.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label1.Location = new System.Drawing.Point(255, 203);
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(227, 385);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(152, 55);
             this.label1.TabIndex = 0;
@@ -44,9 +45,9 @@
             // 
             // PicForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(667, 521);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.BackgroundImage = global::SQADemicApp.Properties.Resources.Epidemic;
+            this.ClientSize = new System.Drawing.Size(276, 385);
             this.Controls.Add(this.label1);
             this.Name = "PicForm";
             this.Text = "PicForm";

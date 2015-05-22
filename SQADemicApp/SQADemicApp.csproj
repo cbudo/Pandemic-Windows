@@ -182,6 +182,8 @@
   <ItemGroup>
     <Content Include="Resources\AdjacentNeighbors.txt" />
     <Content Include="Resources\CityList.txt" />
+    <None Include="Resources\Ebola-Virus-outbreak-2.jpg" />
+    <None Include="Resources\Epidemic.jpg" />
     <Content Include="Resources\InfectionDeck.txt" />
     <Content Include="Resources\Pandemic 6.jpg" />
     <Content Include="Resources\pandemicMap.jpg" />

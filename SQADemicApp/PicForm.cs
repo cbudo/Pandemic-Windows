@@ -12,9 +12,22 @@ namespace SQADemicApp
 {
     public partial class PicForm : Form
     {
-        public PicForm()
+        public PicForm(bool outbreak, string cityName)
         {
             InitializeComponent();
+            if(outbreak)
+            {
+                this.Text = "Outbreak";
+                this.ClientSize = new System.Drawing.Size(667, 521);
+                this.BackgroundImage = global::SQADemicApp.Properties.Resources.Ebola_Virus_outbreak_2;
+                this.label1.Text = cityName;
+            }
+            else
+            {
+                this.Text = cityName;
+                this.BackgroundImage = global::SQADemicApp.Properties.Resources.Epidemic;
+                this.ClientSize = new System.Drawing.Size(276, 385);
+            }   
         }
     }
 }
