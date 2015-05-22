@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.IO;
+using SQADemicApp.BL;
 
 namespace SQADemicApp
 {
@@ -53,7 +54,6 @@ namespace SQADemicApp
                 eventCards = new List<Card>();
                 infectionPile = new LinkedList<String>();
                 infectionDeck = new LinkedList<string> (Create.makeInfectionDeck(new StringReader(SQADemicApp.Properties.Resources.InfectionDeck)));
-
             }
 
             //Players setup allows existing players to be overwritten
@@ -85,10 +85,42 @@ namespace SQADemicApp
                 }
             }
             InfectionRateCounter = 2;
-
+            if (!alreadySetUp)
+            {
+                startGameInfection();
+                setUpPlayerHands();
+            }
 
             alreadySetUp = true;
 
+        }
+
+        private void startGameInfection()
+        {
+            for (int i = 3; i > 0; i--)
+            {
+                List<string> infectedcites = InfectorBL.InfectCities(infectionDeck, infectionPile, 3);
+                for (int j = 0; j < i; j++)
+                {
+                    InfectorBL.InfectCities(infectedcites);
+                }
+            }
+        }
+
+        private void setUpPlayerHands()
+        {
+            int cardsPerPlayer = players.Count() == 4 ? 2 : players.Count() == 3 ? 3 : 4;
+            foreach (Player player in players)
+            {                
+                for (int i = 0; i < cardsPerPlayer; i++)
+                {
+                    Card card = drawCard();
+                    if (card.CardType == Card.CARDTYPE.Special)
+                        eventCards.Add(card);
+                    else
+                        player.hand.Add(card);
+                }
+            }
         }
 
         public bool incTurnCount()
