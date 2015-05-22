@@ -36,7 +36,7 @@
             // 
             // Player1
             // 
-            this.Player1.BackColor = System.Drawing.SystemColors.Control;
+            this.Player1.BackColor = System.Drawing.Color.Aqua;
             this.Player1.Location = new System.Drawing.Point(12, 12);
             this.Player1.Name = "Player1";
             this.Player1.Size = new System.Drawing.Size(180, 93);
@@ -46,6 +46,7 @@
             // 
             // Player2
             // 
+            this.Player2.BackColor = System.Drawing.Color.Aqua;
             this.Player2.Location = new System.Drawing.Point(209, 12);
             this.Player2.Name = "Player2";
             this.Player2.Size = new System.Drawing.Size(180, 93);
@@ -55,6 +56,7 @@
             // 
             // Player3
             // 
+            this.Player3.BackColor = System.Drawing.Color.Aqua;
             this.Player3.Location = new System.Drawing.Point(12, 127);
             this.Player3.Name = "Player3";
             this.Player3.Size = new System.Drawing.Size(180, 93);
@@ -64,6 +66,7 @@
             // 
             // Player4
             // 
+            this.Player4.BackColor = System.Drawing.Color.Aqua;
             this.Player4.Location = new System.Drawing.Point(209, 127);
             this.Player4.Name = "Player4";
             this.Player4.Size = new System.Drawing.Size(180, 93);

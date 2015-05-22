@@ -123,9 +123,33 @@ namespace SQADemicApp
             {
                 playerForm.EndSequenceBtn.Hide();
             }
+            updateCharacterForm(GameBoardModels.CurrentPlayerIndex);
             updateCubeCounts();
             updateCounters();
             updateCureStatus();
+        }
+
+        private void updateCharacterForm(int p)
+        {
+            switch(p)
+            {
+                case 3:
+                    form2.Player4.UseVisualStyleBackColor = false;
+                    form2.Player3.UseVisualStyleBackColor = true;
+                    break;
+                case 2:
+                    form2.Player3.UseVisualStyleBackColor = false;
+                    form2.Player3.UseVisualStyleBackColor = true;
+                    break;
+                case 1:
+                    form2.Player2.UseVisualStyleBackColor = false;
+                    form2.Player3.UseVisualStyleBackColor = true;
+                    break;
+                default:
+                    form2.Player1.UseVisualStyleBackColor = false;
+                    form2.Player4.UseVisualStyleBackColor=form2.Player3.UseVisualStyleBackColor=form2.Player2.UseVisualStyleBackColor = true;
+                    break;
+            }
         }
         private void updateCubeCounts()
         {
