@@ -730,6 +730,20 @@ namespace SQADemicAppTest
             Assert.AreEqual(chicagoCity.redCubes, 0);
             Assert.AreEqual(GameBoardModels.cubeCount.redCubes, 24);
         }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidOperationException))]
+        public void TestWinCon()
+        {
+            List<String> cardsToSpend = new List<String> { atlanta.CityName, chicagoCard.CityName, london.CityName, paris.CityName };
+            GameBoardModels.CURESTATUS.setCureStatus(COLOR.blue , GameBoardModels.Cures.CURESTATE.NotCured);
+            GameBoardModels.CURESTATUS.setCureStatus(COLOR.yellow, GameBoardModels.Cures.CURESTATE.Cured);
+            GameBoardModels.CURESTATUS.setCureStatus(COLOR.red, GameBoardModels.Cures.CURESTATE.Cured);
+            GameBoardModels.CURESTATUS.setCureStatus(COLOR.black, GameBoardModels.Cures.CURESTATE.Cured);
+            scientist.hand = new List<Card> { atlanta, chicagoCard, london, paris };
+            PlayerActionsBL.Cure(scientist, cardsToSpend, COLOR.blue);
+
+        }
     }
     /** PRINTING STUFF
     //Print Statment
