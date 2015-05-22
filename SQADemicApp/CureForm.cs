@@ -38,16 +38,30 @@ namespace SQADemicApp
                 cityNames.Add(o.ToString().Substring(0,index));
             }
 
-            if (!PlayerActionsBL.Cure(GameBoardModels.players[GameBoardModels.CurrentPlayerIndex], cityNames, Create.cityDictionary[cityNames[0]].color))
+            bool cured = false;
+            try
+            {
+                cured = PlayerActionsBL.Cure(GameBoardModels.players[GameBoardModels.CurrentPlayerIndex], cityNames, Create.cityDictionary[cityNames[0]].color);
+            }
+            catch (ArgumentException exe)
+            {
+                MessageBox.Show("You Win");
+                return;
+            }
+
+            if (!cured)
             {
                 MessageBox.Show("Invalid card selection", "Invalid Selection");
                 return;
             }
-            if (this.board.boardModel.incTurnCount())
-                GameBoard.turnpart = GameBoard.TURNPART.Draw;     
-            this.Dispose();
-            this.Close();
-            board.UpdatePlayerForm();
+            else
+            {
+                if (this.board.boardModel.incTurnCount())
+                    GameBoard.turnpart = GameBoard.TURNPART.Draw;
+                this.Dispose();
+                this.Close();
+                board.UpdatePlayerForm();
+            }
         }
 
         private void Remove_Click(object sender, EventArgs e)
