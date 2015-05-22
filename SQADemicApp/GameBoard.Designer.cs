@@ -168,6 +168,7 @@
             // NewYork
             // 
             this.NewYork.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.NewYork.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.NewYork.Location = new System.Drawing.Point(340, 259);
             this.NewYork.Name = "NewYork";
             this.NewYork.Size = new System.Drawing.Size(23, 23);
@@ -607,14 +608,12 @@
             this.button49.TabIndex = 49;
             this.button49.Text = "Draw";
             this.button49.UseVisualStyleBackColor = true;
-            //this.button49.Click += new System.EventHandler(this.DrawBtn_Click);
             // 
-            // Form1
+            // GameBoard
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(1205, 839);
             this.Controls.Add(this.button49);
             this.Controls.Add(this.Sydney);
@@ -665,7 +664,7 @@
             this.Controls.Add(this.Montreal);
             this.Controls.Add(this.Chicago);
             this.Controls.Add(this.SanFrancisco);
-            this.Name = "Form1";
+            this.Name = "GameBoard";
             this.Text = "SQAdemic";
             this.ResumeLayout(false);
 

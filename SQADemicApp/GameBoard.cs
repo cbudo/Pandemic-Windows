@@ -70,10 +70,7 @@ namespace SQADemicApp
                                 form2.Player1.Text = "Player 1\n" + pressed.Text.Substring(1);
                                 break;
                         }
-                        if(boardModel.incTurnCount())
-                        {
-                            CurrentState = STATE.EndPhase;
-                        }
+                        boardModel.incTurnCount();
                         UpdatePlayerForm();
                     }
                     else
