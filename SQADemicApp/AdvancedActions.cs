@@ -24,7 +24,6 @@ namespace SQADemicApp
         {
             SQADemicApp.ShareCardForm SCForm = new ShareCardForm(board);
             SCForm.Show();
-            this.Dispose();
             this.Close();
         }
 
@@ -39,7 +38,6 @@ namespace SQADemicApp
                 if (this.board.boardModel.incTurnCount())
                     GameBoard.turnpart = GameBoard.TURNPART.Draw;                
                 board.UpdatePlayerForm();
-                this.Dispose();
                 this.Close();
             }
         }
@@ -48,7 +46,6 @@ namespace SQADemicApp
         {
             CureForm cureForm = new CureForm(board);
             cureForm.Show();
-            this.Dispose();
             this.Close();
         }
     }

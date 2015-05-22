@@ -38,7 +38,6 @@ namespace SQADemicApp
             {
                 var selecteditem = listBox1.SelectedItem.ToString();
                 GameBoardModels.infectionPile.Remove(selecteditem);
-                this.Dispose();
                 this.Close();
             }
             catch(NullReferenceException)

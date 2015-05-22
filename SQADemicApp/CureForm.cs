@@ -44,8 +44,7 @@ namespace SQADemicApp
                 return;
             }
             if (this.board.boardModel.incTurnCount())
-                GameBoard.turnpart = GameBoard.TURNPART.Draw;     
-            this.Dispose();
+                GameBoard.turnpart = GameBoard.TURNPART.Draw;
             this.Close();
             board.UpdatePlayerForm();
         }

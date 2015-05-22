@@ -28,7 +28,6 @@ namespace SQADemicApp
                 selectedCards.Add(select.ToString());
             }
             SQADemicApp.BL.SpecialEventCardsBL.CommitForcast(GameBoardModels.infectionDeck, selectedCards);
-            this.Dispose();
             this.Close();
         }
 

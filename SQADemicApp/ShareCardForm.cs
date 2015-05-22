@@ -91,7 +91,6 @@ namespace SQADemicApp
                 if (this.board.boardModel.incTurnCount())
                     GameBoard.turnpart = GameBoard.TURNPART.Draw;
             }
-            this.Dispose();
             this.Close();
             board.UpdatePlayerForm();
         }
@@ -123,7 +122,6 @@ namespace SQADemicApp
                 if (this.board.boardModel.incTurnCount())
                     GameBoard.turnpart = GameBoard.TURNPART.Draw;
             }
-            this.Dispose();
             this.Close();
             board.UpdatePlayerForm();
         }
@@ -151,7 +149,6 @@ namespace SQADemicApp
                 if (this.board.boardModel.incTurnCount())
                     GameBoard.turnpart = GameBoard.TURNPART.Draw;
             }
-            this.Dispose();
             this.Close();
             board.UpdatePlayerForm();
         }
@@ -174,7 +171,6 @@ namespace SQADemicApp
                 if(PlayerActionsBL.ShareKnowledgeOption(SelectedCardHolder, GameBoardModels.players[GameBoardModels.CurrentPlayerIndex], selectedCard))
                 {
                     MessageBox.Show("Card Traded");
-                    this.Dispose();
                     this.Close();
                     board.UpdatePlayerForm();
                 }
