@@ -176,6 +176,14 @@ namespace SQADemicApp.BL
                 return false;
             player.hand.RemoveAll(x => cards.Contains(x));
             GameBoardModels.CURESTATUS.setCureStatus(color, GameBoardModels.Cures.CURESTATE.Cured);
+            if (GameBoardModels.CURESTATUS.BlackCure != GameBoardModels.Cures.CURESTATE.NotCured &&
+                   GameBoardModels.CURESTATUS.BlueCure != GameBoardModels.Cures.CURESTATE.NotCured &&
+                   GameBoardModels.CURESTATUS.RedCure != GameBoardModels.Cures.CURESTATE.NotCured &&
+                   GameBoardModels.CURESTATUS.YellowCure != GameBoardModels.Cures.CURESTATE.NotCured)
+            {
+                throw new InvalidOperationException("Game Over You Win");
+            }
+
             return true;
         }
 
