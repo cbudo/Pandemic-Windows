@@ -82,6 +82,86 @@ namespace SQADemicApp.BL
                 switch (city.color)
                 {
                     case COLOR.blue:
+                        if (GameBoardModels.CURESTATUS.BlueCure != GameBoardModels.Cures.CURESTATE.Sunset)
+                        {
+                            if (city.blueCubes < 3)
+                            {
+                                GameBoardModels.cubeCount.blueCubes--;
+                                city.blueCubes++;
+                                if (GameBoardModels.cubeCount.blueCubes <= 0)
+                                {
+                                    throw new InvalidOperationException("Game Over");
+                                }
+                                return city.blueCubes;
+                            }
+                            Outbreak(city, city.color, city.adjacentCities, alreadyInfected);
+                            return city.blueCubes;
+                        }
+                        return city.blueCubes;
+
+                    case COLOR.yellow:
+                        if (GameBoardModels.CURESTATUS.YellowCure != GameBoardModels.Cures.CURESTATE.Sunset)
+                        {
+                            if (city.yellowCubes < 3)
+                            {
+                                GameBoardModels.cubeCount.yellowCubes--;
+                                city.yellowCubes++;
+                                if (GameBoardModels.cubeCount.yellowCubes <= 0)
+                                {
+                                    throw new InvalidOperationException("Game Over");
+                                }
+                                return city.yellowCubes;
+
+                            }
+                            Outbreak(city, city.color, city.adjacentCities, alreadyInfected);
+                            return city.yellowCubes;
+                        }
+                        return city.yellowCubes;
+
+                    case COLOR.black:
+                        if (GameBoardModels.CURESTATUS.BlackCure != GameBoardModels.Cures.CURESTATE.Sunset)
+                        {
+                            if (city.blackCubes < 3)
+                            {
+                                GameBoardModels.cubeCount.blackCubes--;
+                                city.blackCubes++;
+                                if (GameBoardModels.cubeCount.blackCubes <= 0)
+                                {
+                                    throw new InvalidOperationException("Game Over");
+                                }
+                                return city.blackCubes;
+
+                            }
+                            Outbreak(city, city.color, city.adjacentCities, alreadyInfected);
+                            return city.blackCubes;
+                        }
+                        return city.blackCubes;
+                    default:
+                        if (GameBoardModels.CURESTATUS.RedCure != GameBoardModels.Cures.CURESTATE.Sunset)
+                        {
+                            if (city.redCubes < 3)
+                            {
+                                GameBoardModels.cubeCount.redCubes--;
+                                city.redCubes++;
+                                if (GameBoardModels.cubeCount.redCubes <= 0)
+                                {
+                                    throw new InvalidOperationException("Game Over");
+                                }
+                                return city.redCubes;
+
+                            }
+                            Outbreak(city, city.color, city.adjacentCities, alreadyInfected);
+                            return city.redCubes;
+                        }
+                        return city.redCubes;
+                }
+            } // will reach here if this infection was caused by an outbreak.
+            //need to increment cubes of outbreak color, which aren't necessarily the city color
+            switch (outbreakColor)
+            {
+                case COLOR.blue:
+                    if (GameBoardModels.CURESTATUS.BlueCure != GameBoardModels.Cures.CURESTATE.Sunset)
+                    {
                         if (city.blueCubes < 3)
                         {
                             GameBoardModels.cubeCount.blueCubes--;
@@ -94,8 +174,11 @@ namespace SQADemicApp.BL
                         }
                         Outbreak(city, city.color, city.adjacentCities, alreadyInfected);
                         return city.blueCubes;
-
-                    case COLOR.yellow:
+                    }
+                    return city.blueCubes;
+                case COLOR.yellow:
+                    if (GameBoardModels.CURESTATUS.YellowCure != GameBoardModels.Cures.CURESTATE.Sunset)
+                    {
                         if (city.yellowCubes < 3)
                         {
                             GameBoardModels.cubeCount.yellowCubes--;
@@ -109,8 +192,12 @@ namespace SQADemicApp.BL
                         }
                         Outbreak(city, city.color, city.adjacentCities, alreadyInfected);
                         return city.yellowCubes;
+                    }
+                    return city.yellowCubes;
 
-                    case COLOR.black:
+                case COLOR.black:
+                    if (GameBoardModels.CURESTATUS.BlackCure != GameBoardModels.Cures.CURESTATE.Sunset)
+                    {
                         if (city.blackCubes < 3)
                         {
                             GameBoardModels.cubeCount.blackCubes--;
@@ -124,8 +211,12 @@ namespace SQADemicApp.BL
                         }
                         Outbreak(city, city.color, city.adjacentCities, alreadyInfected);
                         return city.blackCubes;
+                    }
+                    return city.blackCubes;
 
-                    default:
+                default:
+                    if (GameBoardModels.CURESTATUS.RedCure != GameBoardModels.Cures.CURESTATE.Sunset)
+                    {
                         if (city.redCubes < 3)
                         {
                             GameBoardModels.cubeCount.redCubes--;
@@ -135,71 +226,10 @@ namespace SQADemicApp.BL
                                 throw new InvalidOperationException("Game Over");
                             }
                             return city.redCubes;
-
                         }
                         Outbreak(city, city.color, city.adjacentCities, alreadyInfected);
-                        return city.redCubes;
-                }
-            } // will reach here if this infection was caused by an outbreak.
-            //need to increment cubes of outbreak color, which aren't necessarily the city color
-            switch (outbreakColor)
-            {
-                case COLOR.blue:
-                    if (city.blueCubes < 3)
-                        {
-                            GameBoardModels.cubeCount.blueCubes--;
-                            city.blueCubes++;
-                            if (GameBoardModels.cubeCount.blueCubes <= 0)
-                            {
-                                throw new InvalidOperationException("Game Over");
-                            }
-                            return city.blueCubes;
-                        }
-                        Outbreak(city, city.color, city.adjacentCities, alreadyInfected);
-                        return city.blueCubes;
-
-                case COLOR.yellow:
-                    if (city.yellowCubes < 3)
-                        {
-                            GameBoardModels.cubeCount.yellowCubes--;
-                            city.yellowCubes++;
-                            if (GameBoardModels.cubeCount.yellowCubes <= 0)
-                            {
-                                throw new InvalidOperationException("Game Over");
-                            }
-                            return city.yellowCubes;
-
-                        }
-                        Outbreak(city, city.color, city.adjacentCities, alreadyInfected);
-                        return city.yellowCubes;
-
-                case COLOR.black:
-                        if (city.blackCubes < 3)
-                        {
-                            GameBoardModels.cubeCount.blackCubes--;
-                            city.blackCubes++;
-                            if (GameBoardModels.cubeCount.blackCubes <= 0)
-                            {
-                                throw new InvalidOperationException("Game Over");
-                            }
-                            return city.blackCubes;
-
-                        }
-                        Outbreak(city, city.color, city.adjacentCities, alreadyInfected);
-                        return city.blackCubes;
-
-                default:
-                    if (city.redCubes < 3)
-                    {
-                        GameBoardModels.cubeCount.redCubes--;
-                        city.redCubes++;
-                        if (GameBoardModels.cubeCount.redCubes <= 0)
-                        {
-                            throw new InvalidOperationException("Game Over");
-                        }
                         return city.redCubes;
                     }
-                    Outbreak(city, city.color, city.adjacentCities, alreadyInfected);
                     return city.redCubes;
             }
         }
