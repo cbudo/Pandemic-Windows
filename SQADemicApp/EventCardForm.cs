@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SQADemicApp.BL;
 
 namespace SQADemicApp
 {
@@ -36,7 +37,24 @@ namespace SQADemicApp
         {
             try
             {
-                var selectedCard = listBox1.SelectedItem;
+                var selectedCard = listBox1.SelectedItem.ToString();
+                switch(selectedCard)
+                {
+                    case "Airlift":
+                        GameBoard.CurrentState = GameBoard.STATE.Airlift;
+                        break;
+                    case "One Quiet Night":
+                        break;
+                    case "Resilient Population":
+                        DiscardPile dp = new DiscardPile(true);
+                        // create form for picking one of these and removing them
+                        break;
+                    case "Government Grant":
+                        GameBoard.CurrentState = GameBoard.STATE.GovGrant;
+                        break;
+                    case "Forecast":
+                        break;
+                }
             }
             catch (NullReferenceException)
             {

@@ -75,7 +75,7 @@ namespace SQADemicApp
             Card drawCard2 = GameBoardModels.drawCard();
 
             //Epidemic code
-            if (drawCard1.CityName.Equals("EPIDEMIC"))
+            if (drawCard1.CardType.Equals(Card.CARDTYPE.EPIDEMIC))
             {
                 string infectcityname = InfectorBL.Epidemic(GameBoardModels.infectionDeck, GameBoardModels.infectionPile, ref GameBoardModels.InfectionRateIndex, ref GameBoardModels.InfectionRate);
                 new PicForm(false, infectcityname).Show();
@@ -89,7 +89,7 @@ namespace SQADemicApp
             else
                 GameBoardModels.players[GameBoardModels.CurrentPlayerIndex].hand.Add(drawCard1);
 
-            if (drawCard2.CityName.Equals("EPIDEMIC"))
+            if (drawCard2.CardType.Equals(Card.CARDTYPE.EPIDEMIC))
             {
                 string infectcityname = InfectorBL.Epidemic(GameBoardModels.infectionDeck, GameBoardModels.infectionPile, ref GameBoardModels.InfectionRateIndex, ref GameBoardModels.InfectionRate);
                 new PicForm(false, infectcityname).Show();

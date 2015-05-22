@@ -67,6 +67,12 @@
     <Compile Include="CureForm.Designer.cs">
       <DependentUpon>CureForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="DiscardPile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DiscardPile.Designer.cs">
+      <DependentUpon>DiscardPile.cs</DependentUpon>
+    </Compile>
     <Compile Include="DispatcherMove.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -136,6 +142,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CureForm.resx">
       <DependentUpon>CureForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DiscardPile.resx">
+      <DependentUpon>DiscardPile.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DispatcherMove.resx">
       <DependentUpon>DispatcherMove.cs</DependentUpon>

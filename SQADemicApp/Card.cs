@@ -8,7 +8,7 @@ namespace SQADemicApp
 {
     public class Card
     {
-        public enum CARDTYPE { Infection, City, Special }
+        public enum CARDTYPE { Infection, City, Special, EPIDEMIC }
         public Card(string CityName, CARDTYPE type, COLOR color)
         {
             this.CityName = CityName;

@@ -11,7 +11,7 @@ namespace SQADemicApp
         CharacterPane form2;
         PlayerPanel playerForm;
         EventCardForm ECForm;
-        public enum STATE { Dispatcher, Initializing, Move, Cure, Default }
+        public enum STATE { Dispatcher, Initializing, Move, Cure, Default, Airlift, GovGrant}
         public static STATE CurrentState;
         public enum TURNPART { Action, Draw, Infect };
         public static TURNPART turnpart;
@@ -65,24 +65,31 @@ namespace SQADemicApp
         private void City_Click(object sender, EventArgs e)
         {
             Button pressed = sender as Button;
+            var cityName = pressed.Text.Substring(1);
             switch (CurrentState)
             {
+                case STATE.Airlift:
+                    SpecialEventCardsBL.Airlift(GameBoardModels.players[GameBoardModels.CurrentPlayerIndex], Create.cityDictionary[cityName]);
+                    break;
+                case STATE.GovGrant:
+                    SpecialEventCardsBL.GovernmentGrant(cityName);
+                    break;
                 case STATE.Dispatcher:
-                    if (PlayerActionsBL.DispatcherMovePlayer(GameBoardModels.players[dispatcherMoveIndex],new List<Player>(GameBoardModels.players), Create.cityDictionary[pressed.Text.Substring(1)]))
+                    if (PlayerActionsBL.DispatcherMovePlayer(GameBoardModels.players[dispatcherMoveIndex],new List<Player>(GameBoardModels.players), Create.cityDictionary[cityName]))
                     {
                         switch (dispatcherMoveIndex)
                         {
                             case 3:
-                                form2.Player4.Text = "Player 4\n" + GameBoardModels.players[3].role.ToString() + "\n" + pressed.Text.Substring(1);
+                                form2.Player4.Text = "Player 4\n" + GameBoardModels.players[3].role.ToString() + "\n" + cityName;
                                 break;
                             case 2:
-                                form2.Player3.Text = "Player 3\n" + GameBoardModels.players[2].role.ToString() + "\n" + pressed.Text.Substring(1);
+                                form2.Player3.Text = "Player 3\n" + GameBoardModels.players[2].role.ToString() + "\n" + cityName;
                                 break;
                             case 1:
-                                form2.Player2.Text = "Player 2\n" + GameBoardModels.players[1].role.ToString() + "\n" + pressed.Text.Substring(1);
+                                form2.Player2.Text = "Player 2\n" + GameBoardModels.players[1].role.ToString() + "\n" + cityName;
                                 break;
                             default:
-                                form2.Player1.Text = "Player 1\n" + GameBoardModels.players[0].role.ToString() + "\n" + pressed.Text.Substring(1);
+                                form2.Player1.Text = "Player 1\n" + GameBoardModels.players[0].role.ToString() + "\n" + cityName;
                                 break;
                         }
                         bool endofturn = boardModel.incTurnCount();
@@ -96,21 +103,21 @@ namespace SQADemicApp
                     }
                     break;
                 case STATE.Move:
-                    if (PlayerActionsBL.moveplayer(GameBoardModels.players[GameBoardModels.CurrentPlayerIndex], Create.cityDictionary[pressed.Text.Substring(1)]))
+                    if (PlayerActionsBL.moveplayer(GameBoardModels.players[GameBoardModels.CurrentPlayerIndex], Create.cityDictionary[cityName]))
                     {
                         switch (GameBoardModels.CurrentPlayerIndex)
                         {
                             case 3:
-                                form2.Player4.Text = "Player 4\n" + GameBoardModels.players[3].role.ToString() + "\n" + pressed.Text.Substring(1);
+                                form2.Player4.Text = "Player 4\n" + GameBoardModels.players[3].role.ToString() + "\n" + cityName;
                                 break;
                             case 2:
-                                form2.Player3.Text = "Player 3\n" + GameBoardModels.players[2].role.ToString() + "\n" + pressed.Text.Substring(1);
+                                form2.Player3.Text = "Player 3\n" + GameBoardModels.players[2].role.ToString() + "\n" + cityName;
                                 break;
                             case 1:
-                                form2.Player2.Text = "Player 2\n" + GameBoardModels.players[1].role.ToString() + "\n" + pressed.Text.Substring(1);
+                                form2.Player2.Text = "Player 2\n" + GameBoardModels.players[1].role.ToString() + "\n" + cityName;
                                 break;
                             default:
-                                form2.Player1.Text = "Player 1\n" + GameBoardModels.players[0].role.ToString() + "\n" + pressed.Text.Substring(1);
+                                form2.Player1.Text = "Player 1\n" + GameBoardModels.players[0].role.ToString() + "\n" + cityName;
                                 break;
                         }
                         bool endofturn = boardModel.incTurnCount();
@@ -124,7 +131,7 @@ namespace SQADemicApp
                     }
                     break;
                 default:
-                    CityPageForm CPForm = new CityPageForm(Create.cityDictionary[pressed.Text.Substring(1)]);
+                    CityPageForm CPForm = new CityPageForm(Create.cityDictionary[cityName]);
                     CPForm.Show();
                     break;
             }
@@ -222,6 +229,12 @@ namespace SQADemicApp
             playerForm.BlueCure.Text = String.Format("Blue: {0}", GameBoardModels.CURESTATUS.BlueCure.ToString().Replace("NotCured", "No Cure"));
             playerForm.BlackCure.Text = String.Format("Black:  {0}", GameBoardModels.CURESTATUS.BlackCure.ToString().Replace("NotCured", "No Cure"));
             playerForm.YellowCure.Text = String.Format("Yellow: {0}", GameBoardModels.CURESTATUS.YellowCure.ToString().Replace("NotCured", "No Cure"));
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            DiscardPile dp = new DiscardPile(false);
+            dp.Show();
         }
     }
 }
