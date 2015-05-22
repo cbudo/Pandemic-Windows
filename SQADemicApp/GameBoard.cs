@@ -160,7 +160,7 @@ namespace SQADemicApp
         }
         private void updateCounters()
         {
-            playerForm.InfectionRate.Text = string.Format("Infection Rate: {0}", GameBoardModels.InfectionRateCounter);
+            playerForm.InfectionRate.Text = string.Format("Infection Rate: {0}", GameBoardModels.InfectionRate);
             playerForm.OutbreakCount.Text = string.Format("Outbreak Count: {0}", GameBoardModels.outbreakMarker);
         }
         private void updateCureStatus()

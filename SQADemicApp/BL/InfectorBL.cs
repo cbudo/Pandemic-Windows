@@ -33,7 +33,8 @@ namespace SQADemicApp.BL
 		/// </summary>
         /// <param name="deck">infection Deck - LinkedList</param>
         /// <param name="pile">infection Deck - LinkedList</param>
-        /// <param name="infectionRateIndex">infectionRateIndex - int current index in teh infectionRates</param>
+        /// <param name="infectionRateIndex">infectionRateIndex - int current index in the infectionRates</param>
+        /// <param name="infectionRate"></param>
        	/// <returns></returns>
         public static string Epidemic(LinkedList<String> deck, LinkedList<String> pile, ref int infectionRateIndex, ref int infectionRate)
         {

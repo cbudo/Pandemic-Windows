@@ -53,7 +53,7 @@ namespace SQADemicApp
 
         private void infectCities()
         {
-            List<string> infectedcites = InfectorBL.InfectCities(GameBoardModels.infectionDeck, GameBoardModels.infectionPile, GameBoardModels.InfectionRateCounter);
+            List<string> infectedcites = InfectorBL.InfectCities(GameBoardModels.infectionDeck, GameBoardModels.infectionPile, GameBoardModels.InfectionRate);
             InfectorBL.InfectCities(infectedcites);
             GameBoard.turnpart = GameBoard.TURNPART.Action;
             GameBoardModels.CurrentPlayerIndex = (GameBoardModels.CurrentPlayerIndex + 1) % GameBoardModels.players.Count();
@@ -68,7 +68,11 @@ namespace SQADemicApp
             //Epidemic code
             if (drawCard1.CityName.Equals("EPIDEMIC"))
             {
-                //do stuff
+                string infectcityname = InfectorBL.Epidemic(GameBoardModels.infectionDeck, GameBoardModels.infectionPile, ref GameBoardModels.InfectionRateIndex, ref GameBoardModels.InfectionRate);
+                for(int i = 0; i < 3; i++)
+                {
+                    InfectorBL.InfectCities(new List<string> {infectcityname});
+                }
             }
             else if (drawCard1.CardType == Card.CARDTYPE.Special)
                 GameBoardModels.eventCards.Add(drawCard1);
@@ -77,7 +81,11 @@ namespace SQADemicApp
 
             if (drawCard2.CityName.Equals("EPIDEMIC"))
             {
-                //do stuff
+                string infectcityname = InfectorBL.Epidemic(GameBoardModels.infectionDeck, GameBoardModels.infectionPile, ref GameBoardModels.InfectionRateIndex, ref GameBoardModels.InfectionRate);
+                for (int i = 0; i < 3; i++)
+                {
+                    InfectorBL.InfectCities(new List<string> { infectcityname });
+                }
             }
             else if (drawCard2.CardType == Card.CARDTYPE.Special)
                 GameBoardModels.eventCards.Add(drawCard2);
@@ -87,6 +95,5 @@ namespace SQADemicApp
             //Move to infection phase
             GameBoard.turnpart = GameBoard.TURNPART.Infect;
         }
-
     }
 }
