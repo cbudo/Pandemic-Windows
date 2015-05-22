@@ -10,6 +10,7 @@ namespace SQADemicApp
         public GameBoardModels boardModel;
         CharacterPane form2;
         PlayerPanel playerForm;
+        EventCardForm ECForm;
         public enum STATE { Dispatcher, Initializing, Move, Cure, Default }
         public static STATE CurrentState;
         public enum TURNPART { Action, Draw, Infect };
@@ -18,12 +19,15 @@ namespace SQADemicApp
 
         public GameBoard()
         {
+            SetStyle(ControlStyles.SupportsTransparentBackColor, true);
             CurrentState = STATE.Initializing;
             string[] rolesDefault = { "Dispatcher", "Scientist" };
             boardModel = new GameBoardModels(rolesDefault);
             playerForm = new PlayerPanel(this);
             form2 = new CharacterPane(rolesDefault);
+            ECForm = new EventCardForm();
             InitializeComponent();
+            ECForm.Show();
             form2.Show();
             playerForm.Show();
             UpdatePlayerForm();
@@ -36,16 +40,18 @@ namespace SQADemicApp
         public GameBoard(string[] playerRoles)
         {
 
+            SetStyle(ControlStyles.SupportsTransparentBackColor, true);
             boardModel = new GameBoardModels(playerRoles);
             playerForm = new PlayerPanel(this);
             form2 = new CharacterPane(playerRoles);
-
+            ECForm = new EventCardForm();
             InitializeComponent();
+            ECForm.Show();
             form2.Show();
             playerForm.Show();
             UpdatePlayerForm();
             CurrentState = STATE.Default;
-            turnpart = TURNPART.Action;
+            turnpart = TURNPART.Action; 
         }
 
         //private void DrawBtn_Click(object sender, EventArgs e)
@@ -158,6 +164,7 @@ namespace SQADemicApp
             updateCubeCounts();
             updateCounters();
             updateCureStatus();
+            ECForm.UpdateEventCards();
         }
 
         private void updateCharacterForm(int p)
