@@ -7,12 +7,13 @@ namespace SQADemicApp
     public partial class GameBoard : Form
     {
         public GameBoardModels boardModel;
-        CharacterPane form2 = new CharacterPane();
+        CharacterPane form2;
         PlayerPanel playerForm;
         public enum STATE { Dispatcher, Initializing, Move, Cure, Default }
         public static STATE CurrentState;
         public enum TURNPART { Action, Draw, Infect };
         public static TURNPART turnpart;
+        public static int dispatcherMoveIndex;
 
         public GameBoard()
         {
@@ -20,6 +21,7 @@ namespace SQADemicApp
             string[] rolesDefault = { "Dispatcher", "Scientist" };
             boardModel = new GameBoardModels(rolesDefault);
             playerForm = new PlayerPanel(this);
+            form2 = new CharacterPane(rolesDefault);
             InitializeComponent();
             form2.Show();
             playerForm.Show();
@@ -34,12 +36,15 @@ namespace SQADemicApp
         {
 
             boardModel = new GameBoardModels(playerRoles);
+            playerForm = new PlayerPanel(this);
+            form2 = new CharacterPane(playerRoles);
 
             InitializeComponent();
             form2.Show();
             playerForm.Show();
             UpdatePlayerForm();
             CurrentState = STATE.Default;
+            turnpart = TURNPART.Action;
         }
 
         //private void DrawBtn_Click(object sender, EventArgs e)
@@ -56,7 +61,32 @@ namespace SQADemicApp
             switch (CurrentState)
             {
                 case STATE.Dispatcher:
-
+                    if (PlayerActionsBL.moveplayer(GameBoardModels.players[dispatcherMoveIndex], Create.cityDictionary[pressed.Text.Substring(1)]))
+                    {
+                        switch (dispatcherMoveIndex)
+                        {
+                            case 3:
+                                form2.Player4.Text = "Player 4\n" + GameBoardModels.players[3].role.ToString() + "\n" + pressed.Text.Substring(1);
+                                break;
+                            case 2:
+                                form2.Player3.Text = "Player 3\n" + GameBoardModels.players[2].role.ToString() + "\n" + pressed.Text.Substring(1);
+                                break;
+                            case 1:
+                                form2.Player2.Text = "Player 2\n" + GameBoardModels.players[1].role.ToString() + "\n" + pressed.Text.Substring(1);
+                                break;
+                            default:
+                                form2.Player1.Text = "Player 1\n" + GameBoardModels.players[0].role.ToString() + "\n" + pressed.Text.Substring(1);
+                                break;
+                        }
+                        bool endofturn = boardModel.incTurnCount();
+                        if (endofturn)
+                            turnpart = TURNPART.Draw;
+                        UpdatePlayerForm();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Invalid City", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }
                     break;
                 case STATE.Move:
                     if (PlayerActionsBL.moveplayer(GameBoardModels.players[GameBoardModels.CurrentPlayerIndex], Create.cityDictionary[pressed.Text.Substring(1)]))
@@ -149,6 +179,19 @@ namespace SQADemicApp
                     form2.Player1.UseVisualStyleBackColor = false;
                     form2.Player4.UseVisualStyleBackColor = form2.Player3.UseVisualStyleBackColor = form2.Player2.UseVisualStyleBackColor = true;
                     break;
+            }
+            switch(GameBoardModels.players.Length)
+            {
+                case 4:
+                    form2.Player4.Text = "Player 4\n" + GameBoardModels.players[3].role.ToString() + "\n" + GameBoardModels.players[3].currentCity.Name;
+                    goto case 3;
+                case 3:
+                    form2.Player3.Text = "Player 3\n" + GameBoardModels.players[2].role.ToString() + "\n" + GameBoardModels.players[2].currentCity.Name;
+                    goto case 2;
+                case 2:
+                    form2.Player1.Text = "Player 1\n" + GameBoardModels.players[0].role.ToString() + "\n" + GameBoardModels.players[0].currentCity.Name;
+                    form2.Player2.Text = "Player 2\n" + GameBoardModels.players[1].role.ToString() + "\n" + GameBoardModels.players[1].currentCity.Name;
+                    break;       
             }
         }
         private void updateCubeCounts()

@@ -19,7 +19,7 @@ namespace SQADemicApp
             this.board = board;
             InitializeComponent();
         }
-        
+
         private void MoveButton_Click(object sender, EventArgs e)
         {
             GameBoard.CurrentState = GameBoard.STATE.Move;
@@ -39,7 +39,7 @@ namespace SQADemicApp
 
         private void DispatcherMove_Click(object sender, EventArgs e)
         {
-
+            GameBoard.CurrentState = SQADemicApp.GameBoard.STATE.Dispatcher;
         }
 
         private void EndSequenceBtn_Click(object sender, EventArgs e)
@@ -69,9 +69,9 @@ namespace SQADemicApp
             if (drawCard1.CityName.Equals("EPIDEMIC"))
             {
                 string infectcityname = InfectorBL.Epidemic(GameBoardModels.infectionDeck, GameBoardModels.infectionPile, ref GameBoardModels.InfectionRateIndex, ref GameBoardModels.InfectionRate);
-                for(int i = 0; i < 3; i++)
+                for (int i = 0; i < 3; i++)
                 {
-                    InfectorBL.InfectCities(new List<string> {infectcityname});
+                    InfectorBL.InfectCities(new List<string> { infectcityname });
                 }
             }
             else if (drawCard1.CardType == Card.CARDTYPE.Special)
