@@ -79,8 +79,7 @@ namespace SQADemicApp
                                 form2.Player1.Text = "Player 1\n" + GameBoardModels.players[0].role.ToString() + "\n" + pressed.Text.Substring(1);
                                 break;
                         }
-                        bool endofturn = boardModel.incTurnCount();
-                        if (endofturn)
+                        if (boardModel.incTurnCount())
                             turnpart = TURNPART.Draw;
                         UpdatePlayerForm();
                     }

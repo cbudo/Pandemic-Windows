@@ -67,51 +67,89 @@ namespace SQADemicApp
             listBox2.Items.AddRange(allHands.ToArray());
         }
         
+        /// <summary>
+        /// Click for give card
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void P1T_Click(object sender, EventArgs e)
         {
+            var selectedItem = listBox1.SelectedItem.ToString();
+            var selectedCard = selectedItem.Substring(0, selectedItem.IndexOf('(') - 1);
+            bool success = false;
             switch (GameBoardModels.CurrentPlayerIndex)
             {
                 case 0:
-                    PlayerActionsBL.ShareKnowledgeOption(GameBoardModels.players[GameBoardModels.CurrentPlayerIndex], GameBoardModels.players[1], listBox1.SelectedItem.ToString());
+                    success = PlayerActionsBL.ShareKnowledgeOption(GameBoardModels.players[GameBoardModels.CurrentPlayerIndex], GameBoardModels.players[1], selectedCard);
                     break;
                 default:
-                    PlayerActionsBL.ShareKnowledgeOption(GameBoardModels.players[GameBoardModels.CurrentPlayerIndex], GameBoardModels.players[0], listBox1.SelectedItem.ToString());
+                    success = PlayerActionsBL.ShareKnowledgeOption(GameBoardModels.players[GameBoardModels.CurrentPlayerIndex], GameBoardModels.players[0], selectedCard);
                     break;
+            }
+            if (success)
+            {
+                if (this.board.boardModel.incTurnCount())
+                    GameBoard.turnpart = GameBoard.TURNPART.Draw;
             }
             this.Dispose();
             this.Close();
             board.UpdatePlayerForm();
         }
 
+        /// <summary>
+        /// Click give card to the next player
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void P2T_Click(object sender, EventArgs e)
         {
+            var selectedItem = listBox1.SelectedItem.ToString();
+            var selectedCard = selectedItem.Substring(0, selectedItem.IndexOf('(') - 1);
+            bool success = false;
             switch (GameBoardModels.CurrentPlayerIndex)
             {
                 case 0:
-                    PlayerActionsBL.ShareKnowledgeOption(GameBoardModels.players[GameBoardModels.CurrentPlayerIndex], GameBoardModels.players[2], listBox1.SelectedItem.ToString());
+                    success = PlayerActionsBL.ShareKnowledgeOption(GameBoardModels.players[GameBoardModels.CurrentPlayerIndex], GameBoardModels.players[2], selectedCard);
                     break;
                 case 1:
-                    PlayerActionsBL.ShareKnowledgeOption(GameBoardModels.players[GameBoardModels.CurrentPlayerIndex], GameBoardModels.players[2], listBox1.SelectedItem.ToString());
+                    success = PlayerActionsBL.ShareKnowledgeOption(GameBoardModels.players[GameBoardModels.CurrentPlayerIndex], GameBoardModels.players[2], selectedCard);
                     break;
                 default:
-                    PlayerActionsBL.ShareKnowledgeOption(GameBoardModels.players[GameBoardModels.CurrentPlayerIndex], GameBoardModels.players[1], listBox1.SelectedItem.ToString());
-                    break;
+                    success = PlayerActionsBL.ShareKnowledgeOption(GameBoardModels.players[GameBoardModels.CurrentPlayerIndex], GameBoardModels.players[1], selectedCard);
+                    break;            
+            }
+            if (success)
+            {
+                if (this.board.boardModel.incTurnCount())
+                    GameBoard.turnpart = GameBoard.TURNPART.Draw;
             }
             this.Dispose();
             this.Close();
             board.UpdatePlayerForm();
         }
-
+        /// <summary>
+        /// Click give card to the third player
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void P3T_Click(object sender, EventArgs e)
         {
+            var selectedItem = listBox1.SelectedItem.ToString();
+            var selectedCard = selectedItem.Substring(0, selectedItem.IndexOf('(') - 1);
+            bool success = false;
             switch (GameBoardModels.CurrentPlayerIndex)
             {
                 case 3:
-                    PlayerActionsBL.ShareKnowledgeOption(GameBoardModels.players[GameBoardModels.CurrentPlayerIndex], GameBoardModels.players[3], listBox1.SelectedItem.ToString());
+                    success = PlayerActionsBL.ShareKnowledgeOption(GameBoardModels.players[GameBoardModels.CurrentPlayerIndex], GameBoardModels.players[3], selectedCard);
                     break;
                 default:
-                    PlayerActionsBL.ShareKnowledgeOption(GameBoardModels.players[GameBoardModels.CurrentPlayerIndex], GameBoardModels.players[2], listBox1.SelectedItem.ToString());
+                    success = PlayerActionsBL.ShareKnowledgeOption(GameBoardModels.players[GameBoardModels.CurrentPlayerIndex], GameBoardModels.players[2], selectedCard);
                     break;
+            }
+            if (success)
+            {
+                if (this.board.boardModel.incTurnCount())
+                    GameBoard.turnpart = GameBoard.TURNPART.Draw;
             }
             this.Dispose();
             this.Close();
@@ -136,6 +174,8 @@ namespace SQADemicApp
                 MessageBox.Show("Card Traded");
                 this.Dispose();
                 this.Close();
+                if (this.board.boardModel.incTurnCount())
+                    GameBoard.turnpart = GameBoard.TURNPART.Draw;     
                 board.UpdatePlayerForm();
             }
             else
