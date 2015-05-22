@@ -55,6 +55,8 @@ namespace SQADemicApp
             catch (InvalidOperationException exc)
             {
                 //END OF GAME STUFF
+                MessageBox.Show("Have a great rest of your day");
+                MessageBox.Show("You Lost. That must suck...");
             }
         }
 
@@ -76,6 +78,7 @@ namespace SQADemicApp
             if (drawCard1.CityName.Equals("EPIDEMIC"))
             {
                 string infectcityname = InfectorBL.Epidemic(GameBoardModels.infectionDeck, GameBoardModels.infectionPile, ref GameBoardModels.InfectionRateIndex, ref GameBoardModels.InfectionRate);
+                new PicForm(false, infectcityname).Show();
                 for (int i = 0; i < 3; i++)
                 {
                     InfectorBL.InfectCities(new List<string> { infectcityname });
@@ -89,6 +92,7 @@ namespace SQADemicApp
             if (drawCard2.CityName.Equals("EPIDEMIC"))
             {
                 string infectcityname = InfectorBL.Epidemic(GameBoardModels.infectionDeck, GameBoardModels.infectionPile, ref GameBoardModels.InfectionRateIndex, ref GameBoardModels.InfectionRate);
+                new PicForm(false, infectcityname).Show();
                 for (int i = 0; i < 3; i++)
                 {
                     InfectorBL.InfectCities(new List<string> { infectcityname });

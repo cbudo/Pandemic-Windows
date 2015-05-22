@@ -25,13 +25,20 @@ namespace SQADemicApp
         private void Cure_Click(object sender, EventArgs e)
         {
             List<string> selectedCards = new List<string>();
-            selectedCards = listBox2.Items.Cast<String>().ToList();
-            if(selectedCards.Count<5)
+            /**if(selectedCards.Count<5)
             {
-                MessageBox.Show("Not Enough Cards Selected", "Invalid Selection");
+               // MessageBox.Show("Not Enough Cards Selected", "Invalid Selection");
                 return;
+            }**/
+            var citynamesWithColors = listBox2.Items;
+            List<string> cityNames  = new List<string>();
+            foreach (object o in citynamesWithColors)
+            {
+                int index = o.ToString().IndexOf('(') -1;
+                cityNames.Add(o.ToString().Substring(0,index));
             }
-            if(!PlayerActionsBL.Cure(GameBoardModels.players[GameBoardModels.CurrentPlayerIndex], selectedCards, Create.cityDictionary[listBox1.SelectedItems[0].ToString()].color))
+
+            if (!PlayerActionsBL.Cure(GameBoardModels.players[GameBoardModels.CurrentPlayerIndex], cityNames, Create.cityDictionary[cityNames[0]].color))
             {
                 MessageBox.Show("Invalid card selection", "Invalid Selection");
                 return;

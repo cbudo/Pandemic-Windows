@@ -207,6 +207,7 @@ namespace SQADemicApp.BL
         //returns a list of the cities that have already been infected
         public static HashSet<City> Outbreak(City city, COLOR color, HashSet<City> adjacentCities, HashSet<City> alreadyInfected)
         {
+            new PicForm(true, city.Name).Show();
             alreadyInfected.Add(city);
             foreach (var neighbor in adjacentCities)
             {
