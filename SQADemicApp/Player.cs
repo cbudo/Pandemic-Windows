@@ -29,7 +29,7 @@ namespace SQADemicApp
             }
             foreach(var card in hand)
             {
-                stringHand.Add(card.CityName);
+                stringHand.Add(card.CityName + " (" + card.CityColor.ToString() +")");
             }
             return stringHand;
         }

@@ -85,6 +85,12 @@
     <Compile Include="CharacterPane.Designer.cs">
       <DependentUpon>CharacterPane.cs</DependentUpon>
     </Compile>
+    <Compile Include="PicForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PicForm.Designer.cs">
+      <DependentUpon>PicForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="PlayerPanel.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -133,6 +139,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CharacterPane.resx">
       <DependentUpon>CharacterPane.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PicForm.resx">
+      <DependentUpon>PicForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PlayerPanel.resx">
       <DependentUpon>PlayerPanel.cs</DependentUpon>
