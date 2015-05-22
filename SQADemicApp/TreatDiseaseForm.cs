@@ -40,6 +40,9 @@ namespace SQADemicApp
                     break;
             }
             PlayerActionsBL.TreatDiseaseOption(GameBoardModels.players[GameBoardModels.CurrentPlayerIndex], colorChoice);
+
+            if (this.board.boardModel.incTurnCount())
+                GameBoard.turnpart = GameBoard.TURNPART.Draw; 
             this.Dispose();
             this.Close();
             board.UpdatePlayerForm();
