@@ -179,17 +179,16 @@ namespace SQADemicApp
         /// <returns></returns>
         public  static Card[] makePlayerDeck()
         {
-            Card[] deck = new Card[58];
+            Card[] deck = new Card[57];
             Random rand = new Random();
-            deck[rand.Next(0, 9)] = new Card("EPIDEMIC", Card.CARDTYPE.Special);
             deck[rand.Next(10, 19)] = new Card("EPIDEMIC", Card.CARDTYPE.Special);
             deck[rand.Next(20, 29)] = new Card("EPIDEMIC", Card.CARDTYPE.Special);
             deck[rand.Next(30, 39)] = new Card("EPIDEMIC", Card.CARDTYPE.Special);
-            deck[rand.Next(40, 58)] = new Card("EPIDEMIC", Card.CARDTYPE.Special);
+            deck[rand.Next(40, 57)] = new Card("EPIDEMIC", Card.CARDTYPE.Special);
             List<Card> cardList = makeCardList(new StringReader(SQADemicApp.Properties.Resources.CityList));
             cardList = HelperBL.shuffleArray(cardList);
             int j = 0;
-            for (int i = 0; i < 58; i++)
+            for (int i = 0; i < 57; i++)
             {
                 if (deck[i] == null)
                 {

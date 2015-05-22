@@ -56,6 +56,7 @@ namespace SQADemicApp
             List<string> infectedcites = InfectorBL.InfectCities(GameBoardModels.infectionDeck, GameBoardModels.infectionPile, GameBoardModels.InfectionRateCounter);
             InfectorBL.InfectCities(infectedcites);
             GameBoard.turnpart = GameBoard.TURNPART.Action;
+            GameBoardModels.CurrentPlayerIndex = (GameBoardModels.CurrentPlayerIndex + 1) % GameBoardModels.players.Count();
         }
 
         private void drawcards()
