@@ -158,30 +158,37 @@ namespace SQADemicApp
 
         private void StealCardButton_Click(object sender, EventArgs e)
         {
-            var selectedItem = listBox2.SelectedItem.ToString();
-            var selectedCard = selectedItem.Substring(0,selectedItem.IndexOf('(')-1);
-            Player SelectedCardHolder = GameBoardModels.players[GameBoardModels.CurrentPlayerIndex];
-            foreach(var player in GameBoardModels.players)
+            try
             {
-                if(player.hand.Any(c=>c.CityName == selectedCard))
+                var selectedItem = listBox2.SelectedItem.ToString();
+                var selectedCard = selectedItem.Substring(0,selectedItem.IndexOf('(')-1);
+                Player SelectedCardHolder = GameBoardModels.players[GameBoardModels.CurrentPlayerIndex];
+                foreach(var player in GameBoardModels.players)
                 {
-                    SelectedCardHolder = player;
-                    break;
+                    if(player.hand.Any(c=>c.CityName == selectedCard))
+                    {
+                        SelectedCardHolder = player;
+                        break;
+                    }
+                }
+                if(PlayerActionsBL.ShareKnowledgeOption(SelectedCardHolder, GameBoardModels.players[GameBoardModels.CurrentPlayerIndex], selectedCard))
+                {
+                    MessageBox.Show("Card Traded");
+                    this.Dispose();
+                    this.Close();
+                    board.UpdatePlayerForm();
+                }
+                else
+                {
+                    MessageBox.Show("Card unable to be traded");
                 }
             }
-            if(PlayerActionsBL.ShareKnowledgeOption(SelectedCardHolder, GameBoardModels.players[GameBoardModels.CurrentPlayerIndex], selectedCard))
+
+            catch(NullReferenceException)
             {
-                MessageBox.Show("Card Traded");
-                this.Dispose();
-                this.Close();
-                if (this.board.boardModel.incTurnCount())
-                    GameBoard.turnpart = GameBoard.TURNPART.Draw;     
-                board.UpdatePlayerForm();
+                MessageBox.Show("You must select a card to take");
             }
-            else
-            {
-                MessageBox.Show("Card unable to be traded");
-            }
+            
             
         }
     }
