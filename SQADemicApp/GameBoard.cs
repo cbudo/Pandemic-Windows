@@ -9,7 +9,7 @@ namespace SQADemicApp
         GameBoardModels boardModel;
         CharacterPane form2 = new CharacterPane();
         PlayerPanel playerForm = new PlayerPanel();
-        public enum STATE { Dispatcher, Initializing, Move, Draw, Cure, Default }
+        public enum STATE { Dispatcher, Initializing, Move, Draw, Cure, Default, EndPhase }
         public static STATE CurrentState;
         public GameBoard()
         {
@@ -70,7 +70,10 @@ namespace SQADemicApp
                                 form2.Player1.Text = "Player 1\n" + pressed.Text.Substring(1);
                                 break;
                         }
-                        boardModel.incTurnCount();
+                        if(boardModel.incTurnCount())
+                        {
+                            CurrentState = STATE.EndPhase;
+                        }
                         UpdatePlayerForm();
                     }
                     else

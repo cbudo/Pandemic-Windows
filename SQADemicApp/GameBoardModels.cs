@@ -83,15 +83,17 @@ namespace SQADemicApp
 
         }
 
-        public void incTurnCount()
+        public bool incTurnCount()
         {
             if (currentPlayerTurnCounter == 3)
             {
-                CurrentPlayerIndex = (CurrentPlayerIndex + 1) % players.Count();
+                //CurrentPlayerIndex = (CurrentPlayerIndex + 1) % players.Count();
                 currentPlayerTurnCounter = 0;
+                return true;
             }
             else
                 currentPlayerTurnCounter++;
+            return false;
         }
 
         public Card drawCard()
