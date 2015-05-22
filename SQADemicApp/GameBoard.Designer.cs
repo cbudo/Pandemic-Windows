@@ -135,7 +135,7 @@
             // 
             // Miami
             // 
-            this.Miami.Location = new System.Drawing.Point(279, 382);
+            this.Miami.Location = new System.Drawing.Point(278, 382);
             this.Miami.Name = "Miami";
             this.Miami.Size = new System.Drawing.Size(23, 23);
             this.Miami.TabIndex = 6;
@@ -304,7 +304,7 @@
             // 
             // Johannesburg
             // 
-            this.Johannesburg.Location = new System.Drawing.Point(649, 593);
+            this.Johannesburg.Location = new System.Drawing.Point(648, 593);
             this.Johannesburg.Name = "Johannesburg";
             this.Johannesburg.Size = new System.Drawing.Size(23, 23);
             this.Johannesburg.TabIndex = 22;
@@ -469,7 +469,7 @@
             // Beijing
             // 
             this.Beijing.BackColor = System.Drawing.Color.LightCoral;
-            this.Beijing.Location = new System.Drawing.Point(952, 254);
+            this.Beijing.Location = new System.Drawing.Point(952, 255);
             this.Beijing.Name = "Beijing";
             this.Beijing.Size = new System.Drawing.Size(23, 23);
             this.Beijing.TabIndex = 37;
@@ -480,7 +480,7 @@
             // Seoul
             // 
             this.Seoul.BackColor = System.Drawing.Color.LightCoral;
-            this.Seoul.Location = new System.Drawing.Point(1026, 252);
+            this.Seoul.Location = new System.Drawing.Point(1026, 251);
             this.Seoul.Name = "Seoul";
             this.Seoul.Size = new System.Drawing.Size(23, 23);
             this.Seoul.TabIndex = 38;
@@ -613,7 +613,7 @@
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(1205, 839);
             this.Controls.Add(this.button49);
             this.Controls.Add(this.Sydney);
