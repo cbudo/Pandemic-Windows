@@ -48,19 +48,22 @@ namespace SQADemicApp
                         break;
                     case "Resilient Population":
                         DiscardPile dp = new DiscardPile(true);
-                        // create form for picking one of these and removing them
+                        dp.Show();
                         break;
                     case "Government Grant":
                         GameBoard.CurrentState = GameBoard.STATE.GovGrant;
                         break;
                     case "Forecast":
+                        Forecast forecast = new Forecast();
+                        forecast.Show();
                         break;
                 }
                 GameBoardModels.eventCards.RemoveAll(x=> x.CityName ==  selectedCard);
+                UpdateEventCards();
             }
             catch (NullReferenceException)
             {
-
+                MessageBox.Show("You must select an event card");
             }
         }
     }
