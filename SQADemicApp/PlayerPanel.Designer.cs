@@ -249,6 +249,7 @@ namespace SQADemicApp
             this.EndSequenceBtn.TabIndex = 17;
             this.EndSequenceBtn.Text = "End Turn";
             this.EndSequenceBtn.UseVisualStyleBackColor = true;
+            this.EndSequenceBtn.Click += new System.EventHandler(this.EndSequenceBtn_Click);
             // 
             // PlayerPanel
             // 

@@ -216,7 +216,7 @@ namespace SQADemicApp
             }
             string[] shuffledDeck = HelperBL.shuffleArray(infectionDeckArray);
             return shuffledDeck.ToList();
-        }
+        }Properties.Resources.
 
         /// <summary>
         /// PUBLIC FOR TESTING ONLY

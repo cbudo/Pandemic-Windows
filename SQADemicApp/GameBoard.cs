@@ -6,7 +6,7 @@ namespace SQADemicApp
 {
     public partial class GameBoard : Form
     {
-        GameBoardModels boardModel;
+        public GameBoardModels boardModel;
         CharacterPane form2 = new CharacterPane();
         PlayerPanel playerForm = new PlayerPanel();
         public enum STATE { Dispatcher, Initializing, Move, Draw, Cure, Default, EndPhase }

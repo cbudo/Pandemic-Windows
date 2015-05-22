@@ -40,5 +40,10 @@ namespace SQADemicApp
 
         }
 
+        private void EndSequenceBtn_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

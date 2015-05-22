@@ -38,6 +38,7 @@ namespace SQADemicApp
                     break;
             }
             PlayerActionsBL.TreatDiseaseOption(GameBoardModels.players[GameBoardModels.CurrentPlayerIndex], colorChoice);
+            bool endTurn = GameBoard.
             this.Close();
         }
     }
