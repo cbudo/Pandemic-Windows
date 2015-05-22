@@ -13,8 +13,10 @@ namespace SQADemicApp
 {
     public partial class ShareCardForm : Form
     {
-        public ShareCardForm()
+        GameBoard board;
+        public ShareCardForm(GameBoard board)
         {
+            this.board = board;
             InitializeComponent();
             switch(GameBoardModels.CurrentPlayerIndex)
             {
@@ -56,6 +58,9 @@ namespace SQADemicApp
                     PlayerActionsBL.ShareKnowledgeOption(GameBoardModels.players[GameBoardModels.CurrentPlayerIndex], GameBoardModels.players[0], listBox1.SelectedItem.ToString());
                     break;
             }
+            this.Dispose();
+            this.Close();
+            board.UpdatePlayerForm();
         }
 
         private void P2T_Click(object sender, EventArgs e)
@@ -72,6 +77,9 @@ namespace SQADemicApp
                     PlayerActionsBL.ShareKnowledgeOption(GameBoardModels.players[GameBoardModels.CurrentPlayerIndex], GameBoardModels.players[1], listBox1.SelectedItem.ToString());
                     break;
             }
+            this.Dispose();
+            this.Close();
+            board.UpdatePlayerForm();
         }
 
         private void P3T_Click(object sender, EventArgs e)
@@ -85,6 +93,9 @@ namespace SQADemicApp
                     PlayerActionsBL.ShareKnowledgeOption(GameBoardModels.players[GameBoardModels.CurrentPlayerIndex], GameBoardModels.players[2], listBox1.SelectedItem.ToString());
                     break;
             }
+            this.Dispose();
+            this.Close();
+            board.UpdatePlayerForm();
         }
 
         private void StealCardButton_Click(object sender, EventArgs e)

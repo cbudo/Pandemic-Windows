@@ -13,10 +13,11 @@ namespace SQADemicApp
 {
     public partial class CureForm : Form
     {
-        public CureForm()
+        GameBoard board;
+        public CureForm(GameBoard board)
         {
             InitializeComponent();
-
+            this.board = board;
             listBox1.Items.Clear();
             listBox1.Items.AddRange(GameBoardModels.players[GameBoardModels.CurrentPlayerIndex].handStringList().ToArray());
         }
@@ -37,6 +38,7 @@ namespace SQADemicApp
             }
             this.Dispose();
             this.Close();
+            board.UpdatePlayerForm();
         }
 
         private void Remove_Click(object sender, EventArgs e)

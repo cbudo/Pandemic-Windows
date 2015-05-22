@@ -11,7 +11,7 @@ namespace SQADemicApp
         PlayerPanel playerForm;
         public enum STATE { Dispatcher, Initializing, Move, Cure, Default }
         public static STATE CurrentState;
-        public enum TURNPART {Action, Draw, Infect };
+        public enum TURNPART { Action, Draw, Infect };
         public static TURNPART turnpart;
 
         public GameBoard()
@@ -26,7 +26,7 @@ namespace SQADemicApp
             UpdatePlayerForm();
             //GameBoardModels.CURESTATUS.RedCure = GameBoardModels.Cures.CURESTATE.Cured;
             //GameBoardModels.cubeCount.blackCubes = 9;
-            
+
             CurrentState = STATE.Default;
             turnpart = TURNPART.Action;
         }
@@ -56,7 +56,7 @@ namespace SQADemicApp
             switch (CurrentState)
             {
                 case STATE.Dispatcher:
-                    
+
                     break;
                 case STATE.Move:
                     if (PlayerActionsBL.moveplayer(GameBoardModels.players[GameBoardModels.CurrentPlayerIndex], Create.cityDictionary[pressed.Text.Substring(1)]))
@@ -64,16 +64,16 @@ namespace SQADemicApp
                         switch (GameBoardModels.CurrentPlayerIndex)
                         {
                             case 3:
-                                form2.Player4.Text = "Player 4\n" + pressed.Text.Substring(1);
+                                form2.Player4.Text = "Player 4\n" + GameBoardModels.players[3].role.ToString() + "\n" + pressed.Text.Substring(1);
                                 break;
                             case 2:
-                                form2.Player3.Text = "Player 3\n" + pressed.Text.Substring(1);
+                                form2.Player3.Text = "Player 3\n" + GameBoardModels.players[2].role.ToString() + "\n" + pressed.Text.Substring(1);
                                 break;
                             case 1:
-                                form2.Player2.Text = "Player 2\n" + pressed.Text.Substring(1);
+                                form2.Player2.Text = "Player 2\n" + GameBoardModels.players[1].role.ToString() + "\n" + pressed.Text.Substring(1);
                                 break;
                             default:
-                                form2.Player1.Text = "Player 1\n" + pressed.Text.Substring(1);
+                                form2.Player1.Text = "Player 1\n" + GameBoardModels.players[0].role.ToString() + "\n" + pressed.Text.Substring(1);
                                 break;
                         }
                         bool endofturn = boardModel.incTurnCount();
@@ -99,7 +99,7 @@ namespace SQADemicApp
             playerForm.label1.Text = playerForm.label1.Text.Substring(0, playerForm.label1.Text.Length - 3) + (Convert.ToInt32(boardModel.currentPlayerTurnCounter)) + "/" + 4;
             playerForm.listBox1.Items.Clear();
             playerForm.listBox1.Items.AddRange(GameBoardModels.players[GameBoardModels.CurrentPlayerIndex].handStringList().ToArray());
-            if(GameBoardModels.players[GameBoardModels.CurrentPlayerIndex].role==ROLE.Dispatcher)
+            if (GameBoardModels.players[GameBoardModels.CurrentPlayerIndex].role == ROLE.Dispatcher)
             {
                 playerForm.DispatcherMove.Show();
                 playerForm.AAButton.Location = new System.Drawing.Point(159, 82);
@@ -109,7 +109,7 @@ namespace SQADemicApp
                 playerForm.DispatcherMove.Hide();
                 playerForm.AAButton.Location = new System.Drawing.Point(91, 81);
             }
-            if (turnpart == TURNPART.Draw )
+            if (turnpart == TURNPART.Draw)
             {
                 playerForm.EndSequenceBtn.Text = "Draw Cards";
                 playerForm.EndSequenceBtn.Show();
@@ -131,7 +131,7 @@ namespace SQADemicApp
 
         private void updateCharacterForm(int p)
         {
-            switch(p)
+            switch (p)
             {
                 case 3:
                     form2.Player4.UseVisualStyleBackColor = false;
@@ -147,7 +147,7 @@ namespace SQADemicApp
                     break;
                 default:
                     form2.Player1.UseVisualStyleBackColor = false;
-                    form2.Player4.UseVisualStyleBackColor=form2.Player3.UseVisualStyleBackColor=form2.Player2.UseVisualStyleBackColor = true;
+                    form2.Player4.UseVisualStyleBackColor = form2.Player3.UseVisualStyleBackColor = form2.Player2.UseVisualStyleBackColor = true;
                     break;
             }
         }

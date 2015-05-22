@@ -13,8 +13,10 @@ namespace SQADemicApp
 {
     public partial class TreatDiseaseForm : Form
     {
-        public TreatDiseaseForm()
+        GameBoard board;
+        public TreatDiseaseForm(GameBoard board)
         {
+            this.board = board;
             InitializeComponent();
         }
 
@@ -40,6 +42,7 @@ namespace SQADemicApp
             PlayerActionsBL.TreatDiseaseOption(GameBoardModels.players[GameBoardModels.CurrentPlayerIndex], colorChoice);
             this.Dispose();
             this.Close();
+            board.UpdatePlayerForm();
         }
     }
 }

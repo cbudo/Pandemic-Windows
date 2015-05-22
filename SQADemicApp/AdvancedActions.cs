@@ -13,14 +13,16 @@ namespace SQADemicApp
 {
     public partial class AdvancedActions : Form
     {
-        public AdvancedActions()
+        GameBoard board;
+        public AdvancedActions(GameBoard board)
         {
             InitializeComponent();
+            this.board = board;
         }
 
         private void ShareKnowledge_Click(object sender, EventArgs e)
         {
-            SQADemicApp.ShareCardForm SCForm = new ShareCardForm();
+            SQADemicApp.ShareCardForm SCForm = new ShareCardForm(board);
             SCForm.Show();
             this.Dispose();
             this.Close();
@@ -34,6 +36,7 @@ namespace SQADemicApp
             }
             else
             {
+                board.UpdatePlayerForm();
                 this.Dispose();
                 this.Close();
             }
@@ -41,7 +44,7 @@ namespace SQADemicApp
 
         private void CreateCure_Click(object sender, EventArgs e)
         {
-            SQADemicApp.CureForm cureForm = new CureForm();
+            SQADemicApp.CureForm cureForm = new CureForm(board);
             cureForm.Show();
             this.Dispose();
             this.Close();

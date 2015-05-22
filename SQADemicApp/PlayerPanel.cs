@@ -27,13 +27,13 @@ namespace SQADemicApp
 
         private void CureCityButton_Click(object sender, EventArgs e)
         {
-            TreatDiseaseForm TDForm = new TreatDiseaseForm();
+            TreatDiseaseForm TDForm = new TreatDiseaseForm(board);
             TDForm.Show();
         }
 
         private void AAButton_Click(object sender, EventArgs e)
         {
-            AdvancedActions AAForm = new AdvancedActions();
+            AdvancedActions AAForm = new AdvancedActions(board);
             AAForm.Show();
         }
 
