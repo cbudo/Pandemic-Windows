@@ -22,6 +22,7 @@ namespace SQADemicApp
         {
             SQADemicApp.ShareCardForm SCForm = new ShareCardForm();
             SCForm.Show();
+            this.Dispose();
             this.Close();
         }
 
@@ -33,6 +34,7 @@ namespace SQADemicApp
             }
             else
             {
+                this.Dispose();
                 this.Close();
             }
         }
@@ -41,6 +43,7 @@ namespace SQADemicApp
         {
             SQADemicApp.CureForm cureForm = new CureForm();
             cureForm.Show();
+            this.Dispose();
             this.Close();
         }
     }

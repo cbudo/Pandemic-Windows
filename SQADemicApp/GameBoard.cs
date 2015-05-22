@@ -139,11 +139,11 @@ namespace SQADemicApp
                     break;
                 case 2:
                     form2.Player3.UseVisualStyleBackColor = false;
-                    form2.Player3.UseVisualStyleBackColor = true;
+                    form2.Player2.UseVisualStyleBackColor = true;
                     break;
                 case 1:
                     form2.Player2.UseVisualStyleBackColor = false;
-                    form2.Player3.UseVisualStyleBackColor = true;
+                    form2.Player1.UseVisualStyleBackColor = true;
                     break;
                 default:
                     form2.Player1.UseVisualStyleBackColor = false;

@@ -35,6 +35,7 @@ namespace SQADemicApp
                 MessageBox.Show("Invalid card selection", "Invalid Selection");
                 return;
             }
+            this.Dispose();
             this.Close();
         }
 

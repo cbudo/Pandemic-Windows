@@ -78,6 +78,7 @@
             this.Manila = new System.Windows.Forms.Button();
             this.Sydney = new System.Windows.Forms.Button();
             this.button49 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // SanFrancisco
@@ -292,7 +293,7 @@
             this.Lagos.UseVisualStyleBackColor = true;
             this.Lagos.Click += new System.EventHandler(this.City_Click);
             // 
-            // Kinshasi
+            // Kinshasa
             // 
             this.Kinshasa.Location = new System.Drawing.Point(600, 508);
             this.Kinshasa.Name = "Kinshasa";
@@ -609,12 +610,22 @@
             this.button49.Text = "Draw";
             this.button49.UseVisualStyleBackColor = true;
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Transparent;
+            this.button1.Location = new System.Drawing.Point(906, 45);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(180, 132);
+            this.button1.TabIndex = 50;
+            this.button1.UseVisualStyleBackColor = false;
+            // 
             // GameBoard
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(1205, 839);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.button49);
             this.Controls.Add(this.Sydney);
             this.Controls.Add(this.Manila);
@@ -721,6 +732,7 @@
         private System.Windows.Forms.Button Sydney;
         private System.Windows.Forms.Button button49;
         private System.Windows.Forms.Button Istanbul;
+        private System.Windows.Forms.Button button1;
 
     }
 }

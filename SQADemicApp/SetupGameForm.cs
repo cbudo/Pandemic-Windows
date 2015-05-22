@@ -51,6 +51,7 @@ namespace SQADemicApp
                 return;
             }
             Program.rolesArray = rolesArray;
+            this.Dispose();
             this.Close();
         }
     }

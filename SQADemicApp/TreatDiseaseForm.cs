@@ -38,6 +38,7 @@ namespace SQADemicApp
                     break;
             }
             PlayerActionsBL.TreatDiseaseOption(GameBoardModels.players[GameBoardModels.CurrentPlayerIndex], colorChoice);
+            this.Dispose();
             this.Close();
         }
     }
