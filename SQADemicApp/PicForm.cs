@@ -12,6 +12,11 @@ namespace SQADemicApp
 {
     public partial class PicForm : Form
     {
+        /// <summary>
+        /// show form for user information
+        /// </summary>
+        /// <param name="outbreak">true for outbreak, false for epidemic</param>
+        /// <param name="cityName">city name that is displayed on form</param>
         public PicForm(bool outbreak, string cityName)
         {
             InitializeComponent();
