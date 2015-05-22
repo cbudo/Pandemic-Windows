@@ -83,7 +83,5 @@ namespace SQADemicApp.BL
             }
             return true;
         }
-
-
     }
 }

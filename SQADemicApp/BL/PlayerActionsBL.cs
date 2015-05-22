@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace SQADemicApp.BL
 {
+    
     public class PlayerActionsBL
     {
-
+        private static int MAXCUBECOUNT = 24;
         /// <summary>
         /// Finds the possible cities a player can move to
         /// </summary>
@@ -189,45 +190,7 @@ namespace SQADemicApp.BL
             int number =  getDiseaseCubes(player.currentCity, color);
             if (number < 1)
                 return false;
-            setDiseaseCubes(player.currentCity, color, player.role == ROLE.Medic ? 0 : --number);
-
-            switch (color)
-            {
-                case COLOR.red:
-                    if (player.role == ROLE.Medic)
-                    {
-                        GameBoardModels.cubeCount.redCubes += number;
-                        return true;
-                    }
-                    GameBoardModels.cubeCount.redCubes++;
-                    return true;
-                case COLOR.blue:
-                    if (player.role == ROLE.Medic)
-                    {
-                        GameBoardModels.cubeCount.blueCubes += number;
-                        return true;
-                    }
-                    GameBoardModels.cubeCount.blueCubes++;
-                    return true;
-                case COLOR.yellow:
-                    if (player.role == ROLE.Medic)
-                    {
-                        GameBoardModels.cubeCount.yellowCubes += number;
-                        return true;
-                    }
-                    GameBoardModels.cubeCount.yellowCubes++;
-                    return true;
-                case COLOR.black:
-                    if (player.role == ROLE.Medic)
-                    {
-                        GameBoardModels.cubeCount.blackCubes += number;
-                        return true;
-                    }
-                    GameBoardModels.cubeCount.blackCubes++;
-                    return true;
-                default:
-                    throw new ArgumentException("invalid color"); 
-            }
+            return setDiseaseCubes(player.currentCity, color, player.role == ROLE.Medic ? 0 : (number - 1), number);
         }
 
         /// <summary>
@@ -258,25 +221,42 @@ namespace SQADemicApp.BL
         /// <param name="city"></param>
         /// <param name="color"></param>
         /// <param name="number"></param>
-        private static void setDiseaseCubes(City city, COLOR color, int number)
+        private static bool setDiseaseCubes(City city, COLOR color, int numberaftercure, int numberBeforeCure)
         {
             switch (color)
             {
                 case COLOR.red:
-                    city.redCubes = GameBoardModels.CURESTATUS.RedCure == GameBoardModels.Cures.CURESTATE.Cured ? 0 : number;
+                    numberaftercure = GameBoardModels.CURESTATUS.RedCure == GameBoardModels.Cures.CURESTATE.Cured ? 0 : numberaftercure;
+                    GameBoardModels.cubeCount.redCubes += (numberBeforeCure - numberaftercure);
+                    city.redCubes = numberaftercure;
+                    if (GameBoardModels.cubeCount.redCubes == MAXCUBECOUNT && GameBoardModels.CURESTATUS.RedCure == GameBoardModels.Cures.CURESTATE.Cured)
+                        GameBoardModels.CURESTATUS.RedCure = GameBoardModels.Cures.CURESTATE.Sunset;
                     break;
                 case COLOR.blue:
-                    city.blueCubes = GameBoardModels.CURESTATUS.BlueCure == GameBoardModels.Cures.CURESTATE.Cured ? 0 : number;
+                    numberaftercure = GameBoardModels.CURESTATUS.BlueCure == GameBoardModels.Cures.CURESTATE.Cured ? 0 : numberaftercure;
+                    GameBoardModels.cubeCount.blueCubes += (numberBeforeCure - numberaftercure);
+                    city.blueCubes = numberaftercure;
+                    if (GameBoardModels.cubeCount.blueCubes == MAXCUBECOUNT && GameBoardModels.CURESTATUS.BlueCure == GameBoardModels.Cures.CURESTATE.Cured)
+                        GameBoardModels.CURESTATUS.BlueCure = GameBoardModels.Cures.CURESTATE.Sunset;                    
                     break;
                 case COLOR.yellow:
-                    city.yellowCubes = GameBoardModels.CURESTATUS.YellowCure == GameBoardModels.Cures.CURESTATE.Cured ? 0 : number;
+                    numberaftercure = GameBoardModels.CURESTATUS.YellowCure == GameBoardModels.Cures.CURESTATE.Cured ? 0 : numberaftercure;
+                    GameBoardModels.cubeCount.yellowCubes += (numberBeforeCure - numberaftercure);
+                    city.yellowCubes = numberaftercure;
+                    if (GameBoardModels.cubeCount.yellowCubes == MAXCUBECOUNT && GameBoardModels.CURESTATUS.YellowCure == GameBoardModels.Cures.CURESTATE.Cured)
+                        GameBoardModels.CURESTATUS.YellowCure = GameBoardModels.Cures.CURESTATE.Sunset;
                     break;
                 case COLOR.black:
-                    city.blackCubes = GameBoardModels.CURESTATUS.BlackCure == GameBoardModels.Cures.CURESTATE.Cured ? 0 : number;
+                    numberaftercure = GameBoardModels.CURESTATUS.BlackCure == GameBoardModels.Cures.CURESTATE.Cured ? 0 : numberaftercure;
+                    GameBoardModels.cubeCount.blackCubes += (numberBeforeCure - numberaftercure);
+                    city.blackCubes = numberaftercure;
+                    if (GameBoardModels.cubeCount.blackCubes == MAXCUBECOUNT && GameBoardModels.CURESTATUS.BlackCure == GameBoardModels.Cures.CURESTATE.Cured)
+                        GameBoardModels.CURESTATUS.BlackCure = GameBoardModels.Cures.CURESTATE.Sunset;
                     break;
                 default:
                     throw new ArgumentException("invalid color");
             }
+            return true;
         }
 
 

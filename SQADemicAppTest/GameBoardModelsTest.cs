@@ -118,17 +118,18 @@ namespace SQADemicAppTest
         #endregion
 
         #region nextPlayer
+        
         [TestMethod]
         public void TestThatPlayerSwitches()
         {
             string[] players = { "Dispatcher", "Scientist" };
             GameBoardModels model = new GameBoardModels(players);
             // four moves in a player turn
-            model.incTurnCount();
-            model.incTurnCount();
-            model.incTurnCount();
-            model.incTurnCount();
-            Assert.AreEqual(1, GameBoardModels.CurrentPlayerIndex);
+            Assert.AreEqual(false,model.incTurnCount());
+            Assert.AreEqual(false, model.incTurnCount()); 
+            Assert.AreEqual(false, model.incTurnCount());
+            Assert.AreEqual(true, model.incTurnCount());
+            //Assert.AreEqual(2, GameBoardModels.CurrentPlayerIndex);
         }
         [TestMethod]
         public void TestFullPlayerRotation()

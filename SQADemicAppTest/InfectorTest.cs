@@ -18,6 +18,7 @@ namespace SQADemicAppTest
         [TestInitialize]
         public void SetUpArrays()
         {
+            new GameBoardModels(new string[] { "Dispatcher", "Operations Expert" });
             GameBoardModels.outbreakMarker = 0;
             GameBoardModels.cubeCount.yellowCubes = 24;
             GameBoardModels.cubeCount.blueCubes = 24;
@@ -32,6 +33,7 @@ namespace SQADemicAppTest
         [TestMethod]
         public void TestInfectTwoCities()
         {
+            deck.Clear(); 
             deck.AddFirst("Saint Petersburg");
             deck.AddFirst("Sydney");
             List<String> removedCities = InfectorBL.InfectCities(deck, pile, 2);
@@ -42,6 +44,7 @@ namespace SQADemicAppTest
         [TestMethod]
         public void TestInfectThreeCities()
         {
+            deck.Clear();
             deck.AddFirst("Saint Petersburg");
             deck.AddFirst("Sydney");
             deck.AddFirst("New York");
@@ -53,6 +56,7 @@ namespace SQADemicAppTest
         [TestMethod]
         public void TestInfectTwoCitiesTwice()
         {
+            deck.Clear();
             deck.AddFirst("Saint Petersburg");
             deck.AddFirst("Sydney");
             List<String> removedCities = InfectorBL.InfectCities(deck, pile, 2);
@@ -69,6 +73,7 @@ namespace SQADemicAppTest
         [TestMethod]
         public void TestInfectTwoCitiesUpdatePile()
         {
+            deck.Clear(); 
             deck.AddFirst("Saint Petersburg");
             deck.AddFirst("Sydney");
             pile = new LinkedList<String>();
@@ -82,6 +87,7 @@ namespace SQADemicAppTest
         [TestMethod]
         public void TestEpidemicIncreaseInfectionCounter2to2()
         {
+            deck.Clear();
             //InfectionRates = { 2, 2, 2, 3, 3, 4, 4 };
             deck.AddFirst("Chicago");
             infectionIndex = 1;
@@ -93,6 +99,7 @@ namespace SQADemicAppTest
         public void TestEpidemicIncreaseInfectionCounter2to3()
         {
             //InfectionRates = { 2, 2, 2, 3, 3, 4, 4 };
+            deck.Clear(); 
             deck.AddFirst("Chicago");
             infectionIndex = 2;
             InfectorBL.Epidemic(deck, pile, ref infectionIndex, ref infectionRate);
@@ -172,7 +179,7 @@ namespace SQADemicAppTest
             Assert.AreEqual(lastcity, deck.First.Value);
         }
 
-        [TestMethod]
+      [TestMethod]
         public void TestInfectCityWithNoBlocks()
         {
             SQADemicApp.City chicago = new SQADemicApp.City(COLOR.blue, "Chicago");
@@ -371,5 +378,7 @@ namespace SQADemicAppTest
             SQADemicApp.BL.InfectorBL.InfectCity(kolkata, new HashSet<City>(), false, COLOR.black);
             Assert.AreEqual(21, GameBoardModels.cubeCount.blackCubes);
         }
+
+        
     }
 }
