@@ -16,6 +16,7 @@ namespace SQADemicApp
         public enum TURNPART { Action, Draw, Infect };
         public static TURNPART turnpart;
         public static int dispatcherMoveIndex;
+        
 
         public GameBoard()
         {

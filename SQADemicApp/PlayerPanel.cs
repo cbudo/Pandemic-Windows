@@ -14,6 +14,7 @@ namespace SQADemicApp
     public partial class PlayerPanel : Form
     {
         private GameBoard board;
+        public static bool quietNight = false;
         public PlayerPanel(GameBoard board)
         {
             this.board = board;
@@ -62,8 +63,13 @@ namespace SQADemicApp
 
         private void infectCities()
         {
-            List<string> infectedcites = InfectorBL.InfectCities(GameBoardModels.infectionDeck, GameBoardModels.infectionPile, GameBoardModels.InfectionRate);
-            InfectorBL.InfectCities(infectedcites);
+            if (!quietNight)
+            {
+                List<string> infectedcites = InfectorBL.InfectCities(GameBoardModels.infectionDeck, GameBoardModels.infectionPile, GameBoardModels.InfectionRate);
+                InfectorBL.InfectCities(infectedcites);
+            }
+            else
+                quietNight = true;
             GameBoard.turnpart = GameBoard.TURNPART.Action;
             GameBoardModels.CurrentPlayerIndex = (GameBoardModels.CurrentPlayerIndex + 1) % GameBoardModels.players.Count();
         }
@@ -104,7 +110,14 @@ namespace SQADemicApp
                 GameBoardModels.players[GameBoardModels.CurrentPlayerIndex].hand.Add(drawCard2);
 
             //Move to infection phase
-            GameBoard.turnpart = GameBoard.TURNPART.Infect;
+            if (!quietNight)
+                GameBoard.turnpart = GameBoard.TURNPART.Infect;
+            else
+            {
+                quietNight = false;
+                GameBoard.turnpart = GameBoard.TURNPART.Action;
+                GameBoardModels.CurrentPlayerIndex = (GameBoardModels.CurrentPlayerIndex + 1) % GameBoardModels.players.Count();
+            }
         }
     }
 }
