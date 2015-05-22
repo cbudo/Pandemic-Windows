@@ -46,7 +46,7 @@ namespace SQADemicApp
 
         private void CreateCure_Click(object sender, EventArgs e)
         {
-            SQADemicApp.CureForm cureForm = new CureForm(board);
+            CureForm cureForm = new CureForm(board);
             cureForm.Show();
             this.Dispose();
             this.Close();
