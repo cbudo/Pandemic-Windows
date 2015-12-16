@@ -6,7 +6,7 @@ namespace SQADemicApp.BL
 {
     public class PlayerActionsBl
     {
-        private static int _maxcubecount = 24;
+        private const int Maxcubecount = 24;
 
         /// <summary>
         /// Finds the possible cities a player can move to
@@ -45,7 +45,7 @@ namespace SQADemicApp.BL
         /// <returns></returns>
         public static bool CharterFlightOption(List<Card> hand, City currentCity)
         {
-            return (hand.Where(c => c.CityName == currentCity.Name).Count() == 1);
+            return (hand.Count(c => c.CityName == currentCity.Name) == 1);
         }
 
         /// <summary>
@@ -242,7 +242,7 @@ namespace SQADemicApp.BL
                     numberaftercure = GameBoardModels.Curestatus.RedCure == GameBoardModels.Cures.Curestate.Cured ? 0 : numberaftercure;
                     GameBoardModels.CubeCount.RedCubes += (numberBeforeCure - numberaftercure);
                     city.RedCubes = numberaftercure;
-                    if (GameBoardModels.CubeCount.RedCubes == _maxcubecount && GameBoardModels.Curestatus.RedCure == GameBoardModels.Cures.Curestate.Cured)
+                    if (GameBoardModels.CubeCount.RedCubes == Maxcubecount && GameBoardModels.Curestatus.RedCure == GameBoardModels.Cures.Curestate.Cured)
                         GameBoardModels.Curestatus.RedCure = GameBoardModels.Cures.Curestate.Sunset;
                     break;
 
@@ -250,7 +250,7 @@ namespace SQADemicApp.BL
                     numberaftercure = GameBoardModels.Curestatus.BlueCure == GameBoardModels.Cures.Curestate.Cured ? 0 : numberaftercure;
                     GameBoardModels.CubeCount.BlueCubes += (numberBeforeCure - numberaftercure);
                     city.BlueCubes = numberaftercure;
-                    if (GameBoardModels.CubeCount.BlueCubes == _maxcubecount && GameBoardModels.Curestatus.BlueCure == GameBoardModels.Cures.Curestate.Cured)
+                    if (GameBoardModels.CubeCount.BlueCubes == Maxcubecount && GameBoardModels.Curestatus.BlueCure == GameBoardModels.Cures.Curestate.Cured)
                         GameBoardModels.Curestatus.BlueCure = GameBoardModels.Cures.Curestate.Sunset;
                     break;
 
@@ -258,7 +258,7 @@ namespace SQADemicApp.BL
                     numberaftercure = GameBoardModels.Curestatus.YellowCure == GameBoardModels.Cures.Curestate.Cured ? 0 : numberaftercure;
                     GameBoardModels.CubeCount.YellowCubes += (numberBeforeCure - numberaftercure);
                     city.YellowCubes = numberaftercure;
-                    if (GameBoardModels.CubeCount.YellowCubes == _maxcubecount && GameBoardModels.Curestatus.YellowCure == GameBoardModels.Cures.Curestate.Cured)
+                    if (GameBoardModels.CubeCount.YellowCubes == Maxcubecount && GameBoardModels.Curestatus.YellowCure == GameBoardModels.Cures.Curestate.Cured)
                         GameBoardModels.Curestatus.YellowCure = GameBoardModels.Cures.Curestate.Sunset;
                     break;
 
@@ -266,7 +266,7 @@ namespace SQADemicApp.BL
                     numberaftercure = GameBoardModels.Curestatus.BlackCure == GameBoardModels.Cures.Curestate.Cured ? 0 : numberaftercure;
                     GameBoardModels.CubeCount.BlackCubes += (numberBeforeCure - numberaftercure);
                     city.BlackCubes = numberaftercure;
-                    if (GameBoardModels.CubeCount.BlackCubes == _maxcubecount && GameBoardModels.Curestatus.BlackCure == GameBoardModels.Cures.Curestate.Cured)
+                    if (GameBoardModels.CubeCount.BlackCubes == Maxcubecount && GameBoardModels.Curestatus.BlackCure == GameBoardModels.Cures.Curestate.Cured)
                         GameBoardModels.Curestatus.BlackCure = GameBoardModels.Cures.Curestate.Sunset;
                     break;
 

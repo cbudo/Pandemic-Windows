@@ -12,18 +12,17 @@ namespace SQADemicApp
     {
         #region Public Static Vars
 
+        public static List<string> CitiesWithResearchStations;
         public static InfectionCubeCount CubeCount;
         public static Cures Curestatus;
-        public static List<string> CitiesWithResearchStations;
-        public static int OutbreakMarker = 0;
-        public static Player[] Players;
         public static int CurrentPlayerIndex;
         public static List<Card> EventCards;
         public static LinkedList<string> InfectionDeck;
         public static LinkedList<string> InfectionPile;
         public static int InfectionRate;
         public static int InfectionRateIndex;
-
+        public static int OutbreakMarker = 0;
+        public static Player[] Players;
         #endregion Public Static Vars
 
         #region Public Vars
@@ -34,9 +33,8 @@ namespace SQADemicApp
 
         #region private vars
 
-        private static bool _alreadySetUp = false;
         public static Stack<Card> PlayerDeck;
-
+        private static bool _alreadySetUp = false;
         #endregion private vars
 
         /// <summary>
@@ -45,7 +43,7 @@ namespace SQADemicApp
         /// <param name="playersroles"></param>
         public GameBoardModels(string[] playersroles)
         {
-            //Keep from making duplicates
+            //Keep from making duplicates (this is for testing porposes)
             if (!_alreadySetUp)
             {
                 //set vars
@@ -107,19 +105,39 @@ namespace SQADemicApp
             _alreadySetUp = true;
         }
 
-        private void StartGameInfection()
+        public static Card DrawCard()
         {
-            for (int i = 3; i > 0; i--)
+            try
             {
-                List<string> infectedcites = InfectorBl.InfectCities(InfectionDeck, InfectionPile, 3);
-                for (int j = 0; j < i; j++)
-                {
-                    InfectorBl.InfectCities(infectedcites);
-                }
+                return PlayerDeck.Pop();
+            }
+            catch (InvalidOperationException e)
+            {
+                throw new Exception("Game Over");
             }
         }
 
-        private void SetUpPlayerHands()
+        public bool IncTurnCount()
+        {
+            if (CurrentPlayerTurnCounter == 3)
+            {
+                //CurrentPlayerIndex = (CurrentPlayerIndex + 1) % players.Count();
+                CurrentPlayerTurnCounter = 0;
+                return true;
+            }
+            else
+                CurrentPlayerTurnCounter++;
+            return false;
+
+            //currentPlayerTurnCounter++;
+        }
+
+        public int PlayerDeckSize()
+        {
+            return PlayerDeck.Count();
+        }
+
+        private static void SetUpPlayerHands()
         {
             int cardsPerPlayer = Players.Count() == 4 ? 2 : Players.Count() == 3 ? 3 : 4;
             foreach (Player player in Players)
@@ -144,55 +162,26 @@ namespace SQADemicApp
             }
         }
 
-        public bool IncTurnCount()
+        private void StartGameInfection()
         {
-            if (CurrentPlayerTurnCounter == 3)
+            for (int i = 3; i > 0; i--)
             {
-                //CurrentPlayerIndex = (CurrentPlayerIndex + 1) % players.Count();
-                CurrentPlayerTurnCounter = 0;
-                return true;
-            }
-            else
-                CurrentPlayerTurnCounter++;
-            return false;
-
-            //currentPlayerTurnCounter++;
-        }
-
-        public static Card DrawCard()
-        {
-            try
-            {
-                return PlayerDeck.Pop();
-            }
-            catch (InvalidOperationException e)
-            {
-                throw new Exception("Game Over");
+                List<string> infectedcites = InfectorBl.InfectCities(InfectionDeck, InfectionPile, 3);
+                for (int j = 0; j < i; j++)
+                {
+                    InfectorBl.InfectCities(infectedcites);
+                }
             }
         }
-
-        public int PlayerDeckSize()
-        {
-            return PlayerDeck.Count();
-        }
-
         #region Storage Classes
-
-        public class InfectionCubeCount
-        {
-            public int RedCubes { get; set; }
-            public int BlackCubes { get; set; }
-            public int BlueCubes { get; set; }
-            public int YellowCubes { get; set; }
-        }
 
         public class Cures
         {
             public enum Curestate { NotCured, Cured, Sunset }
 
-            public Curestate RedCure { get; set; }
-            public Curestate BlueCure { get; set; }
             public Curestate BlackCure { get; set; }
+            public Curestate BlueCure { get; set; }
+            public Curestate RedCure { get; set; }
             public Curestate YellowCure { get; set; }
 
             public Curestate GetCureStatus(Color color)
@@ -242,6 +231,13 @@ namespace SQADemicApp
             }
         }
 
+        public class InfectionCubeCount
+        {
+            public int BlackCubes { get; set; }
+            public int BlueCubes { get; set; }
+            public int RedCubes { get; set; }
+            public int YellowCubes { get; set; }
+        }
         #endregion Storage Classes
     }
 }

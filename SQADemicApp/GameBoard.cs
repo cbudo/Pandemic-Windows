@@ -11,6 +11,7 @@ namespace SQADemicApp
         private CharacterPane _form2;
         private PlayerPanel _playerForm;
         private EventCardForm _ecForm;
+        ToolTip tip = new ToolTip();
 
         public enum State { Dispatcher, Initializing, Move, Cure, Default, Airlift, GovGrant }
 
@@ -281,5 +282,15 @@ namespace SQADemicApp
                 }
             }
         }
+
+        public void City_Hover(object sender, EventArgs e)
+        {
+            var city = Create.CityDictionary[((Button)sender).Text.Substring(3)];
+            var tipInfo =
+                $"{city.Name}\n{city.Color}\n\nBlack: {city.BlackCubes}\nBlue: {city.BlueCubes}\nRed: {city.RedCubes}\nYellow: {city.YellowCubes}\n";
+            if (city.ResearchStation) tipInfo += "\nResearch Station";
+            tip.Show(tipInfo, (Button)sender);
+        }
+
     }
 }
