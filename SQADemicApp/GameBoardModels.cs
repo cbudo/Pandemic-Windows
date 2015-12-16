@@ -7,6 +7,7 @@ using System.Linq;
 namespace SQADemicApp
 {
     public enum Color { Red, Black, Blue, Yellow }
+    public enum DifficultySetting { Easy, Medium, Hard, Legendary }
 
     public class GameBoardModels
     {
@@ -23,6 +24,7 @@ namespace SQADemicApp
         public static LinkedList<string> InfectionPile;
         public static int InfectionRate;
         public static int InfectionRateIndex;
+        public static DifficultySetting Difficulty;
 
         #endregion Public Static Vars
 
