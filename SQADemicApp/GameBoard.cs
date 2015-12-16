@@ -36,9 +36,9 @@ namespace SQADemicApp
             _playerForm.Show();
             UpdatePlayerForm();
             UpdateCityButtons(true);
-
             CurrentState = State.Default;
             TurnPart = Turnpart.Action;
+            updateDifficultyDisplay();
         }
 
         public GameBoard(string[] playerRoles)
@@ -56,6 +56,26 @@ namespace SQADemicApp
             UpdateCityButtons(true);
             CurrentState = State.Default;
             TurnPart = Turnpart.Action;
+            updateDifficultyDisplay();
+        }
+
+        private void updateDifficultyDisplay()
+        {
+            String text;
+            switch(GameBoardModels.Difficulty)
+            {
+                case DifficultySetting.Easy:
+                    text = "Introductory"; break;
+                case DifficultySetting.Medium:
+                    text = "Normal"; break;
+                case DifficultySetting.Hard:
+                    text = "Heroic"; break;
+                case DifficultySetting.Legendary:
+                    text = "Legendary"; break;
+                default:
+                    text = "Normal"; break;
+            }
+            this.difficultyDisplay.Text = text;
         }
 
         //private void DrawBtn_Click(object sender, EventArgs e)
