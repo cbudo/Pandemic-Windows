@@ -49,5 +49,24 @@ namespace SQADemicApp
             Program.RolesArray = rolesArray;
             this.Close();
         }
+
+        private void difficultyChanged(object sender, EventArgs e)
+        {
+            RadioButton radioButton = sender as RadioButton;
+
+            if (introductoryDifficulty.Checked)
+            {
+                GameBoardModels.Difficulty = DifficultySetting.Easy;
+            } else if (normalDifficulty.Checked)
+            {
+                GameBoardModels.Difficulty = DifficultySetting.Medium;
+            } else if (heroicDifficulty.Checked)
+            {
+                GameBoardModels.Difficulty = DifficultySetting.Hard;
+            } else if (legendaryDifficulty.Checked)
+            {
+                GameBoardModels.Difficulty = DifficultySetting.Legendary;
+            }
+        }
     }
 }

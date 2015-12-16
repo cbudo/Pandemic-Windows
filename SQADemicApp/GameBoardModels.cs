@@ -24,7 +24,7 @@ namespace SQADemicApp
         public static LinkedList<string> InfectionPile;
         public static int InfectionRate;
         public static int InfectionRateIndex;
-        public static DifficultySetting Difficulty;
+        public static DifficultySetting Difficulty = DifficultySetting.Medium;
 
         #endregion Public Static Vars
 
