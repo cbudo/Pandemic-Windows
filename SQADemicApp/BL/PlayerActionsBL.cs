@@ -4,9 +4,9 @@ using System.Linq;
 
 namespace SQADemicApp.BL
 {
-    public class PlayerActionsBL
+    public class PlayerActionsBl
     {
-        private static int MAXCUBECOUNT = 24;
+        private static int _maxcubecount = 24;
 
         /// <summary>
         /// Finds the possible cities a player can move to
@@ -15,7 +15,7 @@ namespace SQADemicApp.BL
         /// <returns>List of Cities</returns>
         public static HashSet<City> DriveOptions(City currentCity)
         {
-            return currentCity.getAdjacentCities();
+            return currentCity.GetAdjacentCities();
         }
 
         /// <summary>
@@ -24,11 +24,11 @@ namespace SQADemicApp.BL
         /// <param name="hand"></param>
         /// <param name="currentCity"></param>
         /// <returns></returns>
-        public static List<String> DirectFlightOption(List<Card> hand, City currentCity)
+        public static List<string> DirectFlightOption(List<Card> hand, City currentCity)
         {
-            var reducedHand = hand.Where(c => !c.CityName.Equals(currentCity.Name) && c.CardType == Card.CARDTYPE.City);
+            var reducedHand = hand.Where(c => !c.CityName.Equals(currentCity.Name) && c.CardType == Card.Cardtype.City);
 
-            var returnlist = new List<String>();
+            var returnlist = new List<string>();
             foreach (Card card in reducedHand)
             {
                 returnlist.Add(card.CityName);
@@ -53,14 +53,14 @@ namespace SQADemicApp.BL
         /// </summary>
         /// <param name="currentCity"></param>
         /// <returns></returns>
-        public static List<String> ShuttleFlightOption(City currentCity)
+        public static List<string> ShuttleFlightOption(City currentCity)
         {
-            if (!currentCity.researchStation)
+            if (!currentCity.ResearchStation)
             {
-                return new List<String>();
+                return new List<string>();
             }
-            List<String> options = new List<String>();
-            List<City> stations = CityBL.getCitiesWithResearchStations();
+            List<string> options = new List<string>();
+            List<City> stations = CityBl.GetCitiesWithResearchStations();
             foreach (var city in stations)
             {
                 if (city.Name != currentCity.Name)
@@ -77,29 +77,29 @@ namespace SQADemicApp.BL
         /// <param name="player">Current Player or if dispatcher, player trying to move</param>
         /// <param name="city">City to move to</param>
         /// <returns>Success Flag/returns>
-        public static bool moveplayer(Player player, City city)
+        public static bool Moveplayer(Player player, City city)
         {
-            if (DriveOptions(player.currentCity).Any(c => c.Name.Equals(city.Name)))
+            if (DriveOptions(player.CurrentCity).Any(c => c.Name.Equals(city.Name)))
             {
                 //Do Nothing
             }
-            else if (ShuttleFlightOption(player.currentCity).Contains(city.Name))
+            else if (ShuttleFlightOption(player.CurrentCity).Contains(city.Name))
             {
                 //Do Nothing
             }
-            else if (DirectFlightOption(player.hand, player.currentCity).Contains(city.Name))
+            else if (DirectFlightOption(player.Hand, player.CurrentCity).Contains(city.Name))
             {
-                player.hand.RemoveAll(x => x.CityName.Equals(city.Name));
+                player.Hand.RemoveAll(x => x.CityName.Equals(city.Name));
             }
-            else if (CharterFlightOption(player.hand, player.currentCity))
+            else if (CharterFlightOption(player.Hand, player.CurrentCity))
             {
-                player.hand.RemoveAll(x => x.CityName.Equals(player.currentCity.Name));
+                player.Hand.RemoveAll(x => x.CityName.Equals(player.CurrentCity.Name));
             }
             else
             {
                 return false;
             }
-            player.currentCity = city;
+            player.CurrentCity = city;
             return true;
         }
 
@@ -112,15 +112,15 @@ namespace SQADemicApp.BL
         /// <returns>Status Flag</returns>
         public static bool DispatcherMovePlayer(Player player, List<Player> players, City destination)
         {
-            if (DriveOptions(player.currentCity).Any(p => p.Name.Equals(destination.Name)))
+            if (DriveOptions(player.CurrentCity).Any(p => p.Name.Equals(destination.Name)))
             {
                 //Do nothing
             }
-            else if (players.Any(p => p.currentCity.Name.Equals(destination.Name)))
+            else if (players.Any(p => p.CurrentCity.Name.Equals(destination.Name)))
             {
                 //Do nothing
             }
-            else if (ShuttleFlightOption(player.currentCity).Contains(destination.Name))
+            else if (ShuttleFlightOption(player.CurrentCity).Contains(destination.Name))
             {
                 //Do Nothing
             }
@@ -128,7 +128,7 @@ namespace SQADemicApp.BL
             {
                 return false;
             }
-            player.currentCity = destination;
+            player.CurrentCity = destination;
             return true;
         }
 
@@ -139,17 +139,17 @@ namespace SQADemicApp.BL
         /// <returns>Success Flag</returns>
         public static bool BuildAResearchStationOption(Player player)
         {
-            if (CityBL.getCitiesWithResearchStations().Contains(player.currentCity))
+            if (CityBl.GetCitiesWithResearchStations().Contains(player.CurrentCity))
                 return false;
-            else if (player.role == ROLE.OpExpert)
+            else if (player.Role == Role.OpExpert)
             {
-                player.currentCity.researchStation = true;
+                player.CurrentCity.ResearchStation = true;
                 return true;
             }
-            else if (player.hand.Any(c => c.CityName.Equals(player.currentCity.Name)))
+            else if (player.Hand.Any(c => c.CityName.Equals(player.CurrentCity.Name)))
             {
-                player.hand.RemoveAll(x => x.CityName.Equals(player.currentCity.Name));
-                player.currentCity.researchStation = true;
+                player.Hand.RemoveAll(x => x.CityName.Equals(player.CurrentCity.Name));
+                player.CurrentCity.ResearchStation = true;
                 return true;
             }
             return false;
@@ -162,24 +162,24 @@ namespace SQADemicApp.BL
         /// <param name="currentCity"></param>
         /// <param name="role"></param>
         /// <returns>Success Flag</returns>
-        public static bool Cure(Player player, List<String> cardsToSpend, COLOR color)
+        public static bool Cure(Player player, List<string> cardsToSpend, Color color)
         {
-            if (!player.currentCity.researchStation || GameBoardModels.CURESTATUS.getCureStatus(color) != GameBoardModels.Cures.CURESTATE.NotCured)
+            if (!player.CurrentCity.ResearchStation || GameBoardModels.Curestatus.GetCureStatus(color) != GameBoardModels.Cures.Curestate.NotCured)
                 return false;
-            var cards = player.hand.Where(x => x.CityColor == color && cardsToSpend.Contains(x.CityName));
-            if (player.role == ROLE.Scientist)
+            var cards = player.Hand.Where(x => x.CityColor == color && cardsToSpend.Contains(x.CityName));
+            if (player.Role == Role.Scientist)
             {
                 if (cards.Count() != 4)
                     return false;
             }
             else if (cards.Count() != 5)
                 return false;
-            player.hand.RemoveAll(x => cards.Contains(x));
-            GameBoardModels.CURESTATUS.setCureStatus(color, GameBoardModels.Cures.CURESTATE.Cured);
-            if (GameBoardModels.CURESTATUS.BlackCure != GameBoardModels.Cures.CURESTATE.NotCured &&
-                   GameBoardModels.CURESTATUS.BlueCure != GameBoardModels.Cures.CURESTATE.NotCured &&
-                   GameBoardModels.CURESTATUS.RedCure != GameBoardModels.Cures.CURESTATE.NotCured &&
-                   GameBoardModels.CURESTATUS.YellowCure != GameBoardModels.Cures.CURESTATE.NotCured)
+            player.Hand.RemoveAll(x => cards.Contains(x));
+            GameBoardModels.Curestatus.SetCureStatus(color, GameBoardModels.Cures.Curestate.Cured);
+            if (GameBoardModels.Curestatus.BlackCure != GameBoardModels.Cures.Curestate.NotCured &&
+                   GameBoardModels.Curestatus.BlueCure != GameBoardModels.Cures.Curestate.NotCured &&
+                   GameBoardModels.Curestatus.RedCure != GameBoardModels.Cures.Curestate.NotCured &&
+                   GameBoardModels.Curestatus.YellowCure != GameBoardModels.Cures.Curestate.NotCured)
             {
                 throw new InvalidOperationException("Game Over You Win");
             }
@@ -193,12 +193,12 @@ namespace SQADemicApp.BL
         /// <param name="player"></param>
         /// <param name="color"></param>
         /// <returns>Success Flag</returns>
-        public static bool TreatDiseaseOption(Player player, COLOR color)
+        public static bool TreatDiseaseOption(Player player, Color color)
         {
-            int number = getDiseaseCubes(player.currentCity, color);
+            int number = GetDiseaseCubes(player.CurrentCity, color);
             if (number < 1)
                 return false;
-            return setDiseaseCubes(player.currentCity, color, player.role == ROLE.Medic ? 0 : (number - 1), number);
+            return SetDiseaseCubes(player.CurrentCity, color, player.Role == Role.Medic ? 0 : (number - 1), number);
         }
 
         /// <summary>
@@ -207,21 +207,21 @@ namespace SQADemicApp.BL
         /// <param name="city"></param>
         /// <param name="color"></param>
         /// <returns>number of disease cubes in the city</returns>
-        private static int getDiseaseCubes(City city, COLOR color)
+        private static int GetDiseaseCubes(City city, Color color)
         {
             switch (color)
             {
-                case COLOR.red:
-                    return city.redCubes;
+                case Color.Red:
+                    return city.RedCubes;
 
-                case COLOR.blue:
-                    return city.blueCubes;
+                case Color.Blue:
+                    return city.BlueCubes;
 
-                case COLOR.yellow:
-                    return city.yellowCubes;
+                case Color.Yellow:
+                    return city.YellowCubes;
 
-                case COLOR.black:
-                    return city.blackCubes;
+                case Color.Black:
+                    return city.BlackCubes;
 
                 default:
                     throw new ArgumentException("invalid color");
@@ -234,40 +234,40 @@ namespace SQADemicApp.BL
         /// <param name="city"></param>
         /// <param name="color"></param>
         /// <param name="number"></param>
-        private static bool setDiseaseCubes(City city, COLOR color, int numberaftercure, int numberBeforeCure)
+        private static bool SetDiseaseCubes(City city, Color color, int numberaftercure, int numberBeforeCure)
         {
             switch (color)
             {
-                case COLOR.red:
-                    numberaftercure = GameBoardModels.CURESTATUS.RedCure == GameBoardModels.Cures.CURESTATE.Cured ? 0 : numberaftercure;
-                    GameBoardModels.cubeCount.redCubes += (numberBeforeCure - numberaftercure);
-                    city.redCubes = numberaftercure;
-                    if (GameBoardModels.cubeCount.redCubes == MAXCUBECOUNT && GameBoardModels.CURESTATUS.RedCure == GameBoardModels.Cures.CURESTATE.Cured)
-                        GameBoardModels.CURESTATUS.RedCure = GameBoardModels.Cures.CURESTATE.Sunset;
+                case Color.Red:
+                    numberaftercure = GameBoardModels.Curestatus.RedCure == GameBoardModels.Cures.Curestate.Cured ? 0 : numberaftercure;
+                    GameBoardModels.CubeCount.RedCubes += (numberBeforeCure - numberaftercure);
+                    city.RedCubes = numberaftercure;
+                    if (GameBoardModels.CubeCount.RedCubes == _maxcubecount && GameBoardModels.Curestatus.RedCure == GameBoardModels.Cures.Curestate.Cured)
+                        GameBoardModels.Curestatus.RedCure = GameBoardModels.Cures.Curestate.Sunset;
                     break;
 
-                case COLOR.blue:
-                    numberaftercure = GameBoardModels.CURESTATUS.BlueCure == GameBoardModels.Cures.CURESTATE.Cured ? 0 : numberaftercure;
-                    GameBoardModels.cubeCount.blueCubes += (numberBeforeCure - numberaftercure);
-                    city.blueCubes = numberaftercure;
-                    if (GameBoardModels.cubeCount.blueCubes == MAXCUBECOUNT && GameBoardModels.CURESTATUS.BlueCure == GameBoardModels.Cures.CURESTATE.Cured)
-                        GameBoardModels.CURESTATUS.BlueCure = GameBoardModels.Cures.CURESTATE.Sunset;
+                case Color.Blue:
+                    numberaftercure = GameBoardModels.Curestatus.BlueCure == GameBoardModels.Cures.Curestate.Cured ? 0 : numberaftercure;
+                    GameBoardModels.CubeCount.BlueCubes += (numberBeforeCure - numberaftercure);
+                    city.BlueCubes = numberaftercure;
+                    if (GameBoardModels.CubeCount.BlueCubes == _maxcubecount && GameBoardModels.Curestatus.BlueCure == GameBoardModels.Cures.Curestate.Cured)
+                        GameBoardModels.Curestatus.BlueCure = GameBoardModels.Cures.Curestate.Sunset;
                     break;
 
-                case COLOR.yellow:
-                    numberaftercure = GameBoardModels.CURESTATUS.YellowCure == GameBoardModels.Cures.CURESTATE.Cured ? 0 : numberaftercure;
-                    GameBoardModels.cubeCount.yellowCubes += (numberBeforeCure - numberaftercure);
-                    city.yellowCubes = numberaftercure;
-                    if (GameBoardModels.cubeCount.yellowCubes == MAXCUBECOUNT && GameBoardModels.CURESTATUS.YellowCure == GameBoardModels.Cures.CURESTATE.Cured)
-                        GameBoardModels.CURESTATUS.YellowCure = GameBoardModels.Cures.CURESTATE.Sunset;
+                case Color.Yellow:
+                    numberaftercure = GameBoardModels.Curestatus.YellowCure == GameBoardModels.Cures.Curestate.Cured ? 0 : numberaftercure;
+                    GameBoardModels.CubeCount.YellowCubes += (numberBeforeCure - numberaftercure);
+                    city.YellowCubes = numberaftercure;
+                    if (GameBoardModels.CubeCount.YellowCubes == _maxcubecount && GameBoardModels.Curestatus.YellowCure == GameBoardModels.Cures.Curestate.Cured)
+                        GameBoardModels.Curestatus.YellowCure = GameBoardModels.Cures.Curestate.Sunset;
                     break;
 
-                case COLOR.black:
-                    numberaftercure = GameBoardModels.CURESTATUS.BlackCure == GameBoardModels.Cures.CURESTATE.Cured ? 0 : numberaftercure;
-                    GameBoardModels.cubeCount.blackCubes += (numberBeforeCure - numberaftercure);
-                    city.blackCubes = numberaftercure;
-                    if (GameBoardModels.cubeCount.blackCubes == MAXCUBECOUNT && GameBoardModels.CURESTATUS.BlackCure == GameBoardModels.Cures.CURESTATE.Cured)
-                        GameBoardModels.CURESTATUS.BlackCure = GameBoardModels.Cures.CURESTATE.Sunset;
+                case Color.Black:
+                    numberaftercure = GameBoardModels.Curestatus.BlackCure == GameBoardModels.Cures.Curestate.Cured ? 0 : numberaftercure;
+                    GameBoardModels.CubeCount.BlackCubes += (numberBeforeCure - numberaftercure);
+                    city.BlackCubes = numberaftercure;
+                    if (GameBoardModels.CubeCount.BlackCubes == _maxcubecount && GameBoardModels.Curestatus.BlackCure == GameBoardModels.Cures.Curestate.Cured)
+                        GameBoardModels.Curestatus.BlackCure = GameBoardModels.Cures.Curestate.Sunset;
                     break;
 
                 default:
@@ -285,14 +285,14 @@ namespace SQADemicApp.BL
         /// <returns>Sucess Flag</returns>
         public static bool ShareKnowledgeOption(Player sender, Player reciver, string cityname)
         {
-            if (sender.currentCity != reciver.currentCity ||
-                (!reciver.currentCity.Name.Equals(cityname) && sender.role != ROLE.Researcher))
+            if (sender.CurrentCity != reciver.CurrentCity ||
+                (!reciver.CurrentCity.Name.Equals(cityname) && sender.Role != Role.Researcher))
                 return false;
-            int index = sender.hand.FindIndex(x => x.CityName.Equals(cityname));
+            int index = sender.Hand.FindIndex(x => x.CityName.Equals(cityname));
             if (index == -1)
                 return false;
-            reciver.hand.Add(sender.hand[index]);
-            sender.hand.RemoveAt(index);
+            reciver.Hand.Add(sender.Hand[index]);
+            sender.Hand.RemoveAt(index);
             return true;
         }
     }

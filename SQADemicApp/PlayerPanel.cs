@@ -8,46 +8,46 @@ namespace SQADemicApp
 {
     public partial class PlayerPanel : Form
     {
-        private GameBoard board;
-        public static bool quietNight = false;
+        private GameBoard _board;
+        public static bool QuietNight = false;
 
         public PlayerPanel(GameBoard board)
         {
-            this.board = board;
+            this._board = board;
             InitializeComponent();
         }
 
         private void MoveButton_Click(object sender, EventArgs e)
         {
-            GameBoard.CurrentState = GameBoard.STATE.Move;
+            GameBoard.CurrentState = GameBoard.State.Move;
         }
 
         private void CureCityButton_Click(object sender, EventArgs e)
         {
-            TreatDiseaseForm TDForm = new TreatDiseaseForm(board);
-            TDForm.Show();
+            TreatDiseaseForm tdForm = new TreatDiseaseForm(_board);
+            tdForm.Show();
         }
 
         private void AAButton_Click(object sender, EventArgs e)
         {
-            AdvancedActions AAForm = new AdvancedActions(board);
-            AAForm.Show();
+            AdvancedActions aaForm = new AdvancedActions(_board);
+            aaForm.Show();
         }
 
         private void DispatcherMove_Click(object sender, EventArgs e)
         {
-            GameBoard.CurrentState = SQADemicApp.GameBoard.STATE.Dispatcher;
+            GameBoard.CurrentState = SQADemicApp.GameBoard.State.Dispatcher;
         }
 
         private void EndSequenceBtn_Click(object sender, EventArgs e)
         {
             try
             {
-                if (GameBoard.turnpart == GameBoard.TURNPART.Draw)
-                    drawcards();
-                else if (GameBoard.turnpart == GameBoard.TURNPART.Infect)
-                    infectCities();
-                board.UpdatePlayerForm();
+                if (GameBoard.TurnPart == GameBoard.Turnpart.Draw)
+                    Drawcards();
+                else if (GameBoard.TurnPart == GameBoard.Turnpart.Infect)
+                    InfectCities();
+                _board.UpdatePlayerForm();
             }
             catch (InvalidOperationException exc)
             {
@@ -57,63 +57,63 @@ namespace SQADemicApp
             }
         }
 
-        private void infectCities()
+        private void InfectCities()
         {
-            if (!quietNight)
+            if (!QuietNight)
             {
-                List<string> infectedcites = InfectorBL.InfectCities(GameBoardModels.infectionDeck, GameBoardModels.infectionPile, GameBoardModels.InfectionRate);
-                InfectorBL.InfectCities(infectedcites);
+                List<string> infectedcites = InfectorBl.InfectCities(GameBoardModels.InfectionDeck, GameBoardModels.InfectionPile, GameBoardModels.InfectionRate);
+                InfectorBl.InfectCities(infectedcites);
             }
             else
-                quietNight = true;
-            GameBoard.turnpart = GameBoard.TURNPART.Action;
-            GameBoardModels.CurrentPlayerIndex = (GameBoardModels.CurrentPlayerIndex + 1) % GameBoardModels.players.Count();
-            board.UpdateCityButtons(false);
+                QuietNight = true;
+            GameBoard.TurnPart = GameBoard.Turnpart.Action;
+            GameBoardModels.CurrentPlayerIndex = (GameBoardModels.CurrentPlayerIndex + 1) % GameBoardModels.Players.Count();
+            _board.UpdateCityButtons(false);
         }
 
-        private void drawcards()
+        private void Drawcards()
         {
             //Draw Two cards
-            Card drawCard1 = GameBoardModels.drawCard();
-            Card drawCard2 = GameBoardModels.drawCard();
+            Card drawCard1 = GameBoardModels.DrawCard();
+            Card drawCard2 = GameBoardModels.DrawCard();
 
             //Epidemic code
-            if (drawCard1.CardType.Equals(Card.CARDTYPE.EPIDEMIC))
+            if (drawCard1.CardType.Equals(Card.Cardtype.Epidemic))
             {
-                string infectcityname = InfectorBL.Epidemic(GameBoardModels.infectionDeck, GameBoardModels.infectionPile, ref GameBoardModels.InfectionRateIndex, ref GameBoardModels.InfectionRate);
+                string infectcityname = InfectorBl.Epidemic(GameBoardModels.InfectionDeck, GameBoardModels.InfectionPile, ref GameBoardModels.InfectionRateIndex, ref GameBoardModels.InfectionRate);
                 new PicForm(false, infectcityname).Show();
                 for (int i = 0; i < 3; i++)
                 {
-                    InfectorBL.InfectCities(new List<string> { infectcityname });
+                    InfectorBl.InfectCities(new List<string> { infectcityname });
                 }
             }
-            else if (drawCard1.CardType == Card.CARDTYPE.Special)
-                GameBoardModels.eventCards.Add(drawCard1);
+            else if (drawCard1.CardType == Card.Cardtype.Special)
+                GameBoardModels.EventCards.Add(drawCard1);
             else
-                GameBoardModels.players[GameBoardModels.CurrentPlayerIndex].hand.Add(drawCard1);
+                GameBoardModels.Players[GameBoardModels.CurrentPlayerIndex].Hand.Add(drawCard1);
 
-            if (drawCard2.CardType.Equals(Card.CARDTYPE.EPIDEMIC))
+            if (drawCard2.CardType.Equals(Card.Cardtype.Epidemic))
             {
-                string infectcityname = InfectorBL.Epidemic(GameBoardModels.infectionDeck, GameBoardModels.infectionPile, ref GameBoardModels.InfectionRateIndex, ref GameBoardModels.InfectionRate);
+                string infectcityname = InfectorBl.Epidemic(GameBoardModels.InfectionDeck, GameBoardModels.InfectionPile, ref GameBoardModels.InfectionRateIndex, ref GameBoardModels.InfectionRate);
                 new PicForm(false, infectcityname).Show();
                 for (int i = 0; i < 3; i++)
                 {
-                    InfectorBL.InfectCities(new List<string> { infectcityname });
+                    InfectorBl.InfectCities(new List<string> { infectcityname });
                 }
             }
-            else if (drawCard2.CardType == Card.CARDTYPE.Special)
-                GameBoardModels.eventCards.Add(drawCard2);
+            else if (drawCard2.CardType == Card.Cardtype.Special)
+                GameBoardModels.EventCards.Add(drawCard2);
             else
-                GameBoardModels.players[GameBoardModels.CurrentPlayerIndex].hand.Add(drawCard2);
+                GameBoardModels.Players[GameBoardModels.CurrentPlayerIndex].Hand.Add(drawCard2);
 
             //Move to infection phase
-            if (!quietNight)
-                GameBoard.turnpart = GameBoard.TURNPART.Infect;
+            if (!QuietNight)
+                GameBoard.TurnPart = GameBoard.Turnpart.Infect;
             else
             {
-                quietNight = false;
-                GameBoard.turnpart = GameBoard.TURNPART.Action;
-                GameBoardModels.CurrentPlayerIndex = (GameBoardModels.CurrentPlayerIndex + 1) % GameBoardModels.players.Count();
+                QuietNight = false;
+                GameBoard.TurnPart = GameBoard.Turnpart.Action;
+                GameBoardModels.CurrentPlayerIndex = (GameBoardModels.CurrentPlayerIndex + 1) % GameBoardModels.Players.Count();
             }
         }
     }

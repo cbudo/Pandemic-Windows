@@ -6,21 +6,21 @@ using System.Linq;
 
 namespace SQADemicApp
 {
-    public enum COLOR { red, black, blue, yellow }
+    public enum Color { Red, Black, Blue, Yellow }
 
     public class GameBoardModels
     {
         #region Public Static Vars
 
-        public static InfectionCubeCount cubeCount;
-        public static Cures CURESTATUS;
-        public static List<String> citiesWithResearchStations;
-        public static int outbreakMarker = 0;
-        public static Player[] players;
+        public static InfectionCubeCount CubeCount;
+        public static Cures Curestatus;
+        public static List<string> CitiesWithResearchStations;
+        public static int OutbreakMarker = 0;
+        public static Player[] Players;
         public static int CurrentPlayerIndex;
-        public static List<Card> eventCards;
-        public static LinkedList<String> infectionDeck;
-        public static LinkedList<String> infectionPile;
+        public static List<Card> EventCards;
+        public static LinkedList<string> InfectionDeck;
+        public static LinkedList<string> InfectionPile;
         public static int InfectionRate;
         public static int InfectionRateIndex;
 
@@ -28,14 +28,14 @@ namespace SQADemicApp
 
         #region Public Vars
 
-        public int currentPlayerTurnCounter;
+        public int CurrentPlayerTurnCounter;
 
         #endregion Public Vars
 
         #region private vars
 
-        private static bool alreadySetUp = false;
-        public static Stack<Card> playerDeck;
+        private static bool _alreadySetUp = false;
+        public static Stack<Card> PlayerDeck;
 
         #endregion private vars
 
@@ -46,124 +46,124 @@ namespace SQADemicApp
         public GameBoardModels(string[] playersroles)
         {
             //Keep from making duplicates
-            if (!alreadySetUp)
+            if (!_alreadySetUp)
             {
                 //set vars
-                outbreakMarker = 0;
-                cubeCount = new InfectionCubeCount();
-                cubeCount.blackCubes = cubeCount.redCubes = cubeCount.blueCubes = cubeCount.yellowCubes = 24;
-                CURESTATUS = new Cures();
-                CURESTATUS.BlackCure = CURESTATUS.BlueCure = CURESTATUS.RedCure = CURESTATUS.YellowCure = Cures.CURESTATE.NotCured;
+                OutbreakMarker = 0;
+                CubeCount = new InfectionCubeCount();
+                CubeCount.BlackCubes = CubeCount.RedCubes = CubeCount.BlueCubes = CubeCount.YellowCubes = 24;
+                Curestatus = new Cures();
+                Curestatus.BlackCure = Curestatus.BlueCure = Curestatus.RedCure = Curestatus.YellowCure = Cures.Curestate.NotCured;
                 Card[] playerDeckArray;
-                List<String> infectionDeckList;
-                Create.setUpCreate(out playerDeckArray, out infectionDeckList);
-                playerDeck = new Stack<Card>(playerDeckArray);
-                eventCards = new List<Card>();
-                infectionPile = new LinkedList<String>();
-                infectionDeck = new LinkedList<string>(Create.makeInfectionDeck(new StringReader(SQADemicApp.Properties.Resources.InfectionDeck)));
+                List<string> infectionDeckList;
+                Create.SetUpCreate(out playerDeckArray, out infectionDeckList);
+                PlayerDeck = new Stack<Card>(playerDeckArray);
+                EventCards = new List<Card>();
+                InfectionPile = new LinkedList<string>();
+                InfectionDeck = new LinkedList<string>(Create.MakeInfectionDeck(new StringReader(SQADemicApp.Properties.Resources.InfectionDeck)));
             }
 
             //Players setup allows existing players to be overwritten
-            players = new Player[playersroles.Length];
-            currentPlayerTurnCounter = 0;
+            Players = new Player[playersroles.Length];
+            CurrentPlayerTurnCounter = 0;
             CurrentPlayerIndex = 0;
             for (int i = 0; i < playersroles.Count(); i++)
             {
                 switch (playersroles[i])
                 {
                     case "Dispatcher":
-                        players[i] = new Player(ROLE.Dispatcher);
+                        Players[i] = new Player(Role.Dispatcher);
                         break;
 
                     case "Operations Expert":
-                        players[i] = new Player(ROLE.OpExpert);
+                        Players[i] = new Player(Role.OpExpert);
                         break;
 
                     case "Scientist":
-                        players[i] = new Player(ROLE.Scientist);
+                        Players[i] = new Player(Role.Scientist);
                         break;
 
                     case "Medic":
-                        players[i] = new Player(ROLE.Medic);
+                        Players[i] = new Player(Role.Medic);
                         break;
 
                     case "Researcher":
-                        players[i] = new Player(ROLE.Researcher);
+                        Players[i] = new Player(Role.Researcher);
                         break;
 
                     default:
-                        players[i] = null;
+                        Players[i] = null;
                         break;
                 }
             }
             InfectionRate = 2;
             InfectionRateIndex = 0;
-            if (!alreadySetUp)
+            if (!_alreadySetUp)
             {
-                startGameInfection();
-                setUpPlayerHands();
+                StartGameInfection();
+                SetUpPlayerHands();
             }
 
-            alreadySetUp = true;
+            _alreadySetUp = true;
         }
 
-        private void startGameInfection()
+        private void StartGameInfection()
         {
             for (int i = 3; i > 0; i--)
             {
-                List<string> infectedcites = InfectorBL.InfectCities(infectionDeck, infectionPile, 3);
+                List<string> infectedcites = InfectorBl.InfectCities(InfectionDeck, InfectionPile, 3);
                 for (int j = 0; j < i; j++)
                 {
-                    InfectorBL.InfectCities(infectedcites);
+                    InfectorBl.InfectCities(infectedcites);
                 }
             }
         }
 
-        private void setUpPlayerHands()
+        private void SetUpPlayerHands()
         {
-            int cardsPerPlayer = players.Count() == 4 ? 2 : players.Count() == 3 ? 3 : 4;
-            foreach (Player player in players)
+            int cardsPerPlayer = Players.Count() == 4 ? 2 : Players.Count() == 3 ? 3 : 4;
+            foreach (Player player in Players)
             {
                 for (int i = 0; i < cardsPerPlayer; i++)
                 {
-                    Card card = drawCard();
-                    if (card.CardType.Equals(Card.CARDTYPE.EPIDEMIC))
+                    Card card = DrawCard();
+                    if (card.CardType.Equals(Card.Cardtype.Epidemic))
                     {
-                        string infectcityname = InfectorBL.Epidemic(GameBoardModels.infectionDeck, GameBoardModels.infectionPile, ref GameBoardModels.InfectionRateIndex, ref GameBoardModels.InfectionRate);
+                        string infectcityname = InfectorBl.Epidemic(GameBoardModels.InfectionDeck, GameBoardModels.InfectionPile, ref GameBoardModels.InfectionRateIndex, ref GameBoardModels.InfectionRate);
                         new PicForm(false, infectcityname).Show();
                         for (int j = 0; j < 3; j++)
                         {
-                            InfectorBL.InfectCities(new List<string> { infectcityname });
+                            InfectorBl.InfectCities(new List<string> { infectcityname });
                         }
                     }
-                    else if (card.CardType == Card.CARDTYPE.Special)
-                        eventCards.Add(card);
+                    else if (card.CardType == Card.Cardtype.Special)
+                        EventCards.Add(card);
                     else
-                        player.hand.Add(card);
+                        player.Hand.Add(card);
                 }
             }
         }
 
-        public bool incTurnCount()
+        public bool IncTurnCount()
         {
-            if (currentPlayerTurnCounter == 3)
+            if (CurrentPlayerTurnCounter == 3)
             {
                 //CurrentPlayerIndex = (CurrentPlayerIndex + 1) % players.Count();
-                currentPlayerTurnCounter = 0;
+                CurrentPlayerTurnCounter = 0;
                 return true;
             }
             else
-                currentPlayerTurnCounter++;
+                CurrentPlayerTurnCounter++;
             return false;
 
             //currentPlayerTurnCounter++;
         }
 
-        public static Card drawCard()
+        public static Card DrawCard()
         {
             try
             {
-                return playerDeck.Pop();
+                return PlayerDeck.Pop();
             }
             catch (InvalidOperationException e)
             {
@@ -171,44 +171,44 @@ namespace SQADemicApp
             }
         }
 
-        public int playerDeckSize()
+        public int PlayerDeckSize()
         {
-            return playerDeck.Count();
+            return PlayerDeck.Count();
         }
 
         #region Storage Classes
 
         public class InfectionCubeCount
         {
-            public int redCubes { get; set; }
-            public int blackCubes { get; set; }
-            public int blueCubes { get; set; }
-            public int yellowCubes { get; set; }
+            public int RedCubes { get; set; }
+            public int BlackCubes { get; set; }
+            public int BlueCubes { get; set; }
+            public int YellowCubes { get; set; }
         }
 
         public class Cures
         {
-            public enum CURESTATE { NotCured, Cured, Sunset }
+            public enum Curestate { NotCured, Cured, Sunset }
 
-            public CURESTATE RedCure { get; set; }
-            public CURESTATE BlueCure { get; set; }
-            public CURESTATE BlackCure { get; set; }
-            public CURESTATE YellowCure { get; set; }
+            public Curestate RedCure { get; set; }
+            public Curestate BlueCure { get; set; }
+            public Curestate BlackCure { get; set; }
+            public Curestate YellowCure { get; set; }
 
-            public CURESTATE getCureStatus(COLOR color)
+            public Curestate GetCureStatus(Color color)
             {
                 switch (color)
                 {
-                    case COLOR.red:
+                    case Color.Red:
                         return RedCure;
 
-                    case COLOR.blue:
+                    case Color.Blue:
                         return BlueCure;
 
-                    case COLOR.yellow:
+                    case Color.Yellow:
                         return YellowCure;
 
-                    case COLOR.black:
+                    case Color.Black:
                         return BlackCure;
 
                     default:
@@ -216,23 +216,23 @@ namespace SQADemicApp
                 }
             }
 
-            public void setCureStatus(COLOR color, CURESTATE curestate)
+            public void SetCureStatus(Color color, Curestate curestate)
             {
                 switch (color)
                 {
-                    case COLOR.red:
+                    case Color.Red:
                         RedCure = curestate;
                         break;
 
-                    case COLOR.blue:
+                    case Color.Blue:
                         BlueCure = curestate;
                         break;
 
-                    case COLOR.yellow:
+                    case Color.Yellow:
                         YellowCure = curestate;
                         break;
 
-                    case COLOR.black:
+                    case Color.Black:
                         BlackCure = curestate;
                         break;
 

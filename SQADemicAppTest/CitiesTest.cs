@@ -14,7 +14,7 @@ namespace SQADemicAppTest
     [TestClass]
     public class CitiesTest
     {
-        static CityBL CityBL = new CityBL();
+        static CityBl _cityBl = new CityBl();
 
         [TestInitialize()]
         public void TestInitialize()
@@ -158,28 +158,28 @@ namespace SQADemicAppTest
         [TestMethod]
         public void TestResearchCityList()
         {
-            Create.cityDictionary["Atlanta"].researchStation = true;
+            Create.CityDictionary["Atlanta"].ResearchStation = true;
             List<City> ls = new List<City>();
-            City a = new City(COLOR.blue, "Atlanta");
-            a.researchStation = true;
+            City a = new City(Color.Blue, "Atlanta");
+            a.ResearchStation = true;
             ls.Add(a);
-            List<City> result = CityBL.getCitiesWithResearchStations();
+            List<City> result = CityBl.GetCitiesWithResearchStations();
             CollectionAssert.AreEqual(ls, result);
         }
 
         [TestMethod]
         public void TestGetNeighborNames()
         {
-            List<String> e = new List<String>();
-            City miami = new City(COLOR.yellow, "Miami");
-            City atlanta = new City(COLOR.blue, "Atlanta");
-            City montreal = new City(COLOR.blue, "Montreal");
-            City newYork = new City(COLOR.blue, "New York");
+            List<string> e = new List<string>();
+            City miami = new City(Color.Yellow, "Miami");
+            City atlanta = new City(Color.Blue, "Atlanta");
+            City montreal = new City(Color.Blue, "Montreal");
+            City newYork = new City(Color.Blue, "New York");
             e.Add(miami.Name);
             e.Add(atlanta.Name);
             e.Add(montreal.Name);
             e.Add(newYork.Name);
-            List<String> result = CityBL.getNeighborNames("Washington");
+            List<string> result = CityBl.GetNeighborNames("Washington");
             CollectionAssert.AreEqual(e, result);
         }
 

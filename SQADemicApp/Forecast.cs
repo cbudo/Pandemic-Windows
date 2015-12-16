@@ -12,7 +12,7 @@ namespace SQADemicApp
         {
             InitializeComponent();
             listBox1.Items.Clear();
-            listBox1.Items.AddRange(SQADemicApp.BL.SpecialEventCardsBL.GetForcastCards(GameBoardModels.infectionDeck).ToArray());
+            listBox1.Items.AddRange(SQADemicApp.BL.SpecialEventCardsBl.GetForcastCards(GameBoardModels.InfectionDeck).ToArray());
         }
 
         private void Reorder_Click(object sender, EventArgs e)
@@ -22,14 +22,14 @@ namespace SQADemicApp
             {
                 selectedCards.Add(select.ToString());
             }
-            SQADemicApp.BL.SpecialEventCardsBL.CommitForcast(GameBoardModels.infectionDeck, selectedCards);
+            SQADemicApp.BL.SpecialEventCardsBl.CommitForcast(GameBoardModels.InfectionDeck, selectedCards);
             this.Close();
         }
 
         private void Remove_Click(object sender, EventArgs e)
         {
             List<string> selectedCards = new List<string>();
-            selectedCards = listBox2.SelectedItems.Cast<String>().ToList();
+            selectedCards = listBox2.SelectedItems.Cast<string>().ToList();
             listBox1.Items.AddRange(selectedCards.ToArray());
             foreach (var item in selectedCards)
             {
@@ -40,7 +40,7 @@ namespace SQADemicApp
         private void Add_Click(object sender, EventArgs e)
         {
             List<string> selectedCards = new List<string>();
-            selectedCards = listBox1.SelectedItems.Cast<String>().ToList();
+            selectedCards = listBox1.SelectedItems.Cast<string>().ToList();
             listBox2.Items.AddRange(selectedCards.ToArray());
             foreach (var item in selectedCards)
             {

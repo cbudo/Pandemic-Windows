@@ -6,45 +6,45 @@ namespace SQADemicApp
     public class City
     {
         public string Name;
-        public COLOR color;
-        public int redCubes { get; set; }
-        public int blackCubes { get; set; }
-        public int blueCubes { get; set; }
-        public int yellowCubes { get; set; }
-        public bool researchStation = false;
-        public HashSet<City> adjacentCities;
+        public Color Color;
+        public int RedCubes { get; set; }
+        public int BlackCubes { get; set; }
+        public int BlueCubes { get; set; }
+        public int YellowCubes { get; set; }
+        public bool ResearchStation = false;
+        public HashSet<City> AdjacentCities;
         //public List<City> adjacentCities;
 
-        public City(COLOR color, String name)
+        public City(Color color, string name)
         {
-            this.color = color;
+            this.Color = color;
             this.Name = name;
-            redCubes = 0;
-            blackCubes = 0;
-            blueCubes = 0;
-            yellowCubes = 0;
-            adjacentCities = new HashSet<City>();
+            RedCubes = 0;
+            BlackCubes = 0;
+            BlueCubes = 0;
+            YellowCubes = 0;
+            AdjacentCities = new HashSet<City>();
         }
 
-        public int allCubeCount()
+        public int AllCubeCount()
         {
-            return redCubes + blackCubes + blueCubes + yellowCubes;
+            return RedCubes + BlackCubes + BlueCubes + YellowCubes;
         }
 
-        public void setAdjacentCities(HashSet<City> cities)
+        public void SetAdjacentCities(HashSet<City> cities)
         {
-            this.adjacentCities = cities;
+            this.AdjacentCities = cities;
         }
 
-        public HashSet<City> getAdjacentCities()
+        public HashSet<City> GetAdjacentCities()
         {
-            return adjacentCities;
+            return AdjacentCities;
         }
 
         public override bool Equals(object obj)
         {
             City temp = (City)obj;
-            return (this.Name == temp.Name) && (this.color == temp.color);
+            return (this.Name == temp.Name) && (this.Color == temp.Color);
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace SQADemicApp.WS
 {
-    internal class InfectorWS
+    internal class InfectorWs
     {
     }
 }

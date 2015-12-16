@@ -11,11 +11,11 @@ namespace SQADemicAppTest
     [TestClass]
     public class PlayerActionsTest
     {
-        City chicagoCity, bangkok, kolkata, sanFran;
-        List<Card> hand, pile;
-        List<Player> players;
-        Card chennai, newYork, atlanta, chicagoCard, london, paris, milan, airlift;
-        Player dispatcher, medic, opExpert, researcher, scientist;
+        City _chicagoCity, _bangkok, _kolkata, _sanFran;
+        List<Card> _hand, _pile;
+        List<Player> _players;
+        Card _chennai, _newYork, _atlanta, _chicagoCard, _london, _paris, _milan, _airlift;
+        Player _dispatcher, _medic, _opExpert, _researcher, _scientist;
 
 
         [TestInitialize]
@@ -24,41 +24,41 @@ namespace SQADemicAppTest
             //set up GameboardModels if not already
             var g = new GameBoardModels(new string[] { "Dispatcher", "Medic" });
             //cities
-            Create.createDictionary();
-            Create.setAdjacentCities(new StringReader("Chicago;San Francisco,Los Angeles,Atlanta,Montreal"));
-            Create.setAdjacentCities(new StringReader("Bangkok;Kolkata,Hong Kong,Ho Chi Minh City,Jakarta,Chennai"));
-            Create.setAdjacentCities(new StringReader("Kolkata;Delhi,Chennai,Bangkok,Hong Kong"));
-            Create.setAdjacentCities(new StringReader("San Francisco;Tokyo,Manila,Chicago,Los Angeles"));
-            if (!Create.cityDictionary.TryGetValue("Chicago", out chicagoCity) ||
-                !Create.cityDictionary.TryGetValue("Bangkok", out bangkok) ||
-                !Create.cityDictionary.TryGetValue("Kolkata", out kolkata) ||
-                !Create.cityDictionary.TryGetValue("San Francisco", out sanFran))
+            Create.CreateDictionary();
+            Create.SetAdjacentCities(new StringReader("Chicago;San Francisco,Los Angeles,Atlanta,Montreal"));
+            Create.SetAdjacentCities(new StringReader("Bangkok;Kolkata,Hong Kong,Ho Chi Minh City,Jakarta,Chennai"));
+            Create.SetAdjacentCities(new StringReader("Kolkata;Delhi,Chennai,Bangkok,Hong Kong"));
+            Create.SetAdjacentCities(new StringReader("San Francisco;Tokyo,Manila,Chicago,Los Angeles"));
+            if (!Create.CityDictionary.TryGetValue("Chicago", out _chicagoCity) ||
+                !Create.CityDictionary.TryGetValue("Bangkok", out _bangkok) ||
+                !Create.CityDictionary.TryGetValue("Kolkata", out _kolkata) ||
+                !Create.CityDictionary.TryGetValue("San Francisco", out _sanFran))
             {
                 throw new InvalidOperationException("Set up failed");
             }
             //Cards
-            chennai = new Card("Chennai", Card.CARDTYPE.City, COLOR.black);
-            newYork = new Card("New York", Card.CARDTYPE.City, COLOR.blue);
-            atlanta = new Card("Atlanta", Card.CARDTYPE.City, COLOR.blue);
-            chicagoCard = new Card("Chicago", Card.CARDTYPE.City, COLOR.blue);
-            paris = new Card("Paris", Card.CARDTYPE.City, COLOR.blue);
-            london = new Card("London", Card.CARDTYPE.City, COLOR.blue);
-            milan = new Card("Milan", Card.CARDTYPE.City, COLOR.blue);
-            airlift = new Card("Airlift",Card.CARDTYPE.Special);
+            _chennai = new Card("Chennai", Card.Cardtype.City, Color.Black);
+            _newYork = new Card("New York", Card.Cardtype.City, Color.Blue);
+            _atlanta = new Card("Atlanta", Card.Cardtype.City, Color.Blue);
+            _chicagoCard = new Card("Chicago", Card.Cardtype.City, Color.Blue);
+            _paris = new Card("Paris", Card.Cardtype.City, Color.Blue);
+            _london = new Card("London", Card.Cardtype.City, Color.Blue);
+            _milan = new Card("Milan", Card.Cardtype.City, Color.Blue);
+            _airlift = new Card("Airlift",Card.Cardtype.Special);
            
             //Players
-            scientist = new Player(ROLE.Scientist);
-            opExpert = new Player(ROLE.OpExpert);
-            researcher = new Player(ROLE.Researcher);
-            medic = new Player(ROLE.Medic);
-            players = new List<Player> { scientist, opExpert, researcher, medic };
+            _scientist = new Player(Role.Scientist);
+            _opExpert = new Player(Role.OpExpert);
+            _researcher = new Player(Role.Researcher);
+            _medic = new Player(Role.Medic);
+            _players = new List<Player> { _scientist, _opExpert, _researcher, _medic };
         }
 
         [TestMethod]
         public void TestDriveOptions()
         {
-            HashSet<City> returnedSet = PlayerActionsBL.DriveOptions(chicagoCity);
-            HashSet<City> correctSet = chicagoCity.getAdjacentCities();
+            HashSet<City> returnedSet = PlayerActionsBl.DriveOptions(_chicagoCity);
+            HashSet<City> correctSet = _chicagoCity.GetAdjacentCities();
             CollectionAssert.AreEqual(returnedSet.ToArray(), correctSet.ToArray());
         }
 
@@ -66,45 +66,45 @@ namespace SQADemicAppTest
         [TestMethod]
         public void TestDirectFlightOptionsNone()
         {
-            hand = new List<Card>();
-            List<String> returnList = PlayerActionsBL.DirectFlightOption(hand, chicagoCity);
-            List<String> correctList = new List<String>();
+            _hand = new List<Card>();
+            List<string> returnList = PlayerActionsBl.DirectFlightOption(_hand, _chicagoCity);
+            List<string> correctList = new List<string>();
             CollectionAssert.AreEqual(correctList, returnList);
         }
 
         [TestMethod]
         public void TestDirectFlightOptionNewYork()
         {
-            hand = new List<Card> { newYork };
-            List<String> returnList = PlayerActionsBL.DirectFlightOption(hand, chicagoCity);
-            List<String> correctList = new List<String> { newYork.CityName };
+            _hand = new List<Card> { _newYork };
+            List<string> returnList = PlayerActionsBl.DirectFlightOption(_hand, _chicagoCity);
+            List<string> correctList = new List<string> { _newYork.CityName };
             CollectionAssert.AreEqual(correctList, returnList);
         }
 
         [TestMethod]
         public void TestDirectFlightCurrentCityChicago()
         {
-            hand = new List<Card> { chicagoCard };
-            List<String> returnList = PlayerActionsBL.DirectFlightOption(hand, chicagoCity);
-            List<String> correctList = new List<String>();
+            _hand = new List<Card> { _chicagoCard };
+            List<string> returnList = PlayerActionsBl.DirectFlightOption(_hand, _chicagoCity);
+            List<string> correctList = new List<string>();
             CollectionAssert.AreEqual(correctList, returnList);
         }
 
         [TestMethod]
         public void TestDirectFlightMultipleCities()
         {
-            hand = new List<Card> { chicagoCard, atlanta, chennai };
-            List<String> returnList = PlayerActionsBL.DirectFlightOption(hand, chicagoCity);
-            List<String> correctList = new List<String> { atlanta.CityName, chennai.CityName };
+            _hand = new List<Card> { _chicagoCard, _atlanta, _chennai };
+            List<string> returnList = PlayerActionsBl.DirectFlightOption(_hand, _chicagoCity);
+            List<string> correctList = new List<string> { _atlanta.CityName, _chennai.CityName };
             CollectionAssert.AreEqual(correctList, returnList);
         }
 
         [TestMethod]
         public void TestDirectFlightWithNonCityCardInHand()
         {
-            hand = new List<Card> { airlift, atlanta, chennai };
-            List<String> returnList = PlayerActionsBL.DirectFlightOption(hand, chicagoCity);
-            List<String> correctList = new List<String> { atlanta.CityName, chennai.CityName };
+            _hand = new List<Card> { _airlift, _atlanta, _chennai };
+            List<string> returnList = PlayerActionsBl.DirectFlightOption(_hand, _chicagoCity);
+            List<string> correctList = new List<string> { _atlanta.CityName, _chennai.CityName };
             CollectionAssert.AreEqual(correctList, returnList);
 
         }
@@ -114,8 +114,8 @@ namespace SQADemicAppTest
         [TestMethod]
         public void TestCharterFlightFalseOption()
         {
-            hand = new List<Card> { airlift, atlanta, chennai };
-            bool returendBool = PlayerActionsBL.CharterFlightOption(hand, chicagoCity);
+            _hand = new List<Card> { _airlift, _atlanta, _chennai };
+            bool returendBool = PlayerActionsBl.CharterFlightOption(_hand, _chicagoCity);
             bool correctBool = false;
             Assert.AreEqual(correctBool, returendBool);
         }
@@ -123,8 +123,8 @@ namespace SQADemicAppTest
         [TestMethod]
         public void TestCharterFlightTrue()
         {
-            hand = new List<Card> { airlift, atlanta, chicagoCard };
-            bool returendBool = PlayerActionsBL.CharterFlightOption(hand, chicagoCity);
+            _hand = new List<Card> { _airlift, _atlanta, _chicagoCard };
+            bool returendBool = PlayerActionsBl.CharterFlightOption(_hand, _chicagoCity);
             bool correctBool = true;
             Assert.AreEqual(correctBool, returendBool);
         }
@@ -134,48 +134,48 @@ namespace SQADemicAppTest
         [TestMethod]
         public void TestShuttleFlightNotInStation()
         {
-            scientist.currentCity = kolkata;
-            List<String> result = PlayerActionsBL.ShuttleFlightOption(kolkata);
-            CollectionAssert.Equals(result, new List<String>());
+            _scientist.CurrentCity = _kolkata;
+            List<string> result = PlayerActionsBl.ShuttleFlightOption(_kolkata);
+            CollectionAssert.Equals(result, new List<string>());
         }
 
         [TestMethod]
         public void TestShuttleFlightNoOptions()
         {
-            scientist.currentCity = kolkata;
-            kolkata.researchStation = true;
-            List<String> result = PlayerActionsBL.ShuttleFlightOption(kolkata);
-            kolkata.researchStation = false;
-            List<String> expected = new List<String> { "Atlanta"};
+            _scientist.CurrentCity = _kolkata;
+            _kolkata.ResearchStation = true;
+            List<string> result = PlayerActionsBl.ShuttleFlightOption(_kolkata);
+            _kolkata.ResearchStation = false;
+            List<string> expected = new List<string> { "Atlanta"};
             CollectionAssert.AreEqual(expected, result);
         }
 
         [TestMethod]
         public void TestShuttleFlightOneOption()
         {
-            scientist.currentCity = kolkata;
-            kolkata.researchStation = true;
-            bangkok.researchStation = true;
-            List<String> result = PlayerActionsBL.ShuttleFlightOption(kolkata);
-            kolkata.researchStation = false;
-            bangkok.researchStation = false;
-            List<String> expected = new List<String> { "Atlanta", "Bangkok" };
+            _scientist.CurrentCity = _kolkata;
+            _kolkata.ResearchStation = true;
+            _bangkok.ResearchStation = true;
+            List<string> result = PlayerActionsBl.ShuttleFlightOption(_kolkata);
+            _kolkata.ResearchStation = false;
+            _bangkok.ResearchStation = false;
+            List<string> expected = new List<string> { "Atlanta", "Bangkok" };
             CollectionAssert.AreEqual(expected, result);
         }
 
         [TestMethod]
         public void TestShuttleFlightMultipleOptions()
         {
-            scientist.currentCity = chicagoCity;
-            chicagoCity.Name = "Chicago";
-            chicagoCity.researchStation = true;
-            kolkata.researchStation = true;
-            bangkok.researchStation = true;
-            List<String> result = PlayerActionsBL.ShuttleFlightOption(chicagoCity);
-            chicagoCity.researchStation = false;
-            kolkata.researchStation = false;
-            bangkok.researchStation = false;
-            List<String> expected = new List<String> { "Atlanta", "Kolkata", "Bangkok" };
+            _scientist.CurrentCity = _chicagoCity;
+            _chicagoCity.Name = "Chicago";
+            _chicagoCity.ResearchStation = true;
+            _kolkata.ResearchStation = true;
+            _bangkok.ResearchStation = true;
+            List<string> result = PlayerActionsBl.ShuttleFlightOption(_chicagoCity);
+            _chicagoCity.ResearchStation = false;
+            _kolkata.ResearchStation = false;
+            _bangkok.ResearchStation = false;
+            List<string> expected = new List<string> { "Atlanta", "Kolkata", "Bangkok" };
             CollectionAssert.AreEqual(expected, result);
         }
         #endregion
@@ -184,79 +184,79 @@ namespace SQADemicAppTest
         [TestMethod]
         public void TestMoverPlayerAdjacentCitySanFran()
         {
-            scientist.currentCity = chicagoCity;
-            hand = new List<Card> { airlift, chicagoCard, chennai };
-            scientist.hand = hand;
-            PlayerActionsBL.moveplayer(scientist, sanFran);
-            Assert.AreEqual(scientist.currentCity.Name, sanFran.Name);
+            _scientist.CurrentCity = _chicagoCity;
+            _hand = new List<Card> { _airlift, _chicagoCard, _chennai };
+            _scientist.Hand = _hand;
+            PlayerActionsBl.Moveplayer(_scientist, _sanFran);
+            Assert.AreEqual(_scientist.CurrentCity.Name, _sanFran.Name);
         }
 
         [TestMethod]
         public void TestMoverPlayerAdjacentCityChicagoWithCard()
         {
-            scientist.currentCity = sanFran;
-            hand = new List<Card> { airlift, chicagoCard, chennai };
-            List<Card> correctHand =new List<Card> { airlift, chicagoCard, chennai };
-            scientist.hand = hand;
-            PlayerActionsBL.moveplayer(scientist, chicagoCity);
-            Assert.AreEqual(scientist.currentCity.Name, chicagoCity.Name);
-            CollectionAssert.AreEqual(correctHand, hand);
+            _scientist.CurrentCity = _sanFran;
+            _hand = new List<Card> { _airlift, _chicagoCard, _chennai };
+            List<Card> correctHand =new List<Card> { _airlift, _chicagoCard, _chennai };
+            _scientist.Hand = _hand;
+            PlayerActionsBl.Moveplayer(_scientist, _chicagoCity);
+            Assert.AreEqual(_scientist.CurrentCity.Name, _chicagoCity.Name);
+            CollectionAssert.AreEqual(correctHand, _hand);
         }
 
         [TestMethod]
         public void TestMoverPlayerDirectFlight()
         {
-            scientist.currentCity = bangkok;
-            hand = new List<Card> { airlift, chicagoCard, chennai, atlanta };
-            pile = new List<Card>();
-            scientist.hand = hand;
-            PlayerActionsBL.moveplayer(scientist, chicagoCity);
-            List<Card> correctHand = new List<Card> { airlift, chennai, atlanta };
-            Assert.AreEqual(scientist.currentCity.Name, chicagoCity.Name);
-            CollectionAssert.AreEqual(correctHand, hand);
+            _scientist.CurrentCity = _bangkok;
+            _hand = new List<Card> { _airlift, _chicagoCard, _chennai, _atlanta };
+            _pile = new List<Card>();
+            _scientist.Hand = _hand;
+            PlayerActionsBl.Moveplayer(_scientist, _chicagoCity);
+            List<Card> correctHand = new List<Card> { _airlift, _chennai, _atlanta };
+            Assert.AreEqual(_scientist.CurrentCity.Name, _chicagoCity.Name);
+            CollectionAssert.AreEqual(correctHand, _hand);
         }
 
         [TestMethod]
         public void TestMoverPlayerCharterFlight()
         {
-            scientist.currentCity = chicagoCity;
-            hand = new List<Card> { airlift, chicagoCard, chennai };
-            pile = new List<Card>();
-            scientist.hand = hand;
-            PlayerActionsBL.moveplayer(scientist, bangkok);
-            List<Card> correctHand = new List<Card> { airlift, chennai };
-            Assert.AreEqual(scientist.currentCity.Name, bangkok.Name);
-            CollectionAssert.AreEqual(correctHand, hand);
+            _scientist.CurrentCity = _chicagoCity;
+            _hand = new List<Card> { _airlift, _chicagoCard, _chennai };
+            _pile = new List<Card>();
+            _scientist.Hand = _hand;
+            PlayerActionsBl.Moveplayer(_scientist, _bangkok);
+            List<Card> correctHand = new List<Card> { _airlift, _chennai };
+            Assert.AreEqual(_scientist.CurrentCity.Name, _bangkok.Name);
+            CollectionAssert.AreEqual(correctHand, _hand);
         }
 
         [TestMethod]
         public void TestMoverPlayerShuttleFlightPreemptCard()
         {
-            chicagoCity.researchStation = true;
-            bangkok.researchStation = true;
-            scientist.currentCity = chicagoCity;
-            hand = new List<Card> { airlift, atlanta, chennai, chicagoCard };
-            pile = new List<Card>();
-            scientist.hand = hand;
-            Assert.AreEqual(true, PlayerActionsBL.moveplayer(scientist, bangkok));
-            List<Card> correctHand = new List<Card> { airlift, atlanta, chennai, chicagoCard };
-            Assert.AreEqual(scientist.currentCity.Name, bangkok.Name);
-            CollectionAssert.AreEqual(correctHand, hand);
-            chicagoCity.researchStation = false;
-            bangkok.researchStation = false;
+            _chicagoCity.ResearchStation = true;
+            _bangkok.ResearchStation = true;
+            _scientist.CurrentCity = _chicagoCity;
+            _hand = new List<Card> { _airlift, _atlanta, _chennai, _chicagoCard };
+            _pile = new List<Card>();
+            _scientist.Hand = _hand;
+            Assert.AreEqual(true, PlayerActionsBl.Moveplayer(_scientist, _bangkok));
+            List<Card> correctHand = new List<Card> { _airlift, _atlanta, _chennai, _chicagoCard };
+            Assert.AreEqual(_scientist.CurrentCity.Name, _bangkok.Name);
+            CollectionAssert.AreEqual(correctHand, _hand);
+            _chicagoCity.ResearchStation = false;
+            _bangkok.ResearchStation = false;
         }
 
         [TestMethod]
         public void TestMoverPlayerInvalid()
         {
-            scientist.currentCity = chicagoCity;
-            hand = new List<Card> { airlift, atlanta, chennai };
-            pile = new List<Card>();
-            scientist.hand = hand;
-            Assert.AreEqual(false, PlayerActionsBL.moveplayer(scientist, bangkok));
-            List<Card> correctHand = new List<Card> { airlift, atlanta, chennai };
-            Assert.AreEqual(scientist.currentCity.Name, chicagoCity.Name);
-            CollectionAssert.AreEqual(correctHand, hand);
+            _scientist.CurrentCity = _chicagoCity;
+            _hand = new List<Card> { _airlift, _atlanta, _chennai };
+            _pile = new List<Card>();
+            _scientist.Hand = _hand;
+            Assert.AreEqual(false, PlayerActionsBl.Moveplayer(_scientist, _bangkok));
+            List<Card> correctHand = new List<Card> { _airlift, _atlanta, _chennai };
+            Assert.AreEqual(_scientist.CurrentCity.Name, _chicagoCity.Name);
+            CollectionAssert.AreEqual(correctHand, _hand);
         }
 
         #endregion
@@ -264,69 +264,69 @@ namespace SQADemicAppTest
         #region BuildAResearchStation
 
         [TestMethod]
-        public void buildStationNormal()
+        public void BuildStationNormal()
         {
-            scientist.currentCity = chicagoCity;
-            chicagoCity.researchStation = false;
-            hand = new List<Card> { airlift, chicagoCard, chennai };
-            scientist.hand = hand;
-            List<Card> correctHand = new List<Card> { airlift, chennai };
-            Assert.AreEqual(true, PlayerActionsBL.BuildAResearchStationOption(scientist));
-            CollectionAssert.AreEqual(correctHand, hand);
-            Assert.AreEqual(true, chicagoCity.researchStation);
-            chicagoCity.researchStation = false;
+            _scientist.CurrentCity = _chicagoCity;
+            _chicagoCity.ResearchStation = false;
+            _hand = new List<Card> { _airlift, _chicagoCard, _chennai };
+            _scientist.Hand = _hand;
+            List<Card> correctHand = new List<Card> { _airlift, _chennai };
+            Assert.AreEqual(true, PlayerActionsBl.BuildAResearchStationOption(_scientist));
+            CollectionAssert.AreEqual(correctHand, _hand);
+            Assert.AreEqual(true, _chicagoCity.ResearchStation);
+            _chicagoCity.ResearchStation = false;
         }
 
         [TestMethod]
-        public void buildStationFailLackCard()
+        public void BuildStationFailLackCard()
         {
-            scientist.currentCity = chicagoCity;
-            hand = new List<Card> { airlift, chennai };
-            scientist.hand = hand;
-            List<Card> correctHand = new List<Card> { airlift, chennai };
-            Assert.AreEqual(false, PlayerActionsBL.BuildAResearchStationOption(scientist));
-            CollectionAssert.AreEqual(correctHand, hand);
+            _scientist.CurrentCity = _chicagoCity;
+            _hand = new List<Card> { _airlift, _chennai };
+            _scientist.Hand = _hand;
+            List<Card> correctHand = new List<Card> { _airlift, _chennai };
+            Assert.AreEqual(false, PlayerActionsBl.BuildAResearchStationOption(_scientist));
+            CollectionAssert.AreEqual(correctHand, _hand);
         }
 
         [TestMethod]
-        public void buildStationFailExisting()
+        public void BuildStationFailExisting()
         {
-            scientist.currentCity = chicagoCity;
-            chicagoCity.researchStation = true;
-            hand = new List<Card> { airlift, chicagoCard, chennai };
-            scientist.hand = hand;
-            List<Card> correctHand = new List<Card> { airlift, chicagoCard, chennai };
-            Assert.AreEqual(false, PlayerActionsBL.BuildAResearchStationOption(scientist));
-            CollectionAssert.AreEqual(correctHand, hand);
-            chicagoCity.researchStation = false;
+            _scientist.CurrentCity = _chicagoCity;
+            _chicagoCity.ResearchStation = true;
+            _hand = new List<Card> { _airlift, _chicagoCard, _chennai };
+            _scientist.Hand = _hand;
+            List<Card> correctHand = new List<Card> { _airlift, _chicagoCard, _chennai };
+            Assert.AreEqual(false, PlayerActionsBl.BuildAResearchStationOption(_scientist));
+            CollectionAssert.AreEqual(correctHand, _hand);
+            _chicagoCity.ResearchStation = false;
         }
 
         [TestMethod]
-        public void buildStationOpExpert()
+        public void BuildStationOpExpert()
         {
-            opExpert.currentCity = chicagoCity;
-            chicagoCity.researchStation = false;
-            hand = new List<Card> { airlift, chicagoCard, chennai };
-            opExpert.hand = hand;
-            List<Card> correctHand = new List<Card> { airlift, chicagoCard, chennai };
-            Assert.AreEqual(true, PlayerActionsBL.BuildAResearchStationOption(opExpert));
-            CollectionAssert.AreEqual(correctHand, hand);
-            Assert.AreEqual(true, chicagoCity.researchStation);
-            chicagoCity.researchStation = false;
+            _opExpert.CurrentCity = _chicagoCity;
+            _chicagoCity.ResearchStation = false;
+            _hand = new List<Card> { _airlift, _chicagoCard, _chennai };
+            _opExpert.Hand = _hand;
+            List<Card> correctHand = new List<Card> { _airlift, _chicagoCard, _chennai };
+            Assert.AreEqual(true, PlayerActionsBl.BuildAResearchStationOption(_opExpert));
+            CollectionAssert.AreEqual(correctHand, _hand);
+            Assert.AreEqual(true, _chicagoCity.ResearchStation);
+            _chicagoCity.ResearchStation = false;
         }
 
         [TestMethod]
-        public void buildStationOpExpertWithoutCard()
+        public void BuildStationOpExpertWithoutCard()
         {
-            opExpert.currentCity = chicagoCity;
-            chicagoCity.researchStation = false;
-            hand = new List<Card> { airlift, chennai };
-            opExpert.hand = hand;
-            List<Card> correctHand = new List<Card> { airlift, chennai };
-            Assert.AreEqual(true, PlayerActionsBL.BuildAResearchStationOption(opExpert));
-            CollectionAssert.AreEqual(correctHand, hand);
-            Assert.AreEqual(true, chicagoCity.researchStation);
-            chicagoCity.researchStation = false;
+            _opExpert.CurrentCity = _chicagoCity;
+            _chicagoCity.ResearchStation = false;
+            _hand = new List<Card> { _airlift, _chennai };
+            _opExpert.Hand = _hand;
+            List<Card> correctHand = new List<Card> { _airlift, _chennai };
+            Assert.AreEqual(true, PlayerActionsBl.BuildAResearchStationOption(_opExpert));
+            CollectionAssert.AreEqual(correctHand, _hand);
+            Assert.AreEqual(true, _chicagoCity.ResearchStation);
+            _chicagoCity.ResearchStation = false;
         }
 
         #endregion
@@ -343,119 +343,119 @@ namespace SQADemicAppTest
         [TestMethod]
         public void TestCureSimple()
         {
-            hand = new List<Card> { chennai, newYork, atlanta, chicagoCard, london, paris, airlift };
-            opExpert.hand = hand;
-            List<String> cardsToSpend = new List<String> { newYork.CityName, atlanta.CityName, chicagoCard.CityName, london.CityName, paris.CityName };
-            List<Card> correctHand = new List<Card> { chennai, airlift };
-            opExpert.currentCity = chicagoCity;
-            chicagoCity.researchStation = true;
-            Assert.AreEqual(true, PlayerActionsBL.Cure(opExpert, cardsToSpend, COLOR.blue));
-            CollectionAssert.AreEqual(correctHand, hand);
-            chicagoCity.researchStation = false;
-            Assert.AreEqual(GameBoardModels.CURESTATUS.getCureStatus(COLOR.blue), GameBoardModels.Cures.CURESTATE.Cured);
-            GameBoardModels.CURESTATUS.setCureStatus(COLOR.blue, GameBoardModels.Cures.CURESTATE.NotCured);
+            _hand = new List<Card> { _chennai, _newYork, _atlanta, _chicagoCard, _london, _paris, _airlift };
+            _opExpert.Hand = _hand;
+            List<string> cardsToSpend = new List<string> { _newYork.CityName, _atlanta.CityName, _chicagoCard.CityName, _london.CityName, _paris.CityName };
+            List<Card> correctHand = new List<Card> { _chennai, _airlift };
+            _opExpert.CurrentCity = _chicagoCity;
+            _chicagoCity.ResearchStation = true;
+            Assert.AreEqual(true, PlayerActionsBl.Cure(_opExpert, cardsToSpend, Color.Blue));
+            CollectionAssert.AreEqual(correctHand, _hand);
+            _chicagoCity.ResearchStation = false;
+            Assert.AreEqual(GameBoardModels.Curestatus.GetCureStatus(Color.Blue), GameBoardModels.Cures.Curestate.Cured);
+            GameBoardModels.Curestatus.SetCureStatus(Color.Blue, GameBoardModels.Cures.Curestate.NotCured);
             
         }
 
         [TestMethod]
         public void TestCureNotEnoughCards()
         {
-            hand = new List<Card> { newYork, chennai, atlanta, chicagoCard, airlift };
-            opExpert.hand = hand;
-            opExpert.currentCity = chicagoCity;
-            chicagoCity.researchStation = true;
-            List<String> cardsToSpend = new List<String> { newYork.CityName, chicagoCard.CityName };
-            List<Card> correctHand = new List<Card> { newYork, chennai, atlanta, chicagoCard, airlift };
-            Assert.AreEqual(false, PlayerActionsBL.Cure(opExpert, cardsToSpend, COLOR.blue));
-            CollectionAssert.AreEqual(correctHand, hand);
-            chicagoCity.researchStation = false;
+            _hand = new List<Card> { _newYork, _chennai, _atlanta, _chicagoCard, _airlift };
+            _opExpert.Hand = _hand;
+            _opExpert.CurrentCity = _chicagoCity;
+            _chicagoCity.ResearchStation = true;
+            List<string> cardsToSpend = new List<string> { _newYork.CityName, _chicagoCard.CityName };
+            List<Card> correctHand = new List<Card> { _newYork, _chennai, _atlanta, _chicagoCard, _airlift };
+            Assert.AreEqual(false, PlayerActionsBl.Cure(_opExpert, cardsToSpend, Color.Blue));
+            CollectionAssert.AreEqual(correctHand, _hand);
+            _chicagoCity.ResearchStation = false;
         }
 
         [TestMethod]
         public void TestCureToManyValidCards()
         {
-            hand = new List<Card> { chennai, newYork, atlanta, chicagoCard, london, paris, milan, airlift };
-            opExpert.hand = hand;
-            List<String> cardsToSpend = new List<String> { newYork.CityName, atlanta.CityName, chicagoCard.CityName, london.CityName, paris.CityName, milan.CityName };
-            List<Card> correctHand = new List<Card> { chennai, newYork, atlanta, chicagoCard, london, paris, milan, airlift };
-            opExpert.currentCity = chicagoCity;
-            chicagoCity.researchStation = true;
-            Assert.AreEqual(false, PlayerActionsBL.Cure(opExpert, cardsToSpend, COLOR.blue));
-            CollectionAssert.AreEqual(correctHand, hand);
-            chicagoCity.researchStation = false;
+            _hand = new List<Card> { _chennai, _newYork, _atlanta, _chicagoCard, _london, _paris, _milan, _airlift };
+            _opExpert.Hand = _hand;
+            List<string> cardsToSpend = new List<string> { _newYork.CityName, _atlanta.CityName, _chicagoCard.CityName, _london.CityName, _paris.CityName, _milan.CityName };
+            List<Card> correctHand = new List<Card> { _chennai, _newYork, _atlanta, _chicagoCard, _london, _paris, _milan, _airlift };
+            _opExpert.CurrentCity = _chicagoCity;
+            _chicagoCity.ResearchStation = true;
+            Assert.AreEqual(false, PlayerActionsBl.Cure(_opExpert, cardsToSpend, Color.Blue));
+            CollectionAssert.AreEqual(correctHand, _hand);
+            _chicagoCity.ResearchStation = false;
         }
 
         [TestMethod]
         public void TestCureInvalidCards()
         {
-            hand = new List<Card> { chennai, newYork, atlanta, chicagoCard, london, paris, airlift };
-            opExpert.hand = hand;
-            List<String> cardsToSpend = new List<String> { chennai.CityName, atlanta.CityName, chicagoCard.CityName, london.CityName, paris.CityName };
-            List<Card> correctHand = new List<Card> { chennai, newYork, atlanta, chicagoCard, london, paris, airlift };
-            opExpert.currentCity = chicagoCity;
-            chicagoCity.researchStation = true;
-            Assert.AreEqual(false, PlayerActionsBL.Cure(opExpert, cardsToSpend, COLOR.blue));
-            CollectionAssert.AreEqual(correctHand, hand);
-            chicagoCity.researchStation = false;
+            _hand = new List<Card> { _chennai, _newYork, _atlanta, _chicagoCard, _london, _paris, _airlift };
+            _opExpert.Hand = _hand;
+            List<string> cardsToSpend = new List<string> { _chennai.CityName, _atlanta.CityName, _chicagoCard.CityName, _london.CityName, _paris.CityName };
+            List<Card> correctHand = new List<Card> { _chennai, _newYork, _atlanta, _chicagoCard, _london, _paris, _airlift };
+            _opExpert.CurrentCity = _chicagoCity;
+            _chicagoCity.ResearchStation = true;
+            Assert.AreEqual(false, PlayerActionsBl.Cure(_opExpert, cardsToSpend, Color.Blue));
+            CollectionAssert.AreEqual(correctHand, _hand);
+            _chicagoCity.ResearchStation = false;
         }
 
         [TestMethod]
         public void TestCureNotInResearchStation()
         {
-            hand = new List<Card> { chennai, newYork, atlanta, chicagoCard, london, paris, airlift };
-            opExpert.hand = hand;
-            List<String> cardsToSpend = new List<String> { newYork.CityName, atlanta.CityName, chicagoCard.CityName, london.CityName, paris.CityName };
-            List<Card> correctHand = new List<Card> { chennai, newYork, atlanta, chicagoCard, london, paris, airlift };
-            opExpert.currentCity = chicagoCity;
-            chicagoCity.researchStation = false;
-            Assert.AreEqual(false, PlayerActionsBL.Cure(opExpert, cardsToSpend, COLOR.blue));
-            CollectionAssert.AreEqual(correctHand, hand);
+            _hand = new List<Card> { _chennai, _newYork, _atlanta, _chicagoCard, _london, _paris, _airlift };
+            _opExpert.Hand = _hand;
+            List<string> cardsToSpend = new List<string> { _newYork.CityName, _atlanta.CityName, _chicagoCard.CityName, _london.CityName, _paris.CityName };
+            List<Card> correctHand = new List<Card> { _chennai, _newYork, _atlanta, _chicagoCard, _london, _paris, _airlift };
+            _opExpert.CurrentCity = _chicagoCity;
+            _chicagoCity.ResearchStation = false;
+            Assert.AreEqual(false, PlayerActionsBl.Cure(_opExpert, cardsToSpend, Color.Blue));
+            CollectionAssert.AreEqual(correctHand, _hand);
         }
 
         [TestMethod]
         public void TestCureSimpleScientist()
         {
-            hand = new List<Card> { chennai, newYork, atlanta, chicagoCard, london, paris, airlift };
-            scientist.hand = hand;
-            List<String> cardsToSpend = new List<String> { newYork.CityName, atlanta.CityName, chicagoCard.CityName, london.CityName };
-            List<Card> correctHand = new List<Card> { chennai, paris, airlift };
-            scientist.currentCity = chicagoCity;
-            chicagoCity.researchStation = true;
-            Assert.AreEqual(true, PlayerActionsBL.Cure(scientist, cardsToSpend, COLOR.blue));
-            CollectionAssert.AreEqual(correctHand, hand);
-            chicagoCity.researchStation = false;
-            Assert.AreEqual(GameBoardModels.CURESTATUS.getCureStatus(COLOR.blue), GameBoardModels.Cures.CURESTATE.Cured);
-            GameBoardModels.CURESTATUS.setCureStatus(COLOR.blue, GameBoardModels.Cures.CURESTATE.NotCured);
+            _hand = new List<Card> { _chennai, _newYork, _atlanta, _chicagoCard, _london, _paris, _airlift };
+            _scientist.Hand = _hand;
+            List<string> cardsToSpend = new List<string> { _newYork.CityName, _atlanta.CityName, _chicagoCard.CityName, _london.CityName };
+            List<Card> correctHand = new List<Card> { _chennai, _paris, _airlift };
+            _scientist.CurrentCity = _chicagoCity;
+            _chicagoCity.ResearchStation = true;
+            Assert.AreEqual(true, PlayerActionsBl.Cure(_scientist, cardsToSpend, Color.Blue));
+            CollectionAssert.AreEqual(correctHand, _hand);
+            _chicagoCity.ResearchStation = false;
+            Assert.AreEqual(GameBoardModels.Curestatus.GetCureStatus(Color.Blue), GameBoardModels.Cures.Curestate.Cured);
+            GameBoardModels.Curestatus.SetCureStatus(Color.Blue, GameBoardModels.Cures.Curestate.NotCured);
         }
 
         [TestMethod]
         public void TestCureToManyValidCardsScientist()
         {
-            hand = new List<Card> { chennai, newYork, atlanta, chicagoCard, london, paris, airlift };
-            scientist.hand = hand;
-            List<String> cardsToSpend = new List<String> { newYork.CityName, atlanta.CityName, chicagoCard.CityName, london.CityName, paris.CityName};
-            List<Card> correctHand = new List<Card> { chennai, newYork, atlanta, chicagoCard, london, paris, airlift };
-            scientist.currentCity = chicagoCity;
-            chicagoCity.researchStation = true;
-            Assert.AreEqual(false, PlayerActionsBL.Cure(scientist, cardsToSpend, COLOR.blue));
-            CollectionAssert.AreEqual(correctHand, hand);
-            chicagoCity.researchStation = false;
+            _hand = new List<Card> { _chennai, _newYork, _atlanta, _chicagoCard, _london, _paris, _airlift };
+            _scientist.Hand = _hand;
+            List<string> cardsToSpend = new List<string> { _newYork.CityName, _atlanta.CityName, _chicagoCard.CityName, _london.CityName, _paris.CityName};
+            List<Card> correctHand = new List<Card> { _chennai, _newYork, _atlanta, _chicagoCard, _london, _paris, _airlift };
+            _scientist.CurrentCity = _chicagoCity;
+            _chicagoCity.ResearchStation = true;
+            Assert.AreEqual(false, PlayerActionsBl.Cure(_scientist, cardsToSpend, Color.Blue));
+            CollectionAssert.AreEqual(correctHand, _hand);
+            _chicagoCity.ResearchStation = false;
         }
 
         [TestMethod]
         public void TestCureSimpleAlreadyCured()
         {
-            hand = new List<Card> { chennai, newYork, atlanta, chicagoCard, london, paris, airlift };
-            opExpert.hand = hand;
-            List<String> cardsToSpend = new List<String> { newYork.CityName, atlanta.CityName, chicagoCard.CityName, london.CityName, paris.CityName };
-            List<Card> correctHand = new List<Card> { chennai, newYork, atlanta, chicagoCard, london, paris, airlift };
-            opExpert.currentCity = chicagoCity;
-            chicagoCity.researchStation = true;
-            GameBoardModels.CURESTATUS.BlueCure = GameBoardModels.Cures.CURESTATE.Cured;
-            Assert.AreEqual(false, PlayerActionsBL.Cure(opExpert, cardsToSpend, COLOR.blue));
-            CollectionAssert.AreEqual(correctHand, hand);
-            chicagoCity.researchStation = false;
-            GameBoardModels.CURESTATUS.BlueCure = GameBoardModels.Cures.CURESTATE.NotCured;
+            _hand = new List<Card> { _chennai, _newYork, _atlanta, _chicagoCard, _london, _paris, _airlift };
+            _opExpert.Hand = _hand;
+            List<string> cardsToSpend = new List<string> { _newYork.CityName, _atlanta.CityName, _chicagoCard.CityName, _london.CityName, _paris.CityName };
+            List<Card> correctHand = new List<Card> { _chennai, _newYork, _atlanta, _chicagoCard, _london, _paris, _airlift };
+            _opExpert.CurrentCity = _chicagoCity;
+            _chicagoCity.ResearchStation = true;
+            GameBoardModels.Curestatus.BlueCure = GameBoardModels.Cures.Curestate.Cured;
+            Assert.AreEqual(false, PlayerActionsBl.Cure(_opExpert, cardsToSpend, Color.Blue));
+            CollectionAssert.AreEqual(correctHand, _hand);
+            _chicagoCity.ResearchStation = false;
+            GameBoardModels.Curestatus.BlueCure = GameBoardModels.Cures.Curestate.NotCured;
 
         }
 
@@ -467,115 +467,115 @@ namespace SQADemicAppTest
         [TestMethod]
         public void TestTreatDiseaseBasicBlue()
         {
-            opExpert.currentCity = chicagoCity;
-            chicagoCity.blueCubes = 2;
-            Assert.AreEqual(true, PlayerActionsBL.TreatDiseaseOption(opExpert, COLOR.blue));
-            Assert.AreEqual(chicagoCity.blueCubes, 1);
+            _opExpert.CurrentCity = _chicagoCity;
+            _chicagoCity.BlueCubes = 2;
+            Assert.AreEqual(true, PlayerActionsBl.TreatDiseaseOption(_opExpert, Color.Blue));
+            Assert.AreEqual(_chicagoCity.BlueCubes, 1);
         }
 
         [TestMethod]
         public void TestTreatDiseaseBasicRed()
         {
-            opExpert.currentCity = chicagoCity;
-            chicagoCity.redCubes = 2;
-            Assert.AreEqual(true, PlayerActionsBL.TreatDiseaseOption(opExpert, COLOR.red));
-            Assert.AreEqual(chicagoCity.redCubes, 1);
+            _opExpert.CurrentCity = _chicagoCity;
+            _chicagoCity.RedCubes = 2;
+            Assert.AreEqual(true, PlayerActionsBl.TreatDiseaseOption(_opExpert, Color.Red));
+            Assert.AreEqual(_chicagoCity.RedCubes, 1);
         }
 
         [TestMethod]
-        public void TestTreatDiseaseBasicONLYellow()
+        public void TestTreatDiseaseBasicOnlYellow()
         {
-            opExpert.currentCity = chicagoCity;
-            chicagoCity.redCubes = 2; 
-            chicagoCity.blueCubes = 2;
-            chicagoCity.yellowCubes = 2;
-            chicagoCity.blackCubes= 3;
-            Assert.AreEqual(true, PlayerActionsBL.TreatDiseaseOption(opExpert, COLOR.yellow));
-            Assert.AreEqual(chicagoCity.redCubes, 2);
-            Assert.AreEqual(chicagoCity.blueCubes, 2);
-            Assert.AreEqual(chicagoCity.yellowCubes, 1);
-            Assert.AreEqual(chicagoCity.blackCubes, 3);
+            _opExpert.CurrentCity = _chicagoCity;
+            _chicagoCity.RedCubes = 2; 
+            _chicagoCity.BlueCubes = 2;
+            _chicagoCity.YellowCubes = 2;
+            _chicagoCity.BlackCubes= 3;
+            Assert.AreEqual(true, PlayerActionsBl.TreatDiseaseOption(_opExpert, Color.Yellow));
+            Assert.AreEqual(_chicagoCity.RedCubes, 2);
+            Assert.AreEqual(_chicagoCity.BlueCubes, 2);
+            Assert.AreEqual(_chicagoCity.YellowCubes, 1);
+            Assert.AreEqual(_chicagoCity.BlackCubes, 3);
         }
 
         [TestMethod]
         public void TestTreatDiseaseBasicDecreaseAll()
         {
-            opExpert.currentCity = chicagoCity;
-            chicagoCity.redCubes = 1;
-            chicagoCity.blueCubes = 2;
-            chicagoCity.yellowCubes = 2;
-            chicagoCity.blackCubes = 1;
-            Assert.AreEqual(true, PlayerActionsBL.TreatDiseaseOption(opExpert, COLOR.red));
-            Assert.AreEqual(true, PlayerActionsBL.TreatDiseaseOption(opExpert, COLOR.blue));
-            Assert.AreEqual(true, PlayerActionsBL.TreatDiseaseOption(opExpert, COLOR.yellow));
-            Assert.AreEqual(true, PlayerActionsBL.TreatDiseaseOption(opExpert, COLOR.black));
-            Assert.AreEqual(chicagoCity.redCubes, 0);
-            Assert.AreEqual(chicagoCity.blueCubes, 1);
-            Assert.AreEqual(chicagoCity.yellowCubes, 1);
-            Assert.AreEqual(chicagoCity.blackCubes, 0);
+            _opExpert.CurrentCity = _chicagoCity;
+            _chicagoCity.RedCubes = 1;
+            _chicagoCity.BlueCubes = 2;
+            _chicagoCity.YellowCubes = 2;
+            _chicagoCity.BlackCubes = 1;
+            Assert.AreEqual(true, PlayerActionsBl.TreatDiseaseOption(_opExpert, Color.Red));
+            Assert.AreEqual(true, PlayerActionsBl.TreatDiseaseOption(_opExpert, Color.Blue));
+            Assert.AreEqual(true, PlayerActionsBl.TreatDiseaseOption(_opExpert, Color.Yellow));
+            Assert.AreEqual(true, PlayerActionsBl.TreatDiseaseOption(_opExpert, Color.Black));
+            Assert.AreEqual(_chicagoCity.RedCubes, 0);
+            Assert.AreEqual(_chicagoCity.BlueCubes, 1);
+            Assert.AreEqual(_chicagoCity.YellowCubes, 1);
+            Assert.AreEqual(_chicagoCity.BlackCubes, 0);
         }
 
         [TestMethod]
         public void TestTreateDiesaseCuresExist()
         {
-            opExpert.currentCity = chicagoCity;
-            chicagoCity.redCubes = 1;
-            chicagoCity.blueCubes = 2;
-            chicagoCity.yellowCubes = 2;
-            chicagoCity.blackCubes = 3;
-            GameBoardModels.CURESTATUS.BlackCure = GameBoardModels.Cures.CURESTATE.Cured;
-            GameBoardModels.CURESTATUS.BlueCure = GameBoardModels.Cures.CURESTATE.Cured;
-            GameBoardModels.CURESTATUS.RedCure = GameBoardModels.Cures.CURESTATE.Cured;
-            GameBoardModels.CURESTATUS.YellowCure= GameBoardModels.Cures.CURESTATE.Cured;
-            Assert.AreEqual(true, PlayerActionsBL.TreatDiseaseOption(opExpert, COLOR.red));
-            Assert.AreEqual(true, PlayerActionsBL.TreatDiseaseOption(opExpert, COLOR.blue));
-            Assert.AreEqual(true, PlayerActionsBL.TreatDiseaseOption(opExpert, COLOR.yellow));
-            Assert.AreEqual(true, PlayerActionsBL.TreatDiseaseOption(opExpert, COLOR.black));
-            GameBoardModels.CURESTATUS.BlackCure = GameBoardModels.Cures.CURESTATE.NotCured;
-            GameBoardModels.CURESTATUS.BlueCure = GameBoardModels.Cures.CURESTATE.NotCured;
-            GameBoardModels.CURESTATUS.RedCure = GameBoardModels.Cures.CURESTATE.NotCured;
-            GameBoardModels.CURESTATUS.YellowCure = GameBoardModels.Cures.CURESTATE.NotCured;
-            Assert.AreEqual(chicagoCity.redCubes, 0);
-            Assert.AreEqual(chicagoCity.blueCubes, 0);
-            Assert.AreEqual(chicagoCity.yellowCubes, 0);
-            Assert.AreEqual(chicagoCity.blackCubes, 0);
+            _opExpert.CurrentCity = _chicagoCity;
+            _chicagoCity.RedCubes = 1;
+            _chicagoCity.BlueCubes = 2;
+            _chicagoCity.YellowCubes = 2;
+            _chicagoCity.BlackCubes = 3;
+            GameBoardModels.Curestatus.BlackCure = GameBoardModels.Cures.Curestate.Cured;
+            GameBoardModels.Curestatus.BlueCure = GameBoardModels.Cures.Curestate.Cured;
+            GameBoardModels.Curestatus.RedCure = GameBoardModels.Cures.Curestate.Cured;
+            GameBoardModels.Curestatus.YellowCure= GameBoardModels.Cures.Curestate.Cured;
+            Assert.AreEqual(true, PlayerActionsBl.TreatDiseaseOption(_opExpert, Color.Red));
+            Assert.AreEqual(true, PlayerActionsBl.TreatDiseaseOption(_opExpert, Color.Blue));
+            Assert.AreEqual(true, PlayerActionsBl.TreatDiseaseOption(_opExpert, Color.Yellow));
+            Assert.AreEqual(true, PlayerActionsBl.TreatDiseaseOption(_opExpert, Color.Black));
+            GameBoardModels.Curestatus.BlackCure = GameBoardModels.Cures.Curestate.NotCured;
+            GameBoardModels.Curestatus.BlueCure = GameBoardModels.Cures.Curestate.NotCured;
+            GameBoardModels.Curestatus.RedCure = GameBoardModels.Cures.Curestate.NotCured;
+            GameBoardModels.Curestatus.YellowCure = GameBoardModels.Cures.Curestate.NotCured;
+            Assert.AreEqual(_chicagoCity.RedCubes, 0);
+            Assert.AreEqual(_chicagoCity.BlueCubes, 0);
+            Assert.AreEqual(_chicagoCity.YellowCubes, 0);
+            Assert.AreEqual(_chicagoCity.BlackCubes, 0);
         }
 
         [TestMethod]
         public void TestTreatDiseaseMedicDecreaseAll()
         {
-            medic.currentCity = chicagoCity;
-            chicagoCity.redCubes = 1;
-            chicagoCity.blueCubes = 2;
-            chicagoCity.yellowCubes = 3;
-            chicagoCity.blackCubes = 1;
-            Assert.AreEqual(true, PlayerActionsBL.TreatDiseaseOption(medic, COLOR.red));
-            Assert.AreEqual(true, PlayerActionsBL.TreatDiseaseOption(medic, COLOR.blue));
-            Assert.AreEqual(true, PlayerActionsBL.TreatDiseaseOption(medic, COLOR.yellow));
-            Assert.AreEqual(true, PlayerActionsBL.TreatDiseaseOption(medic, COLOR.black));
-            Assert.AreEqual(chicagoCity.redCubes, 0);
-            Assert.AreEqual(chicagoCity.blueCubes, 0);
-            Assert.AreEqual(chicagoCity.yellowCubes, 0);
-            Assert.AreEqual(chicagoCity.blackCubes, 0);
+            _medic.CurrentCity = _chicagoCity;
+            _chicagoCity.RedCubes = 1;
+            _chicagoCity.BlueCubes = 2;
+            _chicagoCity.YellowCubes = 3;
+            _chicagoCity.BlackCubes = 1;
+            Assert.AreEqual(true, PlayerActionsBl.TreatDiseaseOption(_medic, Color.Red));
+            Assert.AreEqual(true, PlayerActionsBl.TreatDiseaseOption(_medic, Color.Blue));
+            Assert.AreEqual(true, PlayerActionsBl.TreatDiseaseOption(_medic, Color.Yellow));
+            Assert.AreEqual(true, PlayerActionsBl.TreatDiseaseOption(_medic, Color.Black));
+            Assert.AreEqual(_chicagoCity.RedCubes, 0);
+            Assert.AreEqual(_chicagoCity.BlueCubes, 0);
+            Assert.AreEqual(_chicagoCity.YellowCubes, 0);
+            Assert.AreEqual(_chicagoCity.BlackCubes, 0);
         }
 
         [TestMethod]
         public void TestTreatDiseaseZero()
         {
-            opExpert.currentCity = chicagoCity;
-            medic.currentCity = chicagoCity;
-            chicagoCity.redCubes = 0;
-            chicagoCity.blueCubes = 0;
-            chicagoCity.yellowCubes = 0;
-            chicagoCity.blackCubes = 0;
-            Assert.AreEqual(false, PlayerActionsBL.TreatDiseaseOption(opExpert, COLOR.red));
-            Assert.AreEqual(false, PlayerActionsBL.TreatDiseaseOption(opExpert, COLOR.blue));
-            Assert.AreEqual(false, PlayerActionsBL.TreatDiseaseOption(medic, COLOR.yellow));
-            Assert.AreEqual(false, PlayerActionsBL.TreatDiseaseOption(medic, COLOR.black));
-            Assert.AreEqual(chicagoCity.redCubes, 0);
-            Assert.AreEqual(chicagoCity.blueCubes, 0);
-            Assert.AreEqual(chicagoCity.yellowCubes, 0);
-            Assert.AreEqual(chicagoCity.blackCubes, 0);
+            _opExpert.CurrentCity = _chicagoCity;
+            _medic.CurrentCity = _chicagoCity;
+            _chicagoCity.RedCubes = 0;
+            _chicagoCity.BlueCubes = 0;
+            _chicagoCity.YellowCubes = 0;
+            _chicagoCity.BlackCubes = 0;
+            Assert.AreEqual(false, PlayerActionsBl.TreatDiseaseOption(_opExpert, Color.Red));
+            Assert.AreEqual(false, PlayerActionsBl.TreatDiseaseOption(_opExpert, Color.Blue));
+            Assert.AreEqual(false, PlayerActionsBl.TreatDiseaseOption(_medic, Color.Yellow));
+            Assert.AreEqual(false, PlayerActionsBl.TreatDiseaseOption(_medic, Color.Black));
+            Assert.AreEqual(_chicagoCity.RedCubes, 0);
+            Assert.AreEqual(_chicagoCity.BlueCubes, 0);
+            Assert.AreEqual(_chicagoCity.YellowCubes, 0);
+            Assert.AreEqual(_chicagoCity.BlackCubes, 0);
         }
 
         #endregion
@@ -584,72 +584,72 @@ namespace SQADemicAppTest
         [TestMethod]
         public void TestShareChicagosimple()
         {
-            List<Card> hand1 = new List<Card> { chennai, newYork, chicagoCard };
-            List<Card> hand2 = new List<Card> { atlanta, london };
-            scientist.hand = new List<Card> { chennai, newYork };
-            opExpert.hand = new List<Card> { atlanta, london, chicagoCard };
-            scientist.currentCity = chicagoCity;
-            opExpert.currentCity = chicagoCity;
-            Assert.AreEqual(true, PlayerActionsBL.ShareKnowledgeOption(opExpert, scientist, chicagoCard.CityName));
-            CollectionAssert.AreEqual(scientist.hand, hand1);
-            CollectionAssert.AreEqual(opExpert.hand, hand2);
+            List<Card> hand1 = new List<Card> { _chennai, _newYork, _chicagoCard };
+            List<Card> hand2 = new List<Card> { _atlanta, _london };
+            _scientist.Hand = new List<Card> { _chennai, _newYork };
+            _opExpert.Hand = new List<Card> { _atlanta, _london, _chicagoCard };
+            _scientist.CurrentCity = _chicagoCity;
+            _opExpert.CurrentCity = _chicagoCity;
+            Assert.AreEqual(true, PlayerActionsBl.ShareKnowledgeOption(_opExpert, _scientist, _chicagoCard.CityName));
+            CollectionAssert.AreEqual(_scientist.Hand, hand1);
+            CollectionAssert.AreEqual(_opExpert.Hand, hand2);
         }
 
         [TestMethod]
-        public void TestShareChicagoDiffrentCityFAIL()
+        public void TestShareChicagoDiffrentCityFail()
         {
-            List<Card> hand1 = new List<Card> { chennai, newYork };
-            List<Card> hand2 = new List<Card> { atlanta, london, chicagoCard };
-            scientist.hand = new List<Card> { chennai, newYork };
-            opExpert.hand = new List<Card> { atlanta, london, chicagoCard };
-            scientist.currentCity = chicagoCity;
-            opExpert.currentCity = bangkok;
-            Assert.AreEqual(false, PlayerActionsBL.ShareKnowledgeOption(opExpert, scientist, chicagoCard.CityName));
-            CollectionAssert.AreEqual(scientist.hand, hand1);
-            CollectionAssert.AreEqual(opExpert.hand, hand2);
+            List<Card> hand1 = new List<Card> { _chennai, _newYork };
+            List<Card> hand2 = new List<Card> { _atlanta, _london, _chicagoCard };
+            _scientist.Hand = new List<Card> { _chennai, _newYork };
+            _opExpert.Hand = new List<Card> { _atlanta, _london, _chicagoCard };
+            _scientist.CurrentCity = _chicagoCity;
+            _opExpert.CurrentCity = _bangkok;
+            Assert.AreEqual(false, PlayerActionsBl.ShareKnowledgeOption(_opExpert, _scientist, _chicagoCard.CityName));
+            CollectionAssert.AreEqual(_scientist.Hand, hand1);
+            CollectionAssert.AreEqual(_opExpert.Hand, hand2);
         }
 
 
         [TestMethod]
-        public void TestShareChicagoinBangkokFAIL()
+        public void TestShareChicagoinBangkokFail()
         {
-            List<Card> hand1 = new List<Card> { chennai, newYork };
-            List<Card> hand2 = new List<Card> { atlanta, london, chicagoCard };
-            scientist.hand = new List<Card> { chennai, newYork };
-            opExpert.hand = new List<Card> { atlanta, london, chicagoCard };
-            scientist.currentCity = bangkok;
-            opExpert.currentCity = bangkok;
-            Assert.AreEqual(false, PlayerActionsBL.ShareKnowledgeOption(opExpert, scientist, chicagoCard.CityName));
-            CollectionAssert.AreEqual(scientist.hand, hand1);
-            CollectionAssert.AreEqual(opExpert.hand, hand2);
+            List<Card> hand1 = new List<Card> { _chennai, _newYork };
+            List<Card> hand2 = new List<Card> { _atlanta, _london, _chicagoCard };
+            _scientist.Hand = new List<Card> { _chennai, _newYork };
+            _opExpert.Hand = new List<Card> { _atlanta, _london, _chicagoCard };
+            _scientist.CurrentCity = _bangkok;
+            _opExpert.CurrentCity = _bangkok;
+            Assert.AreEqual(false, PlayerActionsBl.ShareKnowledgeOption(_opExpert, _scientist, _chicagoCard.CityName));
+            CollectionAssert.AreEqual(_scientist.Hand, hand1);
+            CollectionAssert.AreEqual(_opExpert.Hand, hand2);
         }
 
         [TestMethod]
-        public void TestShareChicagoinBangkokResearcherPASS()
+        public void TestShareChicagoinBangkokResearcherPass()
         {
-            List<Card> hand1 = new List<Card> { chennai, newYork, chicagoCard };
-            List<Card> hand2 = new List<Card> { atlanta, london };
-            scientist.hand = new List<Card> { chennai, newYork };
-            researcher.hand = new List<Card> { atlanta, london, chicagoCard };
-            scientist.currentCity = bangkok;
-            researcher.currentCity = bangkok;
-            Assert.AreEqual(true, PlayerActionsBL.ShareKnowledgeOption(researcher, scientist, chicagoCard.CityName));
-            CollectionAssert.AreEqual(scientist.hand, hand1);
-            CollectionAssert.AreEqual(researcher.hand, hand2);
+            List<Card> hand1 = new List<Card> { _chennai, _newYork, _chicagoCard };
+            List<Card> hand2 = new List<Card> { _atlanta, _london };
+            _scientist.Hand = new List<Card> { _chennai, _newYork };
+            _researcher.Hand = new List<Card> { _atlanta, _london, _chicagoCard };
+            _scientist.CurrentCity = _bangkok;
+            _researcher.CurrentCity = _bangkok;
+            Assert.AreEqual(true, PlayerActionsBl.ShareKnowledgeOption(_researcher, _scientist, _chicagoCard.CityName));
+            CollectionAssert.AreEqual(_scientist.Hand, hand1);
+            CollectionAssert.AreEqual(_researcher.Hand, hand2);
         }
 
         [TestMethod]
         public void TestShareChicagoMissingCardFail()
         {
-            List<Card> hand1 = new List<Card> { chennai, newYork };
-            List<Card> hand2 = new List<Card> { atlanta, london };
-            scientist.hand = new List<Card> { chennai, newYork };
-            opExpert.hand = new List<Card> { atlanta, london};
-            scientist.currentCity = chicagoCity;
-            opExpert.currentCity = chicagoCity;
-            Assert.AreEqual(false, PlayerActionsBL.ShareKnowledgeOption(opExpert, scientist, chicagoCard.CityName));
-            CollectionAssert.AreEqual(scientist.hand, hand1);
-            CollectionAssert.AreEqual(opExpert.hand, hand2);
+            List<Card> hand1 = new List<Card> { _chennai, _newYork };
+            List<Card> hand2 = new List<Card> { _atlanta, _london };
+            _scientist.Hand = new List<Card> { _chennai, _newYork };
+            _opExpert.Hand = new List<Card> { _atlanta, _london};
+            _scientist.CurrentCity = _chicagoCity;
+            _opExpert.CurrentCity = _chicagoCity;
+            Assert.AreEqual(false, PlayerActionsBl.ShareKnowledgeOption(_opExpert, _scientist, _chicagoCard.CityName));
+            CollectionAssert.AreEqual(_scientist.Hand, hand1);
+            CollectionAssert.AreEqual(_opExpert.Hand, hand2);
         }
 
         #endregion
@@ -659,40 +659,40 @@ namespace SQADemicAppTest
         [TestMethod]
         public void TestDispatcherMoveAdjacentCitySanFran()
         {
-            scientist.currentCity = chicagoCity;
-            Assert.AreEqual(PlayerActionsBL.DispatcherMovePlayer(scientist, players, sanFran), true);
-            Assert.AreEqual(scientist.currentCity.Name, sanFran.Name);
+            _scientist.CurrentCity = _chicagoCity;
+            Assert.AreEqual(PlayerActionsBl.DispatcherMovePlayer(_scientist, _players, _sanFran), true);
+            Assert.AreEqual(_scientist.CurrentCity.Name, _sanFran.Name);
         }
 
 
         [TestMethod]
         public void TestDispatcherMoveInvalidCityKolkata()
         {
-            scientist.currentCity = chicagoCity;
-            Assert.AreEqual(PlayerActionsBL.DispatcherMovePlayer(scientist, players, kolkata), false);
-            Assert.AreEqual(scientist.currentCity.Name, chicagoCity.Name);
+            _scientist.CurrentCity = _chicagoCity;
+            Assert.AreEqual(PlayerActionsBl.DispatcherMovePlayer(_scientist, _players, _kolkata), false);
+            Assert.AreEqual(_scientist.CurrentCity.Name, _chicagoCity.Name);
         }
 
         [TestMethod]
         public void TestDispatcherMoveToOtherPlayer()
         {
-            scientist.currentCity = chicagoCity;
-            opExpert.currentCity = bangkok; 
-            Assert.AreEqual(PlayerActionsBL.DispatcherMovePlayer(scientist, players, bangkok), true);
-            Assert.AreEqual(scientist.currentCity.Name, bangkok.Name);
-            opExpert.currentCity = chicagoCity;
+            _scientist.CurrentCity = _chicagoCity;
+            _opExpert.CurrentCity = _bangkok; 
+            Assert.AreEqual(PlayerActionsBl.DispatcherMovePlayer(_scientist, _players, _bangkok), true);
+            Assert.AreEqual(_scientist.CurrentCity.Name, _bangkok.Name);
+            _opExpert.CurrentCity = _chicagoCity;
         }
 
         [TestMethod]
         public void TestDispatcherMoveShuttleFlight()
         {
-            chicagoCity.researchStation = true;
-            bangkok.researchStation = true;
-            scientist.currentCity = chicagoCity;
-            Assert.AreEqual(true, PlayerActionsBL.DispatcherMovePlayer(scientist, players, bangkok));
-            Assert.AreEqual(scientist.currentCity.Name, bangkok.Name);
-            chicagoCity.researchStation = false;
-            bangkok.researchStation = false;
+            _chicagoCity.ResearchStation = true;
+            _bangkok.ResearchStation = true;
+            _scientist.CurrentCity = _chicagoCity;
+            Assert.AreEqual(true, PlayerActionsBl.DispatcherMovePlayer(_scientist, _players, _bangkok));
+            Assert.AreEqual(_scientist.CurrentCity.Name, _bangkok.Name);
+            _chicagoCity.ResearchStation = false;
+            _bangkok.ResearchStation = false;
         }
 
 
@@ -701,47 +701,47 @@ namespace SQADemicAppTest
         [TestMethod]
         public void TestIncrementAfterCureDiseaseBasicBlue()
         {
-            opExpert.currentCity = chicagoCity;
-            GameBoardModels.cubeCount.blueCubes = 22;
-            chicagoCity.blueCubes = 2;
-            Assert.AreEqual(true, PlayerActionsBL.TreatDiseaseOption(opExpert, COLOR.blue));
-            Assert.AreEqual(chicagoCity.blueCubes, 1);
-            Assert.AreEqual(GameBoardModels.cubeCount.blueCubes, 23);
+            _opExpert.CurrentCity = _chicagoCity;
+            GameBoardModels.CubeCount.BlueCubes = 22;
+            _chicagoCity.BlueCubes = 2;
+            Assert.AreEqual(true, PlayerActionsBl.TreatDiseaseOption(_opExpert, Color.Blue));
+            Assert.AreEqual(_chicagoCity.BlueCubes, 1);
+            Assert.AreEqual(GameBoardModels.CubeCount.BlueCubes, 23);
         }
 
         [TestMethod]
         public void TestIncrementAfterCureDiseaseRed()
         {
-            opExpert.currentCity = chicagoCity;
-            GameBoardModels.cubeCount.redCubes = 22;
-            chicagoCity.redCubes = 2;
-            Assert.AreEqual(true, PlayerActionsBL.TreatDiseaseOption(opExpert, COLOR.red));
-            Assert.AreEqual(chicagoCity.redCubes, 1);
-            Assert.AreEqual(GameBoardModels.cubeCount.redCubes, 23);
+            _opExpert.CurrentCity = _chicagoCity;
+            GameBoardModels.CubeCount.RedCubes = 22;
+            _chicagoCity.RedCubes = 2;
+            Assert.AreEqual(true, PlayerActionsBl.TreatDiseaseOption(_opExpert, Color.Red));
+            Assert.AreEqual(_chicagoCity.RedCubes, 1);
+            Assert.AreEqual(GameBoardModels.CubeCount.RedCubes, 23);
         }
 
         [TestMethod]
         public void TestIncrementAfterMedicCureDiseaseRed()
         {
-            medic.currentCity = chicagoCity;
-            GameBoardModels.cubeCount.redCubes = 22;
-            chicagoCity.redCubes = 2;
-            Assert.AreEqual(true, PlayerActionsBL.TreatDiseaseOption(medic, COLOR.red));
-            Assert.AreEqual(chicagoCity.redCubes, 0);
-            Assert.AreEqual(GameBoardModels.cubeCount.redCubes, 24);
+            _medic.CurrentCity = _chicagoCity;
+            GameBoardModels.CubeCount.RedCubes = 22;
+            _chicagoCity.RedCubes = 2;
+            Assert.AreEqual(true, PlayerActionsBl.TreatDiseaseOption(_medic, Color.Red));
+            Assert.AreEqual(_chicagoCity.RedCubes, 0);
+            Assert.AreEqual(GameBoardModels.CubeCount.RedCubes, 24);
         }
 
         [TestMethod]
         [ExpectedException(typeof(InvalidOperationException))]
         public void TestWinCon()
         {
-            List<String> cardsToSpend = new List<String> { atlanta.CityName, chicagoCard.CityName, london.CityName, paris.CityName };
-            GameBoardModels.CURESTATUS.setCureStatus(COLOR.blue , GameBoardModels.Cures.CURESTATE.NotCured);
-            GameBoardModels.CURESTATUS.setCureStatus(COLOR.yellow, GameBoardModels.Cures.CURESTATE.Cured);
-            GameBoardModels.CURESTATUS.setCureStatus(COLOR.red, GameBoardModels.Cures.CURESTATE.Cured);
-            GameBoardModels.CURESTATUS.setCureStatus(COLOR.black, GameBoardModels.Cures.CURESTATE.Cured);
-            scientist.hand = new List<Card> { atlanta, chicagoCard, london, paris };
-            PlayerActionsBL.Cure(scientist, cardsToSpend, COLOR.blue);
+            List<string> cardsToSpend = new List<string> { _atlanta.CityName, _chicagoCard.CityName, _london.CityName, _paris.CityName };
+            GameBoardModels.Curestatus.SetCureStatus(Color.Blue , GameBoardModels.Cures.Curestate.NotCured);
+            GameBoardModels.Curestatus.SetCureStatus(Color.Yellow, GameBoardModels.Cures.Curestate.Cured);
+            GameBoardModels.Curestatus.SetCureStatus(Color.Red, GameBoardModels.Cures.Curestate.Cured);
+            GameBoardModels.Curestatus.SetCureStatus(Color.Black, GameBoardModels.Cures.Curestate.Cured);
+            _scientist.Hand = new List<Card> { _atlanta, _chicagoCard, _london, _paris };
+            PlayerActionsBl.Cure(_scientist, cardsToSpend, Color.Blue);
 
         }
     }

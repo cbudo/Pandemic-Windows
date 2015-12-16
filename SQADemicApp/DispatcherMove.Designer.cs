@@ -41,6 +41,7 @@
             this.Player1.TabIndex = 0;
             this.Player1.Text = "Player 1";
             this.Player1.UseVisualStyleBackColor = true;
+            this.Player1.Click += new System.EventHandler(this.Player_Click);
             // 
             // Player2
             // 
@@ -50,6 +51,7 @@
             this.Player2.TabIndex = 1;
             this.Player2.Text = "Player 2";
             this.Player2.UseVisualStyleBackColor = true;
+            this.Player2.Click += new System.EventHandler(this.Player_Click);
             // 
             // Player3
             // 
@@ -59,6 +61,7 @@
             this.Player3.TabIndex = 2;
             this.Player3.Text = "Player 3";
             this.Player3.UseVisualStyleBackColor = true;
+            this.Player3.Click += new System.EventHandler(this.Player_Click);
             // 
             // DispatcherMove
             // 

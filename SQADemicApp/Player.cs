@@ -3,33 +3,33 @@ using System.Collections.Generic;
 
 namespace SQADemicApp
 {
-    public enum ROLE { Dispatcher, Medic, OpExpert, Researcher, Scientist };
+    public enum Role { Dispatcher, Medic, OpExpert, Researcher, Scientist };
 
     public class Player
     {
-        public readonly ROLE role;
-        public List<Card> hand { get; set; }
-        public City currentCity { get; set; }
+        public readonly Role Role;
+        public List<Card> Hand { get; set; }
+        public City CurrentCity { get; set; }
 
-        public Player(ROLE role)
+        public Player(Role role)
         {
-            this.role = role;
-            hand = new List<Card>();
-            currentCity = Create.cityDictionary["Atlanta"];
+            this.Role = role;
+            Hand = new List<Card>();
+            CurrentCity = Create.CityDictionary["Atlanta"];
         }
 
-        public void move(City destination)
+        public void Move(City destination)
         {
         }
 
-        public List<Object> handStringList()
+        public List<Object> HandStringList()
         {
             List<Object> stringHand = new List<Object>();
-            if (hand.Equals(null))
+            if (Hand.Equals(null))
             {
                 return stringHand;
             }
-            foreach (var card in hand)
+            foreach (var card in Hand)
             {
                 stringHand.Add(card.CityName + " (" + card.CityColor.ToString() + ")");
             }

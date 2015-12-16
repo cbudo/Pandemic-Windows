@@ -6,43 +6,43 @@ namespace SQADemicApp
 {
     public partial class TreatDiseaseForm : Form
     {
-        private GameBoard board;
+        private GameBoard _board;
 
         public TreatDiseaseForm(GameBoard board)
         {
-            this.board = board;
+            this._board = board;
             InitializeComponent();
         }
 
         private void ColorButton_Click(object sender, EventArgs e)
         {
             var button = sender as Button;
-            COLOR colorChoice;
+            Color colorChoice;
             switch (button.Text)
             {
                 case "Blue":
-                    colorChoice = COLOR.blue;
+                    colorChoice = Color.Blue;
                     break;
 
                 case "Black":
-                    colorChoice = COLOR.black;
+                    colorChoice = Color.Black;
                     break;
 
                 case "Red":
-                    colorChoice = COLOR.red;
+                    colorChoice = Color.Red;
                     break;
 
                 default:
-                    colorChoice = COLOR.yellow;
+                    colorChoice = Color.Yellow;
                     break;
             }
-            PlayerActionsBL.TreatDiseaseOption(GameBoardModels.players[GameBoardModels.CurrentPlayerIndex], colorChoice);
+            PlayerActionsBl.TreatDiseaseOption(GameBoardModels.Players[GameBoardModels.CurrentPlayerIndex], colorChoice);
 
-            if (this.board.boardModel.incTurnCount())
-                GameBoard.turnpart = GameBoard.TURNPART.Draw;
+            if (this._board.BoardModel.IncTurnCount())
+                GameBoard.TurnPart = GameBoard.Turnpart.Draw;
             this.Close();
-            board.UpdatePlayerForm();
-            board.UpdateCityButtons(false);
+            _board.UpdatePlayerForm();
+            _board.UpdateCityButtons(false);
         }
     }
 }

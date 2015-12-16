@@ -10,13 +10,13 @@ namespace SQADemicApp
         {
             InitializeComponent();
             listBox1.Items.Clear();
-            listBox1.Items.AddRange(eventCardNames().ToArray());
+            listBox1.Items.AddRange(EventCardNames().ToArray());
         }
 
-        private List<object> eventCardNames()
+        private List<object> EventCardNames()
         {
             List<object> eventCards = new List<object>();
-            foreach (var eventCard in GameBoardModels.eventCards)
+            foreach (var eventCard in GameBoardModels.EventCards)
             {
                 eventCards.Add(eventCard.CityName);
             }
@@ -26,7 +26,7 @@ namespace SQADemicApp
         public void UpdateEventCards()
         {
             listBox1.Items.Clear();
-            listBox1.Items.AddRange(eventCardNames().ToArray());
+            listBox1.Items.AddRange(EventCardNames().ToArray());
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -37,11 +37,11 @@ namespace SQADemicApp
                 switch (selectedCard)
                 {
                     case "Airlift":
-                        GameBoard.CurrentState = GameBoard.STATE.Airlift;
+                        GameBoard.CurrentState = GameBoard.State.Airlift;
                         break;
 
                     case "One Quiet Night":
-                        PlayerPanel.quietNight = true;
+                        PlayerPanel.QuietNight = true;
                         break;
 
                     case "Resilient Population":
@@ -50,7 +50,7 @@ namespace SQADemicApp
                         break;
 
                     case "Government Grant":
-                        GameBoard.CurrentState = GameBoard.STATE.GovGrant;
+                        GameBoard.CurrentState = GameBoard.State.GovGrant;
                         break;
 
                     case "Forecast":
@@ -58,7 +58,7 @@ namespace SQADemicApp
                         forecast.Show();
                         break;
                 }
-                GameBoardModels.eventCards.RemoveAll(x => x.CityName == selectedCard);
+                GameBoardModels.EventCards.RemoveAll(x => x.CityName == selectedCard);
                 UpdateEventCards();
             }
             catch (NullReferenceException)

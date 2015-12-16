@@ -46,7 +46,7 @@ namespace SQADemicApp
                 MessageBox.Show("You cannot have more than one: " + duplicateWords.Substring(0, duplicateWords.Length - 2));
                 return;
             }
-            Program.rolesArray = rolesArray;
+            Program.RolesArray = rolesArray;
             this.Close();
         }
     }

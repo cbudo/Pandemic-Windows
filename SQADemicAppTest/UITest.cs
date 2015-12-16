@@ -16,9 +16,9 @@ namespace SQADemicAppTest
     /// Summary description for UITest
     /// </summary>
     [CodedUITest]
-    public class UITest
+    public class UiTest
     {
-        public UITest()
+        public UiTest()
         {
         }
 
@@ -56,13 +56,13 @@ namespace SQADemicAppTest
         {
             get
             {
-                return testContextInstance;
+                return _testContextInstance;
             }
             set
             {
-                testContextInstance = value;
+                _testContextInstance = value;
             }
         }
-        private TestContext testContextInstance;
+        private TestContext _testContextInstance;
     }
 }

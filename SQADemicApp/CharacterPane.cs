@@ -6,7 +6,7 @@ namespace SQADemicApp
 {
     public partial class CharacterPane : Form
     {
-        private string[] playerRoles;
+        private string[] _playerRoles;
 
         public CharacterPane()
         {
@@ -16,7 +16,7 @@ namespace SQADemicApp
         public CharacterPane(string[] playerRoles)
         {
             InitializeComponent();
-            this.playerRoles = playerRoles;
+            this._playerRoles = playerRoles;
             switch (playerRoles.Count())
             {
                 case 1:
@@ -34,10 +34,10 @@ namespace SQADemicApp
         private void Player_Click(object sender, EventArgs e)
         {
             var btn = sender as Button;
-            if (GameBoard.CurrentState == GameBoard.STATE.Dispatcher)
+            if (GameBoard.CurrentState == GameBoard.State.Dispatcher)
             {
                 var playernum = btn.Text.Substring(7, 1);
-                GameBoard.dispatcherMoveIndex = Convert.ToInt32(playernum) - 1;
+                GameBoard.DispatcherMoveIndex = Convert.ToInt32(playernum) - 1;
             }
         }
     }

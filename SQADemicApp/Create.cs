@@ -8,89 +8,89 @@ namespace SQADemicApp
 {
     public class Create
     {
-        public static Dictionary<string, City> cityDictionary = new Dictionary<string, City>();
-        private static bool alreadySetUp = false;
+        public static Dictionary<string, City> CityDictionary = new Dictionary<string, City>();
+        private static bool _alreadySetUp = false;
 
         /// <summary>
         /// Sets up all of the dictionaries
         /// </summary>
         /// <param name="playerdeck"></param>
         /// <returns>status flag</returns>
-        public static bool setUpCreate(out Card[] playerdeck, out List<String> infectionDeck)
+        public static bool SetUpCreate(out Card[] playerdeck, out List<string> infectionDeck)
         {
             //Keep from making duplicates
             //if (alreadySetUp)
             //  return false;
-            createDictionary();
-            setAdjacentCities(new StringReader(Properties.Resources.AdjacentNeighbors));
-            playerdeck = makePlayerDeck();
-            infectionDeck = makeInfectionDeck(new StringReader(Properties.Resources.InfectionDeck));
-            cityDictionary["Atlanta"].researchStation = true;
+            CreateDictionary();
+            SetAdjacentCities(new StringReader(Properties.Resources.AdjacentNeighbors));
+            playerdeck = MakePlayerDeck();
+            infectionDeck = MakeInfectionDeck(new StringReader(Properties.Resources.InfectionDeck));
+            CityDictionary["Atlanta"].ResearchStation = true;
             return true;
         }
 
         /// <summary>
         /// PUBLIC FOR TESTING ONLY
         /// </summary>
-        public static void createDictionary()
+        public static void CreateDictionary()
         {
             #region Createcities
 
             //create the blues
-            City sanFrancisco = new City(COLOR.blue, "San Francisco");
-            City chicago = new City(COLOR.blue, "Chicago");
-            City montreal = new City(COLOR.blue, "Montreal");
-            City newYork = new City(COLOR.blue, "New York");
-            City washington = new City(COLOR.blue, "Washington");
-            City atlanta = new City(COLOR.blue, "Atlanta");
-            City london = new City(COLOR.blue, "London");
-            City madrid = new City(COLOR.blue, "Madrid");
-            City paris = new City(COLOR.blue, "Paris");
-            City milan = new City(COLOR.blue, "Milan");
-            City stPetersburg = new City(COLOR.blue, "Saint Petersburg");
-            City essen = new City(COLOR.blue, "Essen");
+            City sanFrancisco = new City(Color.Blue, "San Francisco");
+            City chicago = new City(Color.Blue, "Chicago");
+            City montreal = new City(Color.Blue, "Montreal");
+            City newYork = new City(Color.Blue, "New York");
+            City washington = new City(Color.Blue, "Washington");
+            City atlanta = new City(Color.Blue, "Atlanta");
+            City london = new City(Color.Blue, "London");
+            City madrid = new City(Color.Blue, "Madrid");
+            City paris = new City(Color.Blue, "Paris");
+            City milan = new City(Color.Blue, "Milan");
+            City stPetersburg = new City(Color.Blue, "Saint Petersburg");
+            City essen = new City(Color.Blue, "Essen");
 
             //create the yellows
-            City losAngeles = new City(COLOR.yellow, "Los Angeles");
-            City mexicoCity = new City(COLOR.yellow, "Mexico City");
-            City miami = new City(COLOR.yellow, "Miami");
-            City bogota = new City(COLOR.yellow, "Bogota");
-            City lima = new City(COLOR.yellow, "Lima");
-            City saoPaulo = new City(COLOR.yellow, "Sao Paulo");
-            City buenosAires = new City(COLOR.yellow, "Buenos Aires");
-            City santiago = new City(COLOR.yellow, "Santiago");
-            City lagos = new City(COLOR.yellow, "Lagos");
-            City khartoum = new City(COLOR.yellow, "Khartoum");
-            City kinshasa = new City(COLOR.yellow, "Kinshasa");
-            City johannesburg = new City(COLOR.yellow, "Johannesburg");
+            City losAngeles = new City(Color.Yellow, "Los Angeles");
+            City mexicoCity = new City(Color.Yellow, "Mexico City");
+            City miami = new City(Color.Yellow, "Miami");
+            City bogota = new City(Color.Yellow, "Bogota");
+            City lima = new City(Color.Yellow, "Lima");
+            City saoPaulo = new City(Color.Yellow, "Sao Paulo");
+            City buenosAires = new City(Color.Yellow, "Buenos Aires");
+            City santiago = new City(Color.Yellow, "Santiago");
+            City lagos = new City(Color.Yellow, "Lagos");
+            City khartoum = new City(Color.Yellow, "Khartoum");
+            City kinshasa = new City(Color.Yellow, "Kinshasa");
+            City johannesburg = new City(Color.Yellow, "Johannesburg");
 
             //create the blacks
-            City algiers = new City(COLOR.black, "Algiers");
-            City cairo = new City(COLOR.black, "Cairo");
-            City istanbul = new City(COLOR.black, "Istanbul");
-            City moscow = new City(COLOR.black, "Moscow");
-            City baghdad = new City(COLOR.black, "Baghdad");
-            City riyadh = new City(COLOR.black, "Riyadh");
-            City tehran = new City(COLOR.black, "Tehran");
-            City karachi = new City(COLOR.black, "Karachi");
-            City delhi = new City(COLOR.black, "Delhi");
-            City mumbai = new City(COLOR.black, "Mumbai");
-            City chennai = new City(COLOR.black, "Chennai");
-            City kolkata = new City(COLOR.black, "Kolkata");
+            City algiers = new City(Color.Black, "Algiers");
+            City cairo = new City(Color.Black, "Cairo");
+            City istanbul = new City(Color.Black, "Istanbul");
+            City moscow = new City(Color.Black, "Moscow");
+            City baghdad = new City(Color.Black, "Baghdad");
+            City riyadh = new City(Color.Black, "Riyadh");
+            City tehran = new City(Color.Black, "Tehran");
+            City karachi = new City(Color.Black, "Karachi");
+            City delhi = new City(Color.Black, "Delhi");
+            City mumbai = new City(Color.Black, "Mumbai");
+            City chennai = new City(Color.Black, "Chennai");
+            City kolkata = new City(Color.Black, "Kolkata");
 
             //create the reds
-            City beijing = new City(COLOR.red, "Beijing");
-            City seoul = new City(COLOR.red, "Seoul");
-            City shanghai = new City(COLOR.red, "Shanghai");
-            City tokyo = new City(COLOR.red, "Tokyo");
-            City osaka = new City(COLOR.red, "Osaka");
-            City taipei = new City(COLOR.red, "Taipei");
-            City hongKong = new City(COLOR.red, "Hong Kong");
-            City bangkok = new City(COLOR.red, "Bangkok");
-            City manila = new City(COLOR.red, "Manila");
-            City hoChiMinhCity = new City(COLOR.red, "Ho Chi Minh City");
-            City jakarta = new City(COLOR.red, "Jakarta");
-            City sydney = new City(COLOR.red, "Sydney");
+            City beijing = new City(Color.Red, "Beijing");
+            City seoul = new City(Color.Red, "Seoul");
+            City shanghai = new City(Color.Red, "Shanghai");
+            City tokyo = new City(Color.Red, "Tokyo");
+            City osaka = new City(Color.Red, "Osaka");
+            City taipei = new City(Color.Red, "Taipei");
+            City hongKong = new City(Color.Red, "Hong Kong");
+            City bangkok = new City(Color.Red, "Bangkok");
+            City manila = new City(Color.Red, "Manila");
+            City hoChiMinhCity = new City(Color.Red, "Ho Chi Minh City");
+            City jakarta = new City(Color.Red, "Jakarta");
+            City sydney = new City(Color.Red, "Sydney");
 
             #endregion Createcities
 
@@ -98,54 +98,54 @@ namespace SQADemicApp
             {
                 #region loadDictionary
 
-                cityDictionary.Add("San Francisco", sanFrancisco);
-                cityDictionary.Add("Chicago", chicago);
-                cityDictionary.Add("Montreal", montreal);
-                cityDictionary.Add("New York", newYork);
-                cityDictionary.Add("Atlanta", atlanta);
-                cityDictionary.Add("Washington", washington);
-                cityDictionary.Add("London", london);
-                cityDictionary.Add("Essen", essen);
-                cityDictionary.Add("Saint Petersburg", stPetersburg);
-                cityDictionary.Add("Milan", milan);
-                cityDictionary.Add("Paris", paris);
-                cityDictionary.Add("Madrid", madrid);
-                cityDictionary.Add("Los Angeles", losAngeles);
-                cityDictionary.Add("Mexico City", mexicoCity);
-                cityDictionary.Add("Miami", miami);
-                cityDictionary.Add("Bogota", bogota);
-                cityDictionary.Add("Lima", lima);
-                cityDictionary.Add("Santiago", santiago);
-                cityDictionary.Add("Buenos Aires", buenosAires);
-                cityDictionary.Add("Sao Paulo", saoPaulo);
-                cityDictionary.Add("Lagos", lagos);
-                cityDictionary.Add("Kinshasa", kinshasa);
-                cityDictionary.Add("Johannesburg", johannesburg);
-                cityDictionary.Add("Khartoum", khartoum);
-                cityDictionary.Add("Moscow", moscow);
-                cityDictionary.Add("Tehran", tehran);
-                cityDictionary.Add("Delhi", delhi);
-                cityDictionary.Add("Kolkata", kolkata);
-                cityDictionary.Add("Istanbul", istanbul);
-                cityDictionary.Add("Baghdad", baghdad);
-                cityDictionary.Add("Karachi", karachi);
-                cityDictionary.Add("Algiers", algiers);
-                cityDictionary.Add("Cairo", cairo);
-                cityDictionary.Add("Riyadh", riyadh);
-                cityDictionary.Add("Mumbai", mumbai);
-                cityDictionary.Add("Chennai", chennai);
-                cityDictionary.Add("Beijing", beijing);
-                cityDictionary.Add("Seoul", seoul);
-                cityDictionary.Add("Shanghai", shanghai);
-                cityDictionary.Add("Tokyo", tokyo);
-                cityDictionary.Add("Osaka", osaka);
-                cityDictionary.Add("Taipei", taipei);
-                cityDictionary.Add("Hong Kong", hongKong);
-                cityDictionary.Add("Bangkok", bangkok);
-                cityDictionary.Add("Manila", manila);
-                cityDictionary.Add("Ho Chi Minh City", hoChiMinhCity);
-                cityDictionary.Add("Jakarta", jakarta);
-                cityDictionary.Add("Sydney", sydney);
+                CityDictionary.Add("San Francisco", sanFrancisco);
+                CityDictionary.Add("Chicago", chicago);
+                CityDictionary.Add("Montreal", montreal);
+                CityDictionary.Add("New York", newYork);
+                CityDictionary.Add("Atlanta", atlanta);
+                CityDictionary.Add("Washington", washington);
+                CityDictionary.Add("London", london);
+                CityDictionary.Add("Essen", essen);
+                CityDictionary.Add("Saint Petersburg", stPetersburg);
+                CityDictionary.Add("Milan", milan);
+                CityDictionary.Add("Paris", paris);
+                CityDictionary.Add("Madrid", madrid);
+                CityDictionary.Add("Los Angeles", losAngeles);
+                CityDictionary.Add("Mexico City", mexicoCity);
+                CityDictionary.Add("Miami", miami);
+                CityDictionary.Add("Bogota", bogota);
+                CityDictionary.Add("Lima", lima);
+                CityDictionary.Add("Santiago", santiago);
+                CityDictionary.Add("Buenos Aires", buenosAires);
+                CityDictionary.Add("Sao Paulo", saoPaulo);
+                CityDictionary.Add("Lagos", lagos);
+                CityDictionary.Add("Kinshasa", kinshasa);
+                CityDictionary.Add("Johannesburg", johannesburg);
+                CityDictionary.Add("Khartoum", khartoum);
+                CityDictionary.Add("Moscow", moscow);
+                CityDictionary.Add("Tehran", tehran);
+                CityDictionary.Add("Delhi", delhi);
+                CityDictionary.Add("Kolkata", kolkata);
+                CityDictionary.Add("Istanbul", istanbul);
+                CityDictionary.Add("Baghdad", baghdad);
+                CityDictionary.Add("Karachi", karachi);
+                CityDictionary.Add("Algiers", algiers);
+                CityDictionary.Add("Cairo", cairo);
+                CityDictionary.Add("Riyadh", riyadh);
+                CityDictionary.Add("Mumbai", mumbai);
+                CityDictionary.Add("Chennai", chennai);
+                CityDictionary.Add("Beijing", beijing);
+                CityDictionary.Add("Seoul", seoul);
+                CityDictionary.Add("Shanghai", shanghai);
+                CityDictionary.Add("Tokyo", tokyo);
+                CityDictionary.Add("Osaka", osaka);
+                CityDictionary.Add("Taipei", taipei);
+                CityDictionary.Add("Hong Kong", hongKong);
+                CityDictionary.Add("Bangkok", bangkok);
+                CityDictionary.Add("Manila", manila);
+                CityDictionary.Add("Ho Chi Minh City", hoChiMinhCity);
+                CityDictionary.Add("Jakarta", jakarta);
+                CityDictionary.Add("Sydney", sydney);
 
                 #endregion loadDictionary
             }
@@ -158,9 +158,9 @@ namespace SQADemicApp
         /// PUBLIC FOR TESTING ONLY
         /// </summary>
         /// <param name="reader"></param>
-        public static void setAdjacentCities(StringReader reader)
+        public static void SetAdjacentCities(StringReader reader)
         {
-            String line;
+            string line;
             while ((line = reader.ReadLine()) != null)
             {
                 string cityname = line.Substring(0, line.IndexOf(";"));
@@ -169,7 +169,7 @@ namespace SQADemicApp
 
                 foreach (var city in adjCityList)
                 {
-                    cityDictionary[cityname].adjacentCities.Add(cityDictionary[city]);
+                    CityDictionary[cityname].AdjacentCities.Add(CityDictionary[city]);
                 }
             }
         }
@@ -178,16 +178,16 @@ namespace SQADemicApp
         /// PUBLIC FOR TESTING ONLY
         /// </summary>
         /// <returns></returns>
-        public static Card[] makePlayerDeck()
+        public static Card[] MakePlayerDeck()
         {
             Card[] deck = new Card[57];
             Random rand = new Random();
-            deck[rand.Next(0, 9)] = new Card("EPIDEMIC", Card.CARDTYPE.EPIDEMIC);
-            deck[rand.Next(10, 19)] = new Card("EPIDEMIC", Card.CARDTYPE.EPIDEMIC);
-            deck[rand.Next(20, 29)] = new Card("EPIDEMIC", Card.CARDTYPE.EPIDEMIC);
-            deck[rand.Next(30, 39)] = new Card("EPIDEMIC", Card.CARDTYPE.EPIDEMIC);
-            List<Card> cardList = makeCardList(new StringReader(SQADemicApp.Properties.Resources.CityList));
-            cardList = HelperBL.shuffleArray(cardList);
+            deck[rand.Next(0, 9)] = new Card("EPIDEMIC", Card.Cardtype.Epidemic);
+            deck[rand.Next(10, 19)] = new Card("EPIDEMIC", Card.Cardtype.Epidemic);
+            deck[rand.Next(20, 29)] = new Card("EPIDEMIC", Card.Cardtype.Epidemic);
+            deck[rand.Next(30, 39)] = new Card("EPIDEMIC", Card.Cardtype.Epidemic);
+            List<Card> cardList = MakeCardList(new StringReader(SQADemicApp.Properties.Resources.CityList));
+            cardList = HelperBl.ShuffleArray(cardList);
             int j = 0;
             for (int i = 0; i < 57; i++)
             {
@@ -206,15 +206,15 @@ namespace SQADemicApp
         /// </summary>
         /// <param name="r"></param>
         /// <returns></returns>
-        public static List<String> makeInfectionDeck(StringReader r)
+        public static List<string> MakeInfectionDeck(StringReader r)
         {
-            String line;
+            string line;
             string[] infectionDeckArray = null;
             while ((line = r.ReadLine()) != null)
             {
                 infectionDeckArray = line.Split(',');
             }
-            string[] shuffledDeck = HelperBL.shuffleArray(infectionDeckArray);
+            string[] shuffledDeck = HelperBl.ShuffleArray(infectionDeckArray);
             return shuffledDeck.ToList();
         }
 
@@ -223,7 +223,7 @@ namespace SQADemicApp
         /// </summary>
         /// <param name="stringReader"></param>
         /// <returns></returns>
-        public static List<Card> makeCardList(StringReader stringReader)
+        public static List<Card> MakeCardList(StringReader stringReader)
         {
             List<Card> cardList = new List<Card>();
             string line;
@@ -231,32 +231,32 @@ namespace SQADemicApp
             {
                 string cardName = line.Substring(0, line.IndexOf(";"));
                 string cardColor = line.Substring(line.IndexOf(";") + 2);
-                COLOR color = getColor(cardColor);
-                cardList.Add(new Card(cardName, Card.CARDTYPE.City, color));
+                Color color = GetColor(cardColor);
+                cardList.Add(new Card(cardName, Card.Cardtype.City, color));
             }
-            cardList.Add(new Card("Airlift", Card.CARDTYPE.Special));
-            cardList.Add(new Card("One Quiet Night", Card.CARDTYPE.Special));
-            cardList.Add(new Card("Resilient Population", Card.CARDTYPE.Special));
-            cardList.Add(new Card("Government Grant", Card.CARDTYPE.Special));
-            cardList.Add(new Card("Forecast", Card.CARDTYPE.Special));
+            cardList.Add(new Card("Airlift", Card.Cardtype.Special));
+            cardList.Add(new Card("One Quiet Night", Card.Cardtype.Special));
+            cardList.Add(new Card("Resilient Population", Card.Cardtype.Special));
+            cardList.Add(new Card("Government Grant", Card.Cardtype.Special));
+            cardList.Add(new Card("Forecast", Card.Cardtype.Special));
             return cardList;
         }
 
-        private static COLOR getColor(string color)
+        private static Color GetColor(string color)
         {
             switch (color.ToLower())
             {
                 case "red":
-                    return COLOR.red;
+                    return Color.Red;
 
                 case "black":
-                    return COLOR.black;
+                    return Color.Black;
 
                 case "yellow":
-                    return COLOR.yellow;
+                    return Color.Yellow;
 
                 default:
-                    return COLOR.blue;
+                    return Color.Blue;
             }
         }
     }

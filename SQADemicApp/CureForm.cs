@@ -9,14 +9,14 @@ namespace SQADemicApp
 {
     public partial class CureForm : Form
     {
-        private GameBoard board;
+        private GameBoard _board;
 
         public CureForm(GameBoard board)
         {
             InitializeComponent();
-            this.board = board;
+            this._board = board;
             listBox1.Items.Clear();
-            listBox1.Items.AddRange(GameBoardModels.players[GameBoardModels.CurrentPlayerIndex].handStringList().ToArray());
+            listBox1.Items.AddRange(GameBoardModels.Players[GameBoardModels.CurrentPlayerIndex].HandStringList().ToArray());
         }
 
         private void Cure_Click(object sender, EventArgs e)
@@ -33,7 +33,7 @@ namespace SQADemicApp
             bool cured = false;
             try
             {
-                cured = PlayerActionsBL.Cure(GameBoardModels.players[GameBoardModels.CurrentPlayerIndex], cityNames, Create.cityDictionary[cityNames[0]].color);
+                cured = PlayerActionsBl.Cure(GameBoardModels.Players[GameBoardModels.CurrentPlayerIndex], cityNames, Create.CityDictionary[cityNames[0]].Color);
             }
             catch (ArgumentException exe)
             {
@@ -45,17 +45,17 @@ namespace SQADemicApp
                 MessageBox.Show("Invalid card selection", "Invalid Selection");
             else
             {
-                if (this.board.boardModel.incTurnCount())
-                    GameBoard.turnpart = GameBoard.TURNPART.Draw;
+                if (this._board.BoardModel.IncTurnCount())
+                    GameBoard.TurnPart = GameBoard.Turnpart.Draw;
                 this.Close();
-                board.UpdatePlayerForm();
+                _board.UpdatePlayerForm();
             }
         }
 
         private void Remove_Click(object sender, EventArgs e)
         {
             List<string> selectedCards = new List<string>();
-            selectedCards = listBox2.SelectedItems.Cast<String>().ToList();
+            selectedCards = listBox2.SelectedItems.Cast<string>().ToList();
             listBox1.Items.AddRange(selectedCards.ToArray());
             foreach (var item in selectedCards)
             {
@@ -66,7 +66,7 @@ namespace SQADemicApp
         private void Add_Click(object sender, EventArgs e)
         {
             List<string> selectedCards = new List<string>();
-            selectedCards = listBox1.SelectedItems.Cast<String>().ToList();
+            selectedCards = listBox1.SelectedItems.Cast<string>().ToList();
             listBox2.Items.AddRange(selectedCards.ToArray());
             foreach (var item in selectedCards)
             {

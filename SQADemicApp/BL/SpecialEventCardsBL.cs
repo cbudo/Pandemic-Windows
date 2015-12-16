@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace SQADemicApp.BL
 {
-    public class SpecialEventCardsBL
+    public class SpecialEventCardsBl
     {
         /// <summary>
         /// Completes the special actions for the Government Grant Card
@@ -13,9 +13,9 @@ namespace SQADemicApp.BL
         /// <returns>status flag</returns>
         public static bool GovernmentGrant(string cityName)
         {
-            if (Create.cityDictionary[cityName].researchStation == true)
+            if (Create.CityDictionary[cityName].ResearchStation == true)
                 return false;
-            Create.cityDictionary[cityName].researchStation = true;
+            Create.CityDictionary[cityName].ResearchStation = true;
             return true;
         }
 
@@ -28,9 +28,9 @@ namespace SQADemicApp.BL
         /// <returns>status flag</returns>
         public static bool Airlift(Player player, City destination)
         {
-            if (player.currentCity.Equals(destination))
+            if (player.CurrentCity.Equals(destination))
                 return false;
-            player.currentCity = destination;
+            player.CurrentCity = destination;
             return true;
         }
 
@@ -40,7 +40,7 @@ namespace SQADemicApp.BL
         /// <param name="infectionPile">Infection Discard Pile</param>
         /// <param name="cityname">Card to be removed</param>
         /// <returns>status flag</returns>
-        public static bool ResilientPopulation(LinkedList<String> infectionPile, string cityname)
+        public static bool ResilientPopulation(LinkedList<string> infectionPile, string cityname)
         {
             return infectionPile.Remove(cityname);
         }
@@ -51,7 +51,7 @@ namespace SQADemicApp.BL
         /// </summary>
         /// <param name="infectionDeck"></param>
         /// <returns>Top 6 cards to be examined</returns>
-        public static List<string> GetForcastCards(LinkedList<String> infectionDeck)
+        public static List<string> GetForcastCards(LinkedList<string> infectionDeck)
         {
             List<string> returnList = new List<string>();
 
@@ -70,7 +70,7 @@ namespace SQADemicApp.BL
         /// <param name="infectionDeck"></param>
         /// <param name="orderedCards">6 cards in the order to be replaced</param>
         /// <returns>status flag</returns>
-        public static bool CommitForcast(LinkedList<String> infectionDeck, List<String> orderedCards)
+        public static bool CommitForcast(LinkedList<string> infectionDeck, List<string> orderedCards)
         {
             if (orderedCards.Count != 6)
                 return false;

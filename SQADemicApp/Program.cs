@@ -5,7 +5,7 @@ namespace SQADemicApp
 {
     internal static class Program
     {
-        public static string[] rolesArray;
+        public static string[] RolesArray;
 
         /// <summary>
         /// The main entry point for the application.
@@ -16,7 +16,7 @@ namespace SQADemicApp
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new SetupGameForm());
-            GameBoard form1 = new GameBoard(rolesArray);
+            GameBoard form1 = new GameBoard(RolesArray);
             Application.Run(form1);
         }
     }

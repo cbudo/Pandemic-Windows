@@ -10,61 +10,61 @@ namespace SQADemicAppTest
     [TestClass]
     public class InfectorTest
     {
-        private LinkedList<String> deck;
-        private LinkedList<String> pile;
-        private int infectionRate;
-        private int infectionIndex;
+        private LinkedList<string> _deck;
+        private LinkedList<string> _pile;
+        private int _infectionRate;
+        private int _infectionIndex;
 
         [TestInitialize]
         public void SetUpArrays()
         {
             new GameBoardModels(new string[] { "Dispatcher", "Operations Expert" });
-            GameBoardModels.outbreakMarker = 0;
-            GameBoardModels.cubeCount.yellowCubes = 24;
-            GameBoardModels.cubeCount.blueCubes = 24;
-            GameBoardModels.cubeCount.blackCubes = 24;
-            GameBoardModels.cubeCount.redCubes = 24;
-            deck = new LinkedList<string>();
-            pile = new LinkedList<string>();
-            infectionRate = 3;
-            infectionIndex = 4;
+            GameBoardModels.OutbreakMarker = 0;
+            GameBoardModels.CubeCount.YellowCubes = 24;
+            GameBoardModels.CubeCount.BlueCubes = 24;
+            GameBoardModels.CubeCount.BlackCubes = 24;
+            GameBoardModels.CubeCount.RedCubes = 24;
+            _deck = new LinkedList<string>();
+            _pile = new LinkedList<string>();
+            _infectionRate = 3;
+            _infectionIndex = 4;
         }
 
         [TestMethod]
         public void TestInfectTwoCities()
         {
-            deck.Clear(); 
-            deck.AddFirst("Saint Petersburg");
-            deck.AddFirst("Sydney");
-            List<String> removedCities = InfectorBL.InfectCities(deck, pile, 2);
-            List<String> answer = new List<string> { "Sydney", "Saint Petersburg" };
+            _deck.Clear(); 
+            _deck.AddFirst("Saint Petersburg");
+            _deck.AddFirst("Sydney");
+            List<string> removedCities = InfectorBl.InfectCities(_deck, _pile, 2);
+            List<string> answer = new List<string> { "Sydney", "Saint Petersburg" };
             CollectionAssert.AreEqual(answer, removedCities);
         }
 
         [TestMethod]
         public void TestInfectThreeCities()
         {
-            deck.Clear();
-            deck.AddFirst("Saint Petersburg");
-            deck.AddFirst("Sydney");
-            deck.AddFirst("New York");
-            List<String> removedCities = InfectorBL.InfectCities(deck, pile, 3);
-            List<String> answer = new List<string> { "New York", "Sydney", "Saint Petersburg" };
+            _deck.Clear();
+            _deck.AddFirst("Saint Petersburg");
+            _deck.AddFirst("Sydney");
+            _deck.AddFirst("New York");
+            List<string> removedCities = InfectorBl.InfectCities(_deck, _pile, 3);
+            List<string> answer = new List<string> { "New York", "Sydney", "Saint Petersburg" };
             CollectionAssert.AreEqual(answer, removedCities);
         }
 
         [TestMethod]
         public void TestInfectTwoCitiesTwice()
         {
-            deck.Clear();
-            deck.AddFirst("Saint Petersburg");
-            deck.AddFirst("Sydney");
-            List<String> removedCities = InfectorBL.InfectCities(deck, pile, 2);
-            List<String> answer = new List<string> { "Sydney", "Saint Petersburg" };
+            _deck.Clear();
+            _deck.AddFirst("Saint Petersburg");
+            _deck.AddFirst("Sydney");
+            List<string> removedCities = InfectorBl.InfectCities(_deck, _pile, 2);
+            List<string> answer = new List<string> { "Sydney", "Saint Petersburg" };
             CollectionAssert.AreEqual(answer, removedCities);
-            deck.AddFirst("New York");
-            deck.AddFirst("Chicago");
-            removedCities = InfectorBL.InfectCities(deck, pile, 2);
+            _deck.AddFirst("New York");
+            _deck.AddFirst("Chicago");
+            removedCities = InfectorBl.InfectCities(_deck, _pile, 2);
             answer = new List<string> { "Chicago", "New York" };
             CollectionAssert.AreEqual(answer, removedCities);
 
@@ -73,93 +73,93 @@ namespace SQADemicAppTest
         [TestMethod]
         public void TestInfectTwoCitiesUpdatePile()
         {
-            deck.Clear(); 
-            deck.AddFirst("Saint Petersburg");
-            deck.AddFirst("Sydney");
-            pile = new LinkedList<String>();
-            List<String> removedCities = InfectorBL.InfectCities(deck, pile, 2);
-            LinkedList<String> answer = new LinkedList<string>();
+            _deck.Clear(); 
+            _deck.AddFirst("Saint Petersburg");
+            _deck.AddFirst("Sydney");
+            _pile = new LinkedList<string>();
+            List<string> removedCities = InfectorBl.InfectCities(_deck, _pile, 2);
+            LinkedList<string> answer = new LinkedList<string>();
             answer.AddFirst("Sydney");
             answer.AddFirst("Saint Petersburg");
-            CollectionAssert.AreEqual(answer, pile);
+            CollectionAssert.AreEqual(answer, _pile);
         }
 
         [TestMethod]
-        public void TestEpidemicIncreaseInfectionCounter2to2()
+        public void TestEpidemicIncreaseInfectionCounter2To2()
         {
-            deck.Clear();
+            _deck.Clear();
             //InfectionRates = { 2, 2, 2, 3, 3, 4, 4 };
-            deck.AddFirst("Chicago");
-            infectionIndex = 1;
-            InfectorBL.Epidemic(deck, pile, ref infectionIndex, ref infectionRate);
-            Assert.AreEqual(2, infectionRate);
+            _deck.AddFirst("Chicago");
+            _infectionIndex = 1;
+            InfectorBl.Epidemic(_deck, _pile, ref _infectionIndex, ref _infectionRate);
+            Assert.AreEqual(2, _infectionRate);
         }
 
         [TestMethod]
-        public void TestEpidemicIncreaseInfectionCounter2to3()
+        public void TestEpidemicIncreaseInfectionCounter2To3()
         {
             //InfectionRates = { 2, 2, 2, 3, 3, 4, 4 };
-            deck.Clear(); 
-            deck.AddFirst("Chicago");
-            infectionIndex = 2;
-            InfectorBL.Epidemic(deck, pile, ref infectionIndex, ref infectionRate);
-            Assert.AreEqual(3, infectionRate);
+            _deck.Clear(); 
+            _deck.AddFirst("Chicago");
+            _infectionIndex = 2;
+            InfectorBl.Epidemic(_deck, _pile, ref _infectionIndex, ref _infectionRate);
+            Assert.AreEqual(3, _infectionRate);
         }
 
         [TestMethod]
-        public void TestEpidemicIncreaseInfectionCounter3to4()
+        public void TestEpidemicIncreaseInfectionCounter3To4()
         {
             //InfectionRates = { 2, 2, 2, 3, 3, 4, 4 };
-            deck.AddFirst("Chicago");
-            infectionRate = 3;
-            infectionIndex = 4;
-            InfectorBL.Epidemic(deck, pile, ref infectionIndex, ref infectionRate);
-            Assert.AreEqual(4, infectionRate);
+            _deck.AddFirst("Chicago");
+            _infectionRate = 3;
+            _infectionIndex = 4;
+            InfectorBl.Epidemic(_deck, _pile, ref _infectionIndex, ref _infectionRate);
+            Assert.AreEqual(4, _infectionRate);
         }
 
         [TestMethod]
         public void TestEpidemicIncreaseInfectionIndex()
         {
-            deck.AddFirst("Chicago");
-            infectionRate = 3;
-            infectionIndex = 4;
-            InfectorBL.Epidemic(deck, pile, ref infectionIndex, ref infectionRate);
-            Assert.AreEqual(5, infectionIndex);
+            _deck.AddFirst("Chicago");
+            _infectionRate = 3;
+            _infectionIndex = 4;
+            InfectorBl.Epidemic(_deck, _pile, ref _infectionIndex, ref _infectionRate);
+            Assert.AreEqual(5, _infectionIndex);
         }
 
         [TestMethod]
         public void TestEpidemicDrawLastCardChicago()
         {
-            deck.AddFirst("Chicago");
-            deck.AddFirst("New York");
-            string lastCity = InfectorBL.Epidemic(deck, pile, ref infectionIndex, ref infectionRate);
+            _deck.AddFirst("Chicago");
+            _deck.AddFirst("New York");
+            string lastCity = InfectorBl.Epidemic(_deck, _pile, ref _infectionIndex, ref _infectionRate);
             Assert.AreEqual("Chicago", lastCity);
         }
 
         [TestMethod]
         public void TestEpidemicDrawLastCardNewYork()
         {
-            deck.AddFirst("New York");
-            deck.AddFirst("Chicago");
-            string lastCity = InfectorBL.Epidemic(deck, pile, ref infectionIndex, ref infectionRate);
+            _deck.AddFirst("New York");
+            _deck.AddFirst("Chicago");
+            string lastCity = InfectorBl.Epidemic(_deck, _pile, ref _infectionIndex, ref _infectionRate);
             Assert.AreEqual("New York", lastCity);
         }
 
         [TestMethod]
         public void TestEpidemicEmptyPileOnTopDeck()
         {
-            deck = new LinkedList<string>();
-            pile = new LinkedList<string>();
-            deck.AddFirst("New York");
-            deck.AddFirst("Chicago");
-            pile.AddFirst("Saint Petersburg");
-            pile.AddFirst("Sydney");
-            InfectorBL.Epidemic(deck, pile, ref infectionIndex, ref infectionRate);
-            Assert.AreEqual(0, pile.Count);
-            Assert.AreEqual(4, deck.Count);
+            _deck = new LinkedList<string>();
+            _pile = new LinkedList<string>();
+            _deck.AddFirst("New York");
+            _deck.AddFirst("Chicago");
+            _pile.AddFirst("Saint Petersburg");
+            _pile.AddFirst("Sydney");
+            InfectorBl.Epidemic(_deck, _pile, ref _infectionIndex, ref _infectionRate);
+            Assert.AreEqual(0, _pile.Count);
+            Assert.AreEqual(4, _deck.Count);
 
             //Look at print statments to manualy asses random/diffrent placing
-            string[] deckarray = deck.ToArray<String>();
+            string[] deckarray = _deck.ToArray<String>();
             for (int i = 0; i < 4; i++)
             {
                 Console.WriteLine(deckarray[i]);
@@ -169,48 +169,48 @@ namespace SQADemicAppTest
         [TestMethod]
         public void TestEpidemicLastCityMixedIn()
         {
-            deck = new LinkedList<string>();
-            pile = new LinkedList<string>();
-            deck.AddFirst("Saint Petersburg");
-            deck.AddFirst("Sydney");
-            deck.AddFirst("New York");
-            deck.AddFirst("Chicago");
-            string lastcity = InfectorBL.Epidemic(deck, pile, ref infectionIndex, ref infectionRate);
-            Assert.AreEqual(lastcity, deck.First.Value);
+            _deck = new LinkedList<string>();
+            _pile = new LinkedList<string>();
+            _deck.AddFirst("Saint Petersburg");
+            _deck.AddFirst("Sydney");
+            _deck.AddFirst("New York");
+            _deck.AddFirst("Chicago");
+            string lastcity = InfectorBl.Epidemic(_deck, _pile, ref _infectionIndex, ref _infectionRate);
+            Assert.AreEqual(lastcity, _deck.First.Value);
         }
 
       [TestMethod]
         public void TestInfectCityWithNoBlocks()
         {
-            SQADemicApp.City chicago = new SQADemicApp.City(COLOR.blue, "Chicago");
-            int numOfBlueCubes = SQADemicApp.BL.InfectorBL.InfectCity(chicago, new HashSet<City>(), false, COLOR.blue);
+            SQADemicApp.City chicago = new SQADemicApp.City(Color.Blue, "Chicago");
+            int numOfBlueCubes = SQADemicApp.BL.InfectorBl.InfectCity(chicago, new HashSet<City>(), false, Color.Blue);
             Assert.AreEqual(1, numOfBlueCubes);
         }
 
         [TestMethod]
         public void TestInfectCityWithOneCube()
         {
-            SQADemicApp.City chicago = new SQADemicApp.City(COLOR.blue, "Chicago");
-            chicago.blueCubes = 1;
-            int numBlueCubes = SQADemicApp.BL.InfectorBL.InfectCity(chicago, new HashSet<City>(), false, COLOR.blue);
+            SQADemicApp.City chicago = new SQADemicApp.City(Color.Blue, "Chicago");
+            chicago.BlueCubes = 1;
+            int numBlueCubes = SQADemicApp.BL.InfectorBl.InfectCity(chicago, new HashSet<City>(), false, Color.Blue);
             Assert.AreEqual(2, numBlueCubes);
         }
 
         [TestMethod]
         public void TestInfectCityWithTwoCubes()
         {
-            SQADemicApp.City chicago = new SQADemicApp.City(COLOR.blue, "Chicago");
-            chicago.blueCubes = 2;
-            int numBlueCubes = SQADemicApp.BL.InfectorBL.InfectCity(chicago, new HashSet<City>(), false, COLOR.blue);
+            SQADemicApp.City chicago = new SQADemicApp.City(Color.Blue, "Chicago");
+            chicago.BlueCubes = 2;
+            int numBlueCubes = SQADemicApp.BL.InfectorBl.InfectCity(chicago, new HashSet<City>(), false, Color.Blue);
             Assert.AreEqual(3, numBlueCubes);
         }
 
         [TestMethod]
         public void TestDiffColorInfectCityWithOneCube()
         {
-            SQADemicApp.City lima = new SQADemicApp.City(COLOR.yellow, "Lima");
-            lima.yellowCubes = 1;
-            int numYellowCubes = SQADemicApp.BL.InfectorBL.InfectCity(lima, new HashSet<City>(), false, COLOR.yellow);
+            SQADemicApp.City lima = new SQADemicApp.City(Color.Yellow, "Lima");
+            lima.YellowCubes = 1;
+            int numYellowCubes = SQADemicApp.BL.InfectorBl.InfectCity(lima, new HashSet<City>(), false, Color.Yellow);
             Assert.AreEqual(2, numYellowCubes);
             
         }
@@ -218,18 +218,18 @@ namespace SQADemicAppTest
         [TestMethod]
         public void TestRedWithTwoInfect()
         {
-            SQADemicApp.City tokyo = new SQADemicApp.City(COLOR.red, "Tokyo");
-            tokyo.redCubes = 2;
-            int numRedCubes = SQADemicApp.BL.InfectorBL.InfectCity(tokyo, new HashSet<City>(), false, COLOR.red);
+            SQADemicApp.City tokyo = new SQADemicApp.City(Color.Red, "Tokyo");
+            tokyo.RedCubes = 2;
+            int numRedCubes = SQADemicApp.BL.InfectorBl.InfectCity(tokyo, new HashSet<City>(), false, Color.Red);
             Assert.AreEqual(3, numRedCubes);
         }
 
         [TestMethod]
         public void TestBlueInfectAndOutbreak()
         {
-            SQADemicApp.City chicago = new SQADemicApp.City(COLOR.blue, "Chicago");
-            chicago.blueCubes = 3;
-            int numBlueCubes = SQADemicApp.BL.InfectorBL.InfectCity(chicago, new HashSet<City>(), false, COLOR.blue);
+            SQADemicApp.City chicago = new SQADemicApp.City(Color.Blue, "Chicago");
+            chicago.BlueCubes = 3;
+            int numBlueCubes = SQADemicApp.BL.InfectorBl.InfectCity(chicago, new HashSet<City>(), false, Color.Blue);
             Assert.AreEqual(3, numBlueCubes);
         }
 
@@ -237,40 +237,40 @@ namespace SQADemicAppTest
         public void TestOutbreakSimple()
         {
             HashSet<City> infected = new HashSet<City>();
-            SQADemicApp.City lima = new SQADemicApp.City(COLOR.yellow, "Lima");
-            SQADemicApp.City santiago = new SQADemicApp.City(COLOR.yellow, "Santiago");
+            SQADemicApp.City lima = new SQADemicApp.City(Color.Yellow, "Lima");
+            SQADemicApp.City santiago = new SQADemicApp.City(Color.Yellow, "Santiago");
             infected.Add(santiago);
-            santiago.adjacentCities.Add(lima);
-            santiago.yellowCubes = 3;
-            SQADemicApp.BL.InfectorBL.Outbreak(santiago, COLOR.yellow, santiago.adjacentCities, infected);
-            Assert.AreEqual(1, lima.yellowCubes);
+            santiago.AdjacentCities.Add(lima);
+            santiago.YellowCubes = 3;
+            SQADemicApp.BL.InfectorBl.Outbreak(santiago, Color.Yellow, santiago.AdjacentCities, infected);
+            Assert.AreEqual(1, lima.YellowCubes);
         }
 
         [TestMethod]
         public void TestIncrementOutbreakMarker()
         {
             HashSet<City> infected = new HashSet<City>();
-            SQADemicApp.City lima = new SQADemicApp.City(COLOR.yellow, "Lima");
-            SQADemicApp.City santiago = new SQADemicApp.City(COLOR.yellow, "Santiago");
+            SQADemicApp.City lima = new SQADemicApp.City(Color.Yellow, "Lima");
+            SQADemicApp.City santiago = new SQADemicApp.City(Color.Yellow, "Santiago");
             infected.Add(santiago);
-            santiago.adjacentCities.Add(lima);
-            santiago.yellowCubes = 3;
-            SQADemicApp.BL.InfectorBL.Outbreak(santiago, COLOR.yellow, santiago.adjacentCities, infected);
-            Assert.AreEqual(1, GameBoardModels.outbreakMarker);
+            santiago.AdjacentCities.Add(lima);
+            santiago.YellowCubes = 3;
+            SQADemicApp.BL.InfectorBl.Outbreak(santiago, Color.Yellow, santiago.AdjacentCities, infected);
+            Assert.AreEqual(1, GameBoardModels.OutbreakMarker);
         }
 
         [TestMethod]
         public void TestIncrementOutbreakMarker2()
         {
             HashSet<City> infected = new HashSet<City>();
-            SQADemicApp.City lima = new SQADemicApp.City(COLOR.yellow, "Lima");
-            SQADemicApp.City santiago = new SQADemicApp.City(COLOR.yellow, "Santiago");
+            SQADemicApp.City lima = new SQADemicApp.City(Color.Yellow, "Lima");
+            SQADemicApp.City santiago = new SQADemicApp.City(Color.Yellow, "Santiago");
             infected.Add(santiago);
-            santiago.adjacentCities.Add(lima);
-            santiago.yellowCubes = 3;
-            GameBoardModels.outbreakMarker += 5;
-            SQADemicApp.BL.InfectorBL.Outbreak(santiago, COLOR.yellow, santiago.adjacentCities, infected);
-            Assert.AreEqual(6, GameBoardModels.outbreakMarker);
+            santiago.AdjacentCities.Add(lima);
+            santiago.YellowCubes = 3;
+            GameBoardModels.OutbreakMarker += 5;
+            SQADemicApp.BL.InfectorBl.Outbreak(santiago, Color.Yellow, santiago.AdjacentCities, infected);
+            Assert.AreEqual(6, GameBoardModels.OutbreakMarker);
         }
         //This function didn't follow the rules of the game, Therefore this test is stupid
        /** [TestMethod]
@@ -304,10 +304,10 @@ namespace SQADemicAppTest
         [ExpectedException(typeof(InvalidOperationException))]
         public void TestRedWithTwoInfectWithNewException()
         {
-            SQADemicApp.City tokyo = new SQADemicApp.City(COLOR.red, "Tokyo");
-            tokyo.redCubes = 2;
-            GameBoardModels.cubeCount.redCubes = 1;
-            int numRedCubes = SQADemicApp.BL.InfectorBL.InfectCity(tokyo, new HashSet<City>(), false, COLOR.red);
+            SQADemicApp.City tokyo = new SQADemicApp.City(Color.Red, "Tokyo");
+            tokyo.RedCubes = 2;
+            GameBoardModels.CubeCount.RedCubes = 1;
+            int numRedCubes = SQADemicApp.BL.InfectorBl.InfectCity(tokyo, new HashSet<City>(), false, Color.Red);
         }
 
         [TestMethod]
@@ -315,13 +315,13 @@ namespace SQADemicAppTest
         public void TestOutbreakSimpleException()
         {
             HashSet<City> infected = new HashSet<City>();
-            SQADemicApp.City lima = new SQADemicApp.City(COLOR.yellow, "Lima");
-            SQADemicApp.City santiago = new SQADemicApp.City(COLOR.yellow, "Santiago");
+            SQADemicApp.City lima = new SQADemicApp.City(Color.Yellow, "Lima");
+            SQADemicApp.City santiago = new SQADemicApp.City(Color.Yellow, "Santiago");
             infected.Add(santiago);
-            santiago.adjacentCities.Add(lima);
-            GameBoardModels.cubeCount.yellowCubes = 1;
-            santiago.yellowCubes = 3;
-            SQADemicApp.BL.InfectorBL.Outbreak(santiago, COLOR.yellow, santiago.adjacentCities, infected);
+            santiago.AdjacentCities.Add(lima);
+            GameBoardModels.CubeCount.YellowCubes = 1;
+            santiago.YellowCubes = 3;
+            SQADemicApp.BL.InfectorBl.Outbreak(santiago, Color.Yellow, santiago.AdjacentCities, infected);
         }
 
         [TestMethod]
@@ -329,54 +329,54 @@ namespace SQADemicAppTest
         public void TestIncrementOutbreakMarkerToThrowException()
         {
             HashSet<City> infected = new HashSet<City>();
-            SQADemicApp.City lima = new SQADemicApp.City(COLOR.yellow, "Lima");
-            SQADemicApp.City santiago = new SQADemicApp.City(COLOR.yellow, "Santiago");
+            SQADemicApp.City lima = new SQADemicApp.City(Color.Yellow, "Lima");
+            SQADemicApp.City santiago = new SQADemicApp.City(Color.Yellow, "Santiago");
             infected.Add(santiago);
-            santiago.adjacentCities.Add(lima);
-            santiago.yellowCubes = 3;
-            GameBoardModels.outbreakMarker = 7;
-            SQADemicApp.BL.InfectorBL.Outbreak(santiago, COLOR.yellow, santiago.adjacentCities, infected);
+            santiago.AdjacentCities.Add(lima);
+            santiago.YellowCubes = 3;
+            GameBoardModels.OutbreakMarker = 7;
+            SQADemicApp.BL.InfectorBl.Outbreak(santiago, Color.Yellow, santiago.AdjacentCities, infected);
         }
 
         [TestMethod]
         public void TestDecrementTotalRedCubes()
         {
-            SQADemicApp.City tokyo = new SQADemicApp.City(COLOR.red, "Tokyo");
-            tokyo.redCubes = 2;
-            GameBoardModels.cubeCount.redCubes = 24;
-            SQADemicApp.BL.InfectorBL.InfectCity(tokyo, new HashSet<City>(), false, COLOR.red);
-            Assert.AreEqual(23, GameBoardModels.cubeCount.redCubes);
+            SQADemicApp.City tokyo = new SQADemicApp.City(Color.Red, "Tokyo");
+            tokyo.RedCubes = 2;
+            GameBoardModels.CubeCount.RedCubes = 24;
+            SQADemicApp.BL.InfectorBl.InfectCity(tokyo, new HashSet<City>(), false, Color.Red);
+            Assert.AreEqual(23, GameBoardModels.CubeCount.RedCubes);
         }
 
         [TestMethod]
         public void TestYellowTotalCubeDecrement()
         {
-            SQADemicApp.City lima = new SQADemicApp.City(COLOR.yellow, "Lima");
-            lima.yellowCubes = 1;
-            GameBoardModels.cubeCount.yellowCubes = 23;
-            SQADemicApp.BL.InfectorBL.InfectCity(lima, new HashSet<City>(), false, COLOR.yellow);
-            Assert.AreEqual(22, GameBoardModels.cubeCount.yellowCubes);
+            SQADemicApp.City lima = new SQADemicApp.City(Color.Yellow, "Lima");
+            lima.YellowCubes = 1;
+            GameBoardModels.CubeCount.YellowCubes = 23;
+            SQADemicApp.BL.InfectorBl.InfectCity(lima, new HashSet<City>(), false, Color.Yellow);
+            Assert.AreEqual(22, GameBoardModels.CubeCount.YellowCubes);
 
         }
 
         [TestMethod]
         public void TestDecrementTotalBlueCubes()
         {
-            SQADemicApp.City chicago = new SQADemicApp.City(COLOR.blue, "Chicago");
-            chicago.blueCubes = 2;
-            GameBoardModels.cubeCount.blueCubes = 22;
-            SQADemicApp.BL.InfectorBL.InfectCity(chicago, new HashSet<City>(), false, COLOR.blue);
-            Assert.AreEqual(21, GameBoardModels.cubeCount.blueCubes);
+            SQADemicApp.City chicago = new SQADemicApp.City(Color.Blue, "Chicago");
+            chicago.BlueCubes = 2;
+            GameBoardModels.CubeCount.BlueCubes = 22;
+            SQADemicApp.BL.InfectorBl.InfectCity(chicago, new HashSet<City>(), false, Color.Blue);
+            Assert.AreEqual(21, GameBoardModels.CubeCount.BlueCubes);
         }
 
         [TestMethod]
         public void TestDecrementTotalBlackCubes()
         {
-            SQADemicApp.City kolkata = new SQADemicApp.City(COLOR.black, "Kolkata");
-            kolkata.blackCubes = 2;
-            GameBoardModels.cubeCount.blackCubes = 22;
-            SQADemicApp.BL.InfectorBL.InfectCity(kolkata, new HashSet<City>(), false, COLOR.black);
-            Assert.AreEqual(21, GameBoardModels.cubeCount.blackCubes);
+            SQADemicApp.City kolkata = new SQADemicApp.City(Color.Black, "Kolkata");
+            kolkata.BlackCubes = 2;
+            GameBoardModels.CubeCount.BlackCubes = 22;
+            SQADemicApp.BL.InfectorBl.InfectCity(kolkata, new HashSet<City>(), false, Color.Black);
+            Assert.AreEqual(21, GameBoardModels.CubeCount.BlackCubes);
         }
 
         

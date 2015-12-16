@@ -8,11 +8,11 @@ namespace SQADemicApp
 {
     public partial class ShareCardForm : Form
     {
-        private GameBoard board;
+        private GameBoard _board;
 
         public ShareCardForm(GameBoard board)
         {
-            this.board = board;
+            this._board = board;
             InitializeComponent();
             switch (GameBoardModels.CurrentPlayerIndex)
             {
@@ -43,7 +43,7 @@ namespace SQADemicApp
                 default:
                     break;
             }
-            switch (GameBoardModels.players.Count())
+            switch (GameBoardModels.Players.Count())
             {
                 case 2:
                     P2T.Hide();
@@ -53,13 +53,13 @@ namespace SQADemicApp
                     break;
             }
             listBox1.Items.Clear();
-            listBox1.Items.AddRange(GameBoardModels.players[GameBoardModels.CurrentPlayerIndex].handStringList().ToArray());
+            listBox1.Items.AddRange(GameBoardModels.Players[GameBoardModels.CurrentPlayerIndex].HandStringList().ToArray());
             List<object> allHands = new List<object>();
-            foreach (var player in GameBoardModels.players)
+            foreach (var player in GameBoardModels.Players)
             {
-                if (player.role != GameBoardModels.players[GameBoardModels.CurrentPlayerIndex].role)
+                if (player.Role != GameBoardModels.Players[GameBoardModels.CurrentPlayerIndex].Role)
                 {
-                    allHands.AddRange(player.handStringList());
+                    allHands.AddRange(player.HandStringList());
                 }
             }
             listBox2.Items.Clear();
@@ -79,20 +79,20 @@ namespace SQADemicApp
             switch (GameBoardModels.CurrentPlayerIndex)
             {
                 case 0:
-                    success = PlayerActionsBL.ShareKnowledgeOption(GameBoardModels.players[GameBoardModels.CurrentPlayerIndex], GameBoardModels.players[1], selectedCard);
+                    success = PlayerActionsBl.ShareKnowledgeOption(GameBoardModels.Players[GameBoardModels.CurrentPlayerIndex], GameBoardModels.Players[1], selectedCard);
                     break;
 
                 default:
-                    success = PlayerActionsBL.ShareKnowledgeOption(GameBoardModels.players[GameBoardModels.CurrentPlayerIndex], GameBoardModels.players[0], selectedCard);
+                    success = PlayerActionsBl.ShareKnowledgeOption(GameBoardModels.Players[GameBoardModels.CurrentPlayerIndex], GameBoardModels.Players[0], selectedCard);
                     break;
             }
             if (success)
             {
-                if (this.board.boardModel.incTurnCount())
-                    GameBoard.turnpart = GameBoard.TURNPART.Draw;
+                if (this._board.BoardModel.IncTurnCount())
+                    GameBoard.TurnPart = GameBoard.Turnpart.Draw;
             }
             this.Close();
-            board.UpdatePlayerForm();
+            _board.UpdatePlayerForm();
         }
 
         /// <summary>
@@ -108,24 +108,24 @@ namespace SQADemicApp
             switch (GameBoardModels.CurrentPlayerIndex)
             {
                 case 0:
-                    success = PlayerActionsBL.ShareKnowledgeOption(GameBoardModels.players[GameBoardModels.CurrentPlayerIndex], GameBoardModels.players[2], selectedCard);
+                    success = PlayerActionsBl.ShareKnowledgeOption(GameBoardModels.Players[GameBoardModels.CurrentPlayerIndex], GameBoardModels.Players[2], selectedCard);
                     break;
 
                 case 1:
-                    success = PlayerActionsBL.ShareKnowledgeOption(GameBoardModels.players[GameBoardModels.CurrentPlayerIndex], GameBoardModels.players[2], selectedCard);
+                    success = PlayerActionsBl.ShareKnowledgeOption(GameBoardModels.Players[GameBoardModels.CurrentPlayerIndex], GameBoardModels.Players[2], selectedCard);
                     break;
 
                 default:
-                    success = PlayerActionsBL.ShareKnowledgeOption(GameBoardModels.players[GameBoardModels.CurrentPlayerIndex], GameBoardModels.players[1], selectedCard);
+                    success = PlayerActionsBl.ShareKnowledgeOption(GameBoardModels.Players[GameBoardModels.CurrentPlayerIndex], GameBoardModels.Players[1], selectedCard);
                     break;
             }
             if (success)
             {
-                if (this.board.boardModel.incTurnCount())
-                    GameBoard.turnpart = GameBoard.TURNPART.Draw;
+                if (this._board.BoardModel.IncTurnCount())
+                    GameBoard.TurnPart = GameBoard.Turnpart.Draw;
             }
             this.Close();
-            board.UpdatePlayerForm();
+            _board.UpdatePlayerForm();
         }
 
         /// <summary>
@@ -141,20 +141,20 @@ namespace SQADemicApp
             switch (GameBoardModels.CurrentPlayerIndex)
             {
                 case 3:
-                    success = PlayerActionsBL.ShareKnowledgeOption(GameBoardModels.players[GameBoardModels.CurrentPlayerIndex], GameBoardModels.players[3], selectedCard);
+                    success = PlayerActionsBl.ShareKnowledgeOption(GameBoardModels.Players[GameBoardModels.CurrentPlayerIndex], GameBoardModels.Players[3], selectedCard);
                     break;
 
                 default:
-                    success = PlayerActionsBL.ShareKnowledgeOption(GameBoardModels.players[GameBoardModels.CurrentPlayerIndex], GameBoardModels.players[2], selectedCard);
+                    success = PlayerActionsBl.ShareKnowledgeOption(GameBoardModels.Players[GameBoardModels.CurrentPlayerIndex], GameBoardModels.Players[2], selectedCard);
                     break;
             }
             if (success)
             {
-                if (this.board.boardModel.incTurnCount())
-                    GameBoard.turnpart = GameBoard.TURNPART.Draw;
+                if (this._board.BoardModel.IncTurnCount())
+                    GameBoard.TurnPart = GameBoard.Turnpart.Draw;
             }
             this.Close();
-            board.UpdatePlayerForm();
+            _board.UpdatePlayerForm();
         }
 
         private void StealCardButton_Click(object sender, EventArgs e)
@@ -163,20 +163,20 @@ namespace SQADemicApp
             {
                 var selectedItem = listBox2.SelectedItem.ToString();
                 var selectedCard = selectedItem.Substring(0, selectedItem.IndexOf('(') - 1);
-                Player SelectedCardHolder = GameBoardModels.players[GameBoardModels.CurrentPlayerIndex];
-                foreach (var player in GameBoardModels.players)
+                Player selectedCardHolder = GameBoardModels.Players[GameBoardModels.CurrentPlayerIndex];
+                foreach (var player in GameBoardModels.Players)
                 {
-                    if (player.hand.Any(c => c.CityName == selectedCard))
+                    if (player.Hand.Any(c => c.CityName == selectedCard))
                     {
-                        SelectedCardHolder = player;
+                        selectedCardHolder = player;
                         break;
                     }
                 }
-                if (PlayerActionsBL.ShareKnowledgeOption(SelectedCardHolder, GameBoardModels.players[GameBoardModels.CurrentPlayerIndex], selectedCard))
+                if (PlayerActionsBl.ShareKnowledgeOption(selectedCardHolder, GameBoardModels.Players[GameBoardModels.CurrentPlayerIndex], selectedCard))
                 {
                     MessageBox.Show("Card Traded");
                     this.Close();
-                    board.UpdatePlayerForm();
+                    _board.UpdatePlayerForm();
                 }
                 else
                 {
