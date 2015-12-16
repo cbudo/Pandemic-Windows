@@ -1,19 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using SQADemicApp.BL;
+using System;
 using System.Windows.Forms;
-using SQADemicApp.BL;
 
 namespace SQADemicApp
 {
     public partial class AdvancedActions : Form
     {
-        GameBoard board;
+        private GameBoard board;
+
         public AdvancedActions(GameBoard board)
         {
             InitializeComponent();
@@ -36,7 +30,7 @@ namespace SQADemicApp
             else
             {
                 if (this.board.boardModel.incTurnCount())
-                    GameBoard.turnpart = GameBoard.TURNPART.Draw;                
+                    GameBoard.turnpart = GameBoard.TURNPART.Draw;
                 board.UpdatePlayerForm();
                 this.Close();
             }

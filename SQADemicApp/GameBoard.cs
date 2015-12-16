@@ -1,22 +1,25 @@
-﻿using System;
-using System.Windows.Forms;
-using SQADemicApp.BL;
+﻿using SQADemicApp.BL;
+using System;
 using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace SQADemicApp
 {
     public partial class GameBoard : Form
     {
         public GameBoardModels boardModel;
-        CharacterPane form2;
-        PlayerPanel playerForm;
-        EventCardForm ECForm;
-        public enum STATE { Dispatcher, Initializing, Move, Cure, Default, Airlift, GovGrant}
+        private CharacterPane form2;
+        private PlayerPanel playerForm;
+        private EventCardForm ECForm;
+
+        public enum STATE { Dispatcher, Initializing, Move, Cure, Default, Airlift, GovGrant }
+
         public static STATE CurrentState;
+
         public enum TURNPART { Action, Draw, Infect };
+
         public static TURNPART turnpart;
         public static int dispatcherMoveIndex;
-        
 
         public GameBoard()
         {
@@ -33,14 +36,13 @@ namespace SQADemicApp
             playerForm.Show();
             UpdatePlayerForm();
             UpdateCityButtons(true);
-            
 
             CurrentState = STATE.Default;
             turnpart = TURNPART.Action;
         }
+
         public GameBoard(string[] playerRoles)
         {
-
             SetStyle(ControlStyles.SupportsTransparentBackColor, true);
             boardModel = new GameBoardModels(playerRoles);
             playerForm = new PlayerPanel(this);
@@ -53,7 +55,7 @@ namespace SQADemicApp
             UpdatePlayerForm();
             UpdateCityButtons(true);
             CurrentState = STATE.Default;
-            turnpart = TURNPART.Action; 
+            turnpart = TURNPART.Action;
         }
 
         //private void DrawBtn_Click(object sender, EventArgs e)
@@ -73,23 +75,28 @@ namespace SQADemicApp
                 case STATE.Airlift:
                     SpecialEventCardsBL.Airlift(GameBoardModels.players[GameBoardModels.CurrentPlayerIndex], Create.cityDictionary[cityName]);
                     break;
+
                 case STATE.GovGrant:
                     SpecialEventCardsBL.GovernmentGrant(cityName);
                     break;
+
                 case STATE.Dispatcher:
-                    if (PlayerActionsBL.DispatcherMovePlayer(GameBoardModels.players[dispatcherMoveIndex],new List<Player>(GameBoardModels.players), Create.cityDictionary[cityName]))
+                    if (PlayerActionsBL.DispatcherMovePlayer(GameBoardModels.players[dispatcherMoveIndex], new List<Player>(GameBoardModels.players), Create.cityDictionary[cityName]))
                     {
                         switch (dispatcherMoveIndex)
                         {
                             case 3:
                                 form2.Player4.Text = "Player 4\n" + GameBoardModels.players[3].role.ToString() + "\n" + cityName;
                                 break;
+
                             case 2:
                                 form2.Player3.Text = "Player 3\n" + GameBoardModels.players[2].role.ToString() + "\n" + cityName;
                                 break;
+
                             case 1:
                                 form2.Player2.Text = "Player 2\n" + GameBoardModels.players[1].role.ToString() + "\n" + cityName;
                                 break;
+
                             default:
                                 form2.Player1.Text = "Player 1\n" + GameBoardModels.players[0].role.ToString() + "\n" + cityName;
                                 break;
@@ -104,6 +111,7 @@ namespace SQADemicApp
                         MessageBox.Show("Invalid City", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     }
                     break;
+
                 case STATE.Move:
                     if (PlayerActionsBL.moveplayer(GameBoardModels.players[GameBoardModels.CurrentPlayerIndex], Create.cityDictionary[cityName]))
                     {
@@ -112,12 +120,15 @@ namespace SQADemicApp
                             case 3:
                                 form2.Player4.Text = "Player 4\n" + GameBoardModels.players[3].role.ToString() + "\n" + cityName;
                                 break;
+
                             case 2:
                                 form2.Player3.Text = "Player 3\n" + GameBoardModels.players[2].role.ToString() + "\n" + cityName;
                                 break;
+
                             case 1:
                                 form2.Player2.Text = "Player 2\n" + GameBoardModels.players[1].role.ToString() + "\n" + cityName;
                                 break;
+
                             default:
                                 form2.Player1.Text = "Player 1\n" + GameBoardModels.players[0].role.ToString() + "\n" + cityName;
                                 break;
@@ -133,6 +144,7 @@ namespace SQADemicApp
                         MessageBox.Show("Invalid City", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     }
                     break;
+
                 default:
                     CityPageForm CPForm = new CityPageForm(Create.cityDictionary[cityName]);
                     CPForm.Show();
@@ -140,6 +152,7 @@ namespace SQADemicApp
             }
             CurrentState = STATE.Default;
         }
+
         public void UpdatePlayerForm()
         {
             playerForm.progressBar1.Value = 100 * (boardModel.currentPlayerTurnCounter) / 4;
@@ -185,20 +198,23 @@ namespace SQADemicApp
                     form2.Player4.UseVisualStyleBackColor = false;
                     form2.Player3.UseVisualStyleBackColor = true;
                     break;
+
                 case 2:
                     form2.Player3.UseVisualStyleBackColor = false;
                     form2.Player2.UseVisualStyleBackColor = true;
                     break;
+
                 case 1:
                     form2.Player2.UseVisualStyleBackColor = false;
                     form2.Player1.UseVisualStyleBackColor = true;
                     break;
+
                 default:
                     form2.Player1.UseVisualStyleBackColor = false;
                     form2.Player4.UseVisualStyleBackColor = form2.Player3.UseVisualStyleBackColor = form2.Player2.UseVisualStyleBackColor = true;
                     break;
             }
-            switch(GameBoardModels.players.Length)
+            switch (GameBoardModels.players.Length)
             {
                 case 4:
                     form2.Player4.Text = "Player 4\n" + GameBoardModels.players[3].role.ToString() + "\n" + GameBoardModels.players[3].currentCity.Name;
@@ -209,9 +225,10 @@ namespace SQADemicApp
                 case 2:
                     form2.Player1.Text = "Player 1\n" + GameBoardModels.players[0].role.ToString() + "\n" + GameBoardModels.players[0].currentCity.Name;
                     form2.Player2.Text = "Player 2\n" + GameBoardModels.players[1].role.ToString() + "\n" + GameBoardModels.players[1].currentCity.Name;
-                    break;       
+                    break;
             }
         }
+
         private void updateCubeCounts()
         {
             playerForm.RedCubes.Text = String.Format("Red Cubes Remaining:    {0,-2}/24", GameBoardModels.cubeCount.redCubes);
@@ -219,18 +236,20 @@ namespace SQADemicApp
             playerForm.BlackCubes.Text = String.Format("Black Cubes Remaining:  {0,-2}/24", GameBoardModels.cubeCount.blackCubes);
             playerForm.YellowCubes.Text = String.Format("Yellow Cubes Remaining: {0,-2}/24", GameBoardModels.cubeCount.yellowCubes);
         }
+
         private void updateCounters()
         {
             playerForm.InfectionRate.Text = string.Format("Infection Rate: {0}", GameBoardModels.InfectionRate);
             playerForm.OutbreakCount.Text = string.Format("Outbreak Count: {0}", GameBoardModels.outbreakMarker);
         }
+
         private void updateCureStatus()
         {
             // set value of cure label to status in game board
             // if status is NotCured, change to No Cure for nicer appearance
-            playerForm.RedCure.Text = String.Format(   "Red:  {0}", GameBoardModels.CURESTATUS.RedCure.ToString().Replace("NotCured", "No Cure"));
-            playerForm.BlueCure.Text = String.Format(  "Blue: {0}", GameBoardModels.CURESTATUS.BlueCure.ToString().Replace("NotCured", "No Cure"));
-            playerForm.BlackCure.Text = String.Format( "Black:  {0}", GameBoardModels.CURESTATUS.BlackCure.ToString().Replace("NotCured", "No Cure"));
+            playerForm.RedCure.Text = String.Format("Red:  {0}", GameBoardModels.CURESTATUS.RedCure.ToString().Replace("NotCured", "No Cure"));
+            playerForm.BlueCure.Text = String.Format("Blue: {0}", GameBoardModels.CURESTATUS.BlueCure.ToString().Replace("NotCured", "No Cure"));
+            playerForm.BlackCure.Text = String.Format("Black:  {0}", GameBoardModels.CURESTATUS.BlackCure.ToString().Replace("NotCured", "No Cure"));
             playerForm.YellowCure.Text = String.Format("Yellow: {0}", GameBoardModels.CURESTATUS.YellowCure.ToString().Replace("NotCured", "No Cure"));
         }
 
@@ -239,11 +258,12 @@ namespace SQADemicApp
             DiscardPile dp = new DiscardPile(false);
             dp.Show();
         }
+
         public void UpdateCityButtons(bool firstRun)
         {
             foreach (var control in this.Controls)
             {
-                if(control is Button)
+                if (control is Button)
                 {
                     var button = control as Button;
                     string cityName = button.Text.Substring(3);
@@ -251,10 +271,10 @@ namespace SQADemicApp
                     {
                         var city = Create.cityDictionary[cityName];
                         button.Text = String.Format("{0,2} " + city.Name, city.allCubeCount());
-                        if(firstRun)
+                        if (firstRun)
                             button.Font = new System.Drawing.Font(button.Font.FontFamily, 5);
                     }
-                    catch(KeyNotFoundException)
+                    catch (KeyNotFoundException)
                     {
                         // not a button that needs to be updated
                     }

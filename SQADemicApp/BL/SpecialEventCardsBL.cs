@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SQADemicApp.BL
 {
@@ -65,6 +62,7 @@ namespace SQADemicApp.BL
             }
             return returnList;
         }
+
         /// <summary>
         /// Replaces the 6 cards on the infection deck
         /// ~ Call this second
@@ -78,7 +76,6 @@ namespace SQADemicApp.BL
                 return false;
             for (int i = 5; i >= 0; i--)
             {
-
                 infectionDeck.AddFirst(orderedCards[i]);
             }
             return true;

@@ -6,13 +6,13 @@ namespace SQADemicApp.BL
 {
     public class InfectorBL
     {
-		/// <summary>
-		///  Draws the next n cards from the infect deck and updates the pile
-		/// </summary>
-		/// <param name="deck">infection Deck - LinkedList</param>
+        /// <summary>
+        ///  Draws the next n cards from the infect deck and updates the pile
+        /// </summary>
+        /// <param name="deck">infection Deck - LinkedList</param>
         /// <param name="pile">infection Deck - LinkedList</param>
         /// <param name="infectionRate"></param>
-		/// <returns>List of new infected cities</returns>
+        /// <returns>List of new infected cities</returns>
         public static List<String> InfectCities(LinkedList<String> deck, LinkedList<String> pile, int infectionRate)
         {
             List<string> returnList = new List<string>();
@@ -22,24 +22,23 @@ namespace SQADemicApp.BL
                 returnList.Add(deck.First.Value);
                 pile.AddFirst(deck.First.Value);
                 deck.RemoveFirst();
-				
             }
-                return returnList;
+            return returnList;
         }
 
-		/// <summary>
-		/// Handles Epidmeic card actions,
-        /// Increases the infection rate, draws from the bottom of the deck, Shuffles the infection discard pile back into the infection deck 
-		/// </summary>
+        /// <summary>
+        /// Handles Epidmeic card actions,
+        /// Increases the infection rate, draws from the bottom of the deck, Shuffles the infection discard pile back into the infection deck
+        /// </summary>
         /// <param name="deck">infection Deck - LinkedList</param>
         /// <param name="pile">infection Deck - LinkedList</param>
         /// <param name="infectionRateIndex">infectionRateIndex - int current index in the infectionRates</param>
         /// <param name="infectionRate"></param>
-       	/// <returns></returns>
+        /// <returns></returns>
         public static string Epidemic(LinkedList<String> deck, LinkedList<String> pile, ref int infectionRateIndex, ref int infectionRate)
         {
             //infection rate stuff
-            infectionRate = infectionRateIndex > 1 ? (infectionRateIndex > 3 ? 4 :3) : 2;
+            infectionRate = infectionRateIndex > 1 ? (infectionRateIndex > 3 ? 4 : 3) : 2;
             infectionRateIndex += 1;
 
             //draw Last card
@@ -56,7 +55,7 @@ namespace SQADemicApp.BL
             }
             pile.Clear();
             return epidmicCity;
-		}
+        }
 
         public static void InfectCities(List<string> citiesToInfect)
         {
@@ -76,7 +75,6 @@ namespace SQADemicApp.BL
         /// <returns></returns>
         public static int InfectCity(SQADemicApp.City city, HashSet<City> alreadyInfected, bool causedByOutbreak, COLOR outbreakColor)
         {
-
             if (!causedByOutbreak)
             {
                 switch (city.color)
@@ -111,7 +109,6 @@ namespace SQADemicApp.BL
                                     throw new InvalidOperationException("Game Over");
                                 }
                                 return city.yellowCubes;
-
                             }
                             Outbreak(city, city.color, city.adjacentCities, alreadyInfected);
                             return city.yellowCubes;
@@ -130,12 +127,12 @@ namespace SQADemicApp.BL
                                     throw new InvalidOperationException("Game Over");
                                 }
                                 return city.blackCubes;
-
                             }
                             Outbreak(city, city.color, city.adjacentCities, alreadyInfected);
                             return city.blackCubes;
                         }
                         return city.blackCubes;
+
                     default:
                         if (GameBoardModels.CURESTATUS.RedCure != GameBoardModels.Cures.CURESTATE.Sunset)
                         {
@@ -148,7 +145,6 @@ namespace SQADemicApp.BL
                                     throw new InvalidOperationException("Game Over");
                                 }
                                 return city.redCubes;
-
                             }
                             Outbreak(city, city.color, city.adjacentCities, alreadyInfected);
                             return city.redCubes;
@@ -176,6 +172,7 @@ namespace SQADemicApp.BL
                         return city.blueCubes;
                     }
                     return city.blueCubes;
+
                 case COLOR.yellow:
                     if (GameBoardModels.CURESTATUS.YellowCure != GameBoardModels.Cures.CURESTATE.Sunset)
                     {
@@ -188,7 +185,6 @@ namespace SQADemicApp.BL
                                 throw new InvalidOperationException("Game Over");
                             }
                             return city.yellowCubes;
-
                         }
                         Outbreak(city, city.color, city.adjacentCities, alreadyInfected);
                         return city.yellowCubes;
@@ -207,7 +203,6 @@ namespace SQADemicApp.BL
                                 throw new InvalidOperationException("Game Over");
                             }
                             return city.blackCubes;
-
                         }
                         Outbreak(city, city.color, city.adjacentCities, alreadyInfected);
                         return city.blackCubes;
@@ -244,7 +239,7 @@ namespace SQADemicApp.BL
                 if (!alreadyInfected.Contains(neighbor))
                 {
                     //alreadyInfected.Add(neighbor);
-                    InfectCity(neighbor, alreadyInfected, true, color);                   
+                    InfectCity(neighbor, alreadyInfected, true, color);
                 }
             }
             GameBoardModels.outbreakMarker++;

@@ -1,13 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using SQADemicApp.BL;
 
 namespace SQADemicApp
 {
@@ -36,7 +31,7 @@ namespace SQADemicApp
             List<string> selectedCards = new List<string>();
             selectedCards = listBox2.SelectedItems.Cast<String>().ToList();
             listBox1.Items.AddRange(selectedCards.ToArray());
-            foreach(var item in selectedCards)
+            foreach (var item in selectedCards)
             {
                 listBox2.Items.Remove(item);
             }

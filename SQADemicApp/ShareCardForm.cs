@@ -1,45 +1,45 @@
-﻿using System;
+﻿using SQADemicApp.BL;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using SQADemicApp.BL;
 
 namespace SQADemicApp
 {
     public partial class ShareCardForm : Form
     {
-        GameBoard board;
+        private GameBoard board;
+
         public ShareCardForm(GameBoard board)
         {
             this.board = board;
             InitializeComponent();
-            switch(GameBoardModels.CurrentPlayerIndex)
+            switch (GameBoardModels.CurrentPlayerIndex)
             {
                 case 0:
                     P1T.Text = "Player 2";
                     P2T.Text = "Player 3";
                     P3T.Text = "Player 4";
                     break;
+
                 case 1:
                     P1T.Text = "Player 1";
                     P2T.Text = "Player 3";
                     P3T.Text = "Player 4";
                     break;
+
                 case 2:
                     P1T.Text = "Player 1";
                     P2T.Text = "Player 2";
                     P3T.Text = "Player 4";
                     break;
+
                 case 3:
                     P1T.Text = "Player 1";
                     P2T.Text = "Player 2";
                     P3T.Text = "Player 3";
                     break;
+
                 default:
                     break;
             }
@@ -55,18 +55,17 @@ namespace SQADemicApp
             listBox1.Items.Clear();
             listBox1.Items.AddRange(GameBoardModels.players[GameBoardModels.CurrentPlayerIndex].handStringList().ToArray());
             List<object> allHands = new List<object>();
-            foreach(var player in GameBoardModels.players)
+            foreach (var player in GameBoardModels.players)
             {
                 if (player.role != GameBoardModels.players[GameBoardModels.CurrentPlayerIndex].role)
                 {
                     allHands.AddRange(player.handStringList());
                 }
-                
             }
             listBox2.Items.Clear();
             listBox2.Items.AddRange(allHands.ToArray());
         }
-        
+
         /// <summary>
         /// Click for give card
         /// </summary>
@@ -82,6 +81,7 @@ namespace SQADemicApp
                 case 0:
                     success = PlayerActionsBL.ShareKnowledgeOption(GameBoardModels.players[GameBoardModels.CurrentPlayerIndex], GameBoardModels.players[1], selectedCard);
                     break;
+
                 default:
                     success = PlayerActionsBL.ShareKnowledgeOption(GameBoardModels.players[GameBoardModels.CurrentPlayerIndex], GameBoardModels.players[0], selectedCard);
                     break;
@@ -110,12 +110,14 @@ namespace SQADemicApp
                 case 0:
                     success = PlayerActionsBL.ShareKnowledgeOption(GameBoardModels.players[GameBoardModels.CurrentPlayerIndex], GameBoardModels.players[2], selectedCard);
                     break;
+
                 case 1:
                     success = PlayerActionsBL.ShareKnowledgeOption(GameBoardModels.players[GameBoardModels.CurrentPlayerIndex], GameBoardModels.players[2], selectedCard);
                     break;
+
                 default:
                     success = PlayerActionsBL.ShareKnowledgeOption(GameBoardModels.players[GameBoardModels.CurrentPlayerIndex], GameBoardModels.players[1], selectedCard);
-                    break;            
+                    break;
             }
             if (success)
             {
@@ -125,6 +127,7 @@ namespace SQADemicApp
             this.Close();
             board.UpdatePlayerForm();
         }
+
         /// <summary>
         /// Click give card to the third player
         /// </summary>
@@ -140,6 +143,7 @@ namespace SQADemicApp
                 case 3:
                     success = PlayerActionsBL.ShareKnowledgeOption(GameBoardModels.players[GameBoardModels.CurrentPlayerIndex], GameBoardModels.players[3], selectedCard);
                     break;
+
                 default:
                     success = PlayerActionsBL.ShareKnowledgeOption(GameBoardModels.players[GameBoardModels.CurrentPlayerIndex], GameBoardModels.players[2], selectedCard);
                     break;
@@ -158,17 +162,17 @@ namespace SQADemicApp
             try
             {
                 var selectedItem = listBox2.SelectedItem.ToString();
-                var selectedCard = selectedItem.Substring(0,selectedItem.IndexOf('(')-1);
+                var selectedCard = selectedItem.Substring(0, selectedItem.IndexOf('(') - 1);
                 Player SelectedCardHolder = GameBoardModels.players[GameBoardModels.CurrentPlayerIndex];
-                foreach(var player in GameBoardModels.players)
+                foreach (var player in GameBoardModels.players)
                 {
-                    if(player.hand.Any(c=>c.CityName == selectedCard))
+                    if (player.hand.Any(c => c.CityName == selectedCard))
                     {
                         SelectedCardHolder = player;
                         break;
                     }
                 }
-                if(PlayerActionsBL.ShareKnowledgeOption(SelectedCardHolder, GameBoardModels.players[GameBoardModels.CurrentPlayerIndex], selectedCard))
+                if (PlayerActionsBL.ShareKnowledgeOption(SelectedCardHolder, GameBoardModels.players[GameBoardModels.CurrentPlayerIndex], selectedCard))
                 {
                     MessageBox.Show("Card Traded");
                     this.Close();
@@ -179,13 +183,10 @@ namespace SQADemicApp
                     MessageBox.Show("Card unable to be traded");
                 }
             }
-
-            catch(NullReferenceException)
+            catch (NullReferenceException)
             {
                 MessageBox.Show("You must select a card to take");
             }
-            
-            
         }
     }
 }

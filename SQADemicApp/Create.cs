@@ -1,9 +1,8 @@
-﻿using System;
+﻿using SQADemicApp.BL;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.IO;
-using SQADemicApp.BL;
+using System.Linq;
 
 namespace SQADemicApp
 {
@@ -21,7 +20,7 @@ namespace SQADemicApp
         {
             //Keep from making duplicates
             //if (alreadySetUp)
-              //  return false;
+            //  return false;
             createDictionary();
             setAdjacentCities(new StringReader(Properties.Resources.AdjacentNeighbors));
             playerdeck = makePlayerDeck();
@@ -36,6 +35,7 @@ namespace SQADemicApp
         public static void createDictionary()
         {
             #region Createcities
+
             //create the blues
             City sanFrancisco = new City(COLOR.blue, "San Francisco");
             City chicago = new City(COLOR.blue, "Chicago");
@@ -91,11 +91,13 @@ namespace SQADemicApp
             City hoChiMinhCity = new City(COLOR.red, "Ho Chi Minh City");
             City jakarta = new City(COLOR.red, "Jakarta");
             City sydney = new City(COLOR.red, "Sydney");
-            #endregion
+
+            #endregion Createcities
 
             try
             {
                 #region loadDictionary
+
                 cityDictionary.Add("San Francisco", sanFrancisco);
                 cityDictionary.Add("Chicago", chicago);
                 cityDictionary.Add("Montreal", montreal);
@@ -144,16 +146,16 @@ namespace SQADemicApp
                 cityDictionary.Add("Ho Chi Minh City", hoChiMinhCity);
                 cityDictionary.Add("Jakarta", jakarta);
                 cityDictionary.Add("Sydney", sydney);
-                #endregion
+
+                #endregion loadDictionary
             }
             catch (Exception e)
             {
-
             }
         }
 
         /// <summary>
-        /// PUBLIC FOR TESTING ONLY 
+        /// PUBLIC FOR TESTING ONLY
         /// </summary>
         /// <param name="reader"></param>
         public static void setAdjacentCities(StringReader reader)
@@ -170,14 +172,13 @@ namespace SQADemicApp
                     cityDictionary[cityname].adjacentCities.Add(cityDictionary[city]);
                 }
             }
-
         }
 
         /// <summary>
         /// PUBLIC FOR TESTING ONLY
         /// </summary>
         /// <returns></returns>
-        public  static Card[] makePlayerDeck()
+        public static Card[] makePlayerDeck()
         {
             Card[] deck = new Card[57];
             Random rand = new Random();
@@ -247,16 +248,16 @@ namespace SQADemicApp
             {
                 case "red":
                     return COLOR.red;
+
                 case "black":
                     return COLOR.black;
+
                 case "yellow":
                     return COLOR.yellow;
+
                 default:
                     return COLOR.blue;
             }
-
         }
-
     }
-
 }

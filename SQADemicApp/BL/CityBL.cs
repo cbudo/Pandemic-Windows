@@ -1,11 +1,5 @@
-﻿using SQADemicApp;
-using System;
-using System.Collections;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 
 namespace SQADemicApp.BL
 {
@@ -28,10 +22,10 @@ namespace SQADemicApp.BL
             return ls;
         }
 
-        //I would prefer to use a static list that gets updated as opposed to continualy 
+        //I would prefer to use a static list that gets updated as opposed to continualy
         // finding the cities. This function has a heavy runtime and the amount of times it
         // will get called makes it burndensome
-        public static  List<City> getCitiesWithResearchStations()
+        public static List<City> getCitiesWithResearchStations()
         {
             List<City> ls = new List<City>();
             foreach (var key in Create.cityDictionary.Keys)
@@ -50,6 +44,5 @@ namespace SQADemicApp.BL
             City city = Create.cityDictionary[name];
             return city.getAdjacentCities();
         }
-
     }
 }

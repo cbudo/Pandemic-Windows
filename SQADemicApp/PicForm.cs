@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace SQADemicApp
 {
@@ -20,7 +12,7 @@ namespace SQADemicApp
         public PicForm(bool outbreak, string cityName)
         {
             InitializeComponent();
-            if(outbreak)
+            if (outbreak)
             {
                 this.Text = "Outbreak";
                 this.ClientSize = new System.Drawing.Size(667, 521);
@@ -32,7 +24,7 @@ namespace SQADemicApp
                 this.Text = cityName;
                 this.BackgroundImage = global::SQADemicApp.Properties.Resources.Epidemic;
                 this.ClientSize = new System.Drawing.Size(276, 385);
-            }   
+            }
         }
     }
 }

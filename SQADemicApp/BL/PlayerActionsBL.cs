@@ -1,15 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SQADemicApp.BL
 {
-    
     public class PlayerActionsBL
     {
         private static int MAXCUBECOUNT = 24;
+
         /// <summary>
         /// Finds the possible cities a player can move to
         /// </summary>
@@ -81,10 +79,12 @@ namespace SQADemicApp.BL
         /// <returns>Success Flag/returns>
         public static bool moveplayer(Player player, City city)
         {
-            if (DriveOptions(player.currentCity).Any(c => c.Name.Equals(city.Name))){
+            if (DriveOptions(player.currentCity).Any(c => c.Name.Equals(city.Name)))
+            {
                 //Do Nothing
             }
-            else if(ShuttleFlightOption(player.currentCity).Contains(city.Name)){
+            else if (ShuttleFlightOption(player.currentCity).Contains(city.Name))
+            {
                 //Do Nothing
             }
             else if (DirectFlightOption(player.hand, player.currentCity).Contains(city.Name))
@@ -116,14 +116,16 @@ namespace SQADemicApp.BL
             {
                 //Do nothing
             }
-            else if(players.Any(p => p.currentCity.Name.Equals(destination.Name))){
+            else if (players.Any(p => p.currentCity.Name.Equals(destination.Name)))
+            {
                 //Do nothing
             }
             else if (ShuttleFlightOption(player.currentCity).Contains(destination.Name))
             {
                 //Do Nothing
             }
-            else{
+            else
+            {
                 return false;
             }
             player.currentCity = destination;
@@ -151,9 +153,7 @@ namespace SQADemicApp.BL
                 return true;
             }
             return false;
-
         }
-
 
         /// <summary>
         /// Cures the color if possible
@@ -195,7 +195,7 @@ namespace SQADemicApp.BL
         /// <returns>Success Flag</returns>
         public static bool TreatDiseaseOption(Player player, COLOR color)
         {
-            int number =  getDiseaseCubes(player.currentCity, color);
+            int number = getDiseaseCubes(player.currentCity, color);
             if (number < 1)
                 return false;
             return setDiseaseCubes(player.currentCity, color, player.role == ROLE.Medic ? 0 : (number - 1), number);
@@ -207,19 +207,24 @@ namespace SQADemicApp.BL
         /// <param name="city"></param>
         /// <param name="color"></param>
         /// <returns>number of disease cubes in the city</returns>
-        private static int getDiseaseCubes(City city, COLOR color){
+        private static int getDiseaseCubes(City city, COLOR color)
+        {
             switch (color)
             {
                 case COLOR.red:
-                   return city.redCubes;
+                    return city.redCubes;
+
                 case COLOR.blue:
-                   return city.blueCubes;
+                    return city.blueCubes;
+
                 case COLOR.yellow:
-                   return city.yellowCubes;
+                    return city.yellowCubes;
+
                 case COLOR.black:
-                   return city.blackCubes;
+                    return city.blackCubes;
+
                 default:
-                    throw new ArgumentException("invalid color"); 
+                    throw new ArgumentException("invalid color");
             }
         }
 
@@ -240,13 +245,15 @@ namespace SQADemicApp.BL
                     if (GameBoardModels.cubeCount.redCubes == MAXCUBECOUNT && GameBoardModels.CURESTATUS.RedCure == GameBoardModels.Cures.CURESTATE.Cured)
                         GameBoardModels.CURESTATUS.RedCure = GameBoardModels.Cures.CURESTATE.Sunset;
                     break;
+
                 case COLOR.blue:
                     numberaftercure = GameBoardModels.CURESTATUS.BlueCure == GameBoardModels.Cures.CURESTATE.Cured ? 0 : numberaftercure;
                     GameBoardModels.cubeCount.blueCubes += (numberBeforeCure - numberaftercure);
                     city.blueCubes = numberaftercure;
                     if (GameBoardModels.cubeCount.blueCubes == MAXCUBECOUNT && GameBoardModels.CURESTATUS.BlueCure == GameBoardModels.Cures.CURESTATE.Cured)
-                        GameBoardModels.CURESTATUS.BlueCure = GameBoardModels.Cures.CURESTATE.Sunset;                    
+                        GameBoardModels.CURESTATUS.BlueCure = GameBoardModels.Cures.CURESTATE.Sunset;
                     break;
+
                 case COLOR.yellow:
                     numberaftercure = GameBoardModels.CURESTATUS.YellowCure == GameBoardModels.Cures.CURESTATE.Cured ? 0 : numberaftercure;
                     GameBoardModels.cubeCount.yellowCubes += (numberBeforeCure - numberaftercure);
@@ -254,6 +261,7 @@ namespace SQADemicApp.BL
                     if (GameBoardModels.cubeCount.yellowCubes == MAXCUBECOUNT && GameBoardModels.CURESTATUS.YellowCure == GameBoardModels.Cures.CURESTATE.Cured)
                         GameBoardModels.CURESTATUS.YellowCure = GameBoardModels.Cures.CURESTATE.Sunset;
                     break;
+
                 case COLOR.black:
                     numberaftercure = GameBoardModels.CURESTATUS.BlackCure == GameBoardModels.Cures.CURESTATE.Cured ? 0 : numberaftercure;
                     GameBoardModels.cubeCount.blackCubes += (numberBeforeCure - numberaftercure);
@@ -261,12 +269,13 @@ namespace SQADemicApp.BL
                     if (GameBoardModels.cubeCount.blackCubes == MAXCUBECOUNT && GameBoardModels.CURESTATUS.BlackCure == GameBoardModels.Cures.CURESTATE.Cured)
                         GameBoardModels.CURESTATUS.BlackCure = GameBoardModels.Cures.CURESTATE.Sunset;
                     break;
+
                 default:
                     throw new ArgumentException("invalid color");
             }
             return true;
         }
-        
+
         /// <summary>
         /// Allows Players to Trade Cards
         /// </summary>
@@ -276,7 +285,7 @@ namespace SQADemicApp.BL
         /// <returns>Sucess Flag</returns>
         public static bool ShareKnowledgeOption(Player sender, Player reciver, string cityname)
         {
-            if (sender.currentCity != reciver.currentCity || 
+            if (sender.currentCity != reciver.currentCity ||
                 (!reciver.currentCity.Name.Equals(cityname) && sender.role != ROLE.Researcher))
                 return false;
             int index = sender.hand.FindIndex(x => x.CityName.Equals(cityname));
@@ -286,6 +295,5 @@ namespace SQADemicApp.BL
             sender.hand.RemoveAt(index);
             return true;
         }
-
     }
 }

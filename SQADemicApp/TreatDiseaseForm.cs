@@ -1,19 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using SQADemicApp.BL;
+using System;
 using System.Windows.Forms;
-using SQADemicApp.BL;
 
 namespace SQADemicApp
 {
     public partial class TreatDiseaseForm : Form
     {
-        GameBoard board;
+        private GameBoard board;
+
         public TreatDiseaseForm(GameBoard board)
         {
             this.board = board;
@@ -24,17 +18,20 @@ namespace SQADemicApp
         {
             var button = sender as Button;
             COLOR colorChoice;
-            switch(button.Text)
+            switch (button.Text)
             {
                 case "Blue":
                     colorChoice = COLOR.blue;
                     break;
+
                 case "Black":
                     colorChoice = COLOR.black;
                     break;
+
                 case "Red":
                     colorChoice = COLOR.red;
                     break;
+
                 default:
                     colorChoice = COLOR.yellow;
                     break;

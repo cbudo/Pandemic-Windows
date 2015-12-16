@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SQADemicApp
@@ -20,7 +16,7 @@ namespace SQADemicApp
         private void SubmitButton_Click(object sender, EventArgs e)
         {
             StringBuilder sb = new StringBuilder();
-            if(Player1CheckBox.Checked)
+            if (Player1CheckBox.Checked)
             {
                 sb.Append(Player1ComboBox.SelectedItem + ",");
             }
@@ -34,20 +30,20 @@ namespace SQADemicApp
             }
             if (Player4CheckBox.Checked)
             {
-                sb.Append(Player4ComboBox.SelectedItem+",");
+                sb.Append(Player4ComboBox.SelectedItem + ",");
             }
-            sb.Remove(sb.ToString().LastIndexOf(','),1);
+            sb.Remove(sb.ToString().LastIndexOf(','), 1);
             string[] rolesArray = sb.ToString().Split(',');
             var duplicates = rolesArray.GroupBy(z => z).Where(g => g.Count() > 1).Select(g => g.Key);
-            if(duplicates.Count() > 0)
+            if (duplicates.Count() > 0)
             {
                 string duplicateWords = "";
-                foreach(var dup in duplicates)
+                foreach (var dup in duplicates)
                 {
                     duplicateWords += dup + ", ";
                 }
 
-                MessageBox.Show("You cannot have more than one: " + duplicateWords.Substring(0,duplicateWords.Length-2));
+                MessageBox.Show("You cannot have more than one: " + duplicateWords.Substring(0, duplicateWords.Length - 2));
                 return;
             }
             Program.rolesArray = rolesArray;

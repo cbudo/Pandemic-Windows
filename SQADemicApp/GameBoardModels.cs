@@ -1,15 +1,17 @@
-﻿using System;
+﻿using SQADemicApp.BL;
+using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.IO;
-using SQADemicApp.BL;
+using System.Linq;
 
 namespace SQADemicApp
 {
     public enum COLOR { red, black, blue, yellow }
+
     public class GameBoardModels
     {
         #region Public Static Vars
+
         public static InfectionCubeCount cubeCount;
         public static Cures CURESTATUS;
         public static List<String> citiesWithResearchStations;
@@ -21,16 +23,21 @@ namespace SQADemicApp
         public static LinkedList<String> infectionPile;
         public static int InfectionRate;
         public static int InfectionRateIndex;
-        #endregion
+
+        #endregion Public Static Vars
 
         #region Public Vars
+
         public int currentPlayerTurnCounter;
-        #endregion
+
+        #endregion Public Vars
 
         #region private vars
+
         private static bool alreadySetUp = false;
         public static Stack<Card> playerDeck;
-        #endregion
+
+        #endregion private vars
 
         /// <summary>
         /// Acts as a Main function. Sets up the game and the board state
@@ -67,18 +74,23 @@ namespace SQADemicApp
                     case "Dispatcher":
                         players[i] = new Player(ROLE.Dispatcher);
                         break;
+
                     case "Operations Expert":
                         players[i] = new Player(ROLE.OpExpert);
                         break;
+
                     case "Scientist":
                         players[i] = new Player(ROLE.Scientist);
                         break;
+
                     case "Medic":
                         players[i] = new Player(ROLE.Medic);
                         break;
+
                     case "Researcher":
                         players[i] = new Player(ROLE.Researcher);
                         break;
+
                     default:
                         players[i] = null;
                         break;
@@ -93,7 +105,6 @@ namespace SQADemicApp
             }
 
             alreadySetUp = true;
-
         }
 
         private void startGameInfection()
@@ -166,6 +177,7 @@ namespace SQADemicApp
         }
 
         #region Storage Classes
+
         public class InfectionCubeCount
         {
             public int redCubes { get; set; }
@@ -173,9 +185,11 @@ namespace SQADemicApp
             public int blueCubes { get; set; }
             public int yellowCubes { get; set; }
         }
+
         public class Cures
         {
             public enum CURESTATE { NotCured, Cured, Sunset }
+
             public CURESTATE RedCure { get; set; }
             public CURESTATE BlueCure { get; set; }
             public CURESTATE BlackCure { get; set; }
@@ -187,16 +201,21 @@ namespace SQADemicApp
                 {
                     case COLOR.red:
                         return RedCure;
+
                     case COLOR.blue:
                         return BlueCure;
+
                     case COLOR.yellow:
                         return YellowCure;
+
                     case COLOR.black:
                         return BlackCure;
+
                     default:
                         throw new ArgumentException("Not a vaild color");
                 }
             }
+
             public void setCureStatus(COLOR color, CURESTATE curestate)
             {
                 switch (color)
@@ -204,20 +223,25 @@ namespace SQADemicApp
                     case COLOR.red:
                         RedCure = curestate;
                         break;
+
                     case COLOR.blue:
                         BlueCure = curestate;
                         break;
+
                     case COLOR.yellow:
                         YellowCure = curestate;
                         break;
+
                     case COLOR.black:
                         BlackCure = curestate;
                         break;
+
                     default:
                         throw new ArgumentException("Not a vaild color");
                 }
             }
         }
-        #endregion
+
+        #endregion Storage Classes
     }
 }

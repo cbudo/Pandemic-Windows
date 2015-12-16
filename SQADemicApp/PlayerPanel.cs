@@ -1,13 +1,8 @@
-﻿using System;
+﻿using SQADemicApp.BL;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using SQADemicApp.BL;
 
 namespace SQADemicApp
 {
@@ -15,6 +10,7 @@ namespace SQADemicApp
     {
         private GameBoard board;
         public static bool quietNight = false;
+
         public PlayerPanel(GameBoard board)
         {
             this.board = board;

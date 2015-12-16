@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SQADemicApp
@@ -23,7 +17,7 @@ namespace SQADemicApp
         {
             InitializeComponent();
             this.playerRoles = playerRoles;
-            switch(playerRoles.Count())
+            switch (playerRoles.Count())
             {
                 case 1:
                     Player2.Hide();
@@ -40,10 +34,10 @@ namespace SQADemicApp
         private void Player_Click(object sender, EventArgs e)
         {
             var btn = sender as Button;
-            if(GameBoard.CurrentState==GameBoard.STATE.Dispatcher)
+            if (GameBoard.CurrentState == GameBoard.STATE.Dispatcher)
             {
                 var playernum = btn.Text.Substring(7, 1);
-                GameBoard.dispatcherMoveIndex = Convert.ToInt32(playernum)-1;
+                GameBoard.dispatcherMoveIndex = Convert.ToInt32(playernum) - 1;
             }
         }
     }

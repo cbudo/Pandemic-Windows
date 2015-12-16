@@ -1,19 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace SQADemicApp
 {
     public class City
     {
-
         public string Name;
         public COLOR color;
         public int redCubes { get; set; }
         public int blackCubes { get; set; }
-        public int blueCubes  { get; set; }
-        public int yellowCubes  { get; set; }
+        public int blueCubes { get; set; }
+        public int yellowCubes { get; set; }
         public bool researchStation = false;
         public HashSet<City> adjacentCities;
         //public List<City> adjacentCities;
@@ -46,9 +43,8 @@ namespace SQADemicApp
 
         public override bool Equals(object obj)
         {
-            City temp = (City) obj;
+            City temp = (City)obj;
             return (this.Name == temp.Name) && (this.color == temp.color);
         }
     }
-
 }

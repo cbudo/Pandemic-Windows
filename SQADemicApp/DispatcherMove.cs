@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using System.Windows.Forms;
 
 namespace SQADemicApp
@@ -16,12 +9,12 @@ namespace SQADemicApp
         {
             InitializeComponent();
         }
+
         public DispatcherMove(Player[] players, int CurrentPlayer)
         {
             InitializeComponent();
-            switch(players.Count())
+            switch (players.Count())
             {
-                
             }
         }
     }

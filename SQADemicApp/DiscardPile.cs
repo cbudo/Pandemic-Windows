@@ -1,11 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SQADemicApp
@@ -16,15 +10,17 @@ namespace SQADemicApp
         {
             InitializeComponent();
         }
+
         public DiscardPile(bool resilientPopulation)
         {
             InitializeComponent();
-            if(!resilientPopulation)
+            if (!resilientPopulation)
             {
                 Discard.Hide();
             }
             setCards();
         }
+
         private void setCards()
         {
             listBox1.Items.Clear();
@@ -40,11 +36,10 @@ namespace SQADemicApp
                 GameBoardModels.infectionPile.Remove(selecteditem);
                 this.Close();
             }
-            catch(NullReferenceException)
+            catch (NullReferenceException)
             {
                 MessageBox.Show("No card selected");
             }
-
         }
     }
 }
