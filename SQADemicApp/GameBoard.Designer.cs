@@ -79,6 +79,7 @@
             this.Sydney = new System.Windows.Forms.Button();
             this.button49 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.difficultyDisplay = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // SanFrancisco
@@ -683,12 +684,23 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // difficultyDisplay
+            // 
+            this.difficultyDisplay.AutoSize = true;
+            this.difficultyDisplay.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.difficultyDisplay.Location = new System.Drawing.Point(13, 13);
+            this.difficultyDisplay.Name = "difficultyDisplay";
+            this.difficultyDisplay.Size = new System.Drawing.Size(59, 20);
+            this.difficultyDisplay.TabIndex = 51;
+            this.difficultyDisplay.Text = "Normal";
+            // 
             // GameBoard
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(1205, 839);
+            this.Controls.Add(this.difficultyDisplay);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.button49);
             this.Controls.Add(this.Sydney);
@@ -742,6 +754,7 @@
             this.Name = "GameBoard";
             this.Text = "SQAdemic";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -797,7 +810,7 @@
         private System.Windows.Forms.Button button49;
         private System.Windows.Forms.Button Istanbul;
         private System.Windows.Forms.Button button1;
-
+        private System.Windows.Forms.Label difficultyDisplay;
     }
 }
 
