@@ -4,10 +4,7 @@ using System.Text.RegularExpressions;
 using System.Windows.Input;
 using System.Windows.Forms;
 using System.Drawing;
-using Microsoft.VisualStudio.TestTools.UITesting;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Microsoft.VisualStudio.TestTools.UITest.Extension;
-using Keyboard = Microsoft.VisualStudio.TestTools.UITesting.Keyboard;
 
 
 namespace SQADemicAppTest
@@ -15,7 +12,6 @@ namespace SQADemicAppTest
     /// <summary>
     /// Summary description for UITest
     /// </summary>
-    [CodedUITest]
     public class UiTest
     {
         public UiTest()

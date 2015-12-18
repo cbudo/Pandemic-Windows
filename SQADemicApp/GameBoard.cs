@@ -307,7 +307,7 @@ namespace SQADemicApp
         {
             var city = Create.CityDictionary[((Button)sender).Text.Substring(3)];
             var tipInfo =
-                $"{city.Name}\n{city.Color}\n\nBlack: {city.BlackCubes}\nBlue: {city.BlueCubes}\nRed: {city.RedCubes}\nYellow: {city.YellowCubes}\n";
+                "{city.Name}\n{city.Color}\n\nBlack: {city.BlackCubes}\nBlue: {city.BlueCubes}\nRed: {city.RedCubes}\nYellow: {city.YellowCubes}\n";
             if (city.ResearchStation) tipInfo += "\nResearch Station";
             tip.Show(tipInfo, (Button)sender);
         }

@@ -58,7 +58,7 @@ namespace SQADemicApp
                 Curestatus.BlackCure = Curestatus.BlueCure = Curestatus.RedCure = Curestatus.YellowCure = Cures.Curestate.NotCured;
                 Card[] playerDeckArray;
                 List<string> infectionDeckList;
-                Create.SetUpCreate(out playerDeckArray, out infectionDeckList);
+                Create.SetUpCreate(playersroles, out playerDeckArray, out infectionDeckList);
                 PlayerDeck = new Stack<Card>(playerDeckArray);
                 EventCards = new List<Card>();
                 InfectionPile = new LinkedList<string>();
@@ -98,7 +98,11 @@ namespace SQADemicApp
                         break;
                 }
             }
-            InfectionRate = 2;
+            if (Difficulty == DifficultySetting.Hard) {
+                InfectionRate = 3;
+            } else {
+                InfectionRate = 2;
+            }
             InfectionRateIndex = 0;
             if (!_alreadySetUp)
             {

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using SQADemicApp.BL;
 using SQADemicApp;
 using System.IO;
+using System.Linq;
 
 namespace SQADemicAppTest
 {
@@ -21,6 +22,36 @@ namespace SQADemicAppTest
         }**/
 
         #region cardList
+        [TestMethod]
+        public void TestEasyDifficultyEpidemicCards()
+        {
+            string[] playerRoles = {"Medic", "Scientist"};
+            Card[] playerDeck = Create.MakePlayerDeck(DifficultySetting.Easy, playerRoles);
+            List<Card> cards =  new List<Card>(playerDeck);
+            int countEpidemic = cards.Count(m => m.CardType == Card.Cardtype.Epidemic);
+            Assert.AreEqual(countEpidemic, 4);
+        }
+
+        [TestMethod]
+        public void TestNormalDifficultyEpidemicCards()
+        {
+            string[] playerRoles = { "Medic", "Scientist" };
+            Card[] playerDeck = Create.MakePlayerDeck(DifficultySetting.Medium, playerRoles);
+            List<Card> cards = new List<Card>(playerDeck);
+            int countEpidemic = cards.Count(m => m.CardType == Card.Cardtype.Epidemic);
+            Assert.AreEqual(countEpidemic, 5);
+        }
+
+        [TestMethod]
+        public void TestHeroicDifficultyEpidemicCards()
+        {
+            string[] playerRoles = { "Medic", "Scientist" };
+            Card[] playerDeck = Create.MakePlayerDeck(DifficultySetting.Hard, playerRoles);
+            List<Card> cards = new List<Card>(playerDeck);
+            int countEpidemic = cards.Count(m => m.CardType == Card.Cardtype.Epidemic);
+            Assert.AreEqual(countEpidemic, 6);
+        }
+
         [TestMethod]
         public void TestThatCardListCorrectOneItem()
         {
@@ -168,6 +199,23 @@ namespace SQADemicAppTest
             ls = Create.MakeInfectionDeck(r);
             HashSet<string> hash = new HashSet<string>(ls);
             Assert.AreEqual(5, hash.Count);
+        }
+        #endregion
+
+        #region InfectionRate
+        [TestMethod]
+        public void TestDifficultyInfectionRate()
+        {
+            string[] players = { "Dispatcher", "Scientist" };
+            GameBoardModels.Difficulty = DifficultySetting.Easy;
+            GameBoardModels model = new GameBoardModels(players);
+            Assert.AreEqual(2, GameBoardModels.InfectionRate);
+            GameBoardModels.Difficulty = DifficultySetting.Medium;
+            model = new GameBoardModels(players);
+            Assert.AreEqual(2, GameBoardModels.InfectionRate);
+            GameBoardModels.Difficulty = DifficultySetting.Hard;
+            model = new GameBoardModels(players);
+            Assert.AreEqual(3, GameBoardModels.InfectionRate);
         }
         #endregion
     }
