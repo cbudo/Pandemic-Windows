@@ -63,9 +63,6 @@ namespace SQADemicApp
             } else if (heroicDifficulty.Checked)
             {
                 GameBoardModels.Difficulty = DifficultySetting.Hard;
-            } else if (legendaryDifficulty.Checked)
-            {
-                GameBoardModels.Difficulty = DifficultySetting.Legendary;
             }
         }
     }

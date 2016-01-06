@@ -38,7 +38,6 @@
             this.Player4ComboBox = new System.Windows.Forms.ComboBox();
             this.SubmitButton = new System.Windows.Forms.Button();
             this.difficultyGroup = new System.Windows.Forms.GroupBox();
-            this.legendaryDifficulty = new System.Windows.Forms.RadioButton();
             this.heroicDifficulty = new System.Windows.Forms.RadioButton();
             this.normalDifficulty = new System.Windows.Forms.RadioButton();
             this.introductoryDifficulty = new System.Windows.Forms.RadioButton();
@@ -162,27 +161,15 @@
             // 
             // difficultyGroup
             // 
-            this.difficultyGroup.Controls.Add(this.legendaryDifficulty);
             this.difficultyGroup.Controls.Add(this.heroicDifficulty);
             this.difficultyGroup.Controls.Add(this.normalDifficulty);
             this.difficultyGroup.Controls.Add(this.introductoryDifficulty);
             this.difficultyGroup.Location = new System.Drawing.Point(184, 12);
             this.difficultyGroup.Name = "difficultyGroup";
-            this.difficultyGroup.Size = new System.Drawing.Size(98, 129);
+            this.difficultyGroup.Size = new System.Drawing.Size(98, 97);
             this.difficultyGroup.TabIndex = 10;
             this.difficultyGroup.TabStop = false;
             this.difficultyGroup.Text = "Difficulty";
-            // 
-            // legendaryDifficulty
-            // 
-            this.legendaryDifficulty.AutoSize = true;
-            this.legendaryDifficulty.Location = new System.Drawing.Point(7, 93);
-            this.legendaryDifficulty.Name = "legendaryDifficulty";
-            this.legendaryDifficulty.Size = new System.Drawing.Size(75, 17);
-            this.legendaryDifficulty.TabIndex = 3;
-            this.legendaryDifficulty.Text = "Legendary";
-            this.legendaryDifficulty.UseVisualStyleBackColor = true;
-            this.legendaryDifficulty.CheckedChanged += new System.EventHandler(this.difficultyChanged);
             // 
             // heroicDifficulty
             // 
@@ -259,6 +246,5 @@
         private System.Windows.Forms.GroupBox difficultyGroup;
         private System.Windows.Forms.RadioButton normalDifficulty;
         private System.Windows.Forms.RadioButton heroicDifficulty;
-        private System.Windows.Forms.RadioButton legendaryDifficulty;
     }
 }
