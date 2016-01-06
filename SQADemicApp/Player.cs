@@ -10,7 +10,23 @@ namespace SQADemicApp
         public readonly Role Role;
         public List<Card> Hand { get; set; }
         public City CurrentCity { get; set; }
+        private int _turnCount = 0;
 
+        public bool IncrementTurnCount()
+        {
+            if (_turnCount == 3)
+            {
+                _turnCount = 0;
+                return true;
+            }
+            _turnCount++;
+            return false;
+        }
+
+        public int GetTurnCount()
+        {
+            return _turnCount;
+        }
         public Player(Role role)
         {
             this.Role = role;

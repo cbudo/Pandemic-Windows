@@ -122,7 +122,7 @@ namespace SQADemicApp
                                 _form2.Player1.Text = "Player 1\n" + GameBoardModels.Players[0].Role.ToString() + "\n" + cityName;
                                 break;
                         }
-                        if (BoardModel.IncTurnCount())
+                        if (GameBoardModels.Players[GameBoardModels.CurrentPlayerIndex].IncrementTurnCount())
                             TurnPart = Turnpart.Draw;
                         UpdatePlayerForm();
                         UpdateCityButtons(false);
@@ -154,7 +154,7 @@ namespace SQADemicApp
                                 _form2.Player1.Text = "Player 1\n" + GameBoardModels.Players[0].Role.ToString() + "\n" + cityName;
                                 break;
                         }
-                        bool endofturn = BoardModel.IncTurnCount();
+                        bool endofturn = GameBoardModels.Players[GameBoardModels.CurrentPlayerIndex].IncrementTurnCount();
                         if (endofturn)
                             TurnPart = Turnpart.Draw;
                         UpdatePlayerForm();
@@ -176,8 +176,8 @@ namespace SQADemicApp
 
         public void UpdatePlayerForm()
         {
-            _playerForm.progressBar1.Value = 100 * (BoardModel.CurrentPlayerTurnCounter) / 4;
-            _playerForm.label1.Text = _playerForm.label1.Text.Substring(0, _playerForm.label1.Text.Length - 3) + (Convert.ToInt32(BoardModel.CurrentPlayerTurnCounter)) + "/" + 4;
+            _playerForm.progressBar1.Value = 100 * (GameBoardModels.Players[GameBoardModels.CurrentPlayerIndex].GetTurnCount()) / 4;
+            _playerForm.label1.Text = _playerForm.label1.Text.Substring(0, _playerForm.label1.Text.Length - 3) + (Convert.ToInt32(GameBoardModels.Players[GameBoardModels.CurrentPlayerIndex].GetTurnCount())) + "/" + 4;
             _playerForm.listBox1.Items.Clear();
             _playerForm.listBox1.Items.AddRange(GameBoardModels.Players[GameBoardModels.CurrentPlayerIndex].HandStringList().ToArray());
             if (GameBoardModels.Players[GameBoardModels.CurrentPlayerIndex].Role == Role.Dispatcher)

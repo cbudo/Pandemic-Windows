@@ -27,12 +27,7 @@ namespace SQADemicApp
         public static DifficultySetting Difficulty = DifficultySetting.Medium;
 
         #endregion Public Static Vars
-
-        #region Public Vars
-
-        public int CurrentPlayerTurnCounter;
-
-        #endregion Public Vars
+        
 
         #region private vars
 
@@ -67,7 +62,6 @@ namespace SQADemicApp
 
             //Players setup allows existing players to be overwritten
             Players = new Player[playersroles.Length];
-            CurrentPlayerTurnCounter = 0;
             CurrentPlayerIndex = 0;
             for (int i = 0; i < playersroles.Count(); i++)
             {
@@ -145,19 +139,7 @@ namespace SQADemicApp
                 }
             }
         }
-
-        public bool IncTurnCount()
-        {
-            if (CurrentPlayerTurnCounter == 3)
-            {
-                CurrentPlayerTurnCounter = 0;
-                return true;
-            }
-            else
-                CurrentPlayerTurnCounter++;
-            return false;
-        }
-
+        
         public static Card DrawCard()
         {
             try

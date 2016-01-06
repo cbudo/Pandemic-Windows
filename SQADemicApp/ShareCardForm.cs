@@ -88,7 +88,7 @@ namespace SQADemicApp
             }
             if (success)
             {
-                if (this._board.BoardModel.IncTurnCount())
+                if (GameBoardModels.Players[GameBoardModels.CurrentPlayerIndex].IncrementTurnCount())
                     GameBoard.TurnPart = GameBoard.Turnpart.Draw;
             }
             this.Close();
@@ -121,7 +121,7 @@ namespace SQADemicApp
             }
             if (success)
             {
-                if (this._board.BoardModel.IncTurnCount())
+                if (GameBoardModels.Players[GameBoardModels.CurrentPlayerIndex].IncrementTurnCount())
                     GameBoard.TurnPart = GameBoard.Turnpart.Draw;
             }
             this.Close();
@@ -150,7 +150,7 @@ namespace SQADemicApp
             }
             if (success)
             {
-                if (this._board.BoardModel.IncTurnCount())
+                if (GameBoardModels.Players[GameBoardModels.CurrentPlayerIndex].IncrementTurnCount())
                     GameBoard.TurnPart = GameBoard.Turnpart.Draw;
             }
             this.Close();

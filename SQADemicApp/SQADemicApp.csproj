@@ -110,6 +110,7 @@
     <Compile Include="PicForm.Designer.cs">
       <DependentUpon>PicForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="PlayerFactory.cs" />
     <Compile Include="PlayerPanel.cs">
       <SubType>Form</SubType>
     </Compile>

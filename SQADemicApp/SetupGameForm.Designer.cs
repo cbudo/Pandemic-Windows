@@ -180,7 +180,7 @@
             this.heroicDifficulty.TabIndex = 2;
             this.heroicDifficulty.Text = "Heroic";
             this.heroicDifficulty.UseVisualStyleBackColor = true;
-            this.heroicDifficulty.CheckedChanged += new System.EventHandler(this.difficultyChanged);
+            this.heroicDifficulty.CheckedChanged += new System.EventHandler(this.DifficultyChanged);
             // 
             // normalDifficulty
             // 
@@ -193,7 +193,7 @@
             this.normalDifficulty.TabStop = true;
             this.normalDifficulty.Text = "Normal";
             this.normalDifficulty.UseVisualStyleBackColor = true;
-            this.normalDifficulty.CheckedChanged += new System.EventHandler(this.difficultyChanged);
+            this.normalDifficulty.CheckedChanged += new System.EventHandler(this.DifficultyChanged);
             // 
             // introductoryDifficulty
             // 
@@ -204,7 +204,7 @@
             this.introductoryDifficulty.TabIndex = 0;
             this.introductoryDifficulty.Text = "Introductory";
             this.introductoryDifficulty.UseVisualStyleBackColor = true;
-            this.introductoryDifficulty.CheckedChanged += new System.EventHandler(this.difficultyChanged);
+            this.introductoryDifficulty.CheckedChanged += new System.EventHandler(this.DifficultyChanged);
             // 
             // SetupGameForm
             // 
