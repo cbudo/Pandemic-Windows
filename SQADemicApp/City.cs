@@ -46,5 +46,11 @@ namespace SQADemicApp
             City temp = (City)obj;
             return (this.Name == temp.Name) && (this.Color == temp.Color);
         }
+
+        public override int GetHashCode()
+        {
+            return Name.GetHashCode() + Color.GetHashCode() + RedCubes.GetHashCode() + BlackCubes.GetHashCode() + BlueCubes.GetHashCode() + YellowCubes.GetHashCode() +
+                   AdjacentCities.GetHashCode();
+        }
     }
 }

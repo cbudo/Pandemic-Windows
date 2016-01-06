@@ -164,7 +164,7 @@ namespace SQADemicApp.BL
         /// <returns>Success Flag</returns>
         public static bool Cure(Player player, List<string> cardsToSpend, Color color)
         {
-            if (!player.CurrentCity.ResearchStation || GameBoardModels.Curestatus.GetCureStatus(color) != GameBoardModels.Cures.Curestate.NotCured)
+            if (!player.CurrentCity.ResearchStation || GameBoardModels.Curestatus.GetCureStatus(color) != Cures.Curestate.NotCured)
                 return false;
             var cards = player.Hand.Where(x => x.CityColor == color && cardsToSpend.Contains(x.CityName));
             if (player.Role == Role.Scientist)
@@ -175,11 +175,11 @@ namespace SQADemicApp.BL
             else if (cards.Count() != 5)
                 return false;
             player.Hand.RemoveAll(x => cards.Contains(x));
-            GameBoardModels.Curestatus.SetCureStatus(color, GameBoardModels.Cures.Curestate.Cured);
-            if (GameBoardModels.Curestatus.BlackCure != GameBoardModels.Cures.Curestate.NotCured &&
-                   GameBoardModels.Curestatus.BlueCure != GameBoardModels.Cures.Curestate.NotCured &&
-                   GameBoardModels.Curestatus.RedCure != GameBoardModels.Cures.Curestate.NotCured &&
-                   GameBoardModels.Curestatus.YellowCure != GameBoardModels.Cures.Curestate.NotCured)
+            GameBoardModels.Curestatus.SetCureStatus(color, Cures.Curestate.Cured);
+            if (GameBoardModels.Curestatus.BlackCure != Cures.Curestate.NotCured &&
+                   GameBoardModels.Curestatus.BlueCure != Cures.Curestate.NotCured &&
+                   GameBoardModels.Curestatus.RedCure != Cures.Curestate.NotCured &&
+                   GameBoardModels.Curestatus.YellowCure != Cures.Curestate.NotCured)
             {
                 throw new InvalidOperationException("Game Over You Win");
             }
@@ -239,35 +239,35 @@ namespace SQADemicApp.BL
             switch (color)
             {
                 case Color.Red:
-                    numberaftercure = GameBoardModels.Curestatus.RedCure == GameBoardModels.Cures.Curestate.Cured ? 0 : numberaftercure;
+                    numberaftercure = GameBoardModels.Curestatus.RedCure == Cures.Curestate.Cured ? 0 : numberaftercure;
                     GameBoardModels.CubeCount.RedCubes += (numberBeforeCure - numberaftercure);
                     city.RedCubes = numberaftercure;
-                    if (GameBoardModels.CubeCount.RedCubes == Maxcubecount && GameBoardModels.Curestatus.RedCure == GameBoardModels.Cures.Curestate.Cured)
-                        GameBoardModels.Curestatus.RedCure = GameBoardModels.Cures.Curestate.Sunset;
+                    if (GameBoardModels.CubeCount.RedCubes == Maxcubecount && GameBoardModels.Curestatus.RedCure == Cures.Curestate.Cured)
+                        GameBoardModels.Curestatus.RedCure = Cures.Curestate.Sunset;
                     break;
 
                 case Color.Blue:
-                    numberaftercure = GameBoardModels.Curestatus.BlueCure == GameBoardModels.Cures.Curestate.Cured ? 0 : numberaftercure;
+                    numberaftercure = GameBoardModels.Curestatus.BlueCure == Cures.Curestate.Cured ? 0 : numberaftercure;
                     GameBoardModels.CubeCount.BlueCubes += (numberBeforeCure - numberaftercure);
                     city.BlueCubes = numberaftercure;
-                    if (GameBoardModels.CubeCount.BlueCubes == Maxcubecount && GameBoardModels.Curestatus.BlueCure == GameBoardModels.Cures.Curestate.Cured)
-                        GameBoardModels.Curestatus.BlueCure = GameBoardModels.Cures.Curestate.Sunset;
+                    if (GameBoardModels.CubeCount.BlueCubes == Maxcubecount && GameBoardModels.Curestatus.BlueCure == Cures.Curestate.Cured)
+                        GameBoardModels.Curestatus.BlueCure = Cures.Curestate.Sunset;
                     break;
 
                 case Color.Yellow:
-                    numberaftercure = GameBoardModels.Curestatus.YellowCure == GameBoardModels.Cures.Curestate.Cured ? 0 : numberaftercure;
+                    numberaftercure = GameBoardModels.Curestatus.YellowCure == Cures.Curestate.Cured ? 0 : numberaftercure;
                     GameBoardModels.CubeCount.YellowCubes += (numberBeforeCure - numberaftercure);
                     city.YellowCubes = numberaftercure;
-                    if (GameBoardModels.CubeCount.YellowCubes == Maxcubecount && GameBoardModels.Curestatus.YellowCure == GameBoardModels.Cures.Curestate.Cured)
-                        GameBoardModels.Curestatus.YellowCure = GameBoardModels.Cures.Curestate.Sunset;
+                    if (GameBoardModels.CubeCount.YellowCubes == Maxcubecount && GameBoardModels.Curestatus.YellowCure == Cures.Curestate.Cured)
+                        GameBoardModels.Curestatus.YellowCure = Cures.Curestate.Sunset;
                     break;
 
                 case Color.Black:
-                    numberaftercure = GameBoardModels.Curestatus.BlackCure == GameBoardModels.Cures.Curestate.Cured ? 0 : numberaftercure;
+                    numberaftercure = GameBoardModels.Curestatus.BlackCure == Cures.Curestate.Cured ? 0 : numberaftercure;
                     GameBoardModels.CubeCount.BlackCubes += (numberBeforeCure - numberaftercure);
                     city.BlackCubes = numberaftercure;
-                    if (GameBoardModels.CubeCount.BlackCubes == Maxcubecount && GameBoardModels.Curestatus.BlackCure == GameBoardModels.Cures.Curestate.Cured)
-                        GameBoardModels.Curestatus.BlackCure = GameBoardModels.Cures.Curestate.Sunset;
+                    if (GameBoardModels.CubeCount.BlackCubes == Maxcubecount && GameBoardModels.Curestatus.BlackCure == Cures.Curestate.Cured)
+                        GameBoardModels.Curestatus.BlackCure = Cures.Curestate.Sunset;
                     break;
 
                 default:
@@ -285,7 +285,7 @@ namespace SQADemicApp.BL
         /// <returns>Sucess Flag</returns>
         public static bool ShareKnowledgeOption(Player sender, Player reciver, string cityname)
         {
-            if (sender.CurrentCity != reciver.CurrentCity ||
+            if (!Equals(sender.CurrentCity, reciver.CurrentCity) ||
                 (!reciver.CurrentCity.Name.Equals(cityname) && sender.Role != Role.Researcher))
                 return false;
             int index = sender.Hand.FindIndex(x => x.CityName.Equals(cityname));
