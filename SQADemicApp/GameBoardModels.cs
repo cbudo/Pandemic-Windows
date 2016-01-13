@@ -27,12 +27,7 @@ namespace SQADemicApp
         public static DifficultySetting Difficulty = DifficultySetting.Medium;
 
         #endregion Public Static Vars
-
-        #region Public Vars
-
-        public int CurrentPlayerTurnCounter;
-
-        #endregion Public Vars
+        
 
         #region private vars
 
@@ -62,12 +57,11 @@ namespace SQADemicApp
                 PlayerDeck = new Stack<Card>(playerDeckArray);
                 EventCards = new List<Card>();
                 InfectionPile = new LinkedList<string>();
-                InfectionDeck = new LinkedList<string>(Create.MakeInfectionDeck(new StringReader(SQADemicApp.Properties.Resources.InfectionDeck)));
+                InfectionDeck = new LinkedList<string>(Create.MakeInfectionDeck(new StringReader(Properties.Resources.InfectionDeck)));
             }
 
             //Players setup allows existing players to be overwritten
             Players = new Player[playersroles.Length];
-            CurrentPlayerTurnCounter = 0;
             CurrentPlayerIndex = 0;
             for (int i = 0; i < playersroles.Count(); i++)
             {
@@ -98,11 +92,7 @@ namespace SQADemicApp
                         break;
                 }
             }
-            if (Difficulty == DifficultySetting.Hard) {
-                InfectionRate = 3;
-            } else {
-                InfectionRate = 2;
-            }
+            InfectionRate = Difficulty == DifficultySetting.Hard ? 3 : 2;
             InfectionRateIndex = 0;
             if (!_alreadySetUp)
             {
@@ -149,22 +139,7 @@ namespace SQADemicApp
                 }
             }
         }
-
-        public bool IncTurnCount()
-        {
-            if (CurrentPlayerTurnCounter == 3)
-            {
-                //CurrentPlayerIndex = (CurrentPlayerIndex + 1) % players.Count();
-                CurrentPlayerTurnCounter = 0;
-                return true;
-            }
-            else
-                CurrentPlayerTurnCounter++;
-            return false;
-
-            //currentPlayerTurnCounter++;
-        }
-
+        
         public static Card DrawCard()
         {
             try
@@ -192,61 +167,7 @@ namespace SQADemicApp
             public int YellowCubes { get; set; }
         }
 
-        public class Cures
-        {
-            public enum Curestate { NotCured, Cured, Sunset }
-
-            public Curestate RedCure { get; set; }
-            public Curestate BlueCure { get; set; }
-            public Curestate BlackCure { get; set; }
-            public Curestate YellowCure { get; set; }
-
-            public Curestate GetCureStatus(Color color)
-            {
-                switch (color)
-                {
-                    case Color.Red:
-                        return RedCure;
-
-                    case Color.Blue:
-                        return BlueCure;
-
-                    case Color.Yellow:
-                        return YellowCure;
-
-                    case Color.Black:
-                        return BlackCure;
-
-                    default:
-                        throw new ArgumentException("Not a vaild color");
-                }
-            }
-
-            public void SetCureStatus(Color color, Curestate curestate)
-            {
-                switch (color)
-                {
-                    case Color.Red:
-                        RedCure = curestate;
-                        break;
-
-                    case Color.Blue:
-                        BlueCure = curestate;
-                        break;
-
-                    case Color.Yellow:
-                        YellowCure = curestate;
-                        break;
-
-                    case Color.Black:
-                        BlackCure = curestate;
-                        break;
-
-                    default:
-                        throw new ArgumentException("Not a vaild color");
-                }
-            }
-        }
+        
 
         #endregion Storage Classes
     }
