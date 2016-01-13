@@ -57,7 +57,7 @@ namespace SQADemicApp
                 PlayerDeck = new Stack<Card>(playerDeckArray);
                 EventCards = new List<Card>();
                 InfectionPile = new LinkedList<string>();
-                InfectionDeck = new LinkedList<string>(Create.MakeInfectionDeck(new StringReader(SQADemicApp.Properties.Resources.InfectionDeck)));
+                InfectionDeck = new LinkedList<string>(Create.MakeInfectionDeck(new StringReader(Properties.Resources.InfectionDeck)));
             }
 
             //Players setup allows existing players to be overwritten

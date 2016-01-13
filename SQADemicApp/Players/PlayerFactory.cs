@@ -8,5 +8,15 @@ namespace SQADemicApp
 {
     class PlayerFactory
     {
+        Player[] Players;
+
+        public static void init(string[] roles)
+        {
+            
+        }
+        private PlayerFactory()
+        {
+            
+        }
     }
 }
