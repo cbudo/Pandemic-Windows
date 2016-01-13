@@ -61,6 +61,7 @@
     <Compile Include="CityPageForm.Designer.cs">
       <DependentUpon>CityPageForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Deck.cs" />
     <Compile Include="Forecast.cs">
       <SubType>Form</SubType>
     </Compile>
