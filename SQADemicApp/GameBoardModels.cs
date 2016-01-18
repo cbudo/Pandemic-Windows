@@ -37,7 +37,7 @@ namespace SQADemicApp
         #region private vars
 
         private static bool _alreadySetUp = false;
-        public static Stack<Card> PlayerDeck;
+        public static Stack<Cards> PlayerDeck;
 
         #endregion private vars
 
@@ -56,10 +56,10 @@ namespace SQADemicApp
                 CubeCount.BlackCubes = CubeCount.RedCubes = CubeCount.BlueCubes = CubeCount.YellowCubes = 24;
                 Curestatus = new Cures();
                 Curestatus.BlackCure = Curestatus.BlueCure = Curestatus.RedCure = Curestatus.YellowCure = Cures.Curestate.NotCured;
-                Card[] playerDeckArray;
+                Cards[] playerDeckArray;
                 List<string> infectionDeckList;
                 Create.SetUpCreate(playersroles, out playerDeckArray, out infectionDeckList);
-                PlayerDeck = new Stack<Card>(playerDeckArray);
+                PlayerDeck = new Stack<Cards>(playerDeckArray);
                 EventCards = new List<Card>();
                 InfectionPile = new LinkedList<string>();
                 InfectionDeck = new LinkedList<string>(Create.MakeInfectionDeck(new StringReader(SQADemicApp.Properties.Resources.InfectionDeck)));
@@ -127,13 +127,14 @@ namespace SQADemicApp
 
         private void SetUpPlayerHands()
         {
+            String specials = "Airlift One Quiet Night Resilient Population Government Grant Forecast";
             int cardsPerPlayer = Players.Count() == 4 ? 2 : Players.Count() == 3 ? 3 : 4;
             foreach (Player player in Players)
             {
                 for (int i = 0; i < cardsPerPlayer; i++)
                 {
-                    Card card = DrawCard();
-                    if (card.CardType.Equals(Card.Cardtype.Epidemic))
+                    Cards card = DrawCard();
+                    if (card.name.Equals("EPIDEMIC"))
                     {
                         string infectcityname = InfectorBl.Epidemic(GameBoardModels.InfectionDeck, GameBoardModels.InfectionPile, ref GameBoardModels.InfectionRateIndex, ref GameBoardModels.InfectionRate);
                         new PicForm(false, infectcityname).Show();
@@ -142,7 +143,7 @@ namespace SQADemicApp
                             InfectorBl.InfectCities(new List<string> { infectcityname });
                         }
                     }
-                    else if (card.CardType == Card.Cardtype.Special)
+                    else if (specials.Contains(card.name))
                         EventCards.Add(card);
                     else
                         player.Hand.Add(card);
@@ -165,7 +166,7 @@ namespace SQADemicApp
             //currentPlayerTurnCounter++;
         }
 
-        public static Card DrawCard()
+        public static Cards DrawCard()
         {
             try
             {
