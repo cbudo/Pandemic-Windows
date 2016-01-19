@@ -3,63 +3,60 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Security.Cryptography;
 
 namespace SQADemicApp
 {
     class Deck
-    {   
-        private const int EASY_DECK_SIZE = 57;
-        private const int EASY_EPIDEMIC_COUNT = 4;
-        private const int MEDIUM_DECK_SIZE = 58;
-        private const int MEDIUM_EPIDEMIC_COUNT = 5;
-        private const int HARD_DECK_SIZE = 59;
-        private const int HARD_EPIDEMIC_COUNT = 6;
+    {
+        protected const int TOTAL_PLAYER_CARDS = 59;
+        protected const int EASY_DECK_SIZE = 57;
+        protected const int EASY_EPIDEMIC_COUNT = 4;
+        protected const int MEDIUM_DECK_SIZE = 58;
+        protected const int MEDIUM_EPIDEMIC_COUNT = 5;
+        protected const int HARD_DECK_SIZE = 59;
+        protected const int HARD_EPIDEMIC_COUNT = 6;
 
-        private const int TWO_PLAYER_HAND_TOTAL = 8;
-        private const int THREE_PLAYER_HAND_TOTAL = 9;
-        private const int FOUR_PLAYER_HAND_TOTAL = 8;
+        protected const int TWO_PLAYER_HAND_TOTAL = 8;
+        protected const int THREE_PLAYER_HAND_TOTAL = 9;
+        protected const int FOUR_PLAYER_HAND_TOTAL = 8;
 
-        private List<Card> _cards = new List<Card>();
-        private List<Card> _initialDeal = new List<Card>();
-        private DifficultySetting _difficulty;
-        private int _numOfPlayers;
-        private Random _rand = new Random();
+        protected List<Card> _cards = new List<Card>();
+        protected List<Card> _initialDeal = new List<Card>();
+        protected DifficultySetting _difficulty;
+        protected int _numOfPlayers;
+        protected Random _rand = new Random();
 
-        public Deck(DifficultySetting difficulty, int numOfPlayers)
+        public abstract Deck(DifficultySetting difficulty, int numOfPlayers)
         {
             this._difficulty = difficulty;
             this._numOfPlayers = numOfPlayers;
         }
+        
+        public abstract void init();
 
-        private void init() 
-        {
-            // TODO: initialize based on difficulty setting and player count
-            if (this._difficulty == DifficultySetting.Easy) {
-                initEasy();
-            }
-        }
-
-        private void initEasy()
-        {
-
-            //for () {
-                
-            //}
-        }
-
-        private void addCard(Card c)
+        protected void addCard(Card c)
         {
             _cards.Add(c);
         }
 
-        public void shuffleDeck()
+        public void shuffle()
         {
-
+            shuffle(this._cards);
         }
 
-        private void shuffle(List<Card> cards)
+        protected List<SQADemicApp.Card> shuffle(List<SQADemicApp.Card> unshuffledArray)
         {
+            RNGCryptoServiceProvider rnd = new RNGCryptoServiceProvider();
+            List<SQADemicApp.Card> shuffledArray = unshuffledArray.OrderBy(x => GetNextInt32(rnd)).ToList<Card>();
+            return shuffledArray;
+        }
 
+        private int GetNextInt32(RNGCryptoServiceProvider rnd)
+        {
+            byte[] randomInt = new byte[4];
+            rnd.GetBytes(randomInt);
+            return Convert.ToInt32(randomInt[0]);
         }
 
         public Card draw()
@@ -72,6 +69,24 @@ namespace SQADemicApp
         public int getDeckSize() 
         {
             return this._cards.Count;
+        }
+
+        protected Color getColor(string color)
+        {
+            switch (color.ToLower())
+            {
+                case "red":
+                    return Color.Red;
+
+                case "black":
+                    return Color.Black;
+
+                case "yellow":
+                    return Color.Yellow;
+
+                default:
+                    return Color.Blue;
+            }
         }
     }
 }
