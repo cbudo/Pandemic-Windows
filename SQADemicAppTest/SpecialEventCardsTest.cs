@@ -4,6 +4,7 @@ using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SQADemicApp.BL;
 using SQADemicApp;
+using SQADemicApp.Players;
 using System.IO;
 
 
@@ -35,7 +36,7 @@ namespace SQADemicAppTest
                 throw new InvalidOperationException("Set up failed");
             }
             //players
-            _dispatcher = new Player(Role.Dispatcher);
+            _dispatcher = new Dispatcher();
             _pile = new LinkedList<string>();
         }
 

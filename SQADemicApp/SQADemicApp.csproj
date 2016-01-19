@@ -52,7 +52,6 @@
     </Compile>
     <Compile Include="BL\CityBL.cs" />
     <Compile Include="BL\HelperBL.cs" />
-    <Compile Include="BL\PlayerActionsBL.cs" />
     <Compile Include="BL\SpecialEventCardsBL.cs" />
     <Compile Include="Card.cs" />
     <Compile Include="CityPageForm.cs">
@@ -110,6 +109,9 @@
     <Compile Include="PicForm.Designer.cs">
       <DependentUpon>PicForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Players\Dispatcher.cs" />
+    <Compile Include="Players\Medic.cs" />
+    <Compile Include="Players\OpExpert.cs" />
     <Compile Include="Players\PlayerFactory.cs" />
     <Compile Include="PlayerPanel.cs">
       <SubType>Form</SubType>
@@ -121,6 +123,8 @@
     <Compile Include="Create.cs" />
     <Compile Include="GameBoardModels.cs" />
     <Compile Include="Players\Player.cs" />
+    <Compile Include="Players\Researcher.cs" />
+    <Compile Include="Players\Scientist.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SetupGameForm.cs">
