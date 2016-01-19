@@ -56,12 +56,12 @@ namespace SQADemicAppTest
         public void TestThatCardListCorrectOneItem()
         {
             _cardList = new List<Cards>();
-            _cardList.Add(new CityCard("test", CityCard.Cardtype.City, Color.Blue));
-            _cardList.Add(new SpecialCard("Airlift", SpecialCard.Cardtype.Special));
-            _cardList.Add(new SpecialCard("One Quiet Night", SpecialCard.Cardtype.Special));
-            _cardList.Add(new SpecialCard("Resilient Population", SpecialCard.Cardtype.Special));
-            _cardList.Add(new SpecialCard("Government Grant", SpecialCard.Cardtype.Special));
-            _cardList.Add(new SpecialCard("Forecast", SpecialCard.Cardtype.Special));
+            _cardList.Add(new CityCard("test", Color.Blue));
+            _cardList.Add(new SpecialCard("Airlift"));
+            _cardList.Add(new SpecialCard("One Quiet Night"));
+            _cardList.Add(new SpecialCard("Resilient Population"));
+            _cardList.Add(new SpecialCard("Government Grant"));
+            _cardList.Add(new SpecialCard("Forecast"));
             _returnedList = Create.MakeCardList(new System.IO.StringReader("test; blue"));
             Assert.IsTrue(_cardList[0].Equals(_returnedList[0]));
         }
@@ -69,13 +69,13 @@ namespace SQADemicAppTest
         public void TestThatCardListCorrectTwoItem()
         {
             _cardList = new List<Cards>();
-            _cardList.Add(new CityCard("test", CityCard.Cardtype.City, Color.Blue));
-            _cardList.Add(new CityCard("test2", CityCard.Cardtype.City, Color.Blue));
-            _cardList.Add(new SpecialCard("Airlift", SpecialCard.Cardtype.Special));
-            _cardList.Add(new SpecialCard("One Quiet Night", SpecialCard.Cardtype.Special));
-            _cardList.Add(new SpecialCard("Resilient Population", SpecialCard.Cardtype.Special));
-            _cardList.Add(new SpecialCard("Government Grant", SpecialCard.Cardtype.Special));
-            _cardList.Add(new SpecialCard("Forecast", SpecialCard.Cardtype.Special));
+            _cardList.Add(new CityCard("test", Color.Blue));
+            _cardList.Add(new CityCard("test2", Color.Blue));
+            _cardList.Add(new SpecialCard("Airlift"));
+            _cardList.Add(new SpecialCard("One Quiet Night"));
+            _cardList.Add(new SpecialCard("Resilient Population"));
+            _cardList.Add(new SpecialCard("Government Grant"));
+            _cardList.Add(new SpecialCard("Forecast"));
             _returnedList = Create.MakeCardList(new System.IO.StringReader("test; blue\ntest2; blue"));
             CollectionAssert.AreEqual(_cardList, _returnedList);
         }
@@ -83,14 +83,14 @@ namespace SQADemicAppTest
         public void TestThatCardListCorrectThreeItem()
         {
             _cardList = new List<Cards>();
-            _cardList.Add(new CityCard("test", CityCard.Cardtype.City, Color.Blue));
-            _cardList.Add(new CityCard("test2", CityCard.Cardtype.City, Color.Blue));
-            _cardList.Add(new CityCard("test3", CityCard.Cardtype.City, Color.Blue));
-            _cardList.Add(new SpecialCard("Airlift", SpecialCard.Cardtype.Special));
-            _cardList.Add(new SpecialCard("One Quiet Night", SpecialCard.Cardtype.Special));
-            _cardList.Add(new SpecialCard("Resilient Population", SpecialCard.Cardtype.Special));
-            _cardList.Add(new SpecialCard("Government Grant", SpecialCard.Cardtype.Special));
-            _cardList.Add(new SpecialCard("Forecast", SpecialCard.Cardtype.Special));
+            _cardList.Add(new CityCard("test", Color.Blue));
+            _cardList.Add(new CityCard("test2", Color.Blue));
+            _cardList.Add(new CityCard("test3", Color.Blue));
+            _cardList.Add(new SpecialCard("Airlift"));
+            _cardList.Add(new SpecialCard("One Quiet Night" ));
+            _cardList.Add(new SpecialCard("Resilient Population" ));
+            _cardList.Add(new SpecialCard("Government Grant" ));
+            _cardList.Add(new SpecialCard("Forecast" ));
             _returnedList = Create.MakeCardList(new System.IO.StringReader("test; blue\ntest2; blue\ntest3; blue"));
             CollectionAssert.AreEqual(_cardList, _returnedList);
         }

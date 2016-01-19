@@ -14,7 +14,6 @@ namespace SQADemicApp
 
         bool Equals(Object obj);
 
-        int GetHashCode();
     }
 
 }

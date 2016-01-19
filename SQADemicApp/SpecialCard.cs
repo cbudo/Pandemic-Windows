@@ -9,34 +9,18 @@ namespace SQADemicApp
     public class SpecialCard:Cards
     {
 
-        public enum Cardtype { Infection, City, Special, Epidemic }
-
-        public SpecialCard(string cityName, Cardtype type, Color color)
+        public SpecialCard(string cityName)
         {
             this.CityName = cityName;
-            this.CardType = type;
-            this.CityColor = color;
-        }
-
-        public SpecialCard(string cityName, Cardtype type)
-        {
-            this.CityName = cityName;
-            this.CardType = type;
         }
 
         public string CityName { get; set; }
-        public Cardtype CardType { get; set; }
         public Color CityColor { get; set; }
 
         public override bool Equals(Object obj)
         {
             SpecialCard objects = (SpecialCard)obj;
-            return (this.CityName == objects.CityName) && (this.CardType == objects.CardType) && (this.CityColor == objects.CityColor);
-        }
-
-        public override int GetHashCode()
-        {
-            return CityName.GetHashCode() + CardType.GetHashCode() + CityColor.GetHashCode();
+            return (this.CityName == objects.CityName);
         }
     }
 }
