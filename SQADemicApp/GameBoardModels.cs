@@ -19,7 +19,7 @@ namespace SQADemicApp
         public static int OutbreakMarker = 0;
         public static Player[] Players;
         public static int CurrentPlayerIndex;
-        public static List<Card> EventCards;
+        public static List<Cards> EventCards;
         public static LinkedList<string> InfectionDeck;
         public static LinkedList<string> InfectionPile;
         public static int InfectionRate;
@@ -60,7 +60,7 @@ namespace SQADemicApp
                 List<string> infectionDeckList;
                 Create.SetUpCreate(playersroles, out playerDeckArray, out infectionDeckList);
                 PlayerDeck = new Stack<Cards>(playerDeckArray);
-                EventCards = new List<Card>();
+                EventCards = new List<Cards>();
                 InfectionPile = new LinkedList<string>();
                 InfectionDeck = new LinkedList<string>(Create.MakeInfectionDeck(new StringReader(SQADemicApp.Properties.Resources.InfectionDeck)));
             }
@@ -134,7 +134,7 @@ namespace SQADemicApp
                 for (int i = 0; i < cardsPerPlayer; i++)
                 {
                     Cards card = DrawCard();
-                    if (card.name.Equals("EPIDEMIC"))
+                    if (card.CityName.Equals("EPIDEMIC"))
                     {
                         string infectcityname = InfectorBl.Epidemic(GameBoardModels.InfectionDeck, GameBoardModels.InfectionPile, ref GameBoardModels.InfectionRateIndex, ref GameBoardModels.InfectionRate);
                         new PicForm(false, infectcityname).Show();
@@ -143,7 +143,7 @@ namespace SQADemicApp
                             InfectorBl.InfectCities(new List<string> { infectcityname });
                         }
                     }
-                    else if (specials.Contains(card.name))
+                    else if (specials.Contains(card.CityName))
                         EventCards.Add(card);
                     else
                         player.Hand.Add(card);

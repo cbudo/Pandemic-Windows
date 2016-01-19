@@ -74,11 +74,13 @@ namespace SQADemicApp
         private void Drawcards()
         {
             //Draw Two cards
-            Card drawCard1 = GameBoardModels.DrawCard();
-            Card drawCard2 = GameBoardModels.DrawCard();
+            //Card drawCard1 = GameBoardModels.DrawCard();
+            //Card drawCard2 = GameBoardModels.DrawCard();
+            Cards drawCard1 = GameBoardModels.DrawCard();
+            Cards drawCard2 = GameBoardModels.DrawCard();
 
             //Epidemic code
-            if (drawCard1.CardType.Equals(Card.Cardtype.Epidemic))
+            if (drawCard1.GetType() == typeof(EpidemicCard))
             {
                 string infectcityname = InfectorBl.Epidemic(GameBoardModels.InfectionDeck, GameBoardModels.InfectionPile, ref GameBoardModels.InfectionRateIndex, ref GameBoardModels.InfectionRate);
                 new PicForm(false, infectcityname).Show();
@@ -87,12 +89,12 @@ namespace SQADemicApp
                     InfectorBl.InfectCities(new List<string> { infectcityname });
                 }
             }
-            else if (drawCard1.CardType == Card.Cardtype.Special)
+            else if (drawCard1.GetType() == typeof(SpecialCard))
                 GameBoardModels.EventCards.Add(drawCard1);
             else
                 GameBoardModels.Players[GameBoardModels.CurrentPlayerIndex].Hand.Add(drawCard1);
 
-            if (drawCard2.CardType.Equals(Card.Cardtype.Epidemic))
+            if (drawCard2.GetType() == typeof(EpidemicCard))
             {
                 string infectcityname = InfectorBl.Epidemic(GameBoardModels.InfectionDeck, GameBoardModels.InfectionPile, ref GameBoardModels.InfectionRateIndex, ref GameBoardModels.InfectionRate);
                 new PicForm(false, infectcityname).Show();
@@ -101,7 +103,7 @@ namespace SQADemicApp
                     InfectorBl.InfectCities(new List<string> { infectcityname });
                 }
             }
-            else if (drawCard2.CardType == Card.Cardtype.Special)
+            else if (drawCard2.GetType() == typeof(SpecialCard))
                 GameBoardModels.EventCards.Add(drawCard2);
             else
                 GameBoardModels.Players[GameBoardModels.CurrentPlayerIndex].Hand.Add(drawCard2);

@@ -8,13 +8,13 @@ namespace SQADemicApp
     public class Player
     {
         public readonly Role Role;
-        public List<Card> Hand { get; set; }
+        public List<Cards> Hand { get; set; }
         public City CurrentCity { get; set; }
 
         public Player(Role role)
         {
             this.Role = role;
-            Hand = new List<Card>();
+            Hand = new List<Cards>();
             CurrentCity = Create.CityDictionary["Atlanta"];
         }
 

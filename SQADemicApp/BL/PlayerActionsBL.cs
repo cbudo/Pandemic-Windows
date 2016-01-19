@@ -24,12 +24,12 @@ namespace SQADemicApp.BL
         /// <param name="hand"></param>
         /// <param name="currentCity"></param>
         /// <returns></returns>
-        public static List<string> DirectFlightOption(List<Card> hand, City currentCity)
+        public static List<string> DirectFlightOption(List<Cards> hand, City currentCity)
         {
-            var reducedHand = hand.Where(c => !c.CityName.Equals(currentCity.Name) && c.CardType == Card.Cardtype.City);
+            var reducedHand = hand.Where(c => !c.CityName.Equals(currentCity.Name) && c.GetType() == typeof(CityCard));
 
             var returnlist = new List<string>();
-            foreach (Card card in reducedHand)
+            foreach (Cards card in reducedHand)
             {
                 returnlist.Add(card.CityName);
             }
@@ -43,7 +43,7 @@ namespace SQADemicApp.BL
         /// <param name="hand"></param>
         /// <param name="currentCity"></param>
         /// <returns></returns>
-        public static bool CharterFlightOption(List<Card> hand, City currentCity)
+        public static bool CharterFlightOption(List<Cards> hand, City currentCity)
         {
             return (hand.Count(c => c.CityName == currentCity.Name) == 1);
         }

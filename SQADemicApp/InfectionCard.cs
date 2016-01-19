@@ -6,31 +6,36 @@ using System.Threading.Tasks;
 
 namespace SQADemicApp
 {
-    class InfectionCard:Cards
+    public class InfectionCard:Cards
     {
-        public InfectionCard(string name, Color color)
+        public enum Cardtype { Infection, City, Special, Epidemic }
+
+        public InfectionCard(string cityName, Cardtype type, Color color)
         {
-            this.name = name;
+            this.CityName = cityName;
+            this.CardType = type;
             this.CityColor = color;
         }
 
-        public InfectionCard(string name)
+        public InfectionCard(string cityName, Cardtype type)
         {
-            this.name = name;
+            this.CityName = cityName;
+            this.CardType = type;
         }
 
-        public String name { get; set; }
+        public string CityName { get; set; }
+        public Cardtype CardType { get; set; }
         public Color CityColor { get; set; }
 
         public override bool Equals(Object obj)
         {
             InfectionCard objects = (InfectionCard)obj;
-            return (this.name == objects.name) && (this.CityColor == objects.CityColor);
+            return (this.CityName == objects.CityName) && (this.CardType == objects.CardType) && (this.CityColor == objects.CityColor);
         }
 
         public override int GetHashCode()
         {
-            return name.GetHashCode() + CityColor.GetHashCode();
+            return CityName.GetHashCode() + CardType.GetHashCode() + CityColor.GetHashCode();
         }
     }
 }

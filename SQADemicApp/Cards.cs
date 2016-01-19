@@ -8,8 +8,13 @@ namespace SQADemicApp
 {
     public interface Cards
     {
-        String name { get; set; }
+
+        String CityName { get; set; }
+        Color CityColor { get; set; }
+
         bool Equals(Object obj);
+
         int GetHashCode();
     }
+
 }
