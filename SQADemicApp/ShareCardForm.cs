@@ -57,7 +57,7 @@ namespace SQADemicApp
             List<object> allHands = new List<object>();
             foreach (var player in GameBoardModels.Players)
             {
-                if (player.Role != GameBoardModels.Players[GameBoardModels.CurrentPlayerIndex].Role)
+                if (player != GameBoardModels.Players[GameBoardModels.CurrentPlayerIndex])
                 {
                     allHands.AddRange(player.HandStringList());
                 }
@@ -79,11 +79,11 @@ namespace SQADemicApp
             switch (GameBoardModels.CurrentPlayerIndex)
             {
                 case 0:
-                    success = PlayerActionsBl.ShareKnowledgeOption(GameBoardModels.Players[GameBoardModels.CurrentPlayerIndex], GameBoardModels.Players[1], selectedCard);
+                    success = GameBoardModels.Players[GameBoardModels.CurrentPlayerIndex].ShareKnowledgeOption(GameBoardModels.Players[1], selectedCard);
                     break;
 
                 default:
-                    success = PlayerActionsBl.ShareKnowledgeOption(GameBoardModels.Players[GameBoardModels.CurrentPlayerIndex], GameBoardModels.Players[0], selectedCard);
+                    success = GameBoardModels.Players[GameBoardModels.CurrentPlayerIndex].ShareKnowledgeOption(GameBoardModels.Players[0], selectedCard);
                     break;
             }
             if (success)
@@ -108,15 +108,15 @@ namespace SQADemicApp
             switch (GameBoardModels.CurrentPlayerIndex)
             {
                 case 0:
-                    success = PlayerActionsBl.ShareKnowledgeOption(GameBoardModels.Players[GameBoardModels.CurrentPlayerIndex], GameBoardModels.Players[2], selectedCard);
+                    success = GameBoardModels.Players[GameBoardModels.CurrentPlayerIndex].ShareKnowledgeOption(GameBoardModels.Players[2], selectedCard);
                     break;
 
                 case 1:
-                    success = PlayerActionsBl.ShareKnowledgeOption(GameBoardModels.Players[GameBoardModels.CurrentPlayerIndex], GameBoardModels.Players[2], selectedCard);
+                    success = GameBoardModels.Players[GameBoardModels.CurrentPlayerIndex].ShareKnowledgeOption(GameBoardModels.Players[2], selectedCard);
                     break;
 
                 default:
-                    success = PlayerActionsBl.ShareKnowledgeOption(GameBoardModels.Players[GameBoardModels.CurrentPlayerIndex], GameBoardModels.Players[1], selectedCard);
+                    success = GameBoardModels.Players[GameBoardModels.CurrentPlayerIndex].ShareKnowledgeOption(GameBoardModels.Players[1], selectedCard);
                     break;
             }
             if (success)
@@ -141,11 +141,11 @@ namespace SQADemicApp
             switch (GameBoardModels.CurrentPlayerIndex)
             {
                 case 3:
-                    success = PlayerActionsBl.ShareKnowledgeOption(GameBoardModels.Players[GameBoardModels.CurrentPlayerIndex], GameBoardModels.Players[3], selectedCard);
+                    success = GameBoardModels.Players[GameBoardModels.CurrentPlayerIndex].ShareKnowledgeOption(GameBoardModels.Players[3], selectedCard);
                     break;
 
                 default:
-                    success = PlayerActionsBl.ShareKnowledgeOption(GameBoardModels.Players[GameBoardModels.CurrentPlayerIndex], GameBoardModels.Players[2], selectedCard);
+                    success = GameBoardModels.Players[GameBoardModels.CurrentPlayerIndex].ShareKnowledgeOption(GameBoardModels.Players[2], selectedCard);
                     break;
             }
             if (success)
@@ -172,7 +172,7 @@ namespace SQADemicApp
                         break;
                     }
                 }
-                if (PlayerActionsBl.ShareKnowledgeOption(selectedCardHolder, GameBoardModels.Players[GameBoardModels.CurrentPlayerIndex], selectedCard))
+                if (selectedCardHolder.ShareKnowledgeOption(GameBoardModels.Players[GameBoardModels.CurrentPlayerIndex], selectedCard))
                 {
                     MessageBox.Show("Card Traded");
                     this.Close();

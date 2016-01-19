@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using SQADemicApp.Players;
 
 namespace SQADemicApp
 {
@@ -68,23 +69,23 @@ namespace SQADemicApp
                 switch (playersroles[i])
                 {
                     case "Dispatcher":
-                        Players[i] = new Player(Role.Dispatcher);
+                        Players[i] = new Dispatcher();
                         break;
 
                     case "Operations Expert":
-                        Players[i] = new Player(Role.OpExpert);
+                        Players[i] = new OpExpert();
                         break;
 
                     case "Scientist":
-                        Players[i] = new Player(Role.Scientist);
+                        Players[i] = new Scientist();
                         break;
 
                     case "Medic":
-                        Players[i] = new Player(Role.Medic);
+                        Players[i] = new Medic();
                         break;
 
                     case "Researcher":
-                        Players[i] = new Player(Role.Researcher);
+                        Players[i] = new Researcher();
                         break;
 
                     default:

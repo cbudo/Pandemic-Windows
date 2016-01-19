@@ -166,22 +166,7 @@ namespace SQADemicAppTest
             List<City> result = CityBl.GetCitiesWithResearchStations();
             CollectionAssert.AreEqual(ls, result);
         }
-
-        [TestMethod]
-        public void TestGetNeighborNames()
-        {
-            List<string> e = new List<string>();
-            City miami = new City(Color.Yellow, "Miami");
-            City atlanta = new City(Color.Blue, "Atlanta");
-            City montreal = new City(Color.Blue, "Montreal");
-            City newYork = new City(Color.Blue, "New York");
-            e.Add(miami.Name);
-            e.Add(atlanta.Name);
-            e.Add(montreal.Name);
-            e.Add(newYork.Name);
-            List<string> result = CityBl.GetNeighborNames("Washington");
-            CollectionAssert.AreEqual(e, result);
-        }
+        
 
     }
 }
