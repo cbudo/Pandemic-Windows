@@ -6,6 +6,7 @@ using SQADemicApp.BL;
 using SQADemicApp;
 using SQADemicApp.Players;
 using System.IO;
+using System.Runtime.InteropServices;
 
 namespace SQADemicAppTest
 {
@@ -54,6 +55,7 @@ namespace SQADemicAppTest
             _medic = new Medic();
             _dispatcher = new Dispatcher();
             _players = new List<Player> { _scientist, _opExpert, _researcher, _medic };
+            _scientist.CurrentCity.ResearchStation = true;
         }
 
         [TestMethod]
@@ -745,6 +747,7 @@ namespace SQADemicAppTest
         [ExpectedException(typeof(InvalidOperationException))]
         public void TestWinCon()
         {
+            _scientist.CurrentCity.ResearchStation = true;
             List<string> cardsToSpend = new List<string> { _atlanta.CityName, _chicagoCard.CityName, _london.CityName, _paris.CityName };
             GameBoardModels.Curestatus.SetCureStatus(Color.Blue , Cures.Curestate.NotCured);
             GameBoardModels.Curestatus.SetCureStatus(Color.Yellow, Cures.Curestate.Cured);
