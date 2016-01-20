@@ -38,7 +38,6 @@
             this.Player4ComboBox = new System.Windows.Forms.ComboBox();
             this.SubmitButton = new System.Windows.Forms.Button();
             this.difficultyGroup = new System.Windows.Forms.GroupBox();
-            this.legendaryDifficulty = new System.Windows.Forms.RadioButton();
             this.heroicDifficulty = new System.Windows.Forms.RadioButton();
             this.normalDifficulty = new System.Windows.Forms.RadioButton();
             this.introductoryDifficulty = new System.Windows.Forms.RadioButton();
@@ -48,12 +47,7 @@
             // Player1ComboBox
             // 
             this.Player1ComboBox.FormattingEnabled = true;
-            this.Player1ComboBox.Items.AddRange(new object[] {
-            "Dispatcher",
-            "Operations Expert",
-            "Scientist",
-            "Medic",
-            "Researcher"});
+            this.Player1ComboBox.Items.AddRange(PlayerFactory.possibleRoles());
             this.Player1ComboBox.Location = new System.Drawing.Point(86, 22);
             this.Player1ComboBox.Margin = new System.Windows.Forms.Padding(2);
             this.Player1ComboBox.Name = "Player1ComboBox";
@@ -85,12 +79,7 @@
             // Player2ComboBox
             // 
             this.Player2ComboBox.FormattingEnabled = true;
-            this.Player2ComboBox.Items.AddRange(new object[] {
-            "Dispatcher",
-            "Operations Expert",
-            "Scientist",
-            "Medic",
-            "Researcher"});
+            this.Player2ComboBox.Items.AddRange(PlayerFactory.possibleRoles());
             this.Player2ComboBox.Location = new System.Drawing.Point(86, 58);
             this.Player2ComboBox.Margin = new System.Windows.Forms.Padding(2);
             this.Player2ComboBox.Name = "Player2ComboBox";
@@ -111,12 +100,7 @@
             // Player3ComboBox
             // 
             this.Player3ComboBox.FormattingEnabled = true;
-            this.Player3ComboBox.Items.AddRange(new object[] {
-            "Dispatcher",
-            "Operations Expert",
-            "Scientist",
-            "Medic",
-            "Researcher"});
+            this.Player3ComboBox.Items.AddRange(PlayerFactory.possibleRoles());
             this.Player3ComboBox.Location = new System.Drawing.Point(86, 92);
             this.Player3ComboBox.Margin = new System.Windows.Forms.Padding(2);
             this.Player3ComboBox.Name = "Player3ComboBox";
@@ -137,12 +121,7 @@
             // Player4ComboBox
             // 
             this.Player4ComboBox.FormattingEnabled = true;
-            this.Player4ComboBox.Items.AddRange(new object[] {
-            "Dispatcher",
-            "Operations Expert",
-            "Scientist",
-            "Medic",
-            "Researcher"});
+            this.Player4ComboBox.Items.AddRange(PlayerFactory.possibleRoles());
             this.Player4ComboBox.Location = new System.Drawing.Point(86, 124);
             this.Player4ComboBox.Margin = new System.Windows.Forms.Padding(2);
             this.Player4ComboBox.Name = "Player4ComboBox";
@@ -162,27 +141,15 @@
             // 
             // difficultyGroup
             // 
-            this.difficultyGroup.Controls.Add(this.legendaryDifficulty);
             this.difficultyGroup.Controls.Add(this.heroicDifficulty);
             this.difficultyGroup.Controls.Add(this.normalDifficulty);
             this.difficultyGroup.Controls.Add(this.introductoryDifficulty);
             this.difficultyGroup.Location = new System.Drawing.Point(184, 12);
             this.difficultyGroup.Name = "difficultyGroup";
-            this.difficultyGroup.Size = new System.Drawing.Size(98, 129);
+            this.difficultyGroup.Size = new System.Drawing.Size(98, 97);
             this.difficultyGroup.TabIndex = 10;
             this.difficultyGroup.TabStop = false;
             this.difficultyGroup.Text = "Difficulty";
-            // 
-            // legendaryDifficulty
-            // 
-            this.legendaryDifficulty.AutoSize = true;
-            this.legendaryDifficulty.Location = new System.Drawing.Point(7, 93);
-            this.legendaryDifficulty.Name = "legendaryDifficulty";
-            this.legendaryDifficulty.Size = new System.Drawing.Size(75, 17);
-            this.legendaryDifficulty.TabIndex = 3;
-            this.legendaryDifficulty.Text = "Legendary";
-            this.legendaryDifficulty.UseVisualStyleBackColor = true;
-            this.legendaryDifficulty.CheckedChanged += new System.EventHandler(this.difficultyChanged);
             // 
             // heroicDifficulty
             // 
@@ -193,7 +160,7 @@
             this.heroicDifficulty.TabIndex = 2;
             this.heroicDifficulty.Text = "Heroic";
             this.heroicDifficulty.UseVisualStyleBackColor = true;
-            this.heroicDifficulty.CheckedChanged += new System.EventHandler(this.difficultyChanged);
+            this.heroicDifficulty.CheckedChanged += new System.EventHandler(this.DifficultyChanged);
             // 
             // normalDifficulty
             // 
@@ -206,7 +173,7 @@
             this.normalDifficulty.TabStop = true;
             this.normalDifficulty.Text = "Normal";
             this.normalDifficulty.UseVisualStyleBackColor = true;
-            this.normalDifficulty.CheckedChanged += new System.EventHandler(this.difficultyChanged);
+            this.normalDifficulty.CheckedChanged += new System.EventHandler(this.DifficultyChanged);
             // 
             // introductoryDifficulty
             // 
@@ -217,7 +184,7 @@
             this.introductoryDifficulty.TabIndex = 0;
             this.introductoryDifficulty.Text = "Introductory";
             this.introductoryDifficulty.UseVisualStyleBackColor = true;
-            this.introductoryDifficulty.CheckedChanged += new System.EventHandler(this.difficultyChanged);
+            this.introductoryDifficulty.CheckedChanged += new System.EventHandler(this.DifficultyChanged);
             // 
             // SetupGameForm
             // 
@@ -237,6 +204,7 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "SetupGameForm";
             this.Text = "Setup Game";
+            this.Load += new System.EventHandler(this.SetupGameForm_Load);
             this.difficultyGroup.ResumeLayout(false);
             this.difficultyGroup.PerformLayout();
             this.ResumeLayout(false);
@@ -259,6 +227,5 @@
         private System.Windows.Forms.GroupBox difficultyGroup;
         private System.Windows.Forms.RadioButton normalDifficulty;
         private System.Windows.Forms.RadioButton heroicDifficulty;
-        private System.Windows.Forms.RadioButton legendaryDifficulty;
     }
 }

@@ -33,7 +33,7 @@ namespace SQADemicApp
             bool cured = false;
             try
             {
-                cured = PlayerActionsBl.Cure(GameBoardModels.Players[GameBoardModels.CurrentPlayerIndex], cityNames, Create.CityDictionary[cityNames[0]].Color);
+                cured = GameBoardModels.Players[GameBoardModels.CurrentPlayerIndex].Cure(cityNames, Create.CityDictionary[cityNames[0]].Color);
             }
             catch (ArgumentException exe)
             {
@@ -45,7 +45,7 @@ namespace SQADemicApp
                 MessageBox.Show("Invalid card selection", "Invalid Selection");
             else
             {
-                if (this._board.BoardModel.IncTurnCount())
+                if (GameBoardModels.Players[GameBoardModels.CurrentPlayerIndex].IncrementTurnCount())
                     GameBoard.TurnPart = GameBoard.Turnpart.Draw;
                 this.Close();
                 _board.UpdatePlayerForm();

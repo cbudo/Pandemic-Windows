@@ -131,8 +131,8 @@ namespace SQADemicAppTest
         {
             string[] players = {"Dispatcher","Scientist"};
             GameBoardModels model = new GameBoardModels(players);
-            model.IncTurnCount();
-            Assert.AreEqual(1, model.CurrentPlayerTurnCounter);
+            GameBoardModels.Players[GameBoardModels.CurrentPlayerIndex].IncrementTurnCount();
+            Assert.AreEqual(1, GameBoardModels.Players[GameBoardModels.CurrentPlayerIndex].GetTurnCount());
         }
         [TestMethod]
         public void TestThatPlayerTurnsResetAfter4Moves()
@@ -140,11 +140,11 @@ namespace SQADemicAppTest
             string[] players = { "Dispatcher", "Scientist" };
             GameBoardModels model = new GameBoardModels(players);
             // four moves in a player turn
-            model.IncTurnCount();
-            model.IncTurnCount();
-            model.IncTurnCount();
-            model.IncTurnCount();
-            Assert.AreEqual(0, model.CurrentPlayerTurnCounter);
+            GameBoardModels.Players[GameBoardModels.CurrentPlayerIndex].IncrementTurnCount();
+            GameBoardModels.Players[GameBoardModels.CurrentPlayerIndex].IncrementTurnCount();
+            GameBoardModels.Players[GameBoardModels.CurrentPlayerIndex].IncrementTurnCount();
+            GameBoardModels.Players[GameBoardModels.CurrentPlayerIndex].IncrementTurnCount();
+            Assert.AreEqual(0, GameBoardModels.Players[GameBoardModels.CurrentPlayerIndex].GetTurnCount());
         }
         #endregion
 
@@ -156,10 +156,10 @@ namespace SQADemicAppTest
             string[] players = { "Dispatcher", "Scientist" };
             GameBoardModels model = new GameBoardModels(players);
             // four moves in a player turn
-            Assert.AreEqual(false,model.IncTurnCount());
-            Assert.AreEqual(false, model.IncTurnCount()); 
-            Assert.AreEqual(false, model.IncTurnCount());
-            Assert.AreEqual(true, model.IncTurnCount());
+            Assert.AreEqual(false, GameBoardModels.Players[GameBoardModels.CurrentPlayerIndex].IncrementTurnCount());
+            Assert.AreEqual(false, GameBoardModels.Players[GameBoardModels.CurrentPlayerIndex].IncrementTurnCount()); 
+            Assert.AreEqual(false, GameBoardModels.Players[GameBoardModels.CurrentPlayerIndex].IncrementTurnCount());
+            Assert.AreEqual(true, GameBoardModels.Players[GameBoardModels.CurrentPlayerIndex].IncrementTurnCount());
             //Assert.AreEqual(2, GameBoardModels.CurrentPlayerIndex);
         }
         [TestMethod]
@@ -168,15 +168,15 @@ namespace SQADemicAppTest
             string[] players = { "Dispatcher", "Scientist" };
             GameBoardModels model = new GameBoardModels(players);
             // four moves in a player turn
-            model.IncTurnCount();
-            model.IncTurnCount();
-            model.IncTurnCount();
-            model.IncTurnCount();
+            GameBoardModels.Players[GameBoardModels.CurrentPlayerIndex].IncrementTurnCount();
+            GameBoardModels.Players[GameBoardModels.CurrentPlayerIndex].IncrementTurnCount();
+            GameBoardModels.Players[GameBoardModels.CurrentPlayerIndex].IncrementTurnCount();
+            GameBoardModels.Players[GameBoardModels.CurrentPlayerIndex].IncrementTurnCount();
             // moves for player 2 turn
-            model.IncTurnCount();
-            model.IncTurnCount();
-            model.IncTurnCount();
-            model.IncTurnCount();
+            GameBoardModels.Players[GameBoardModels.CurrentPlayerIndex].IncrementTurnCount();
+            GameBoardModels.Players[GameBoardModels.CurrentPlayerIndex].IncrementTurnCount();
+            GameBoardModels.Players[GameBoardModels.CurrentPlayerIndex].IncrementTurnCount();
+            GameBoardModels.Players[GameBoardModels.CurrentPlayerIndex].IncrementTurnCount();
             Assert.AreEqual(0, GameBoardModels.CurrentPlayerIndex);
         }
         #endregion

@@ -81,7 +81,7 @@ namespace SQADemicApp.BL
                 switch (city.Color)
                 {
                     case Color.Blue:
-                        if (GameBoardModels.Curestatus.BlueCure != GameBoardModels.Cures.Curestate.Sunset)
+                        if (GameBoardModels.Curestatus.BlueCure != Cures.Curestate.Sunset)
                         {
                             if (city.BlueCubes < 3)
                             {
@@ -99,7 +99,7 @@ namespace SQADemicApp.BL
                         return city.BlueCubes;
 
                     case Color.Yellow:
-                        if (GameBoardModels.Curestatus.YellowCure != GameBoardModels.Cures.Curestate.Sunset)
+                        if (GameBoardModels.Curestatus.YellowCure != Cures.Curestate.Sunset)
                         {
                             if (city.YellowCubes < 3)
                             {
@@ -117,7 +117,7 @@ namespace SQADemicApp.BL
                         return city.YellowCubes;
 
                     case Color.Black:
-                        if (GameBoardModels.Curestatus.BlackCure != GameBoardModels.Cures.Curestate.Sunset)
+                        if (GameBoardModels.Curestatus.BlackCure != Cures.Curestate.Sunset)
                         {
                             if (city.BlackCubes < 3)
                             {
@@ -135,7 +135,7 @@ namespace SQADemicApp.BL
                         return city.BlackCubes;
 
                     default:
-                        if (GameBoardModels.Curestatus.RedCure != GameBoardModels.Cures.Curestate.Sunset)
+                        if (GameBoardModels.Curestatus.RedCure != Cures.Curestate.Sunset)
                         {
                             if (city.RedCubes < 3)
                             {
@@ -157,7 +157,7 @@ namespace SQADemicApp.BL
             switch (outbreakColor)
             {
                 case Color.Blue:
-                    if (GameBoardModels.Curestatus.BlueCure != GameBoardModels.Cures.Curestate.Sunset)
+                    if (GameBoardModels.Curestatus.BlueCure != Cures.Curestate.Sunset)
                     {
                         if (city.BlueCubes < 3)
                         {
@@ -175,7 +175,7 @@ namespace SQADemicApp.BL
                     return city.BlueCubes;
 
                 case Color.Yellow:
-                    if (GameBoardModels.Curestatus.YellowCure != GameBoardModels.Cures.Curestate.Sunset)
+                    if (GameBoardModels.Curestatus.YellowCure != Cures.Curestate.Sunset)
                     {
                         if (city.YellowCubes < 3)
                         {
@@ -193,7 +193,7 @@ namespace SQADemicApp.BL
                     return city.YellowCubes;
 
                 case Color.Black:
-                    if (GameBoardModels.Curestatus.BlackCure != GameBoardModels.Cures.Curestate.Sunset)
+                    if (GameBoardModels.Curestatus.BlackCure != Cures.Curestate.Sunset)
                     {
                         if (city.BlackCubes < 3)
                         {
@@ -211,7 +211,7 @@ namespace SQADemicApp.BL
                     return city.BlackCubes;
 
                 default:
-                    if (GameBoardModels.Curestatus.RedCure != GameBoardModels.Cures.Curestate.Sunset)
+                    if (GameBoardModels.Curestatus.RedCure != Cures.Curestate.Sunset)
                     {
                         if (city.RedCubes < 3)
                         {
@@ -289,7 +289,7 @@ namespace SQADemicApp.BL
             Console.WriteLine("asdfsdfasdf : " + colorDictionary[0]);
             Console.WriteLine("222222222 : " + colorDictionary[1]);
             Console.WriteLine("test  :  " + colorDictionary[2]);
-            if (colorDictionary[0] != GameBoardModels.Cures.Curestate.Sunset)
+            if (colorDictionary[0] != Cures.Curestate.Sunset)
             {
                 if (colorDictionary[2] < 3)
                 {

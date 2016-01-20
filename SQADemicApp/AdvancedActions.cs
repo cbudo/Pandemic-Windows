@@ -23,13 +23,13 @@ namespace SQADemicApp
 
         private void BuildResearchStation_Click(object sender, EventArgs e)
         {
-            if (!PlayerActionsBl.BuildAResearchStationOption(GameBoardModels.Players[GameBoardModels.CurrentPlayerIndex]))
+            if (!GameBoardModels.Players[GameBoardModels.CurrentPlayerIndex].BuildAResearchStationOption())
             {
                 MessageBox.Show("Research Station unable to be built");
             }
             else
             {
-                if (this._board.BoardModel.IncTurnCount())
+                if (GameBoardModels.Players[GameBoardModels.CurrentPlayerIndex].IncrementTurnCount())
                     GameBoard.TurnPart = GameBoard.Turnpart.Draw;
                 _board.UpdatePlayerForm();
                 this.Close();
