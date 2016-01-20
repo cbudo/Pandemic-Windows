@@ -7,7 +7,7 @@ using System.Security.Cryptography;
 
 namespace SQADemicApp
 {
-    class Deck
+    abstract class Deck
     {
         protected const int TOTAL_PLAYER_CARDS = 59;
         protected const int EASY_DECK_SIZE = 57;
@@ -17,21 +17,13 @@ namespace SQADemicApp
         protected const int HARD_DECK_SIZE = 59;
         protected const int HARD_EPIDEMIC_COUNT = 6;
 
-        protected const int TWO_PLAYER_HAND_TOTAL = 8;
-        protected const int THREE_PLAYER_HAND_TOTAL = 9;
-        protected const int FOUR_PLAYER_HAND_TOTAL = 8;
+        protected const int TWO_PLAYER_HAND = 4;
+        protected const int THREE_PLAYER_HAND = 3;
+        protected const int FOUR_PLAYER_HAND = 2;
 
         protected List<Card> _cards = new List<Card>();
         protected List<Card> _initialDeal = new List<Card>();
-        protected DifficultySetting _difficulty;
-        protected int _numOfPlayers;
         protected Random _rand = new Random();
-
-        public abstract Deck(DifficultySetting difficulty, int numOfPlayers)
-        {
-            this._difficulty = difficulty;
-            this._numOfPlayers = numOfPlayers;
-        }
         
         public abstract void init();
 
@@ -45,7 +37,7 @@ namespace SQADemicApp
             shuffle(this._cards);
         }
 
-        protected List<SQADemicApp.Card> shuffle(List<SQADemicApp.Card> unshuffledArray)
+        protected List<Card> shuffle(List<SQADemicApp.Card> unshuffledArray)
         {
             RNGCryptoServiceProvider rnd = new RNGCryptoServiceProvider();
             List<SQADemicApp.Card> shuffledArray = unshuffledArray.OrderBy(x => GetNextInt32(rnd)).ToList<Card>();

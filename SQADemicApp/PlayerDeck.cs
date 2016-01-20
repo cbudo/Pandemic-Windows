@@ -9,9 +9,17 @@ namespace SQADemicApp
 {
     class PlayerDeck : Deck
     {
-        private const string resourcePath = SQADemicApp.Properties.Resources.CityList;
+        private string resource = SQADemicApp.Properties.Resources.CityList;
+        protected DifficultySetting _difficulty;
+        protected int _numOfPlayers;
 
-        private override void init()
+        public PlayerDeck(DifficultySetting difficulty, int numOfPlayers)
+        {
+            this._difficulty = difficulty;
+            this._numOfPlayers = numOfPlayers;
+        }
+
+        public override void init()
         {
             makeCardList();
             shuffle();
@@ -44,7 +52,7 @@ namespace SQADemicApp
 
         private void makeCardList()
         {
-            StringReader stringReader = new StringReader(resourcePath);
+            StringReader stringReader = new StringReader(resource);
             string line;
             while ((line = stringReader.ReadLine()) != null)
             {
