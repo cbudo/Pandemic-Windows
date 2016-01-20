@@ -47,12 +47,7 @@
             // Player1ComboBox
             // 
             this.Player1ComboBox.FormattingEnabled = true;
-            this.Player1ComboBox.Items.AddRange(new object[] {
-            "Dispatcher",
-            "Operations Expert",
-            "Scientist",
-            "Medic",
-            "Researcher"});
+            this.Player1ComboBox.Items.AddRange(PlayerFactory.possibleRoles());
             this.Player1ComboBox.Location = new System.Drawing.Point(86, 22);
             this.Player1ComboBox.Margin = new System.Windows.Forms.Padding(2);
             this.Player1ComboBox.Name = "Player1ComboBox";
@@ -84,12 +79,7 @@
             // Player2ComboBox
             // 
             this.Player2ComboBox.FormattingEnabled = true;
-            this.Player2ComboBox.Items.AddRange(new object[] {
-            "Dispatcher",
-            "Operations Expert",
-            "Scientist",
-            "Medic",
-            "Researcher"});
+            this.Player2ComboBox.Items.AddRange(PlayerFactory.possibleRoles());
             this.Player2ComboBox.Location = new System.Drawing.Point(86, 58);
             this.Player2ComboBox.Margin = new System.Windows.Forms.Padding(2);
             this.Player2ComboBox.Name = "Player2ComboBox";
@@ -110,12 +100,7 @@
             // Player3ComboBox
             // 
             this.Player3ComboBox.FormattingEnabled = true;
-            this.Player3ComboBox.Items.AddRange(new object[] {
-            "Dispatcher",
-            "Operations Expert",
-            "Scientist",
-            "Medic",
-            "Researcher"});
+            this.Player3ComboBox.Items.AddRange(PlayerFactory.possibleRoles());
             this.Player3ComboBox.Location = new System.Drawing.Point(86, 92);
             this.Player3ComboBox.Margin = new System.Windows.Forms.Padding(2);
             this.Player3ComboBox.Name = "Player3ComboBox";
@@ -136,12 +121,7 @@
             // Player4ComboBox
             // 
             this.Player4ComboBox.FormattingEnabled = true;
-            this.Player4ComboBox.Items.AddRange(new object[] {
-            "Dispatcher",
-            "Operations Expert",
-            "Scientist",
-            "Medic",
-            "Researcher"});
+            this.Player4ComboBox.Items.AddRange(PlayerFactory.possibleRoles());
             this.Player4ComboBox.Location = new System.Drawing.Point(86, 124);
             this.Player4ComboBox.Margin = new System.Windows.Forms.Padding(2);
             this.Player4ComboBox.Name = "Player4ComboBox";

@@ -64,35 +64,7 @@ namespace SQADemicApp
             //Players setup allows existing players to be overwritten
             Players = new Player[playersroles.Length];
             CurrentPlayerIndex = 0;
-            for (int i = 0; i < playersroles.Count(); i++)
-            {
-                switch (playersroles[i])
-                {
-                    case "Dispatcher":
-                        Players[i] = new Dispatcher();
-                        break;
-
-                    case "Operations Expert":
-                        Players[i] = new OpExpert();
-                        break;
-
-                    case "Scientist":
-                        Players[i] = new Scientist();
-                        break;
-
-                    case "Medic":
-                        Players[i] = new Medic();
-                        break;
-
-                    case "Researcher":
-                        Players[i] = new Researcher();
-                        break;
-
-                    default:
-                        Players[i] = null;
-                        break;
-                }
-            }
+            PlayerFactory.init(playersroles);
             InfectionRate = Difficulty == DifficultySetting.Hard ? 3 : 2;
             InfectionRateIndex = 0;
             if (!_alreadySetUp)
