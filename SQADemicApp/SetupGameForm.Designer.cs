@@ -224,6 +224,7 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "SetupGameForm";
             this.Text = "Setup Game";
+            this.Load += new System.EventHandler(this.SetupGameForm_Load);
             this.difficultyGroup.ResumeLayout(false);
             this.difficultyGroup.PerformLayout();
             this.ResumeLayout(false);
