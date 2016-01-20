@@ -20,7 +20,7 @@ namespace SQADemicApp
         public static int OutbreakMarker = 0;
         public static Player[] Players;
         public static int CurrentPlayerIndex;
-        public static List<Card> EventCards;
+        public static List<Cards> EventCards;
         public static LinkedList<string> InfectionDeck;
         public static LinkedList<string> InfectionPile;
         public static int InfectionRate;
@@ -28,12 +28,12 @@ namespace SQADemicApp
         public static DifficultySetting Difficulty = DifficultySetting.Medium;
 
         #endregion Public Static Vars
-        
+
 
         #region private vars
 
         private static bool _alreadySetUp = false;
-        public static Stack<Card> PlayerDeck;
+        public static Stack<Cards> PlayerDeck;
 
         #endregion private vars
 
@@ -52,11 +52,11 @@ namespace SQADemicApp
                 CubeCount.BlackCubes = CubeCount.RedCubes = CubeCount.BlueCubes = CubeCount.YellowCubes = 24;
                 Curestatus = new Cures();
                 Curestatus.BlackCure = Curestatus.BlueCure = Curestatus.RedCure = Curestatus.YellowCure = Cures.Curestate.NotCured;
-                Card[] playerDeckArray;
+                Cards[] playerDeckArray;
                 List<string> infectionDeckList;
                 Create.SetUpCreate(playersroles, out playerDeckArray, out infectionDeckList);
-                PlayerDeck = new Stack<Card>(playerDeckArray);
-                EventCards = new List<Card>();
+                PlayerDeck = new Stack<Cards>(playerDeckArray);
+                EventCards = new List<Cards>();
                 InfectionPile = new LinkedList<string>();
                 InfectionDeck = new LinkedList<string>(Create.MakeInfectionDeck(new StringReader(Properties.Resources.InfectionDeck)));
             }
@@ -95,8 +95,8 @@ namespace SQADemicApp
             {
                 for (int i = 0; i < cardsPerPlayer; i++)
                 {
-                    Card card = DrawCard();
-                    if (card.CardType.Equals(Card.Cardtype.Epidemic))
+                    Cards card = DrawCard();
+                    if (card.GetType() == typeof(EpidemicCard))
                     {
                         string infectcityname = InfectorBl.Epidemic(GameBoardModels.InfectionDeck, GameBoardModels.InfectionPile, ref GameBoardModels.InfectionRateIndex, ref GameBoardModels.InfectionRate);
                         new PicForm(false, infectcityname).Show();
@@ -105,15 +105,15 @@ namespace SQADemicApp
                             InfectorBl.InfectCities(new List<string> { infectcityname });
                         }
                     }
-                    else if (card.CardType == Card.Cardtype.Special)
+                    else if (card.GetType() == typeof(SpecialCard))
                         EventCards.Add(card);
                     else
                         player.Hand.Add(card);
                 }
             }
         }
-        
-        public static Card DrawCard()
+
+        public static Cards DrawCard()
         {
             try
             {
@@ -140,7 +140,7 @@ namespace SQADemicApp
             public int YellowCubes { get; set; }
         }
 
-        
+
 
         #endregion Storage Classes
     }

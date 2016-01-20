@@ -376,6 +376,8 @@ namespace SQADemicAppTest
             kolkata.BlackCubes = 2;
             GameBoardModels.CubeCount.BlackCubes = 22;
             SQADemicApp.BL.InfectorBl.InfectCity(kolkata, new HashSet<City>(), false, Color.Black);
+            Console.WriteLine("INNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN : " + GameBoardModels.CubeCount.BlackCubes);
+            Console.WriteLine(" " + kolkata.BlackCubes);
             Assert.AreEqual(21, GameBoardModels.CubeCount.BlackCubes);
         }
 
