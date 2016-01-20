@@ -127,14 +127,13 @@ namespace SQADemicApp
 
         private void SetUpPlayerHands()
         {
-            String specials = "Airlift One Quiet Night Resilient Population Government Grant Forecast";
             int cardsPerPlayer = Players.Count() == 4 ? 2 : Players.Count() == 3 ? 3 : 4;
             foreach (Player player in Players)
             {
                 for (int i = 0; i < cardsPerPlayer; i++)
                 {
                     Cards card = DrawCard();
-                    if (card.CityName.Equals("EPIDEMIC"))
+                    if (card.GetType() == typeof(EpidemicCard))
                     {
                         string infectcityname = InfectorBl.Epidemic(GameBoardModels.InfectionDeck, GameBoardModels.InfectionPile, ref GameBoardModels.InfectionRateIndex, ref GameBoardModels.InfectionRate);
                         new PicForm(false, infectcityname).Show();
@@ -143,7 +142,7 @@ namespace SQADemicApp
                             InfectorBl.InfectCities(new List<string> { infectcityname });
                         }
                     }
-                    else if (specials.Contains(card.CityName))
+                    else if (card.GetType() == typeof(SpecialCard))
                         EventCards.Add(card);
                     else
                         player.Hand.Add(card);
