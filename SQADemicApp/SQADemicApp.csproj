@@ -110,6 +110,7 @@
     <Compile Include="PicForm.Designer.cs">
       <DependentUpon>PicForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="PlayerDeck.cs" />
     <Compile Include="Players\Dispatcher.cs" />
     <Compile Include="Players\GeneSplicer.cs" />
     <Compile Include="Players\Medic.cs" />
@@ -182,7 +183,7 @@
       <DependentUpon>PlayerPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
