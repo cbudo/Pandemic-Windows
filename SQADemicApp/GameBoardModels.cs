@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using SQADemicApp.Players;
 
 namespace SQADemicApp
 {
@@ -28,11 +29,6 @@ namespace SQADemicApp
 
         #endregion Public Static Vars
 
-        #region Public Vars
-
-        public int CurrentPlayerTurnCounter;
-
-        #endregion Public Vars
 
         #region private vars
 
@@ -62,47 +58,14 @@ namespace SQADemicApp
                 PlayerDeck = new Stack<Cards>(playerDeckArray);
                 EventCards = new List<Cards>();
                 InfectionPile = new LinkedList<string>();
-                InfectionDeck = new LinkedList<string>(Create.MakeInfectionDeck(new StringReader(SQADemicApp.Properties.Resources.InfectionDeck)));
+                InfectionDeck = new LinkedList<string>(Create.MakeInfectionDeck(new StringReader(Properties.Resources.InfectionDeck)));
             }
 
             //Players setup allows existing players to be overwritten
             Players = new Player[playersroles.Length];
-            CurrentPlayerTurnCounter = 0;
             CurrentPlayerIndex = 0;
-            for (int i = 0; i < playersroles.Count(); i++)
-            {
-                switch (playersroles[i])
-                {
-                    case "Dispatcher":
-                        Players[i] = new Player(Role.Dispatcher);
-                        break;
-
-                    case "Operations Expert":
-                        Players[i] = new Player(Role.OpExpert);
-                        break;
-
-                    case "Scientist":
-                        Players[i] = new Player(Role.Scientist);
-                        break;
-
-                    case "Medic":
-                        Players[i] = new Player(Role.Medic);
-                        break;
-
-                    case "Researcher":
-                        Players[i] = new Player(Role.Researcher);
-                        break;
-
-                    default:
-                        Players[i] = null;
-                        break;
-                }
-            }
-            if (Difficulty == DifficultySetting.Hard) {
-                InfectionRate = 3;
-            } else {
-                InfectionRate = 2;
-            }
+            PlayerFactory.init(playersroles);
+            InfectionRate = Difficulty == DifficultySetting.Hard ? 3 : 2;
             InfectionRateIndex = 0;
             if (!_alreadySetUp)
             {
@@ -150,21 +113,6 @@ namespace SQADemicApp
             }
         }
 
-        public bool IncTurnCount()
-        {
-            if (CurrentPlayerTurnCounter == 3)
-            {
-                //CurrentPlayerIndex = (CurrentPlayerIndex + 1) % players.Count();
-                CurrentPlayerTurnCounter = 0;
-                return true;
-            }
-            else
-                CurrentPlayerTurnCounter++;
-            return false;
-
-            //currentPlayerTurnCounter++;
-        }
-
         public static Cards DrawCard()
         {
             try
@@ -192,61 +140,7 @@ namespace SQADemicApp
             public int YellowCubes { get; set; }
         }
 
-        public class Cures
-        {
-            public enum Curestate { NotCured, Cured, Sunset }
 
-            public Curestate RedCure { get; set; }
-            public Curestate BlueCure { get; set; }
-            public Curestate BlackCure { get; set; }
-            public Curestate YellowCure { get; set; }
-
-            public Curestate GetCureStatus(Color color)
-            {
-                switch (color)
-                {
-                    case Color.Red:
-                        return RedCure;
-
-                    case Color.Blue:
-                        return BlueCure;
-
-                    case Color.Yellow:
-                        return YellowCure;
-
-                    case Color.Black:
-                        return BlackCure;
-
-                    default:
-                        throw new ArgumentException("Not a vaild color");
-                }
-            }
-
-            public void SetCureStatus(Color color, Curestate curestate)
-            {
-                switch (color)
-                {
-                    case Color.Red:
-                        RedCure = curestate;
-                        break;
-
-                    case Color.Blue:
-                        BlueCure = curestate;
-                        break;
-
-                    case Color.Yellow:
-                        YellowCure = curestate;
-                        break;
-
-                    case Color.Black:
-                        BlackCure = curestate;
-                        break;
-
-                    default:
-                        throw new ArgumentException("Not a vaild color");
-                }
-            }
-        }
 
         #endregion Storage Classes
     }
