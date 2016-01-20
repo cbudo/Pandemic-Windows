@@ -111,6 +111,7 @@
       <DependentUpon>PicForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Players\Dispatcher.cs" />
+    <Compile Include="Players\GeneSplicer.cs" />
     <Compile Include="Players\Medic.cs" />
     <Compile Include="Players\OpExpert.cs" />
     <Compile Include="Players\PlayerFactory.cs" />
