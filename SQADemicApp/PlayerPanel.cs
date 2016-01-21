@@ -74,8 +74,8 @@ namespace SQADemicApp
         private void Drawcards()
         {
             //Draw Two cards
-            Card drawCard1 = GameBoardModels.DrawCard();
-            Card drawCard2 = GameBoardModels.DrawCard();
+            Card drawCard1 = _board.drawCard();
+            Card drawCard2 = _board.drawCard();
 
             //Epidemic code
             if (drawCard1.CardType.Equals(Card.Cardtype.Epidemic))

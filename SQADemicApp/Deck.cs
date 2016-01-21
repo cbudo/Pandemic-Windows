@@ -7,7 +7,7 @@ using System.Security.Cryptography;
 
 namespace SQADemicApp
 {
-    abstract class Deck
+    public abstract class Deck
     {
         protected const int TOTAL_PLAYER_CARDS = 59;
         protected const int EASY_DECK_SIZE = 57;
@@ -16,10 +16,6 @@ namespace SQADemicApp
         protected const int MEDIUM_EPIDEMIC_COUNT = 5;
         protected const int HARD_DECK_SIZE = 59;
         protected const int HARD_EPIDEMIC_COUNT = 6;
-
-        protected const int TWO_PLAYER_HAND = 4;
-        protected const int THREE_PLAYER_HAND = 3;
-        protected const int FOUR_PLAYER_HAND = 2;
 
         protected List<Card> _cards = new List<Card>();
         protected List<Card> _initialDeal = new List<Card>();
@@ -63,7 +59,7 @@ namespace SQADemicApp
             return this._cards.Count;
         }
 
-        protected Color getColor(string color)
+        public Color getColor(string color)
         {
             switch (color.ToLower())
             {

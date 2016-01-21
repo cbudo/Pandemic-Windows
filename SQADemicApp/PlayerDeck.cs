@@ -7,8 +7,14 @@ using System.IO;
 
 namespace SQADemicApp
 {
-    class PlayerDeck : Deck
+    public class PlayerDeck : Deck
     {
+        #region Constansts
+        private const int TWO_PLAYER_HAND = 4;
+        private const int THREE_PLAYER_HAND = 3;
+        private const int FOUR_PLAYER_HAND = 2;
+        #endregion Constants
+
         private string resource = SQADemicApp.Properties.Resources.CityList;
         protected DifficultySetting _difficulty;
         protected int _numOfPlayers;
@@ -23,6 +29,7 @@ namespace SQADemicApp
         {
             makeCardList();
             shuffle();
+            drawHands();
             int epidemicCount;
             if (this._difficulty == DifficultySetting.Easy)
             {
@@ -48,6 +55,20 @@ namespace SQADemicApp
                 newInitDeck.AddRange(subDecks[i]);
             }
             _cards = newInitDeck;
+        }
+
+        private void drawHands()
+        { 
+            int totalHandCount = _numOfPlayers == 4 ? _numOfPlayers * FOUR_PLAYER_HAND : _numOfPlayers == 3 ? _numOfPlayers * THREE_PLAYER_HAND :  _numOfPlayers * TWO_PLAYER_HAND;
+            for (int i = 0; i < totalHandCount; i++)
+            {
+                _initialDeal.Add(draw());
+            }
+        }
+
+        public List<Card> getInitialDeal()
+        {
+            return _initialDeal;
         }
 
         private void makeCardList()

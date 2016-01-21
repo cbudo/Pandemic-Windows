@@ -10,8 +10,15 @@ namespace SQADemicApp
     public enum Color { Red, Black, Blue, Yellow }
     public enum DifficultySetting { Easy, Medium, Hard, Legendary }
 
+
     public class GameBoardModels
     {
+        #region Constansts
+        private const int TWO_PLAYER_HAND = 4;
+        private const int THREE_PLAYER_HAND = 3;
+        private const int FOUR_PLAYER_HAND = 2;
+        #endregion Constants
+
         #region Public Static Vars
 
         public static InfectionCubeCount CubeCount;
@@ -29,11 +36,11 @@ namespace SQADemicApp
 
         #endregion Public Static Vars
         
-
         #region private vars
 
         private static bool _alreadySetUp = false;
         public static Stack<Card> PlayerDeck;
+        private PlayerDeck playerDeck;
 
         #endregion private vars
 
@@ -52,10 +59,18 @@ namespace SQADemicApp
                 CubeCount.BlackCubes = CubeCount.RedCubes = CubeCount.BlueCubes = CubeCount.YellowCubes = 24;
                 Curestatus = new Cures();
                 Curestatus.BlackCure = Curestatus.BlueCure = Curestatus.RedCure = Curestatus.YellowCure = Cures.Curestate.NotCured;
+
+                // deprecated
                 Card[] playerDeckArray;
+
                 List<string> infectionDeckList;
                 Create.SetUpCreate(playersroles, out playerDeckArray, out infectionDeckList);
+
+                // deprecated
                 PlayerDeck = new Stack<Card>(playerDeckArray);
+
+                playerDeck = new PlayerDeck(Difficulty, Players.Count());
+                playerDeck.init();
                 EventCards = new List<Card>();
                 InfectionPile = new LinkedList<string>();
                 InfectionDeck = new LinkedList<string>(Create.MakeInfectionDeck(new StringReader(Properties.Resources.InfectionDeck)));
@@ -90,22 +105,13 @@ namespace SQADemicApp
 
         private void SetUpPlayerHands()
         {
-            int cardsPerPlayer = Players.Count() == 4 ? 2 : Players.Count() == 3 ? 3 : 4;
+            List<Card> cardsToBeDealt = playerDeck.getInitialDeal();
             foreach (Player player in Players)
             {
-                for (int i = 0; i < cardsPerPlayer; i++)
+                for (int i = 0; i < cardsToBeDealt.Count(); i++)
                 {
-                    Card card = DrawCard();
-                    if (card.CardType.Equals(Card.Cardtype.Epidemic))
-                    {
-                        string infectcityname = InfectorBl.Epidemic(GameBoardModels.InfectionDeck, GameBoardModels.InfectionPile, ref GameBoardModels.InfectionRateIndex, ref GameBoardModels.InfectionRate);
-                        new PicForm(false, infectcityname).Show();
-                        for (int j = 0; j < 3; j++)
-                        {
-                            InfectorBl.InfectCities(new List<string> { infectcityname });
-                        }
-                    }
-                    else if (card.CardType == Card.Cardtype.Special)
+                    Card card = cardsToBeDealt.ElementAt(i);
+                    if (card.CardType == Card.Cardtype.Special)
                         EventCards.Add(card);
                     else
                         player.Hand.Add(card);
@@ -113,11 +119,11 @@ namespace SQADemicApp
             }
         }
         
-        public static Card DrawCard()
+        public Card DrawCard()
         {
             try
             {
-                return PlayerDeck.Pop();
+                return playerDeck.draw();
             }
             catch (InvalidOperationException e)
             {

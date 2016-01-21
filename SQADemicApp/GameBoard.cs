@@ -313,5 +313,10 @@ namespace SQADemicApp
             tip.Show(tipInfo, (Button)sender);
         }
 
+        public Card drawCard()
+        {
+            return BoardModel.DrawCard();
+        }
+
     }
 }
