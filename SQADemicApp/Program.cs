@@ -5,7 +5,7 @@ namespace SQADemicApp
 {
     internal static class Program
     {
-        public static string[] RolesArray;
+        public static string[] RolesArray= new string[] {"Scientist", "Dispatcher"};
 
         /// <summary>
         /// The main entry point for the application.

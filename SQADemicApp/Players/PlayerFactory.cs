@@ -9,8 +9,6 @@ namespace SQADemicApp
 {
     class PlayerFactory
     {
-        Player[] Players;
-
         public static void init(string[] roles)
         {
             List<Player> playerRoles = roles.Select(role => getRole(role)).ToList();

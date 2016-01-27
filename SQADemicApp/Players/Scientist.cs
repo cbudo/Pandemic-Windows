@@ -17,7 +17,7 @@ namespace SQADemicApp.Players
                 return false;
             var cards = Hand.Where(x => x.CityColor == color && cardsToSpend.Contains(x.CityName));
             
-            if (cards.Count() != 4)
+            if (cards.Count() < 4)
                 return false;
 
             Hand.RemoveAll(x => cards.Contains(x));
