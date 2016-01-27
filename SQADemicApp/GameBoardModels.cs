@@ -69,7 +69,7 @@ namespace SQADemicApp
                 // deprecated
                 PlayerDeck = new Stack<Card>(playerDeckArray);
 
-                playerDeck = new PlayerDeck(Difficulty, Players.Count());
+                playerDeck = new PlayerDeck(Difficulty, playersroles.Length);
                 playerDeck.init();
                 EventCards = new List<Card>();
                 InfectionPile = new LinkedList<string>();
