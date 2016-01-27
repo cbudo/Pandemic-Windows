@@ -7,8 +7,14 @@ using System.IO;
 
 namespace SQADemicApp
 {
-    class PlayerDeck : Deck
+    public class PlayerDeck : Deck
     {
+        #region Constansts
+        private const int TWO_PLAYER_HAND = 4;
+        private const int THREE_PLAYER_HAND = 3;
+        private const int FOUR_PLAYER_HAND = 2;
+        #endregion Constants
+
         private string resource = SQADemicApp.Properties.Resources.CityList;
         protected DifficultySetting _difficulty;
         protected int _numOfPlayers;
@@ -23,6 +29,7 @@ namespace SQADemicApp
         {
             makeCardList();
             shuffle();
+            drawHands();
             int epidemicCount;
             if (this._difficulty == DifficultySetting.Easy)
             {
@@ -37,17 +44,31 @@ namespace SQADemicApp
                 epidemicCount = HARD_EPIDEMIC_COUNT;
             }
             int subDeckSize = _cards.Count / epidemicCount;
-            List<Card>[] subDecks = new List<Card>[epidemicCount];
-            List<Card> newInitDeck = new List<Card>();
+            List<Cards>[] subDecks = new List<Cards>[epidemicCount];
+            List<Cards> newInitDeck = new List<Cards>();
             for (int i = 0; i < subDecks.Length; i++)
             {
                 subDecks[i] = _cards.GetRange(subDeckSize * i, subDeckSize);
                 //TODO: Fix this to be integrated with the new Card types
-                subDecks[i].Add(new Card("EPIDEMIC", Card.Cardtype.Epidemic));
+                subDecks[i].Add(new EpidemicCard());
                 subDecks[i] = shuffle(subDecks[i]);
                 newInitDeck.AddRange(subDecks[i]);
             }
             _cards = newInitDeck;
+        }
+
+        private void drawHands()
+        { 
+            int totalHandCount = _numOfPlayers == 4 ? _numOfPlayers * FOUR_PLAYER_HAND : _numOfPlayers == 3 ? _numOfPlayers * THREE_PLAYER_HAND :  _numOfPlayers * TWO_PLAYER_HAND;
+            for (int i = 0; i < totalHandCount; i++)
+            {
+                _initialDeal.Add(draw());
+            }
+        }
+
+        public List<Cards> getInitialDeal()
+        {
+            return _initialDeal;
         }
 
         private void makeCardList()
@@ -60,7 +81,7 @@ namespace SQADemicApp
                 string cardColor = line.Substring(line.IndexOf(";") + 2);
                 Color color = getColor(cardColor);
                 //TODO: Fix this to be integrated with the new Card types
-                addCard(new Card(cardName, Card.Cardtype.City, color));
+                addCard(new CityCard(cardName, color));
             }
             addSpecialCards();
         }
@@ -68,11 +89,11 @@ namespace SQADemicApp
         private void addSpecialCards()
         {
             //TODO: Fix this to be integrated with the new Card types
-            addCard(new Card("Airlift", Card.Cardtype.Special));
-            addCard(new Card("One Quiet Night", Card.Cardtype.Special));
-            addCard(new Card("Resilient Population", Card.Cardtype.Special));
-            addCard(new Card("Government Grant", Card.Cardtype.Special));
-            addCard(new Card("Forecast", Card.Cardtype.Special));
+            addCard(new SpecialCard("Airlift"));
+            addCard(new SpecialCard("One Quiet Night"));
+            addCard(new SpecialCard("Resilient Population"));
+            addCard(new SpecialCard("Government Grant"));
+            addCard(new SpecialCard("Forecast"));
         }
         
     }

@@ -73,6 +73,7 @@ namespace SQADemicApp.BL
         /// <param name="causedByOutbreak"></param>
         /// <param name="outbreakColor"></param>
         /// <returns></returns>
+
         public static int InfectCity(SQADemicApp.City city, HashSet<City> alreadyInfected, bool causedByOutbreak, Color outbreakColor)
         {
             if (!causedByOutbreak)

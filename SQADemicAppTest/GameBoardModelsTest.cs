@@ -11,8 +11,8 @@ namespace SQADemicAppTest
     [TestClass]
     public class GameBoardModelsTest
     {
-        List<Card> _returnedList = new List<Card>();
-        List<Card> _cardList = new List<Card>();
+        List<Cards> _returnedList = new List<Cards>();
+        List<Cards> _cardList = new List<Cards>();
         //Create createTestClass = new Create();
 
  /**       [TestInitialize]
@@ -26,9 +26,9 @@ namespace SQADemicAppTest
         public void TestEasyDifficultyEpidemicCards()
         {
             string[] playerRoles = {"Medic", "Scientist"};
-            Card[] playerDeck = Create.MakePlayerDeck(DifficultySetting.Easy, playerRoles);
-            List<Card> cards =  new List<Card>(playerDeck);
-            int countEpidemic = cards.Count(m => m.CardType == Card.Cardtype.Epidemic);
+            Cards[] playerDeck = Create.MakePlayerDeck(DifficultySetting.Easy, playerRoles);
+            List<Cards> cards =  new List<Cards>(playerDeck);
+            int countEpidemic = cards.Count(m => m.GetType() == typeof(EpidemicCard));
             Assert.AreEqual(countEpidemic, 4);
         }
 
@@ -36,9 +36,9 @@ namespace SQADemicAppTest
         public void TestNormalDifficultyEpidemicCards()
         {
             string[] playerRoles = { "Medic", "Scientist" };
-            Card[] playerDeck = Create.MakePlayerDeck(DifficultySetting.Medium, playerRoles);
-            List<Card> cards = new List<Card>(playerDeck);
-            int countEpidemic = cards.Count(m => m.CardType == Card.Cardtype.Epidemic);
+            Cards[] playerDeck = Create.MakePlayerDeck(DifficultySetting.Medium, playerRoles);
+            List<Cards> cards = new List<Cards>(playerDeck);
+            int countEpidemic = cards.Count(m => m.GetType() == typeof(EpidemicCard));
             Assert.AreEqual(countEpidemic, 5);
         }
 
@@ -46,51 +46,51 @@ namespace SQADemicAppTest
         public void TestHeroicDifficultyEpidemicCards()
         {
             string[] playerRoles = { "Medic", "Scientist" };
-            Card[] playerDeck = Create.MakePlayerDeck(DifficultySetting.Hard, playerRoles);
-            List<Card> cards = new List<Card>(playerDeck);
-            int countEpidemic = cards.Count(m => m.CardType == Card.Cardtype.Epidemic);
+            Cards[] playerDeck = Create.MakePlayerDeck(DifficultySetting.Hard, playerRoles);
+            List<Cards> cards = new List<Cards>(playerDeck);
+            int countEpidemic = cards.Count(m => m.GetType() == typeof(EpidemicCard));
             Assert.AreEqual(countEpidemic, 6);
         }
 
         [TestMethod]
         public void TestThatCardListCorrectOneItem()
         {
-            _cardList = new List<Card>();
-            _cardList.Add(new Card("test", Card.Cardtype.City, Color.Blue));
-            _cardList.Add(new Card("Airlift", Card.Cardtype.Special));
-            _cardList.Add(new Card("One Quiet Night", Card.Cardtype.Special));
-            _cardList.Add(new Card("Resilient Population", Card.Cardtype.Special));
-            _cardList.Add(new Card("Government Grant", Card.Cardtype.Special));
-            _cardList.Add(new Card("Forecast", Card.Cardtype.Special));
+            _cardList = new List<Cards>();
+            _cardList.Add(new CityCard("test", Color.Blue));
+            _cardList.Add(new SpecialCard("Airlift"));
+            _cardList.Add(new SpecialCard("One Quiet Night"));
+            _cardList.Add(new SpecialCard("Resilient Population"));
+            _cardList.Add(new SpecialCard("Government Grant"));
+            _cardList.Add(new SpecialCard("Forecast"));
             _returnedList = Create.MakeCardList(new System.IO.StringReader("test; blue"));
             Assert.IsTrue(_cardList[0].Equals(_returnedList[0]));
         }
         [TestMethod]
         public void TestThatCardListCorrectTwoItem()
         {
-            _cardList = new List<Card>();
-            _cardList.Add(new Card("test", Card.Cardtype.City, Color.Blue));
-            _cardList.Add(new Card("test2", Card.Cardtype.City, Color.Blue));
-            _cardList.Add(new Card("Airlift", Card.Cardtype.Special));
-            _cardList.Add(new Card("One Quiet Night", Card.Cardtype.Special));
-            _cardList.Add(new Card("Resilient Population", Card.Cardtype.Special));
-            _cardList.Add(new Card("Government Grant", Card.Cardtype.Special));
-            _cardList.Add(new Card("Forecast", Card.Cardtype.Special));
+            _cardList = new List<Cards>();
+            _cardList.Add(new CityCard("test", Color.Blue));
+            _cardList.Add(new CityCard("test2", Color.Blue));
+            _cardList.Add(new SpecialCard("Airlift"));
+            _cardList.Add(new SpecialCard("One Quiet Night"));
+            _cardList.Add(new SpecialCard("Resilient Population"));
+            _cardList.Add(new SpecialCard("Government Grant"));
+            _cardList.Add(new SpecialCard("Forecast"));
             _returnedList = Create.MakeCardList(new System.IO.StringReader("test; blue\ntest2; blue"));
             CollectionAssert.AreEqual(_cardList, _returnedList);
         }
         [TestMethod]
         public void TestThatCardListCorrectThreeItem()
         {
-            _cardList = new List<Card>();
-            _cardList.Add(new Card("test", Card.Cardtype.City, Color.Blue));
-            _cardList.Add(new Card("test2", Card.Cardtype.City, Color.Blue));
-            _cardList.Add(new Card("test3", Card.Cardtype.City, Color.Blue));
-            _cardList.Add(new Card("Airlift", Card.Cardtype.Special));
-            _cardList.Add(new Card("One Quiet Night", Card.Cardtype.Special));
-            _cardList.Add(new Card("Resilient Population", Card.Cardtype.Special));
-            _cardList.Add(new Card("Government Grant", Card.Cardtype.Special));
-            _cardList.Add(new Card("Forecast", Card.Cardtype.Special));
+            _cardList = new List<Cards>();
+            _cardList.Add(new CityCard("test", Color.Blue));
+            _cardList.Add(new CityCard("test2", Color.Blue));
+            _cardList.Add(new CityCard("test3", Color.Blue));
+            _cardList.Add(new SpecialCard("Airlift"));
+            _cardList.Add(new SpecialCard("One Quiet Night" ));
+            _cardList.Add(new SpecialCard("Resilient Population" ));
+            _cardList.Add(new SpecialCard("Government Grant" ));
+            _cardList.Add(new SpecialCard("Forecast" ));
             _returnedList = Create.MakeCardList(new System.IO.StringReader("test; blue\ntest2; blue\ntest3; blue"));
             CollectionAssert.AreEqual(_cardList, _returnedList);
         }
@@ -100,28 +100,32 @@ namespace SQADemicAppTest
         [TestMethod]
         public void TestThatGetsCorrectColorRed()
         {
-            Assert.AreEqual(Color.Red, HelperBl.GetColor("red"));
+            PlayerDeck d = new PlayerDeck(DifficultySetting.Easy, 2);
+            Assert.AreEqual(Color.Red, d.getColor("red"));
         }
         [TestMethod]
         public void TestThatGetsCorrectColorsRedBlue()
         {
-            Assert.AreEqual(Color.Red, HelperBl.GetColor("red"));
-            Assert.AreEqual(Color.Blue, HelperBl.GetColor("blue"));
+            PlayerDeck d = new PlayerDeck(DifficultySetting.Easy, 2);
+            Assert.AreEqual(Color.Red, d.getColor("red"));
+            Assert.AreEqual(Color.Blue, d.getColor("blue"));
         }
         [TestMethod]
         public void TestThatGetsCorrectThreeColors()
         {
-            Assert.AreEqual(Color.Red, HelperBl.GetColor("red"));
-            Assert.AreEqual(Color.Blue, HelperBl.GetColor("blue"));
-            Assert.AreEqual(Color.Black, HelperBl.GetColor("black"));
+            PlayerDeck d = new PlayerDeck(DifficultySetting.Easy, 2);
+            Assert.AreEqual(Color.Red, d.getColor("red"));
+            Assert.AreEqual(Color.Blue, d.getColor("blue"));
+            Assert.AreEqual(Color.Black, d.getColor("black"));
         }
         [TestMethod]
         public void TestThatGetsCorrectAllColors()
         {
-            Assert.AreEqual(Color.Red, HelperBl.GetColor("red"));
-            Assert.AreEqual(Color.Blue, HelperBl.GetColor("blue"));
-            Assert.AreEqual(Color.Black, HelperBl.GetColor("black"));
-            Assert.AreEqual(Color.Yellow, HelperBl.GetColor("yellow"));
+            PlayerDeck d = new PlayerDeck(DifficultySetting.Easy, 2);
+            Assert.AreEqual(Color.Red, d.getColor("red"));
+            Assert.AreEqual(Color.Blue, d.getColor("blue"));
+            Assert.AreEqual(Color.Black, d.getColor("black"));
+            Assert.AreEqual(Color.Yellow, d.getColor("yellow"));
         }
         #endregion
 

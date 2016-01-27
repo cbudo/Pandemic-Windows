@@ -22,10 +22,10 @@ namespace SQADemicApp.BL
             return shuffledarray;
         }
 
-        public static List<SQADemicApp.Card> ShuffleArray(List<SQADemicApp.Card> unshuffledArry)
+        public static List<SQADemicApp.Cards> ShuffleArray(List<SQADemicApp.Cards> unshuffledArry)
         {
             RNGCryptoServiceProvider rnd = new RNGCryptoServiceProvider();
-            List<SQADemicApp.Card> shuffledarray = unshuffledArry.OrderBy(x => GetNextInt32(rnd)).ToList<Card>();
+            List<SQADemicApp.Cards> shuffledarray = unshuffledArry.OrderBy(x => GetNextInt32(rnd)).ToList<Cards>();
             return shuffledarray;
         }
 
@@ -36,22 +36,17 @@ namespace SQADemicApp.BL
             return Convert.ToInt32(randomInt[0]);
         }
 
+        private static Dictionary<string, Color> colors = new Dictionary<string, Color>
+        {
+            {"red", Color.Red},
+            {"black", Color.Black},
+            {"yellow", Color.Yellow},
+            {"blue", Color.Blue}
+        };
         public static Color GetColor(string color)
         {
-            switch (color.ToLower())
-            {
-                case "red":
-                    return Color.Red;
-
-                case "black":
-                    return Color.Black;
-
-                case "yellow":
-                    return Color.Yellow;
-
-                default:
-                    return Color.Blue;
-            }
+            color = color.ToLower();
+            return colors[color];
         }
     }
 }

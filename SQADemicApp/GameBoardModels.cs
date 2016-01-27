@@ -10,8 +10,15 @@ namespace SQADemicApp
     public enum Color { Red, Black, Blue, Yellow }
     public enum DifficultySetting { Easy, Medium, Hard, Legendary }
 
+
     public class GameBoardModels
     {
+        #region Constansts
+        private const int TWO_PLAYER_HAND = 4;
+        private const int THREE_PLAYER_HAND = 3;
+        private const int FOUR_PLAYER_HAND = 2;
+        #endregion Constants
+
         #region Public Static Vars
 
         public static InfectionCubeCount CubeCount;
@@ -20,7 +27,7 @@ namespace SQADemicApp
         public static int OutbreakMarker = 0;
         public static Player[] Players;
         public static int CurrentPlayerIndex;
-        public static List<Card> EventCards;
+        public static List<Cards> EventCards;
         public static LinkedList<string> InfectionDeck;
         public static LinkedList<string> InfectionPile;
         public static int InfectionRate;
@@ -28,14 +35,15 @@ namespace SQADemicApp
         public static DifficultySetting Difficulty = DifficultySetting.Medium;
 
         #endregion Public Static Vars
-        
 
         #region private vars
 
         private static bool _alreadySetUp = false;
-        public static Stack<Card> PlayerDeck;
+        public static Stack<Cards> PlayerDeck;
+        private PlayerDeck playerDeck;
 
         #endregion private vars
+
 
         /// <summary>
         /// Acts as a Main function. Sets up the game and the board state
@@ -52,11 +60,15 @@ namespace SQADemicApp
                 CubeCount.BlackCubes = CubeCount.RedCubes = CubeCount.BlueCubes = CubeCount.YellowCubes = 24;
                 Curestatus = new Cures();
                 Curestatus.BlackCure = Curestatus.BlueCure = Curestatus.RedCure = Curestatus.YellowCure = Cures.Curestate.NotCured;
-                Card[] playerDeckArray;
+                Cards[] playerDeckArray;
+
                 List<string> infectionDeckList;
                 Create.SetUpCreate(playersroles, out playerDeckArray, out infectionDeckList);
-                PlayerDeck = new Stack<Card>(playerDeckArray);
-                EventCards = new List<Card>();
+                PlayerDeck = new Stack<Cards>(playerDeckArray);
+                //playerDeck = new PlayerDeck(Difficulty, Players.Count());
+                playerDeck = new PlayerDeck(Difficulty, playersroles.Length);
+                playerDeck.init();
+                EventCards = new List<Cards>();
                 InfectionPile = new LinkedList<string>();
                 InfectionDeck = new LinkedList<string>(Create.MakeInfectionDeck(new StringReader(Properties.Resources.InfectionDeck)));
             }
@@ -90,34 +102,30 @@ namespace SQADemicApp
 
         private void SetUpPlayerHands()
         {
-            int cardsPerPlayer = Players.Count() == 4 ? 2 : Players.Count() == 3 ? 3 : 4;
+            List<Cards> cardsToBeDealt = playerDeck.getInitialDeal();
             foreach (Player player in Players)
             {
-                for (int i = 0; i < cardsPerPlayer; i++)
+                for (int i = 0; i < cardsToBeDealt.Count(); i++)
                 {
-                    Card card = DrawCard();
-                    if (card.CardType.Equals(Card.Cardtype.Epidemic))
+                    Cards card = cardsToBeDealt.ElementAt(i);
+                    if (card.GetType() == typeof(SpecialCard))
                     {
-                        string infectcityname = InfectorBl.Epidemic(GameBoardModels.InfectionDeck, GameBoardModels.InfectionPile, ref GameBoardModels.InfectionRateIndex, ref GameBoardModels.InfectionRate);
-                        new PicForm(false, infectcityname).Show();
-                        for (int j = 0; j < 3; j++)
-                        {
-                            InfectorBl.InfectCities(new List<string> { infectcityname });
-                        }
-                    }
-                    else if (card.CardType == Card.Cardtype.Special)
                         EventCards.Add(card);
+                    }
                     else
+                    {
+                        System.Console.WriteLine("card : " + card + " " + player.Hand);
                         player.Hand.Add(card);
+                    }
                 }
             }
         }
         
-        public static Card DrawCard()
+        public Cards DrawCard()
         {
             try
             {
-                return PlayerDeck.Pop();
+                return playerDeck.draw();
             }
             catch (InvalidOperationException e)
             {

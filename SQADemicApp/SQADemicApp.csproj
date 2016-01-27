@@ -69,6 +69,8 @@
     <Compile Include="BL\HelperBL.cs" />
     <Compile Include="BL\SpecialEventCardsBL.cs" />
     <Compile Include="Card.cs" />
+    <Compile Include="CityCard.cs" />
+    <Compile Include="Cards.cs" />
     <Compile Include="ActionForms\CityPageForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -77,6 +79,7 @@
     </Compile>
     <Compile Include="Deck.cs" />
     <Compile Include="Cures.cs" />
+    <Compile Include="EpidemicCard.cs" />
     <Compile Include="ActionForms\Forecast.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,6 +122,7 @@
     <Compile Include="GameForms\CharacterPane.Designer.cs">
       <DependentUpon>CharacterPane.cs</DependentUpon>
     </Compile>
+    <Compile Include="InfectionCard.cs" />
     <Compile Include="ActionForms\PicForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -157,13 +161,13 @@
     <Compile Include="ActionForms\ShareCardForm.Designer.cs">
       <DependentUpon>ShareCardForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="SpecialCard.cs" />
     <Compile Include="ActionForms\TreatDiseaseForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ActionForms\TreatDiseaseForm.Designer.cs">
       <DependentUpon>TreatDiseaseForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="WS\InfectorWS.cs" />
     <EmbeddedResource Include="ActionForms\AdvancedActions.resx">
       <DependentUpon>AdvancedActions.cs</DependentUpon>
     </EmbeddedResource>
