@@ -100,28 +100,32 @@ namespace SQADemicAppTest
         [TestMethod]
         public void TestThatGetsCorrectColorRed()
         {
-            Assert.AreEqual(Color.Red, HelperBl.GetColor("red"));
+            PlayerDeck d = new PlayerDeck(DifficultySetting.Easy, 2);
+            Assert.AreEqual(Color.Red, d.getColor("red"));
         }
         [TestMethod]
         public void TestThatGetsCorrectColorsRedBlue()
         {
-            Assert.AreEqual(Color.Red, HelperBl.GetColor("red"));
-            Assert.AreEqual(Color.Blue, HelperBl.GetColor("blue"));
+            PlayerDeck d = new PlayerDeck(DifficultySetting.Easy, 2);
+            Assert.AreEqual(Color.Red, d.getColor("red"));
+            Assert.AreEqual(Color.Blue, d.getColor("blue"));
         }
         [TestMethod]
         public void TestThatGetsCorrectThreeColors()
         {
-            Assert.AreEqual(Color.Red, HelperBl.GetColor("red"));
-            Assert.AreEqual(Color.Blue, HelperBl.GetColor("blue"));
-            Assert.AreEqual(Color.Black, HelperBl.GetColor("black"));
+            PlayerDeck d = new PlayerDeck(DifficultySetting.Easy, 2);
+            Assert.AreEqual(Color.Red, d.getColor("red"));
+            Assert.AreEqual(Color.Blue, d.getColor("blue"));
+            Assert.AreEqual(Color.Black, d.getColor("black"));
         }
         [TestMethod]
         public void TestThatGetsCorrectAllColors()
         {
-            Assert.AreEqual(Color.Red, HelperBl.GetColor("red"));
-            Assert.AreEqual(Color.Blue, HelperBl.GetColor("blue"));
-            Assert.AreEqual(Color.Black, HelperBl.GetColor("black"));
-            Assert.AreEqual(Color.Yellow, HelperBl.GetColor("yellow"));
+            PlayerDeck d = new PlayerDeck(DifficultySetting.Easy, 2);
+            Assert.AreEqual(Color.Red, d.getColor("red"));
+            Assert.AreEqual(Color.Blue, d.getColor("blue"));
+            Assert.AreEqual(Color.Black, d.getColor("black"));
+            Assert.AreEqual(Color.Yellow, d.getColor("yellow"));
         }
         #endregion
 

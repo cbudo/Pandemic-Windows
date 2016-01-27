@@ -25,29 +25,29 @@ namespace SQADemicApp
         private static Player getRole(string roleName)
         {
             Player player;
-            switch (roleName)
+            switch (roleName.ToUpper())
             {
-                case "Dispatcher":
+                case "DISPATCHER":
                     player = new Dispatcher();
                     break;
 
-                case "Operations Expert":
+                case "OPERATIONS EXPERT":
                     player = new OpExpert();
                     break;
 
-                case "Scientist":
+                case "SCIENTIST":
                     player = new Scientist();
                     break;
 
-                case "Medic":
+                case "MEDIC":
                     player = new Medic();
                     break;
 
-                case "Researcher":
+                case "RESEARCHER":
                     player = new Researcher();
                     break;
 
-                case "Gene Splicer":
+                case "GENE SPLICER":
                     player = new GeneSplicer();
                     break;
 

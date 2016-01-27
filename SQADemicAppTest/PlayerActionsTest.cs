@@ -46,8 +46,8 @@
 //            _paris = new Card("Paris", Card.Cardtype.City, Color.Blue);
 //            _london = new Card("London", Card.Cardtype.City, Color.Blue);
 //            _milan = new Card("Milan", Card.Cardtype.City, Color.Blue);
-//            _airlift = new Card("Airlift",Card.Cardtype.Special);
-           
+//            _airlift = new Card("Airlift", Card.Cardtype.Special);
+
 //            //Players
 //            _scientist = new Scientist();
 //            _opExpert = new OpExpert();
@@ -81,7 +81,7 @@
 //        {
 //            _hand = new List<Card> { _newYork };
 //            _scientist.Hand = _hand;
-//            List<string> returnList = _scientist.DirectFlightOption(); 
+//            List<string> returnList = _scientist.DirectFlightOption();
 //            List<string> correctList = new List<string> { _newYork.CityName };
 //            CollectionAssert.AreEqual(correctList, returnList);
 //        }
@@ -158,7 +158,7 @@
 //            _kolkata.ResearchStation = true;
 //            List<string> result = _kolkata.ShuttleFlightOption();
 //            _kolkata.ResearchStation = false;
-//            List<string> expected = new List<string> { "Atlanta"};
+//            List<string> expected = new List<string> { "Atlanta" };
 //            CollectionAssert.AreEqual(expected, result);
 //        }
 
@@ -208,7 +208,7 @@
 //        {
 //            _scientist.CurrentCity = _sanFran;
 //            _hand = new List<Card> { _airlift, _chicagoCard, _chennai };
-//            List<Card> correctHand =new List<Card> { _airlift, _chicagoCard, _chennai };
+//            List<Card> correctHand = new List<Card> { _airlift, _chicagoCard, _chennai };
 //            _scientist.Hand = _hand;
 //            _scientist.Move(_chicagoCity);
 //            Assert.AreEqual(_scientist.CurrentCity.Name, _chicagoCity.Name);
@@ -366,7 +366,7 @@
 //            _chicagoCity.ResearchStation = false;
 //            Assert.AreEqual(GameBoardModels.Curestatus.GetCureStatus(Color.Blue), Cures.Curestate.Cured);
 //            GameBoardModels.Curestatus.SetCureStatus(Color.Blue, Cures.Curestate.NotCured);
-            
+
 //        }
 
 //        [TestMethod]
@@ -378,7 +378,7 @@
 //            _chicagoCity.ResearchStation = true;
 //            List<string> cardsToSpend = new List<string> { _newYork.CityName, _chicagoCard.CityName };
 //            List<Card> correctHand = new List<Card> { _newYork, _chennai, _atlanta, _chicagoCard, _airlift };
-//            Assert.AreEqual(false, _opExpert.Cure( cardsToSpend, Color.Blue));
+//            Assert.AreEqual(false, _opExpert.Cure(cardsToSpend, Color.Blue));
 //            CollectionAssert.AreEqual(correctHand, _hand);
 //            _chicagoCity.ResearchStation = false;
 //        }
@@ -392,7 +392,7 @@
 //            List<Card> correctHand = new List<Card> { _chennai, _newYork, _atlanta, _chicagoCard, _london, _paris, _milan, _airlift };
 //            _opExpert.CurrentCity = _chicagoCity;
 //            _chicagoCity.ResearchStation = true;
-//            Assert.AreEqual(false, _opExpert.Cure( cardsToSpend, Color.Blue));
+//            Assert.AreEqual(false, _opExpert.Cure(cardsToSpend, Color.Blue));
 //            CollectionAssert.AreEqual(correctHand, _hand);
 //            _chicagoCity.ResearchStation = false;
 //        }
@@ -445,7 +445,7 @@
 //        {
 //            _hand = new List<Card> { _chennai, _newYork, _atlanta, _chicagoCard, _london, _paris, _airlift };
 //            _scientist.Hand = _hand;
-//            List<string> cardsToSpend = new List<string> { _newYork.CityName, _atlanta.CityName, _chicagoCard.CityName, _london.CityName, _paris.CityName};
+//            List<string> cardsToSpend = new List<string> { _newYork.CityName, _atlanta.CityName, _chicagoCard.CityName, _london.CityName, _paris.CityName };
 //            List<Card> correctHand = new List<Card> { _chennai, _newYork, _atlanta, _chicagoCard, _london, _paris, _airlift };
 //            _scientist.CurrentCity = _chicagoCity;
 //            _chicagoCity.ResearchStation = true;
@@ -481,7 +481,7 @@
 //        {
 //            _opExpert.CurrentCity = _chicagoCity;
 //            _chicagoCity.BlueCubes = 2;
-//            Assert.AreEqual(true, _opExpert.TreatDiseaseOption( Color.Blue));
+//            Assert.AreEqual(true, _opExpert.TreatDiseaseOption(Color.Blue));
 //            Assert.AreEqual(_chicagoCity.BlueCubes, 1);
 //        }
 
@@ -498,10 +498,10 @@
 //        public void TestTreatDiseaseBasicOnlYellow()
 //        {
 //            _opExpert.CurrentCity = _chicagoCity;
-//            _chicagoCity.RedCubes = 2; 
+//            _chicagoCity.RedCubes = 2;
 //            _chicagoCity.BlueCubes = 2;
 //            _chicagoCity.YellowCubes = 2;
-//            _chicagoCity.BlackCubes= 3;
+//            _chicagoCity.BlackCubes = 3;
 //            Assert.AreEqual(true, _opExpert.TreatDiseaseOption(Color.Yellow));
 //            Assert.AreEqual(_chicagoCity.RedCubes, 2);
 //            Assert.AreEqual(_chicagoCity.BlueCubes, 2);
@@ -518,9 +518,9 @@
 //            _chicagoCity.YellowCubes = 2;
 //            _chicagoCity.BlackCubes = 1;
 //            Assert.AreEqual(true, _opExpert.TreatDiseaseOption(Color.Red));
-//            Assert.AreEqual(true, _opExpert.TreatDiseaseOption( Color.Blue));
-//            Assert.AreEqual(true, _opExpert.TreatDiseaseOption( Color.Yellow));
-//            Assert.AreEqual(true, _opExpert.TreatDiseaseOption( Color.Black));
+//            Assert.AreEqual(true, _opExpert.TreatDiseaseOption(Color.Blue));
+//            Assert.AreEqual(true, _opExpert.TreatDiseaseOption(Color.Yellow));
+//            Assert.AreEqual(true, _opExpert.TreatDiseaseOption(Color.Black));
 //            Assert.AreEqual(_chicagoCity.RedCubes, 0);
 //            Assert.AreEqual(_chicagoCity.BlueCubes, 1);
 //            Assert.AreEqual(_chicagoCity.YellowCubes, 1);
@@ -538,11 +538,11 @@
 //            GameBoardModels.Curestatus.BlackCure = Cures.Curestate.Cured;
 //            GameBoardModels.Curestatus.BlueCure = Cures.Curestate.Cured;
 //            GameBoardModels.Curestatus.RedCure = Cures.Curestate.Cured;
-//            GameBoardModels.Curestatus.YellowCure= Cures.Curestate.Cured;
-//            Assert.AreEqual(true, _opExpert.TreatDiseaseOption( Color.Red));
-//            Assert.AreEqual(true, _opExpert.TreatDiseaseOption( Color.Blue));
-//            Assert.AreEqual(true, _opExpert.TreatDiseaseOption( Color.Yellow));
-//            Assert.AreEqual(true, _opExpert.TreatDiseaseOption( Color.Black));
+//            GameBoardModels.Curestatus.YellowCure = Cures.Curestate.Cured;
+//            Assert.AreEqual(true, _opExpert.TreatDiseaseOption(Color.Red));
+//            Assert.AreEqual(true, _opExpert.TreatDiseaseOption(Color.Blue));
+//            Assert.AreEqual(true, _opExpert.TreatDiseaseOption(Color.Yellow));
+//            Assert.AreEqual(true, _opExpert.TreatDiseaseOption(Color.Black));
 //            GameBoardModels.Curestatus.BlackCure = Cures.Curestate.NotCured;
 //            GameBoardModels.Curestatus.BlueCure = Cures.Curestate.NotCured;
 //            GameBoardModels.Curestatus.RedCure = Cures.Curestate.NotCured;
@@ -561,10 +561,10 @@
 //            _chicagoCity.BlueCubes = 2;
 //            _chicagoCity.YellowCubes = 3;
 //            _chicagoCity.BlackCubes = 1;
-//            Assert.AreEqual(true, _medic.TreatDiseaseOption( Color.Red));
-//            Assert.AreEqual(true, _medic.TreatDiseaseOption( Color.Blue));
-//            Assert.AreEqual(true, _medic.TreatDiseaseOption( Color.Yellow));
-//            Assert.AreEqual(true, _medic.TreatDiseaseOption( Color.Black));
+//            Assert.AreEqual(true, _medic.TreatDiseaseOption(Color.Red));
+//            Assert.AreEqual(true, _medic.TreatDiseaseOption(Color.Blue));
+//            Assert.AreEqual(true, _medic.TreatDiseaseOption(Color.Yellow));
+//            Assert.AreEqual(true, _medic.TreatDiseaseOption(Color.Black));
 //            Assert.AreEqual(_chicagoCity.RedCubes, 0);
 //            Assert.AreEqual(_chicagoCity.BlueCubes, 0);
 //            Assert.AreEqual(_chicagoCity.YellowCubes, 0);
@@ -580,9 +580,9 @@
 //            _chicagoCity.BlueCubes = 0;
 //            _chicagoCity.YellowCubes = 0;
 //            _chicagoCity.BlackCubes = 0;
-//            Assert.AreEqual(false, _opExpert.TreatDiseaseOption( Color.Red));
-//            Assert.AreEqual(false, _opExpert.TreatDiseaseOption( Color.Blue));
-//            Assert.AreEqual(false, _medic.TreatDiseaseOption( Color.Yellow));
+//            Assert.AreEqual(false, _opExpert.TreatDiseaseOption(Color.Red));
+//            Assert.AreEqual(false, _opExpert.TreatDiseaseOption(Color.Blue));
+//            Assert.AreEqual(false, _medic.TreatDiseaseOption(Color.Yellow));
 //            Assert.AreEqual(false, _medic.TreatDiseaseOption(Color.Black));
 //            Assert.AreEqual(_chicagoCity.RedCubes, 0);
 //            Assert.AreEqual(_chicagoCity.BlueCubes, 0);
@@ -656,7 +656,7 @@
 //            List<Card> hand1 = new List<Card> { _chennai, _newYork };
 //            List<Card> hand2 = new List<Card> { _atlanta, _london };
 //            _scientist.Hand = new List<Card> { _chennai, _newYork };
-//            _opExpert.Hand = new List<Card> { _atlanta, _london};
+//            _opExpert.Hand = new List<Card> { _atlanta, _london };
 //            _scientist.CurrentCity = _chicagoCity;
 //            _opExpert.CurrentCity = _chicagoCity;
 //            Assert.AreEqual(false, _opExpert.ShareKnowledgeOption(_scientist, _chicagoCard.CityName));
@@ -689,7 +689,7 @@
 //        public void TestDispatcherMoveToOtherPlayer()
 //        {
 //            _scientist.CurrentCity = _chicagoCity;
-//            _opExpert.CurrentCity = _bangkok; 
+//            _opExpert.CurrentCity = _bangkok;
 //            Assert.AreEqual(((Dispatcher)_dispatcher).DispatcherMovePlayer(_scientist, _players, _bangkok), true);
 //            Assert.AreEqual(_scientist.CurrentCity.Name, _bangkok.Name);
 //            _opExpert.CurrentCity = _chicagoCity;
@@ -701,7 +701,7 @@
 //            _chicagoCity.ResearchStation = true;
 //            _bangkok.ResearchStation = true;
 //            _scientist.CurrentCity = _chicagoCity;
-//            Assert.AreEqual(true, ((Dispatcher) _dispatcher).DispatcherMovePlayer(_scientist, _players, _bangkok));
+//            Assert.AreEqual(true, ((Dispatcher)_dispatcher).DispatcherMovePlayer(_scientist, _players, _bangkok));
 //            Assert.AreEqual(_scientist.CurrentCity.Name, _bangkok.Name);
 //            _chicagoCity.ResearchStation = false;
 //            _bangkok.ResearchStation = false;
@@ -716,7 +716,7 @@
 //            _opExpert.CurrentCity = _chicagoCity;
 //            GameBoardModels.CubeCount.BlueCubes = 22;
 //            _chicagoCity.BlueCubes = 2;
-//            Assert.AreEqual(true, _opExpert.TreatDiseaseOption( Color.Blue));
+//            Assert.AreEqual(true, _opExpert.TreatDiseaseOption(Color.Blue));
 //            Assert.AreEqual(_chicagoCity.BlueCubes, 1);
 //            Assert.AreEqual(GameBoardModels.CubeCount.BlueCubes, 23);
 //        }
@@ -727,7 +727,7 @@
 //            _opExpert.CurrentCity = _chicagoCity;
 //            GameBoardModels.CubeCount.RedCubes = 22;
 //            _chicagoCity.RedCubes = 2;
-//            Assert.AreEqual(true, _opExpert.TreatDiseaseOption( Color.Red));
+//            Assert.AreEqual(true, _opExpert.TreatDiseaseOption(Color.Red));
 //            Assert.AreEqual(_chicagoCity.RedCubes, 1);
 //            Assert.AreEqual(GameBoardModels.CubeCount.RedCubes, 23);
 //        }
@@ -738,7 +738,7 @@
 //            _medic.CurrentCity = _chicagoCity;
 //            GameBoardModels.CubeCount.RedCubes = 22;
 //            _chicagoCity.RedCubes = 2;
-//            Assert.AreEqual(true, _medic.TreatDiseaseOption( Color.Red));
+//            Assert.AreEqual(true, _medic.TreatDiseaseOption(Color.Red));
 //            Assert.AreEqual(_chicagoCity.RedCubes, 0);
 //            Assert.AreEqual(GameBoardModels.CubeCount.RedCubes, 24);
 //        }
@@ -749,7 +749,7 @@
 //        {
 //            _scientist.CurrentCity.ResearchStation = true;
 //            List<string> cardsToSpend = new List<string> { _atlanta.CityName, _chicagoCard.CityName, _london.CityName, _paris.CityName };
-//            GameBoardModels.Curestatus.SetCureStatus(Color.Blue , Cures.Curestate.NotCured);
+//            GameBoardModels.Curestatus.SetCureStatus(Color.Blue, Cures.Curestate.NotCured);
 //            GameBoardModels.Curestatus.SetCureStatus(Color.Yellow, Cures.Curestate.Cured);
 //            GameBoardModels.Curestatus.SetCureStatus(Color.Red, Cures.Curestate.Cured);
 //            GameBoardModels.Curestatus.SetCureStatus(Color.Black, Cures.Curestate.Cured);
