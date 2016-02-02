@@ -37,6 +37,8 @@ namespace SQADemicApp
         private void DispatcherMove_Click(object sender, EventArgs e)
         {
             GameBoard.CurrentState = SQADemicApp.GameBoard.State.Dispatcher;
+            SQADemicApp.DispatcherMove dispatcherForm = new DispatcherMove(GameBoardModels.Players,GameBoardModels.CurrentPlayerIndex);
+            dispatcherForm.Show();
         }
 
         private void EndSequenceBtn_Click(object sender, EventArgs e)

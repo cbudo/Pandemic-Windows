@@ -4,7 +4,7 @@ using System.Linq;
 using SQADemicApp.BL;
 using SQADemicApp.Players;
 
-namespace SQADemicApp
+namespace SQADemicApp.Players
 {
     public enum Role { Dispatcher, Medic, OpExpert, Researcher, Scientist };
 

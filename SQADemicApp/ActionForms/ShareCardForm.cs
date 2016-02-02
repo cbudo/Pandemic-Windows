@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using SQADemicApp.Players;
 
 namespace SQADemicApp
 {
@@ -187,6 +188,11 @@ namespace SQADemicApp
             {
                 MessageBox.Show("You must select a card to take");
             }
+        }
+
+        private void ShareCardForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
