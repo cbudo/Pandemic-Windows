@@ -50,7 +50,6 @@ namespace SQADemicApp
             for (int i = 0; i < subDecks.Length; i++)
             {
                 subDecks[i] = _cards.GetRange(subDeckSize * i, subDeckSize);
-                //TODO: Fix this to be integrated with the new Card types
                 subDecks[i].Add(new EpidemicCard());
                 subDecks[i] = shuffle(subDecks[i]);
                 newInitDeck.AddRange(subDecks[i]);

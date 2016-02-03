@@ -301,7 +301,7 @@ namespace SQADemicAppTest
 
 
         [TestMethod]
-        [ExpectedException(typeof(InvalidOperationException))]
+        [ExpectedException(typeof(GameLostException))]
         public void TestRedWithTwoInfectWithNewException()
         {
             SQADemicApp.City tokyo = new SQADemicApp.City(Color.Red, "Tokyo");
@@ -311,7 +311,7 @@ namespace SQADemicAppTest
         }
 
         [TestMethod]
-        [ExpectedException(typeof(InvalidOperationException))]
+        [ExpectedException(typeof(GameLostException))]
         public void TestOutbreakSimpleException()
         {
             HashSet<City> infected = new HashSet<City>();
@@ -325,7 +325,7 @@ namespace SQADemicAppTest
         }
 
         [TestMethod]
-        [ExpectedException(typeof(InvalidOperationException))]
+        [ExpectedException(typeof(GameLostException))]
         public void TestIncrementOutbreakMarkerToThrowException()
         {
             HashSet<City> infected = new HashSet<City>();
