@@ -39,7 +39,6 @@ namespace SQADemicApp
         #region private vars
 
         private static bool _alreadySetUp = false;
-        public static Stack<Cards> PlayerDeck;
         private PlayerDeck playerDeck;
 
         #endregion private vars
@@ -60,13 +59,10 @@ namespace SQADemicApp
                 CubeCount.BlackCubes = CubeCount.RedCubes = CubeCount.BlueCubes = CubeCount.YellowCubes = 24;
                 Curestatus = new Cures();
                 Curestatus.BlackCure = Curestatus.BlueCure = Curestatus.RedCure = Curestatus.YellowCure = Cures.Curestate.NotCured;
-                Cards[] playerDeckArray;
 
                 List<string> infectionDeckList;
-                Create.SetUpCreate(playersroles, out playerDeckArray, out infectionDeckList);
+                Create.SetUpCreate(playersroles, out infectionDeckList);
 
-                PlayerDeck = new Stack<Cards>(playerDeckArray);
-                //playerDeck = new PlayerDeck(Difficulty, Players.Count());
                 playerDeck = new PlayerDeck(Difficulty, playersroles.Length);
                 playerDeck.init();
                 EventCards = new List<Cards>();
@@ -136,7 +132,7 @@ namespace SQADemicApp
 
         public int PlayerDeckSize()
         {
-            return PlayerDeck.Count();
+            return playerDeck.getDeckSize();
         }
 
         #region Storage Classes

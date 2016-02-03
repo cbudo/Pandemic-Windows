@@ -18,6 +18,7 @@ namespace SQADemicApp
         private string resource = SQADemicApp.Properties.Resources.CityList;
         protected DifficultySetting _difficulty;
         protected int _numOfPlayers;
+        protected int _epidemicCount;
 
         public PlayerDeck(DifficultySetting difficulty, int numOfPlayers)
         {
@@ -30,21 +31,20 @@ namespace SQADemicApp
             makeCardList();
             shuffle();
             drawHands();
-            int epidemicCount;
             if (this._difficulty == DifficultySetting.Easy)
             {
-                epidemicCount = EASY_EPIDEMIC_COUNT;
+                _epidemicCount = EASY_EPIDEMIC_COUNT;
             }
             else if (this._difficulty == DifficultySetting.Medium)
             {
-                epidemicCount = MEDIUM_EPIDEMIC_COUNT;
+                _epidemicCount = MEDIUM_EPIDEMIC_COUNT;
             }
             else
             {
-                epidemicCount = HARD_EPIDEMIC_COUNT;
+                _epidemicCount = HARD_EPIDEMIC_COUNT;
             }
-            int subDeckSize = _cards.Count / epidemicCount;
-            List<Cards>[] subDecks = new List<Cards>[epidemicCount];
+            int subDeckSize = _cards.Count / _epidemicCount;
+            List<Cards>[] subDecks = new List<Cards>[_epidemicCount];
             List<Cards> newInitDeck = new List<Cards>();
             for (int i = 0; i < subDecks.Length; i++)
             {
@@ -94,6 +94,10 @@ namespace SQADemicApp
             addCard(new SpecialCard("Resilient Population"));
             addCard(new SpecialCard("Government Grant"));
             addCard(new SpecialCard("Forecast"));
+        }
+
+        public int getEpidemicCount() {
+            return _epidemicCount;
         }
         
     }

@@ -25,31 +25,22 @@ namespace SQADemicAppTest
         [TestMethod]
         public void TestEasyDifficultyEpidemicCards()
         {
-            string[] playerRoles = {"Medic", "Scientist"};
-            Cards[] playerDeck = Create.MakePlayerDeck(DifficultySetting.Easy, playerRoles);
-            List<Cards> cards =  new List<Cards>(playerDeck);
-            int countEpidemic = cards.Count(m => m.GetType() == typeof(EpidemicCard));
-            Assert.AreEqual(countEpidemic, 4);
+            PlayerDeck cards = new PlayerDeck(DifficultySetting.Easy, 2);
+            Assert.AreEqual(cards.getEpidemicCount(), 4);
         }
 
         [TestMethod]
         public void TestNormalDifficultyEpidemicCards()
         {
-            string[] playerRoles = { "Medic", "Scientist" };
-            Cards[] playerDeck = Create.MakePlayerDeck(DifficultySetting.Medium, playerRoles);
-            List<Cards> cards = new List<Cards>(playerDeck);
-            int countEpidemic = cards.Count(m => m.GetType() == typeof(EpidemicCard));
-            Assert.AreEqual(countEpidemic, 5);
+            PlayerDeck cards = new PlayerDeck(DifficultySetting.Hard, 2);
+            Assert.AreEqual(cards.getEpidemicCount(), 5);
         }
 
         [TestMethod]
         public void TestHeroicDifficultyEpidemicCards()
         {
-            string[] playerRoles = { "Medic", "Scientist" };
-            Cards[] playerDeck = Create.MakePlayerDeck(DifficultySetting.Hard, playerRoles);
-            List<Cards> cards = new List<Cards>(playerDeck);
-            int countEpidemic = cards.Count(m => m.GetType() == typeof(EpidemicCard));
-            Assert.AreEqual(countEpidemic, 6);
+            PlayerDeck cards = new PlayerDeck(DifficultySetting.Hard, 2);
+            Assert.AreEqual(cards.getEpidemicCount(), 6);
         }
 
         [TestMethod]
