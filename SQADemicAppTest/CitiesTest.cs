@@ -19,8 +19,8 @@ namespace SQADemicAppTest
         [TestInitialize()]
         public void TestInitialize()
         {
-            //Create.setUpCreate();
-            //create.createDictionary();
+            //Create.SetUpCreate();
+            //Create.createDictionary();
         }
 
         #region Additional test attributes
@@ -158,6 +158,9 @@ namespace SQADemicAppTest
         [TestMethod]
         public void TestResearchCityList()
         {
+            List<string> listy = new List<string>();
+            Cards[] cards = new Cards[3];
+            Create.SetUpCreate(new string[2], out cards, out listy);
             Create.CityDictionary["Atlanta"].ResearchStation = true;
             List<City> ls = new List<City>();
             City a = new City(Color.Blue, "Atlanta");
