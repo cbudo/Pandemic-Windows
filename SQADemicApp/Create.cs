@@ -10,16 +10,8 @@ namespace SQADemicApp
     {
         public static Dictionary<string, City> CityDictionary = new Dictionary<string, City>();
 
-        /// <summary>
-        /// Sets up all of the dictionaries
-        /// </summary>
-        /// <param name="playerdeck"></param>
-        /// <returns>status flag</returns>
         public static bool SetUpCreate(string[] playerRoles, out Card[] playerdeck, out List<string> infectionDeck)
         {
-            //Keep from making duplicates
-            //if (alreadySetUp)
-            //  return false;
             CreateDictionary();
             SetAdjacentCities(new StringReader(Properties.Resources.AdjacentNeighbors));
             playerdeck = MakePlayerDeck(GameBoardModels.Difficulty, playerRoles);
@@ -55,7 +47,7 @@ namespace SQADemicApp
         /// Protected for testing.
         /// </summary>
         /// <param name="colorString"></param>
-        /// <returns>The color associated with the given string. Black if the string does not match a color.</returns>
+        /// <returns>The color associated with the given string. Blue if the string does not match a color.</returns>
         protected static Color GetColorForString(string colorString)
         {
             switch (colorString)
@@ -87,7 +79,7 @@ namespace SQADemicApp
             }
         }
 
-        /// <summary>
+        /// <summary> 
         /// PUBLIC FOR TESTING ONLY
         /// </summary>
         /// <returns></returns>
