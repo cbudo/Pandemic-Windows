@@ -4,20 +4,20 @@ using System.Linq;
 using SQADemicApp.BL;
 using SQADemicApp.Players;
 
-namespace SQADemicApp
+namespace SQADemicApp.Players
 {
     public enum Role { Dispatcher, Medic, OpExpert, Researcher, Scientist };
 
     public class Player
     {
         public string Name;
-        public List<Card> Hand { get; set; }
+        public List<Cards> Hand { get; set; }
         public City CurrentCity { get; set; }
         private int _turnCount = 0;
         public Player(string name)
         {
             this.Name = name;
-            Hand = new List<Card>();
+            Hand = new List<Cards>();
             CurrentCity = Create.CityDictionary["Atlanta"];
         }
 
@@ -107,7 +107,7 @@ namespace SQADemicApp
         /// <returns></returns>
         public List<string> DirectFlightOption()
         {
-            var reducedHand = Hand.Where(c => !c.CityName.Equals(CurrentCity.Name) && c.CardType == Card.Cardtype.City);
+            var reducedHand = Hand.Where(c => !c.CityName.Equals(CurrentCity.Name) && c.GetType() == typeof(CityCard));
 
             return reducedHand.Select(card => card.CityName).ToList();
         }

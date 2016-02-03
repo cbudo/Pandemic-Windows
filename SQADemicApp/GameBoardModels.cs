@@ -27,7 +27,7 @@ namespace SQADemicApp
         public static int OutbreakMarker = 0;
         public static Player[] Players;
         public static int CurrentPlayerIndex;
-        public static List<Card> EventCards;
+        public static List<Cards> EventCards;
         public static LinkedList<string> InfectionDeck;
         public static LinkedList<string> InfectionPile;
         public static int InfectionRate;
@@ -35,14 +35,15 @@ namespace SQADemicApp
         public static DifficultySetting Difficulty = DifficultySetting.Medium;
 
         #endregion Public Static Vars
-        
+
         #region private vars
 
         private static bool _alreadySetUp = false;
-        public static Stack<Card> PlayerDeck;
+        public static Stack<Cards> PlayerDeck;
         private PlayerDeck playerDeck;
 
         #endregion private vars
+
 
         /// <summary>
         /// Acts as a Main function. Sets up the game and the board state
@@ -59,19 +60,16 @@ namespace SQADemicApp
                 CubeCount.BlackCubes = CubeCount.RedCubes = CubeCount.BlueCubes = CubeCount.YellowCubes = 24;
                 Curestatus = new Cures();
                 Curestatus.BlackCure = Curestatus.BlueCure = Curestatus.RedCure = Curestatus.YellowCure = Cures.Curestate.NotCured;
-
-                // deprecated
-                Card[] playerDeckArray;
+                Cards[] playerDeckArray;
 
                 List<string> infectionDeckList;
                 Create.SetUpCreate(playersroles, out playerDeckArray, out infectionDeckList);
 
-                // deprecated
-                PlayerDeck = new Stack<Card>(playerDeckArray);
-
+                PlayerDeck = new Stack<Cards>(playerDeckArray);
+                //playerDeck = new PlayerDeck(Difficulty, Players.Count());
                 playerDeck = new PlayerDeck(Difficulty, playersroles.Length);
                 playerDeck.init();
-                EventCards = new List<Card>();
+                EventCards = new List<Cards>();
                 InfectionPile = new LinkedList<string>();
                 InfectionDeck = new LinkedList<string>(Create.MakeInfectionDeck(new StringReader(Properties.Resources.InfectionDeck)));
             }
@@ -105,21 +103,26 @@ namespace SQADemicApp
 
         private void SetUpPlayerHands()
         {
-            List<Card> cardsToBeDealt = playerDeck.getInitialDeal();
+            List<Cards> cardsToBeDealt = playerDeck.getInitialDeal();
             foreach (Player player in Players)
             {
                 for (int i = 0; i < cardsToBeDealt.Count(); i++)
                 {
-                    Card card = cardsToBeDealt.ElementAt(i);
-                    if (card.CardType == Card.Cardtype.Special)
+                    Cards card = cardsToBeDealt.ElementAt(i);
+                    if (card.GetType() == typeof(SpecialCard))
+                    {
                         EventCards.Add(card);
+                    }
                     else
+                    {
+                        System.Console.WriteLine("card : " + card + " " + player.Hand);
                         player.Hand.Add(card);
+                    }
                 }
             }
         }
         
-        public Card DrawCard()
+        public Cards DrawCard()
         {
             try
             {

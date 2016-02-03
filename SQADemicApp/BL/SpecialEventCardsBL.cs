@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using SQADemicApp.Players;
 
 namespace SQADemicApp.BL
 {
@@ -13,7 +14,7 @@ namespace SQADemicApp.BL
         /// <returns>status flag</returns>
         public static bool GovernmentGrant(string cityName)
         {
-            if (Create.CityDictionary[cityName].ResearchStation == true)
+            if (Create.CityDictionary[cityName].ResearchStation)
                 return false;
             Create.CityDictionary[cityName].ResearchStation = true;
             return true;

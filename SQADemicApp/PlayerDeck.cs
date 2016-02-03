@@ -44,13 +44,13 @@ namespace SQADemicApp
                 epidemicCount = HARD_EPIDEMIC_COUNT;
             }
             int subDeckSize = _cards.Count / epidemicCount;
-            List<Card>[] subDecks = new List<Card>[epidemicCount];
-            List<Card> newInitDeck = new List<Card>();
+            List<Cards>[] subDecks = new List<Cards>[epidemicCount];
+            List<Cards> newInitDeck = new List<Cards>();
             for (int i = 0; i < subDecks.Length; i++)
             {
                 subDecks[i] = _cards.GetRange(subDeckSize * i, subDeckSize);
                 //TODO: Fix this to be integrated with the new Card types
-                subDecks[i].Add(new Card("EPIDEMIC", Card.Cardtype.Epidemic));
+                subDecks[i].Add(new EpidemicCard());
                 subDecks[i] = shuffle(subDecks[i]);
                 newInitDeck.AddRange(subDecks[i]);
             }
@@ -66,7 +66,7 @@ namespace SQADemicApp
             }
         }
 
-        public List<Card> getInitialDeal()
+        public List<Cards> getInitialDeal()
         {
             return _initialDeal;
         }
@@ -81,7 +81,7 @@ namespace SQADemicApp
                 string cardColor = line.Substring(line.IndexOf(";") + 2);
                 Color color = getColor(cardColor);
                 //TODO: Fix this to be integrated with the new Card types
-                addCard(new Card(cardName, Card.Cardtype.City, color));
+                addCard(new CityCard(cardName, color));
             }
             addSpecialCards();
         }
@@ -89,11 +89,11 @@ namespace SQADemicApp
         private void addSpecialCards()
         {
             //TODO: Fix this to be integrated with the new Card types
-            addCard(new Card("Airlift", Card.Cardtype.Special));
-            addCard(new Card("One Quiet Night", Card.Cardtype.Special));
-            addCard(new Card("Resilient Population", Card.Cardtype.Special));
-            addCard(new Card("Government Grant", Card.Cardtype.Special));
-            addCard(new Card("Forecast", Card.Cardtype.Special));
+            addCard(new SpecialCard("Airlift"));
+            addCard(new SpecialCard("One Quiet Night"));
+            addCard(new SpecialCard("Resilient Population"));
+            addCard(new SpecialCard("Government Grant"));
+            addCard(new SpecialCard("Forecast"));
         }
         
     }

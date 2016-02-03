@@ -11,6 +11,21 @@
     <AssemblyName>SQADemicApp</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -48,70 +63,74 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AdvancedActions.cs">
+    <Compile Include="ActionForms\AdvancedActions.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AdvancedActions.Designer.cs">
+    <Compile Include="ActionForms\AdvancedActions.Designer.cs">
       <DependentUpon>AdvancedActions.cs</DependentUpon>
     </Compile>
     <Compile Include="BL\CityBL.cs" />
     <Compile Include="BL\HelperBL.cs" />
     <Compile Include="BL\SpecialEventCardsBL.cs" />
     <Compile Include="Card.cs" />
-    <Compile Include="CityPageForm.cs">
+    <Compile Include="CityCard.cs" />
+    <Compile Include="Cards.cs" />
+    <Compile Include="ActionForms\CityPageForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CityPageForm.Designer.cs">
+    <Compile Include="ActionForms\CityPageForm.Designer.cs">
       <DependentUpon>CityPageForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Deck.cs" />
     <Compile Include="Cures.cs" />
-    <Compile Include="Forecast.cs">
+    <Compile Include="EpidemicCard.cs" />
+    <Compile Include="ActionForms\Forecast.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forecast.Designer.cs">
+    <Compile Include="ActionForms\Forecast.Designer.cs">
       <DependentUpon>Forecast.cs</DependentUpon>
     </Compile>
-    <Compile Include="CureForm.cs">
+    <Compile Include="ActionForms\CureForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CureForm.Designer.cs">
+    <Compile Include="ActionForms\CureForm.Designer.cs">
       <DependentUpon>CureForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="DiscardPile.cs">
+    <Compile Include="ActionForms\DiscardPile.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DiscardPile.Designer.cs">
+    <Compile Include="ActionForms\DiscardPile.Designer.cs">
       <DependentUpon>DiscardPile.cs</DependentUpon>
     </Compile>
-    <Compile Include="DispatcherMove.cs">
+    <Compile Include="ActionForms\DispatcherMove.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DispatcherMove.Designer.cs">
+    <Compile Include="ActionForms\DispatcherMove.Designer.cs">
       <DependentUpon>DispatcherMove.cs</DependentUpon>
     </Compile>
-    <Compile Include="EventCardForm.cs">
+    <Compile Include="GameForms\EventCardForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EventCardForm.Designer.cs">
+    <Compile Include="GameForms\EventCardForm.Designer.cs">
       <DependentUpon>EventCardForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="GameBoard.cs">
+    <Compile Include="GameForms\GameBoard.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GameBoard.Designer.cs">
+    <Compile Include="GameForms\GameBoard.Designer.cs">
       <DependentUpon>GameBoard.cs</DependentUpon>
     </Compile>
-    <Compile Include="CharacterPane.cs">
+    <Compile Include="GameForms\CharacterPane.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CharacterPane.Designer.cs">
+    <Compile Include="GameForms\CharacterPane.Designer.cs">
       <DependentUpon>CharacterPane.cs</DependentUpon>
     </Compile>
-    <Compile Include="PicForm.cs">
+    <Compile Include="InfectionCard.cs" />
+    <Compile Include="ActionForms\PicForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PicForm.Designer.cs">
+    <Compile Include="ActionForms\PicForm.Designer.cs">
       <DependentUpon>PicForm.cs</DependentUpon>
     </Compile>
     <Compile Include="PlayerDeck.cs" />
@@ -120,10 +139,10 @@
     <Compile Include="Players\Medic.cs" />
     <Compile Include="Players\OpExpert.cs" />
     <Compile Include="Players\PlayerFactory.cs" />
-    <Compile Include="PlayerPanel.cs">
+    <Compile Include="GameForms\PlayerPanel.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PlayerPanel.Designer.cs">
+    <Compile Include="GameForms\PlayerPanel.Designer.cs">
       <DependentUpon>PlayerPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="City.cs" />
@@ -134,56 +153,56 @@
     <Compile Include="Players\Scientist.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SetupGameForm.cs">
+    <Compile Include="GameForms\SetupGameForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SetupGameForm.Designer.cs">
+    <Compile Include="GameForms\SetupGameForm.Designer.cs">
       <DependentUpon>SetupGameForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ShareCardForm.cs">
+    <Compile Include="ActionForms\ShareCardForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ShareCardForm.Designer.cs">
+    <Compile Include="ActionForms\ShareCardForm.Designer.cs">
       <DependentUpon>ShareCardForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="TreatDiseaseForm.cs">
+    <Compile Include="SpecialCard.cs" />
+    <Compile Include="ActionForms\TreatDiseaseForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TreatDiseaseForm.Designer.cs">
+    <Compile Include="ActionForms\TreatDiseaseForm.Designer.cs">
       <DependentUpon>TreatDiseaseForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="WS\InfectorWS.cs" />
-    <EmbeddedResource Include="AdvancedActions.resx">
+    <EmbeddedResource Include="ActionForms\AdvancedActions.resx">
       <DependentUpon>AdvancedActions.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CityPageForm.resx">
+    <EmbeddedResource Include="ActionForms\CityPageForm.resx">
       <DependentUpon>CityPageForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forecast.resx">
+    <EmbeddedResource Include="ActionForms\Forecast.resx">
       <DependentUpon>Forecast.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CureForm.resx">
+    <EmbeddedResource Include="ActionForms\CureForm.resx">
       <DependentUpon>CureForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DiscardPile.resx">
+    <EmbeddedResource Include="ActionForms\DiscardPile.resx">
       <DependentUpon>DiscardPile.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DispatcherMove.resx">
+    <EmbeddedResource Include="ActionForms\DispatcherMove.resx">
       <DependentUpon>DispatcherMove.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EventCardForm.resx">
+    <EmbeddedResource Include="GameForms\EventCardForm.resx">
       <DependentUpon>EventCardForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GameBoard.resx">
+    <EmbeddedResource Include="GameForms\GameBoard.resx">
       <DependentUpon>GameBoard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CharacterPane.resx">
+    <EmbeddedResource Include="GameForms\CharacterPane.resx">
       <DependentUpon>CharacterPane.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PicForm.resx">
+    <EmbeddedResource Include="ActionForms\PicForm.resx">
       <DependentUpon>PicForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PlayerPanel.resx">
+    <EmbeddedResource Include="GameForms\PlayerPanel.resx">
       <DependentUpon>PlayerPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -197,13 +216,13 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="BL\InfectorBL.cs" />
-    <EmbeddedResource Include="SetupGameForm.resx">
+    <EmbeddedResource Include="GameForms\SetupGameForm.resx">
       <DependentUpon>SetupGameForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ShareCardForm.resx">
+    <EmbeddedResource Include="ActionForms\ShareCardForm.resx">
       <DependentUpon>ShareCardForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TreatDiseaseForm.resx">
+    <EmbeddedResource Include="ActionForms\TreatDiseaseForm.resx">
       <DependentUpon>TreatDiseaseForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\DataSources\GameBoardModels.datasource" />
@@ -229,7 +248,18 @@
     <Content Include="Resources\Pandemic 6.jpg" />
     <Content Include="Resources\pandemicMap.jpg" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
