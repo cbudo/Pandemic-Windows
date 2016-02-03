@@ -64,7 +64,6 @@ namespace SQADemicApp
                 Create.SetUpCreate(playersroles, out infectionDeckList);
 
                 playerDeck = new PlayerDeck(Difficulty, playersroles.Length);
-                playerDeck.init();
                 EventCards = new List<Cards>();
                 InfectionPile = new LinkedList<string>();
                 InfectionDeck = new LinkedList<string>(Create.MakeInfectionDeck(new StringReader(Properties.Resources.InfectionDeck)));

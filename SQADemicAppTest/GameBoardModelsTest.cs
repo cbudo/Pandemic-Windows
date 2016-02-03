@@ -32,7 +32,7 @@ namespace SQADemicAppTest
         [TestMethod]
         public void TestNormalDifficultyEpidemicCards()
         {
-            PlayerDeck cards = new PlayerDeck(DifficultySetting.Hard, 2);
+            PlayerDeck cards = new PlayerDeck(DifficultySetting.Medium, 2);
             Assert.AreEqual(cards.getEpidemicCount(), 5);
         }
 
