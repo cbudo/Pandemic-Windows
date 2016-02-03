@@ -24,6 +24,7 @@ namespace SQADemicApp
         {
             this._difficulty = difficulty;
             this._numOfPlayers = numOfPlayers;
+            init();
         }
 
         public override void init()
@@ -58,8 +59,8 @@ namespace SQADemicApp
         }
 
         private void drawHands()
-        { 
-            int totalHandCount = _numOfPlayers == 4 ? _numOfPlayers * FOUR_PLAYER_HAND : _numOfPlayers == 3 ? _numOfPlayers * THREE_PLAYER_HAND :  _numOfPlayers * TWO_PLAYER_HAND;
+        {
+            int totalHandCount = _numOfPlayers == 4 ? _numOfPlayers * FOUR_PLAYER_HAND : _numOfPlayers == 3 ? _numOfPlayers * THREE_PLAYER_HAND : _numOfPlayers * TWO_PLAYER_HAND;
             for (int i = 0; i < totalHandCount; i++)
             {
                 _initialDeal.Add(draw());
@@ -80,7 +81,6 @@ namespace SQADemicApp
                 string cardName = line.Substring(0, line.IndexOf(";"));
                 string cardColor = line.Substring(line.IndexOf(";") + 2);
                 Color color = getColor(cardColor);
-                //TODO: Fix this to be integrated with the new Card types
                 addCard(new CityCard(cardName, color));
             }
             addSpecialCards();
@@ -96,9 +96,10 @@ namespace SQADemicApp
             addCard(new SpecialCard("Forecast"));
         }
 
-        public int getEpidemicCount() {
+        public int getEpidemicCount()
+        {
             return _epidemicCount;
         }
-        
+
     }
 }
