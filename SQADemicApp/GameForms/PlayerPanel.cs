@@ -51,7 +51,7 @@ namespace SQADemicApp
                     InfectCities();
                 _board.UpdatePlayerForm();
             }
-            catch (InvalidOperationException exc)
+            catch (GameLostException exc)
             {
                 //END OF GAME STUFF
                 MessageBox.Show("You Lost. That must suck...");

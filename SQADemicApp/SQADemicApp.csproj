@@ -126,6 +126,7 @@
     <Compile Include="GameForms\CharacterPane.Designer.cs">
       <DependentUpon>CharacterPane.cs</DependentUpon>
     </Compile>
+    <Compile Include="GameLostException.cs" />
     <Compile Include="InfectionCard.cs" />
     <Compile Include="ActionForms\PicForm.cs">
       <SubType>Form</SubType>

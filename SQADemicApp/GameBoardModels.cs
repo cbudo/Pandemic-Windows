@@ -124,14 +124,7 @@ namespace SQADemicApp
         
         public Cards DrawCard()
         {
-            try
-            {
-                return playerDeck.draw();
-            }
-            catch (InvalidOperationException e)
-            {
-                throw new Exception("Game Over");
-            }
+            return playerDeck.draw();
         }
 
         public int PlayerDeckSize()
