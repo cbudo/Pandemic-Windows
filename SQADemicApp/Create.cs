@@ -10,11 +10,10 @@ namespace SQADemicApp
     {
         public static Dictionary<string, City> CityDictionary = new Dictionary<string, City>();
 
-        public static bool SetUpCreate(string[] playerRoles, out Cards[] playerdeck, out List<string> infectionDeck)
+        public static bool SetUpCreate(string[] playerRoles, out List<string> infectionDeck)
         {
             CreateDictionary();
             SetAdjacentCities(new StringReader(Properties.Resources.AdjacentNeighbors));
-            playerdeck = MakePlayerDeck(GameBoardModels.Difficulty, playerRoles);
             infectionDeck = MakeInfectionDeck(new StringReader(Properties.Resources.InfectionDeck));
             CityDictionary["Atlanta"].ResearchStation = true;
             return true;
@@ -77,109 +76,6 @@ namespace SQADemicApp
                     CityDictionary[cityname].AdjacentCities.Add(CityDictionary[city]);
                 }
             }
-        }
-
-        /// <summary> 
-        /// PUBLIC FOR TESTING ONLY
-        /// </summary>
-        /// <returns></returns>
-        //public static Card[] MakePlayerDeck(DifficultySetting difficulty, string[] playerRoles)
-        public static Cards[] MakePlayerDeck(DifficultySetting difficulty, string[] playerRoles)
-        {
-            //Card[] deck = new Card[57];
-            Cards[] deck = new Cards[57];
-            Random rand = new Random();
-            if (playerRoles.Length == 2 || playerRoles.Length == 4) {
-                if (difficulty == DifficultySetting.Easy) {
-                    //deck[rand.Next(0, 11)] = new Card("EPIDEMIC", Card.Cardtype.Epidemic);
-                    //deck[rand.Next(12, 23)] = new Card("EPIDEMIC", Card.Cardtype.Epidemic);
-                    //deck[rand.Next(24, 35)] = new Card("EPIDEMIC", Card.Cardtype.Epidemic);
-                    //deck[rand.Next(36, 48)] = new Card("EPIDEMIC", Card.Cardtype.Epidemic);
-                    deck[rand.Next(0, 11)] = new EpidemicCard();
-                    deck[rand.Next(12, 23)] = new EpidemicCard();
-                    deck[rand.Next(24, 35)] = new EpidemicCard();
-                    deck[rand.Next(36, 48)] = new EpidemicCard();
-                } else if (difficulty == DifficultySetting.Medium) {
-                    //deck[rand.Next(0, 8)] = new Card("EPIDEMIC", Card.Cardtype.Epidemic);
-                    //deck[rand.Next(9, 17)] = new Card("EPIDEMIC", Card.Cardtype.Epidemic);
-                    //deck[rand.Next(18, 26)] = new Card("EPIDEMIC", Card.Cardtype.Epidemic);
-                    //deck[rand.Next(27, 35)] = new Card("EPIDEMIC", Card.Cardtype.Epidemic);
-                    //deck[rand.Next(36, 48)] = new Card("EPIDEMIC", Card.Cardtype.Epidemic);
-                    deck[rand.Next(0, 8)] = new EpidemicCard();
-                    deck[rand.Next(9, 17)] = new EpidemicCard();
-                    deck[rand.Next(18, 26)] = new EpidemicCard();
-                    deck[rand.Next(27, 35)] = new EpidemicCard();
-                    deck[rand.Next(36, 48)] = new EpidemicCard();
-                } else if (difficulty == DifficultySetting.Hard) {
-                    //deck[rand.Next(0, 7)] = new Card("EPIDEMIC", Card.Cardtype.Epidemic);
-                    //deck[rand.Next(8, 15)] = new Card("EPIDEMIC", Card.Cardtype.Epidemic);
-                    //deck[rand.Next(16, 23)] = new Card("EPIDEMIC", Card.Cardtype.Epidemic);
-                    //deck[rand.Next(24, 31)] = new Card("EPIDEMIC", Card.Cardtype.Epidemic);
-                    //deck[rand.Next(32, 39)] = new Card("EPIDEMIC", Card.Cardtype.Epidemic);
-                    //deck[rand.Next(40, 48)] = new Card("EPIDEMIC", Card.Cardtype.Epidemic);
-                    deck[rand.Next(0, 7)] = new EpidemicCard();
-                    deck[rand.Next(8, 15)] = new EpidemicCard();
-                    deck[rand.Next(16, 23)] = new EpidemicCard();
-                    deck[rand.Next(24, 31)] = new EpidemicCard();
-                    deck[rand.Next(32, 39)] = new EpidemicCard();
-                    deck[rand.Next(40, 48)] = new EpidemicCard();
-                }
-            }
-            else {
-                if (difficulty == DifficultySetting.Easy)
-                {
-                    //deck[rand.Next(0, 11)] = new Card("EPIDEMIC", Card.Cardtype.Epidemic);
-                    //deck[rand.Next(12, 23)] = new Card("EPIDEMIC", Card.Cardtype.Epidemic);
-                    //deck[rand.Next(24, 35)] = new Card("EPIDEMIC", Card.Cardtype.Epidemic);
-                    //deck[rand.Next(36, 47)] = new Card("EPIDEMIC", Card.Cardtype.Epidemic);
-                    deck[rand.Next(0, 11)] = new EpidemicCard();
-                    deck[rand.Next(12, 23)] = new EpidemicCard();
-                    deck[rand.Next(24, 35)] = new EpidemicCard();
-                    deck[rand.Next(36, 47)] = new EpidemicCard();
-                }
-                else if (difficulty == DifficultySetting.Medium)
-                {
-                    //deck[rand.Next(0, 8)] = new Card("EPIDEMIC", Card.Cardtype.Epidemic);
-                    //deck[rand.Next(9, 17)] = new Card("EPIDEMIC", Card.Cardtype.Epidemic);
-                    //deck[rand.Next(18, 26)] = new Card("EPIDEMIC", Card.Cardtype.Epidemic);
-                    //deck[rand.Next(27, 35)] = new Card("EPIDEMIC", Card.Cardtype.Epidemic);
-                    //deck[rand.Next(36, 47)] = new Card("EPIDEMIC", Card.Cardtype.Epidemic);
-                    deck[rand.Next(0, 8)] = new EpidemicCard();
-                    deck[rand.Next(9, 17)] = new EpidemicCard();
-                    deck[rand.Next(18, 26)] = new EpidemicCard();
-                    deck[rand.Next(27, 35)] = new EpidemicCard();
-                    deck[rand.Next(36, 47)] = new EpidemicCard();
-                }
-                else if (difficulty == DifficultySetting.Hard)
-                {
-                    //deck[rand.Next(0, 7)] = new Card("EPIDEMIC", Card.Cardtype.Epidemic);
-                    //deck[rand.Next(8, 15)] = new Card("EPIDEMIC", Card.Cardtype.Epidemic);
-                    //deck[rand.Next(16, 23)] = new Card("EPIDEMIC", Card.Cardtype.Epidemic);
-                    //deck[rand.Next(24, 31)] = new Card("EPIDEMIC", Card.Cardtype.Epidemic);
-                    //deck[rand.Next(32, 39)] = new Card("EPIDEMIC", Card.Cardtype.Epidemic);
-                    //deck[rand.Next(40, 47)] = new Card("EPIDEMIC", Card.Cardtype.Epidemic);
-                    deck[rand.Next(0, 7)] = new EpidemicCard();
-                    deck[rand.Next(8, 15)] = new EpidemicCard();
-                    deck[rand.Next(16, 23)] = new EpidemicCard();
-                    deck[rand.Next(24, 31)] = new EpidemicCard();
-                    deck[rand.Next(32, 39)] = new EpidemicCard();
-                    deck[rand.Next(40, 47)] = new EpidemicCard();
-                }
-            }
-            //List<Card> cardList = MakeCardList(new StringReader(SQADemicApp.Properties.Resources.CityList));
-            List<Cards> cardList = MakeCardList(new StringReader(SQADemicApp.Properties.Resources.CityList));
-            cardList = HelperBl.ShuffleArray(cardList);
-            int j = 0;
-            for (int i = 0; i < deck.Length; i++)
-            {
-                if (deck[i] == null)
-                {
-                    deck[i] = cardList[j];
-                    j++;
-                }
-            }
-
-            return deck;
         }
 
         /// <summary>
