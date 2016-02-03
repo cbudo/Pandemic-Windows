@@ -65,7 +65,6 @@ namespace SQADemicApp
                 Create.SetUpCreate(playersroles, out infectionDeckList);
 
                 playerDeck = new PlayerDeck(Difficulty, playersroles.Length);
-                playerDeck.init();
                 EventCards = new List<Cards>();
                 InfectionPile = new LinkedList<string>();
                 InfectionDeck = new LinkedList<string>(Create.MakeInfectionDeck(new StringReader(Properties.Resources.InfectionDeck)));
@@ -121,14 +120,7 @@ namespace SQADemicApp
         
         public Cards DrawCard()
         {
-            try
-            {
-                return playerDeck.draw();
-            }
-            catch (InvalidOperationException e)
-            {
-                throw new Exception("Game Over");
-            }
+            return playerDeck.draw();
         }
 
         public int PlayerDeckSize()

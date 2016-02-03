@@ -89,7 +89,7 @@ namespace SQADemicApp.BL
                                 city.BlueCubes++;
                                 if (GameBoardModels.CubeCount.BlueCubes <= 0)
                                 {
-                                    throw new InvalidOperationException("Game Over");
+                                    throw new GameLostException();
                                 }
                                 return city.BlueCubes;
                             }
@@ -107,7 +107,7 @@ namespace SQADemicApp.BL
                                 city.YellowCubes++;
                                 if (GameBoardModels.CubeCount.YellowCubes <= 0)
                                 {
-                                    throw new InvalidOperationException("Game Over");
+                                    throw new GameLostException();
                                 }
                                 return city.YellowCubes;
                             }
@@ -125,7 +125,7 @@ namespace SQADemicApp.BL
                                 city.BlackCubes++;
                                 if (GameBoardModels.CubeCount.BlackCubes <= 0)
                                 {
-                                    throw new InvalidOperationException("Game Over");
+                                    throw new GameLostException();
                                 }
                                 return city.BlackCubes;
                             }
@@ -143,7 +143,7 @@ namespace SQADemicApp.BL
                                 city.RedCubes++;
                                 if (GameBoardModels.CubeCount.RedCubes <= 0)
                                 {
-                                    throw new InvalidOperationException("Game Over");
+                                    throw new GameLostException();
                                 }
                                 return city.RedCubes;
                             }
@@ -165,7 +165,7 @@ namespace SQADemicApp.BL
                             city.BlueCubes++;
                             if (GameBoardModels.CubeCount.BlueCubes <= 0)
                             {
-                                throw new InvalidOperationException("Game Over");
+                                throw new GameLostException();
                             }
                             return city.BlueCubes;
                         }
@@ -183,7 +183,7 @@ namespace SQADemicApp.BL
                             city.YellowCubes++;
                             if (GameBoardModels.CubeCount.YellowCubes <= 0)
                             {
-                                throw new InvalidOperationException("Game Over");
+                                throw new GameLostException();
                             }
                             return city.YellowCubes;
                         }
@@ -201,7 +201,7 @@ namespace SQADemicApp.BL
                             city.BlackCubes++;
                             if (GameBoardModels.CubeCount.BlackCubes <= 0)
                             {
-                                throw new InvalidOperationException("Game Over");
+                                throw new GameLostException();
                             }
                             return city.BlackCubes;
                         }
@@ -219,7 +219,7 @@ namespace SQADemicApp.BL
                             city.RedCubes++;
                             if (GameBoardModels.CubeCount.RedCubes <= 0)
                             {
-                                throw new InvalidOperationException("Game Over");
+                                throw new GameLostException();
                             }
                             return city.RedCubes;
                         }
@@ -246,7 +246,7 @@ namespace SQADemicApp.BL
             GameBoardModels.OutbreakMarker++;
             if (GameBoardModels.OutbreakMarker == 8)
             {
-                throw new InvalidOperationException("Game Over");
+                throw new GameLostException();
             }
             return alreadyInfected;
         }
