@@ -24,6 +24,7 @@ namespace SQADemicApp
         {
             this._difficulty = difficulty;
             this._numOfPlayers = numOfPlayers;
+            init();
         }
 
         public override void init()
