@@ -20,7 +20,7 @@ namespace SQADemicApp
 
         public override bool Equals(Object obj)
         {
-            CityCard objects = (CityCard)obj;
+            Cards objects = (Cards)obj;
             return (this.CityName == objects.CityName) && (this.CityColor == objects.CityColor);
         }
     }
