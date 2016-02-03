@@ -15,7 +15,7 @@ namespace SQADemicApp
         public DispatcherMove(Player[] players, int currentPlayer)
         {
             InitializeComponent();
-            switch (GameBoardModels.CurrentPlayerIndex)
+            switch (currentPlayer)
             {
                 case 0:
                     Player1.Text = "Player 2";
@@ -44,7 +44,7 @@ namespace SQADemicApp
                 default:
                     break;
             }
-            switch (GameBoardModels.Players.Count())
+            switch (players.Count())
             {
                 case 2:
                     Player2.Hide();
@@ -57,8 +57,8 @@ namespace SQADemicApp
 
         private void Player_Click(object sender, System.EventArgs e)
         {
-            Button pressed = (Button) sender;
-            GameBoard.DispatcherMoveIndex = Convert.ToInt32(pressed.Text.Substring(7))-1;
+            Button pressed = (Button)sender;
+            GameBoard.DispatcherMoveIndex = Convert.ToInt32(pressed.Text.Substring(7)) - 1;
             this.Close();
         }
     }
