@@ -128,6 +128,13 @@ namespace SQADemicApp
             return playerDeck.getDeckSize();
         }
 
+        public List<string> GetValidPlayerMoves()
+        {
+            Player activePlayer = Players[CurrentPlayerIndex];
+            var reducedDict = Create.CityDictionary.Where(c => activePlayer.isPossibleMove(c.Value));
+            return reducedDict.Select(city => city.Key).ToList();
+        }
+
         #region Storage Classes
 
         public class InfectionCubeCount

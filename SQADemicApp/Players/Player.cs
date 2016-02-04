@@ -37,6 +37,14 @@ namespace SQADemicApp.Players
             return _turnCount;
         }
 
+        public bool isPossibleMove(City destination)
+        {
+            return DriveOptions().Any(c => c.Name.Equals(destination.Name)) ||
+                CurrentCity.ShuttleFlightOption().Contains(destination.Name) ||
+                DirectFlightOption().Contains(destination.Name) ||
+                CharterFlightOption();
+        }
+
         public bool Move(City destination)
         {
             if (DriveOptions().Any(c => c.Name.Equals(destination.Name)))

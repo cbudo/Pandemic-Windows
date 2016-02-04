@@ -2,6 +2,7 @@
 {
     partial class GameBoard
     {
+
         /// <summary>
         /// Required designer variable.
         /// </summary>
