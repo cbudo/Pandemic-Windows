@@ -99,9 +99,10 @@ namespace SQADemicApp
         private void SetUpPlayerHands()
         {
             List<Cards> cardsToBeDealt = playerDeck.getInitialDeal();
+            int i = 0;
             foreach (Player player in Players)
             {
-                for (int i = 0; i < cardsToBeDealt.Count(); i++)
+                for (; i < i + (cardsToBeDealt.Count() / Players.Count()); i++)
                 {
                     Cards card = cardsToBeDealt.ElementAt(i);
                     if (card.GetType() == typeof(SpecialCard))
