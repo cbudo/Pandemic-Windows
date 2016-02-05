@@ -64,6 +64,31 @@ namespace SQADemicApp
             }
         }
 
+        public void incrementCityCubeCount(Color color)
+        {
+            switch (color)
+            {
+                case Color.Red:
+                    RedCubes++;
+                    break;
+
+                case Color.Blue:
+                    BlueCubes++;
+                    break;
+
+                case Color.Yellow:
+                    YellowCubes++;
+                    break;
+
+                case Color.Black:
+                    BlackCubes++;
+                    break;
+
+                default:
+                    throw new ArgumentException("invalid color");
+            }
+        }
+
         public int AllCubeCount()
         {
             return RedCubes + BlackCubes + BlueCubes + YellowCubes;
