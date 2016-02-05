@@ -100,12 +100,12 @@ namespace SQADemicApp
         private void SetUpPlayerHands()
         {
             List<Cards> cardsToBeDealt = playerDeck.getInitialDeal();
-            int i = 0;
             foreach (Player player in Players)
             {
-                for (; i < i + (cardsToBeDealt.Count() / Players.Count()); i++)
+                for (int i = 0; i < (cardsToBeDealt.Count() / Players.Count()); i++)
                 {
-                    Cards card = cardsToBeDealt.ElementAt(i);
+                    Cards card = cardsToBeDealt.ElementAt(0);
+                    cardsToBeDealt.RemoveAt(0);
                     if (card.GetType() == typeof(SpecialCard))
                     {
                         EventCards.Add(card);
@@ -173,6 +173,31 @@ namespace SQADemicApp
 
                     case Color.Black:
                         BlackCubes = newCount;
+                        break;
+
+                    default:
+                        throw new ArgumentException("invalid color");
+                }
+            }
+
+            public void decrementCubeCount(Color color)
+            {
+                switch (color)
+                {
+                    case Color.Red:
+                        RedCubes--;
+                        break;
+
+                    case Color.Blue:
+                        BlueCubes--;
+                        break;
+
+                    case Color.Yellow:
+                        YellowCubes--;
+                        break;
+
+                    case Color.Black:
+                        BlackCubes--;
                         break;
 
                     default:
