@@ -76,125 +76,38 @@ namespace SQADemicApp.BL
 
         public static int InfectCity(City city, HashSet<City> alreadyInfected, bool causedByOutbreak, Color outbreakColor)
         {
+
+            Color color;
             if (!causedByOutbreak)
             {
-
-                switch (city.Color)
-                {
-                    case Color.Blue:
-                        return infectColor(city, GameBoardModels.Curestatus.BlueCure, alreadyInfected);
-
-                    case Color.Yellow:
-                        return infectColor(city, GameBoardModels.Curestatus.YellowCure, alreadyInfected);
-
-                    case Color.Black:
-                        return infectColor(city, GameBoardModels.Curestatus.BlackCure, alreadyInfected);
-
-                    default:
-                        return infectColor(city, GameBoardModels.Curestatus.RedCure, alreadyInfected);
-                        
-                }
-            } // will reach here if this infection was caused by an outbreak.
-            //need to increment cubes of outbreak color, which aren't necessarily the city color
-            switch (outbreakColor)
-            {
-                case Color.Blue:
-                    if (GameBoardModels.Curestatus.BlueCure != Cures.Curestate.Sunset)
-                    {
-                        if (city.BlueCubes < 3)
-                        {
-                            GameBoardModels.CubeCount.BlueCubes--;
-                            city.BlueCubes++;
-                            if (GameBoardModels.CubeCount.BlueCubes <= 0)
-                            {
-                                throw new GameLostException();
-                            }
-                            return city.BlueCubes;
-                        }
-                        Outbreak(city, city.Color, city.AdjacentCities, alreadyInfected);
-                        return city.BlueCubes;
-                    }
-                    return city.BlueCubes;
-
-                case Color.Yellow:
-                    if (GameBoardModels.Curestatus.YellowCure != Cures.Curestate.Sunset)
-                    {
-                        if (city.YellowCubes < 3)
-                        {
-                            GameBoardModels.CubeCount.YellowCubes--;
-                            city.YellowCubes++;
-                            if (GameBoardModels.CubeCount.YellowCubes <= 0)
-                            {
-                                throw new GameLostException();
-                            }
-                            return city.YellowCubes;
-                        }
-                        Outbreak(city, city.Color, city.AdjacentCities, alreadyInfected);
-                        return city.YellowCubes;
-                    }
-                    return city.YellowCubes;
-
-                case Color.Black:
-                    if (GameBoardModels.Curestatus.BlackCure != Cures.Curestate.Sunset)
-                    {
-                        if (city.BlackCubes < 3)
-                        {
-                            GameBoardModels.CubeCount.BlackCubes--;
-                            city.BlackCubes++;
-                            if (GameBoardModels.CubeCount.BlackCubes <= 0)
-                            {
-                                throw new GameLostException();
-                            }
-                            return city.BlackCubes;
-                        }
-                        Outbreak(city, city.Color, city.AdjacentCities, alreadyInfected);
-                        return city.BlackCubes;
-                    }
-                    return city.BlackCubes;
-
-                default:
-                    if (GameBoardModels.Curestatus.RedCure != Cures.Curestate.Sunset)
-                    {
-                        if (city.RedCubes < 3)
-                        {
-                            GameBoardModels.CubeCount.RedCubes--;
-                            city.RedCubes++;
-                            if (GameBoardModels.CubeCount.RedCubes <= 0)
-                            {
-                                throw new GameLostException();
-                            }
-                            return city.RedCubes;
-                        }
-                        Outbreak(city, city.Color, city.AdjacentCities, alreadyInfected);
-                        return city.RedCubes;
-                    }
-                    return city.RedCubes;
+                color = city.Color;
             }
-        }
+            else
+            {
+                color = outbreakColor;
+            }
 
-        private static int infectColor(City city, Cures.Curestate cureStatus, HashSet<City> alreadyInfected)
-        {
-            
-            int currentCubes = city.getCityCubes(city.Color);
+            int currentCubes = city.getCityCubes(color);
 
-            if (cureStatus != Cures.Curestate.Sunset)
+            if (GameBoardModels.Curestatus.GetColorCureState(color) != Cures.Curestate.Sunset)
             {
                 if (currentCubes < 3)
                 {
-                    GameBoardModels.CubeCount.decrementCubeCount(city.Color);
+                    GameBoardModels.CubeCount.decrementCubeCount(color);
 
-                    city.incrementCityCubeCount(city.Color);
-                    currentCubes = city.getCityCubes(city.Color);
-                    if (GameBoardModels.CubeCount.GetColorCubeCount(city.Color) <= 0)
+                    city.incrementCityCubeCount(color);
+                    currentCubes = city.getCityCubes(color);
+                    if (GameBoardModels.CubeCount.GetColorCubeCount(color) <= 0)
                     {
                         throw new GameLostException();
                     }
                     return currentCubes;
                 }
-                Outbreak(city, city.Color, city.AdjacentCities, alreadyInfected);
+                Outbreak(city, color, city.AdjacentCities, alreadyInfected);
                 return currentCubes;
             }
             return currentCubes;
+
         }
 
         //returns a list of the cities that have already been infected
