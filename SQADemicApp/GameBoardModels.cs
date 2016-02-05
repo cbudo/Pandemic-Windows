@@ -100,9 +100,11 @@ namespace SQADemicApp
         private void SetUpPlayerHands()
         {
             List<Cards> cardsToBeDealt = playerDeck.getInitialDeal();
+            int dealCount = cardsToBeDealt.Count();
+            Console.WriteLine("Cards to be dealt: " + cardsToBeDealt.Count() + " Players: " + Players.Count());
             foreach (Player player in Players)
             {
-                for (int i = 0; i < (cardsToBeDealt.Count() / Players.Count()); i++)
+                for (int i = 0; i < (dealCount / Players.Count()); i++)
                 {
                     Cards card = cardsToBeDealt.ElementAt(0);
                     cardsToBeDealt.RemoveAt(0);
@@ -112,7 +114,7 @@ namespace SQADemicApp
                     }
                     else
                     {
-                        System.Console.WriteLine("card : " + card + " " + player.Hand);
+                        System.Console.WriteLine("card : " + card.CityName);
                         player.Hand.Add(card);
                     }
                 }

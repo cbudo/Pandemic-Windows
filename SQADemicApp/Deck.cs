@@ -30,7 +30,7 @@ namespace SQADemicApp
 
         public void shuffle()
         {
-            shuffle(this._cards);
+            this._cards = shuffle(this._cards);
         }
 
         protected List<Cards> shuffle(List<SQADemicApp.Cards> unshuffledArray)

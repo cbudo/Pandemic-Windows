@@ -62,7 +62,9 @@ namespace SQADemicApp
             int totalHandCount = _numOfPlayers == 4 ? _numOfPlayers * FOUR_PLAYER_HAND : _numOfPlayers == 3 ? _numOfPlayers * THREE_PLAYER_HAND : _numOfPlayers * TWO_PLAYER_HAND;
             for (int i = 0; i < totalHandCount; i++)
             {
-                _initialDeal.Add(draw());
+                Cards drawn = draw();
+                Console.WriteLine(drawn.CityColor + " : " + drawn.CityName);
+                _initialDeal.Add(drawn);
             }
         }
 
