@@ -9,6 +9,7 @@ namespace SQADemicApp
     public partial class GameBoard : Form
     {
         public GameBoardModels BoardModel;
+        private Dictionary<string, Button> cityButtons;
         private CharacterPane _form2;
         private PlayerPanel _playerForm;
         private EventCardForm _ecForm;
@@ -41,6 +42,7 @@ namespace SQADemicApp
             CurrentState = State.Default;
             TurnPart = Turnpart.Action;
             updateDifficultyDisplay();
+            populateButtons();
         }
 
         public GameBoard(string[] playerRoles)
@@ -59,6 +61,7 @@ namespace SQADemicApp
             CurrentState = State.Default;
             TurnPart = Turnpart.Action;
             updateDifficultyDisplay();
+            populateButtons();
         }
 
         private void updateDifficultyDisplay()
@@ -173,6 +176,7 @@ namespace SQADemicApp
                     break;
             }
             CurrentState = State.Default;
+            HidePossibleMoves();
         }
 
         public void UpdatePlayerForm()
@@ -318,5 +322,91 @@ namespace SQADemicApp
             return BoardModel.DrawCard();
         }
 
+        public void displayPossibleMoves()
+        {
+            List<string> validCities = BoardModel.GetValidPlayerMoves();
+            foreach (string s in validCities)
+            {
+                cityButtons[s].BackColor = System.Drawing.Color.Green;
+            }
+        }
+
+        public void HidePossibleMoves()
+        {
+            foreach(KeyValuePair<string, Button> k in cityButtons)
+            {
+                Color c = Create.CityDictionary[k.Key].Color;
+                switch (c)
+                {
+                    case Color.Black:
+                        k.Value.BackColor = System.Drawing.Color.Black; break;
+                    case Color.Blue:
+                        k.Value.BackColor = System.Drawing.SystemColors.HotTrack; break;
+                    case Color.Yellow:
+                        k.Value.BackColor = System.Drawing.Color.White; break;
+                    case Color.Red:
+                        k.Value.BackColor = System.Drawing.Color.LightCoral; break;
+                }
+            }
+        }
+
+        private void populateButtons()
+        {
+            #region populate button array
+            cityButtons = new Dictionary<string, Button>();
+            // blue
+            cityButtons["San Francisco"] = SanFrancisco;
+            cityButtons["Chicago"] = Chicago;
+            cityButtons["Montreal"] = Montreal;
+            cityButtons["New York"] = NewYork;
+            cityButtons["Washington"] = Washington;
+            cityButtons["Atlanta"] = Atlanta;
+            cityButtons["London"] = London;
+            cityButtons["Madrid"] = Madrid;
+            cityButtons["Paris"] = Paris;
+            cityButtons["Milan"] = Milan;
+            cityButtons["Saint Petersburg"] = StPetersburg;
+            cityButtons["Essen"] = Essen;
+            // yellow
+            cityButtons["Los Angeles"] = LosAngeles;
+            cityButtons["Mexico City"] = MexicoCity;
+            cityButtons["Miami"] = Miami;
+            cityButtons["Bogota"] = Bogota;
+            cityButtons["Lima"] = Lima;
+            cityButtons["Sao Paulo"] = SaoPaulo;
+            cityButtons["Buenos Aires"] = BuenosAires;
+            cityButtons["Santiago"] = Santiago;
+            cityButtons["Lagos"] = Lagos;
+            cityButtons["Khartoum"] = Khartoum;
+            cityButtons["Kinshasa"] = Kinshasa;
+            cityButtons["Johannesburg"] = Johannesburg;
+            // black
+            cityButtons["Algiers"] = Algiers;
+            cityButtons["Cairo"] = Cairo;
+            cityButtons["Istanbul"] = Istanbul;
+            cityButtons["Moscow"] = Moscow;
+            cityButtons["Baghdad"] = Baghdad;
+            cityButtons["Riyadh"] = Riyadh;
+            cityButtons["Tehran"] = Tehran;
+            cityButtons["Karachi"] = Karachi;
+            cityButtons["Delhi"] = Delhi;
+            cityButtons["Mumbai"] = Mumbai;
+            cityButtons["Chennai"] = Chennai;
+            cityButtons["Kolkata"] = Kolkata;
+            // red
+            cityButtons["Beijing"] = Beijing;
+            cityButtons["Seoul"] = Seoul;
+            cityButtons["Shanghai"] = Shanghai;
+            cityButtons["Tokyo"] = Tokyo;
+            cityButtons["Osaka"] = Osaka;
+            cityButtons["Taipei"] = Taipei;
+            cityButtons["Hong Kong"] = HongKong;
+            cityButtons["Bangkok"] = Bangkok;
+            cityButtons["Manila"] = Manila;
+            cityButtons["Ho Chi Minh City"] = HoChiMinhCity;
+            cityButtons["Jakarta"] = Jakarta;
+            cityButtons["Sydney"] = Sydney;
+            #endregion
+        }
     }
 }

@@ -23,6 +23,7 @@ namespace SQADemicApp
 
         public static InfectionCubeCount CubeCount;
         public static Cures Curestatus;
+        //public static Dictionary<Color, Cures.CureState> descDict = new Dictionary<string, string>();
         public static List<string> CitiesWithResearchStations;
         public static int OutbreakMarker = 0;
         public static Player[] Players;
@@ -128,6 +129,13 @@ namespace SQADemicApp
             return playerDeck.getDeckSize();
         }
 
+        public List<string> GetValidPlayerMoves()
+        {
+            Player activePlayer = Players[CurrentPlayerIndex];
+            var reducedDict = Create.CityDictionary.Where(c => activePlayer.isPossibleMove(c.Value));
+            return reducedDict.Select(city => city.Key).ToList();
+        }
+
         #region Storage Classes
 
         public class InfectionCubeCount
@@ -136,6 +144,41 @@ namespace SQADemicApp
             public int BlackCubes { get; set; }
             public int BlueCubes { get; set; }
             public int YellowCubes { get; set; }
+
+            public int GetColorCubeCount(Color color)
+            {
+                Dictionary<Color, int> allcubes = new Dictionary<Color, int>();
+                allcubes.Add(Color.Blue, BlueCubes);
+                allcubes.Add(Color.Black, BlackCubes);
+                allcubes.Add(Color.Red, RedCubes);
+                allcubes.Add(Color.Yellow, YellowCubes);
+                return allcubes[color];
+            }
+
+            public void setCubeCount(Color color, int newCount)
+            {
+                switch (color)
+                {
+                    case Color.Red:
+                        RedCubes = newCount;
+                        break;
+
+                    case Color.Blue:
+                        BlueCubes = newCount;
+                        break;
+
+                    case Color.Yellow:
+                        YellowCubes = newCount;
+                        break;
+
+                    case Color.Black:
+                        BlackCubes = newCount;
+                        break;
+
+                    default:
+                        throw new ArgumentException("invalid color");
+                }
+            }
         }
 
         

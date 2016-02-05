@@ -15,11 +15,11 @@ namespace SQADemicAppTest
         List<Cards> _cardList = new List<Cards>();
         //Create createTestClass = new Create();
 
- /**       [TestInitialize]
-        public void setup()
-        {
-            Create.setUpCreate();
-        }**/
+        /**       [TestInitialize]
+               public void setup()
+               {
+                   Create.setUpCreate();
+               }**/
 
         #region cardList
         [TestMethod]
@@ -78,14 +78,14 @@ namespace SQADemicAppTest
             _cardList.Add(new CityCard("test2", Color.Blue));
             _cardList.Add(new CityCard("test3", Color.Blue));
             _cardList.Add(new SpecialCard("Airlift"));
-            _cardList.Add(new SpecialCard("One Quiet Night" ));
-            _cardList.Add(new SpecialCard("Resilient Population" ));
-            _cardList.Add(new SpecialCard("Government Grant" ));
-            _cardList.Add(new SpecialCard("Forecast" ));
+            _cardList.Add(new SpecialCard("One Quiet Night"));
+            _cardList.Add(new SpecialCard("Resilient Population"));
+            _cardList.Add(new SpecialCard("Government Grant"));
+            _cardList.Add(new SpecialCard("Forecast"));
             _returnedList = Create.MakeCardList(new System.IO.StringReader("test; blue\ntest2; blue\ntest3; blue"));
             CollectionAssert.AreEqual(_cardList, _returnedList);
         }
-#endregion
+        #endregion
 
         #region testColor
         [TestMethod]
@@ -124,7 +124,7 @@ namespace SQADemicAppTest
         [TestMethod]
         public void TestThatPlayerTurnIncremented()
         {
-            string[] players = {"Dispatcher","Scientist"};
+            string[] players = { "Dispatcher", "Scientist" };
             GameBoardModels model = new GameBoardModels(players);
             GameBoardModels.Players[GameBoardModels.CurrentPlayerIndex].IncrementTurnCount();
             Assert.AreEqual(1, GameBoardModels.Players[GameBoardModels.CurrentPlayerIndex].GetTurnCount());
@@ -144,7 +144,7 @@ namespace SQADemicAppTest
         #endregion
 
         #region nextPlayer
-        
+
         [TestMethod]
         public void TestThatPlayerSwitches()
         {
@@ -152,7 +152,7 @@ namespace SQADemicAppTest
             GameBoardModels model = new GameBoardModels(players);
             // four moves in a player turn
             Assert.AreEqual(false, GameBoardModels.Players[GameBoardModels.CurrentPlayerIndex].IncrementTurnCount());
-            Assert.AreEqual(false, GameBoardModels.Players[GameBoardModels.CurrentPlayerIndex].IncrementTurnCount()); 
+            Assert.AreEqual(false, GameBoardModels.Players[GameBoardModels.CurrentPlayerIndex].IncrementTurnCount());
             Assert.AreEqual(false, GameBoardModels.Players[GameBoardModels.CurrentPlayerIndex].IncrementTurnCount());
             Assert.AreEqual(true, GameBoardModels.Players[GameBoardModels.CurrentPlayerIndex].IncrementTurnCount());
             //Assert.AreEqual(2, GameBoardModels.CurrentPlayerIndex);

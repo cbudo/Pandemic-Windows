@@ -49,13 +49,15 @@ namespace SQADemicApp
             this.RedCure = new System.Windows.Forms.Label();
             this.DispatcherMove = new System.Windows.Forms.Button();
             this.EndSequenceBtn = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(28, 541);
+            this.progressBar1.Location = new System.Drawing.Point(28, 560);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(232, 23);
             this.progressBar1.TabIndex = 0;
@@ -63,7 +65,7 @@ namespace SQADemicApp
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(88, 567);
+            this.label1.Location = new System.Drawing.Point(88, 586);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(88, 13);
             this.label1.TabIndex = 1;
@@ -103,7 +105,7 @@ namespace SQADemicApp
             this.RedCubes.Font = new System.Drawing.Font("Courier New", 7.8F);
             this.RedCubes.Location = new System.Drawing.Point(10, 23);
             this.RedCubes.Name = "RedCubes";
-            this.RedCubes.Size = new System.Drawing.Size(210, 14);
+            this.RedCubes.Size = new System.Drawing.Size(210, 15);
             this.RedCubes.TabIndex = 7;
             this.RedCubes.Text = "Red Cubes Remaining:    24/24";
             // 
@@ -113,7 +115,7 @@ namespace SQADemicApp
             this.BlueCubes.Font = new System.Drawing.Font("Courier New", 7.8F);
             this.BlueCubes.Location = new System.Drawing.Point(10, 48);
             this.BlueCubes.Name = "BlueCubes";
-            this.BlueCubes.Size = new System.Drawing.Size(210, 14);
+            this.BlueCubes.Size = new System.Drawing.Size(210, 15);
             this.BlueCubes.TabIndex = 8;
             this.BlueCubes.Text = "Blue Cubes Remaining:   24/24";
             // 
@@ -123,7 +125,7 @@ namespace SQADemicApp
             this.BlackCubes.Font = new System.Drawing.Font("Courier New", 7.8F);
             this.BlackCubes.Location = new System.Drawing.Point(10, 73);
             this.BlackCubes.Name = "BlackCubes";
-            this.BlackCubes.Size = new System.Drawing.Size(210, 14);
+            this.BlackCubes.Size = new System.Drawing.Size(210, 15);
             this.BlackCubes.TabIndex = 9;
             this.BlackCubes.Text = "Black Cubes Remaining:  24/24";
             this.BlackCubes.UseMnemonic = false;
@@ -134,7 +136,7 @@ namespace SQADemicApp
             this.YellowCubes.Font = new System.Drawing.Font("Courier New", 7.8F);
             this.YellowCubes.Location = new System.Drawing.Point(10, 98);
             this.YellowCubes.Name = "YellowCubes";
-            this.YellowCubes.Size = new System.Drawing.Size(210, 14);
+            this.YellowCubes.Size = new System.Drawing.Size(210, 15);
             this.YellowCubes.TabIndex = 10;
             this.YellowCubes.Text = "Yellow Cubes Remaining: 24/24";
             // 
@@ -144,7 +146,7 @@ namespace SQADemicApp
             this.InfectionRate.Font = new System.Drawing.Font("Courier New", 7.8F);
             this.InfectionRate.Location = new System.Drawing.Point(68, 160);
             this.InfectionRate.Name = "InfectionRate";
-            this.InfectionRate.Size = new System.Drawing.Size(126, 14);
+            this.InfectionRate.Size = new System.Drawing.Size(126, 15);
             this.InfectionRate.TabIndex = 11;
             this.InfectionRate.Text = "Infection Rate: 2";
             // 
@@ -154,7 +156,7 @@ namespace SQADemicApp
             this.OutbreakCount.Font = new System.Drawing.Font("Courier New", 7.8F);
             this.OutbreakCount.Location = new System.Drawing.Point(68, 177);
             this.OutbreakCount.Name = "OutbreakCount";
-            this.OutbreakCount.Size = new System.Drawing.Size(126, 14);
+            this.OutbreakCount.Size = new System.Drawing.Size(126, 15);
             this.OutbreakCount.TabIndex = 12;
             this.OutbreakCount.Text = "Outbreak Level: 0";
             // 
@@ -250,10 +252,32 @@ namespace SQADemicApp
             this.EndSequenceBtn.UseVisualStyleBackColor = true;
             this.EndSequenceBtn.Click += new System.EventHandler(this.EndSequenceBtn_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(13, 531);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(130, 23);
+            this.button1.TabIndex = 18;
+            this.button1.Text = "View Possible Moves";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(150, 531);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(124, 23);
+            this.button2.TabIndex = 19;
+            this.button2.Text = "Hide Possible Moves";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // PlayerPanel
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(286, 612);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.EndSequenceBtn);
             this.Controls.Add(this.DispatcherMove);
             this.Controls.Add(this.groupBox2);
@@ -299,5 +323,7 @@ namespace SQADemicApp
         public System.Windows.Forms.Button DispatcherMove;
         public System.Windows.Forms.Button AAButton;
         public System.Windows.Forms.Button EndSequenceBtn;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }

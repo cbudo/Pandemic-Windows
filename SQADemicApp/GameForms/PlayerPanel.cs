@@ -120,5 +120,15 @@ namespace SQADemicApp
                 GameBoardModels.CurrentPlayerIndex = (GameBoardModels.CurrentPlayerIndex + 1) % GameBoardModels.Players.Count();
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            _board.displayPossibleMoves();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            _board.HidePossibleMoves();
+        }
     }
 }

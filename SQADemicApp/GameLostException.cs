@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 namespace SQADemicApp
 {
     [Serializable]
-    internal class GameLostException : Exception
+    public class GameLostException : Exception
     {
         public GameLostException() : base("Game Over")
         {

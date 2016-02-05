@@ -15,6 +15,41 @@ namespace SQADemicApp
         public Curestate BlackCure { get; set; }
         public Curestate YellowCure { get; set; }
 
+        public Curestate GetColorCureState(Color color)
+        {
+            Dictionary<Color, dynamic> colorCures = new Dictionary<Color, dynamic>();
+            colorCures.Add(Color.Blue, BlueCure);
+            colorCures.Add(Color.Black, BlackCure);
+            colorCures.Add(Color.Red, RedCure);
+            colorCures.Add(Color.Yellow, YellowCure);
+            return colorCures[color];
+        }
+
+        public void setSunset(Color color)
+        {
+            switch (color)
+            {
+                case Color.Red:
+                    RedCure = Curestate.Sunset;
+                    break;
+
+                case Color.Blue:
+                    BlueCure = Curestate.Sunset;
+                    break;
+
+                case Color.Yellow:
+                    YellowCure = Curestate.Sunset;
+                    break;
+
+                case Color.Black:
+                    BlackCure = Curestate.Sunset;
+                    break;
+
+                default:
+                    throw new ArgumentException("invalid color");
+            }
+        }
+
         public Curestate GetCureStatus(Color color)
         {
             switch (color)
