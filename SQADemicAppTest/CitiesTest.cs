@@ -158,8 +158,8 @@ namespace SQADemicAppTest
         [TestMethod]
         public void TestResearchCityList()
         {
-            List<string> listy = new List<string>();
-            Create.SetUpCreate(new string[2], out listy);
+            string[] playerroles = new string[2] { "Medic", "Scientist" };
+            Create.SetUpCreate(playerroles);
             Create.CityDictionary["Atlanta"].ResearchStation = true;
             List<City> ls = new List<City>();
             City a = new City(Color.Blue, "Atlanta");

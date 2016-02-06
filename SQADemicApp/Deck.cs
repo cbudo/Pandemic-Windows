@@ -23,9 +23,14 @@ namespace SQADemicApp
         
         public abstract void init();
 
-        protected void addCard(Cards c)
+        public void addCardToBottom(Cards c)
         {
             _cards.Add(c);
+        }
+
+        public void addCardToTop(Cards c)
+        {
+            _cards.Insert(0, c);
         }
 
         public void shuffle()
@@ -75,6 +80,15 @@ namespace SQADemicApp
                 default:
                     return Color.Blue;
             }
+        }
+
+        public List<Cards> getCardList() {
+            return _cards;
+        }
+
+        public void Clear()
+        {
+            _cards.Clear();
         }
     }
 }

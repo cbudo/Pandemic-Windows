@@ -29,8 +29,8 @@ namespace SQADemicApp
         public static Player[] Players;
         public static int CurrentPlayerIndex;
         public static List<Cards> EventCards;
-        public static LinkedList<string> InfectionDeck;
-        public static LinkedList<string> InfectionPile;
+        public static InfectionDeck infectionDeck;
+        public static InfectionPile infectionPile;
         public static int InfectionRate;
         public static int InfectionRateIndex;
         public static DifficultySetting Difficulty = DifficultySetting.Medium;
@@ -61,13 +61,12 @@ namespace SQADemicApp
                 Curestatus = new Cures();
                 Curestatus.BlackCure = Curestatus.BlueCure = Curestatus.RedCure = Curestatus.YellowCure = Cures.Curestate.NotCured;
 
-                List<string> infectionDeckList;
-                Create.SetUpCreate(playersroles, out infectionDeckList);
+                Create.SetUpCreate(playersroles);
 
                 playerDeck = new PlayerDeck(Difficulty, playersroles.Length);
                 EventCards = new List<Cards>();
-                InfectionPile = new LinkedList<string>();
-                InfectionDeck = new LinkedList<string>(Create.MakeInfectionDeck(new StringReader(Properties.Resources.InfectionDeck)));
+                infectionPile = new InfectionPile();
+                infectionDeck = new InfectionDeck();
             }
 
             //Players setup allows existing players to be overwritten
@@ -89,7 +88,7 @@ namespace SQADemicApp
         {
             for (int i = 3; i > 0; i--)
             {
-                List<string> infectedcites = InfectorBl.InfectCities(InfectionDeck, InfectionPile, 3);
+                List<Cards> infectedcites = InfectorBl.InfectCities(infectionDeck, infectionPile, 3);
                 for (int j = 0; j < i; j++)
                 {
                     InfectorBl.InfectCities(infectedcites);
@@ -101,7 +100,7 @@ namespace SQADemicApp
         {
             List<Cards> cardsToBeDealt = playerDeck.getInitialDeal();
             int dealCount = cardsToBeDealt.Count();
-            Console.WriteLine("Cards to be dealt: " + cardsToBeDealt.Count() + " Players: " + Players.Count());
+            Console.WriteLine("Cards to be dealt: " + dealCount + " Players: " + Players.Count());
             foreach (Player player in Players)
             {
                 for (int i = 0; i < (dealCount / Players.Count()); i++)

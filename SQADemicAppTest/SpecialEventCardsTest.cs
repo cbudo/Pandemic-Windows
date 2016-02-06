@@ -14,12 +14,16 @@ namespace SQADemicAppTest
     public class SpecialEventCardsTest
     {
         City _chicagoCity, _bangkok, _kolkata, _sanFran;
-        LinkedList<string> _deck, _pile, _answer;
+        InfectionDeck _deck;
+        InfectionPile _pile;
+        LinkedList<Cards> _answer;
         Player _dispatcher;
 
         [TestInitialize]
         public void SetUpCitiesandStations()
         {
+            _deck = new InfectionDeck();
+
             //set up GameboardModels if not already
             var g = new GameBoardModels(new string[] { "dispatcher", "medic" });
             //cities
@@ -37,7 +41,7 @@ namespace SQADemicAppTest
             }
             //players
             _dispatcher = new Dispatcher();
-            _pile = new LinkedList<string>();
+            _pile = new InfectionPile();
         }
 
         #region GovernmentGrant
@@ -86,44 +90,54 @@ namespace SQADemicAppTest
         public void TestRPopNewYork()
         {
             _pile.Clear();
-            _pile.AddFirst("New York");
-            _pile.AddFirst("Sydney");
-            _pile.AddFirst("Saint Petersburg");
-            _answer = new LinkedList<string>();
-            _answer.AddFirst("New York");
-            _answer.AddFirst("Sydney");
+            CityCard c1 = new CityCard("New York", Color.Blue);
+            CityCard c2 = new CityCard("Sydney", Color.Red);
+            CityCard c3 = new CityCard("Saint Petersburg", Color.Blue);
+            _pile.addCardToTop(c1);
+            _pile.addCardToTop(c2);
+            _pile.addCardToTop(c3);
+
+            _answer = new LinkedList<Cards>();
+            _answer.AddFirst(c1);
+            _answer.AddFirst(c2);
             string city = "Saint Petersburg";
             Assert.AreEqual(true, SpecialEventCardsBl.ResilientPopulation(_pile, city));
-            CollectionAssert.AreEqual(_answer, _pile);
+            CollectionAssert.AreEqual(_answer, _pile.getCardList());
         }
 
         [TestMethod]
         public void TestRPopNewYorkMiddleCard()
         {
             _pile.Clear();
-            _pile.AddFirst("New York");
-            _pile.AddFirst("Saint Petersburg");
-            _pile.AddFirst("Sydney");
-            _answer = new LinkedList<string>();
-            _answer.AddFirst("New York");
-            _answer.AddFirst("Sydney");
-            string city = "Saint Petersburg";
+            CityCard c1 = new CityCard("New York", Color.Blue);
+            CityCard c2 = new CityCard("Saint Petersburg", Color.Blue);
+            CityCard c3 = new CityCard("Sydney", Color.Red);
+            _pile.addCardToTop(c1);
+            _pile.addCardToTop(c2);
+            _pile.addCardToTop(c3);
+            _answer = new LinkedList<Cards>();
+            _answer.AddFirst(c1);
+            _answer.AddFirst(c3);
+            string city = c2.CityName;
             Assert.AreEqual(true, SpecialEventCardsBl.ResilientPopulation(_pile, city));
-            CollectionAssert.AreEqual(_answer, _pile);
+            CollectionAssert.AreEqual(_answer, _pile.getCardList());
         }
 
         [TestMethod]
         public void TestRPopNewYorkNotInPileFail()
         {
             _pile.Clear();
-            _pile.AddFirst("New York");
-            _pile.AddFirst("Sydney");
-            _answer = new LinkedList<string>();
-            _answer.AddFirst("New York");
-            _answer.AddFirst("Sydney");
-            string city = "Saint Petersburg";
+            CityCard c1 = new CityCard("New York", Color.Blue);
+            CityCard c2 = new CityCard("Sydney", Color.Red);
+            CityCard c3 = new CityCard("Saint Petersburg", Color.Blue);
+            _pile.addCardToTop(c1);
+            _pile.addCardToTop(c2);
+            _answer = new LinkedList<Cards>();
+            _answer.AddFirst(c1);
+            _answer.AddFirst(c2);
+            string city = c3.CityName;
             Assert.AreEqual(false, SpecialEventCardsBl.ResilientPopulation(_pile, city));
-            CollectionAssert.AreEqual(_answer, _pile);
+            CollectionAssert.AreEqual(_answer, _pile.getCardList());
         }
         #endregion
 
@@ -132,61 +146,120 @@ namespace SQADemicAppTest
         [TestMethod]
         public void TestGetForcastCardsNoIssues()
         {
-            _deck = new LinkedList<string>(
-                    new List<string> { "Kolkata", "Delhi", "Chennai", "Bangkok", "Hong Kong", "Chicago", "San Francisco", "Los Angeles", "Atlanta", "Montreal" });
-            _answer = new LinkedList<string>(
-                    new List<string> { "San Francisco", "Los Angeles", "Atlanta", "Montreal" });
-            List<string> returnedListAnswer = new List<string> { "Kolkata", "Delhi", "Chennai", "Bangkok", "Hong Kong", "Chicago" };
-
+            _deck.Clear();
+            CityCard c1 = new CityCard("Kolkata", Color.Black);
+            CityCard c2 = new CityCard("Delhi", Color.Black);
+            CityCard c3 = new CityCard("Chennai", Color.Black);
+            CityCard c4 = new CityCard("Bangkok", Color.Red);
+            CityCard c5 = new CityCard("Hong Kong", Color.Red);
+            CityCard c6 = new CityCard("Chicago", Color.Blue);
+            CityCard c7 = new CityCard("San Francisco", Color.Blue);
+            CityCard c8 = new CityCard("Los Angeles", Color.Blue);
+            CityCard c9 = new CityCard("Atlanta", Color.Blue);
+            CityCard c10 = new CityCard("Montreal", Color.Blue);
+            _deck.addCardToBottom(c1);
+            _deck.addCardToBottom(c2);
+            _deck.addCardToBottom(c3);
+            _deck.addCardToBottom(c4);
+            _deck.addCardToBottom(c5);
+            _deck.addCardToBottom(c6);
+            _deck.addCardToBottom(c7);
+            _deck.addCardToBottom(c8);
+            _deck.addCardToBottom(c9);
+            _deck.addCardToBottom(c10);
+            _answer = new LinkedList<Cards>(
+                    new List<Cards> { c7, c8, c9, c10 });
+            List<string> returnedListAnswer = new List<string> { c1.CityName, c2.CityName, c3.CityName, c4.CityName, c5.CityName, c6.CityName };
             List<string> returnedList = SpecialEventCardsBl.GetForcastCards(_deck);
             CollectionAssert.AreEqual(returnedListAnswer, returnedList);
-            CollectionAssert.AreEqual(_answer, _deck);
 
         }
 
         [TestMethod]
         public void TestCommitForcastNoIssues()
         {
-            _answer = new LinkedList<string>(
-                    new List<string> { "Kolkata", "Delhi", "Chennai", "Bangkok", "Hong Kong", "Chicago", "San Francisco", "Los Angeles", "Atlanta", "Montreal" });
-            _deck = new LinkedList<string>(
-                    new List<string> { "San Francisco", "Los Angeles", "Atlanta", "Montreal" });
+            CityCard c1 = new CityCard("Kolkata", Color.Black);
+            CityCard c2 = new CityCard("Delhi", Color.Black);
+            CityCard c3 = new CityCard("Chennai", Color.Black);
+            CityCard c4 = new CityCard("Bangkok", Color.Red);
+            CityCard c5 = new CityCard("Hong Kong", Color.Red);
+            CityCard c6 = new CityCard("Chicago", Color.Blue);
+            CityCard c7 = new CityCard("San Francisco", Color.Blue);
+            CityCard c8 = new CityCard("Los Angeles", Color.Blue);
+            CityCard c9 = new CityCard("Atlanta", Color.Blue);
+            CityCard c10 = new CityCard("Montreal", Color.Blue);
+            _deck.Clear();
+            _deck.addCardToBottom(c1);
+            _deck.addCardToBottom(c2);
+            _deck.addCardToBottom(c3);
+            _deck.addCardToBottom(c4);
+            _deck.addCardToBottom(c5);
+            _deck.addCardToBottom(c6);
+            _deck.addCardToBottom(c7);
+            _deck.addCardToBottom(c8);
+            _deck.addCardToBottom(c9);
+            _deck.addCardToBottom(c10);
+            _answer = new LinkedList<Cards>( new List<Cards> { c1, c2, c3, c4, c5, c6, c7, c8, c9, c10 });
             List<string> orderedCards = new List<string> { "Kolkata", "Delhi", "Chennai", "Bangkok", "Hong Kong", "Chicago" };
-
+            //List<string> orderedCards = SpecialEventCardsBl.GetForcastCards(_deck);
             Assert.AreEqual(true, SpecialEventCardsBl.CommitForcast(_deck, orderedCards));
-            CollectionAssert.AreEqual(_answer, _deck);
+            CollectionAssert.AreEqual(_answer, _deck.getCardList());
         }
 
 
         [TestMethod]
         public void TestCommitForcastTooManyOrFewCards()
         {
-            _answer = new LinkedList<string>(
-                    new List<string> { "San Francisco", "Los Angeles", "Atlanta", "Montreal" });
-            _deck = new LinkedList<string>(
-                    new List<string> { "San Francisco", "Los Angeles", "Atlanta", "Montreal" });
-
+            CityCard c7 = new CityCard("San Francisco", Color.Blue);
+            CityCard c8 = new CityCard("Los Angeles", Color.Blue);
+            CityCard c9 = new CityCard("Atlanta", Color.Blue);
+            CityCard c10 = new CityCard("Montreal", Color.Blue);
+            _deck.Clear();
+            _deck.addCardToBottom(c7);
+            _deck.addCardToBottom(c8);
+            _deck.addCardToBottom(c9);
+            _deck.addCardToBottom(c10);
+            _answer = new LinkedList<Cards>(new List<Cards> { c7, c8, c9, c10 });
             //Too Few
             List<string> orderedCards1 = new List<string> { "Kolkata", "Delhi", "Chennai", "Bangkok", "Hong Kong" };
             Assert.AreEqual(false, SpecialEventCardsBl.CommitForcast(_deck, orderedCards1));
-            CollectionAssert.AreEqual(_answer, _deck);
+            CollectionAssert.AreEqual(_answer, _deck.getCardList());
 
             //Too Many
             List<string> orderedCards2 = new List<string> { "Kolkata", "Delhi", "Chennai", "Bangkok", "Hong Kong", "San Francisco", "Los Angeles" };
             Assert.AreEqual(false, SpecialEventCardsBl.CommitForcast(_deck, orderedCards2));
-            CollectionAssert.AreEqual(_answer, _deck);
+            CollectionAssert.AreEqual(_answer, _deck.getCardList());
         }
 
         [TestMethod]
         public void TestFocastFullCircle()
         {
-            _deck = new LinkedList<string>(
-                new List<string> { "Kolkata", "Delhi", "Chennai", "Bangkok", "Hong Kong", "Chicago", "San Francisco", "Los Angeles", "Atlanta", "Montreal" });
-            _answer = new LinkedList<string>(
-                new List<string> { "Kolkata", "Delhi", "Chennai", "Bangkok", "Hong Kong", "Chicago", "San Francisco", "Los Angeles", "Atlanta", "Montreal" });
+            _deck.Clear();
+            CityCard c1 = new CityCard("Kolkata", Color.Black);
+            CityCard c2 = new CityCard("Delhi", Color.Black);
+            CityCard c3 = new CityCard("Chennai", Color.Black);
+            CityCard c4 = new CityCard("Bangkok", Color.Red);
+            CityCard c5 = new CityCard("Hong Kong", Color.Red);
+            CityCard c6 = new CityCard("Chicago", Color.Blue);
+            CityCard c7 = new CityCard("San Francisco", Color.Blue);
+            CityCard c8 = new CityCard("Los Angeles", Color.Blue);
+            CityCard c9 = new CityCard("Atlanta", Color.Blue);
+            CityCard c10 = new CityCard("Montreal", Color.Blue);
+            _deck.addCardToBottom(c1);
+            _deck.addCardToBottom(c2);
+            _deck.addCardToBottom(c3);
+            _deck.addCardToBottom(c4);
+            _deck.addCardToBottom(c5);
+            _deck.addCardToBottom(c6);
+            _deck.addCardToBottom(c7);
+            _deck.addCardToBottom(c8);
+            _deck.addCardToBottom(c9);
+            _deck.addCardToBottom(c10);
+            _answer = new LinkedList<Cards>(
+                new List<Cards> { c1, c2, c3, c4, c5, c6, c7, c8, c9, c10 });
             List<string> returnedList = SpecialEventCardsBl.GetForcastCards(_deck);
             Assert.AreEqual(true, SpecialEventCardsBl.CommitForcast(_deck, returnedList));
-            CollectionAssert.AreEqual(_answer, _deck);
+            CollectionAssert.AreEqual(_answer, _deck.getCardList());
         }
         #endregion
     }

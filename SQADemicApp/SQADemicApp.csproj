@@ -134,6 +134,8 @@
     <Compile Include="ActionForms\PicForm.Designer.cs">
       <DependentUpon>PicForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="InfectionDeck.cs" />
+    <Compile Include="InfectionPile.cs" />
     <Compile Include="PlayerDeck.cs" />
     <Compile Include="Players\Dispatcher.cs" />
     <Compile Include="Players\GeneSplicer.cs" />

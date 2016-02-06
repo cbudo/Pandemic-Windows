@@ -10,8 +10,8 @@ namespace SQADemicAppTest
     [TestClass]
     public class InfectorTest
     {
-        private LinkedList<string> _deck;
-        private LinkedList<string> _pile;
+        private InfectionDeck _deck;
+        private InfectionPile _pile;
         private int _infectionRate;
         private int _infectionIndex;
 
@@ -24,8 +24,8 @@ namespace SQADemicAppTest
             GameBoardModels.CubeCount.BlueCubes = 24;
             GameBoardModels.CubeCount.BlackCubes = 24;
             GameBoardModels.CubeCount.RedCubes = 24;
-            _deck = new LinkedList<string>();
-            _pile = new LinkedList<string>();
+            _deck = new InfectionDeck();
+            _pile = new InfectionPile();
             _infectionRate = 3;
             _infectionIndex = 4;
         }
@@ -33,11 +33,13 @@ namespace SQADemicAppTest
         [TestMethod]
         public void TestInfectTwoCities()
         {
-            _deck.Clear(); 
-            _deck.AddFirst("Saint Petersburg");
-            _deck.AddFirst("Sydney");
-            List<string> removedCities = InfectorBl.InfectCities(_deck, _pile, 2);
-            List<string> answer = new List<string> { "Sydney", "Saint Petersburg" };
+            _deck.Clear();
+            CityCard c1 = new CityCard("Saint Petersburg", Color.Blue);
+            CityCard c2 = new CityCard("Sydney", Color.Red);
+            _deck.addCardToTop(c2);
+            _deck.addCardToTop(c1);
+            List<Cards> removedCities = InfectorBl.InfectCities(_deck, _pile, 2);
+            List<Cards> answer = new List<Cards> { c1, c2};
             CollectionAssert.AreEqual(answer, removedCities);
         }
 
@@ -45,11 +47,14 @@ namespace SQADemicAppTest
         public void TestInfectThreeCities()
         {
             _deck.Clear();
-            _deck.AddFirst("Saint Petersburg");
-            _deck.AddFirst("Sydney");
-            _deck.AddFirst("New York");
-            List<string> removedCities = InfectorBl.InfectCities(_deck, _pile, 3);
-            List<string> answer = new List<string> { "New York", "Sydney", "Saint Petersburg" };
+            CityCard c1 = new CityCard("Saint Petersburg", Color.Blue);
+            CityCard c2 = new CityCard("Sydney", Color.Red);
+            CityCard c3 = new CityCard("New York", Color.Blue);
+            _deck.addCardToTop(c3);
+            _deck.addCardToTop(c2);
+            _deck.addCardToTop(c1);
+            List<Cards> removedCities = InfectorBl.InfectCities(_deck, _pile, 3);
+            List<Cards> answer = new List<Cards> { c1, c2, c3 };
             CollectionAssert.AreEqual(answer, removedCities);
         }
 
@@ -57,15 +62,19 @@ namespace SQADemicAppTest
         public void TestInfectTwoCitiesTwice()
         {
             _deck.Clear();
-            _deck.AddFirst("Saint Petersburg");
-            _deck.AddFirst("Sydney");
-            List<string> removedCities = InfectorBl.InfectCities(_deck, _pile, 2);
-            List<string> answer = new List<string> { "Sydney", "Saint Petersburg" };
+            CityCard c1 = new CityCard("Saint Petersburg", Color.Blue);
+            CityCard c2 = new CityCard("Sydney", Color.Red);
+            _deck.addCardToTop(c2);
+            _deck.addCardToTop(c1);
+            List<Cards> removedCities = InfectorBl.InfectCities(_deck, _pile, 2);
+            List<Cards> answer = new List<Cards> { c1, c2 };
             CollectionAssert.AreEqual(answer, removedCities);
-            _deck.AddFirst("New York");
-            _deck.AddFirst("Chicago");
+            CityCard c3 = new CityCard("New York", Color.Blue);
+            CityCard c4 = new CityCard("Chicago", Color.Blue);
+            _deck.addCardToTop(c4);
+            _deck.addCardToTop(c3);
             removedCities = InfectorBl.InfectCities(_deck, _pile, 2);
-            answer = new List<string> { "Chicago", "New York" };
+            answer = new List<Cards> { c3, c4 };
             CollectionAssert.AreEqual(answer, removedCities);
 
         }
@@ -73,15 +82,17 @@ namespace SQADemicAppTest
         [TestMethod]
         public void TestInfectTwoCitiesUpdatePile()
         {
-            _deck.Clear(); 
-            _deck.AddFirst("Saint Petersburg");
-            _deck.AddFirst("Sydney");
-            _pile = new LinkedList<string>();
-            List<string> removedCities = InfectorBl.InfectCities(_deck, _pile, 2);
-            LinkedList<string> answer = new LinkedList<string>();
-            answer.AddFirst("Sydney");
-            answer.AddFirst("Saint Petersburg");
-            CollectionAssert.AreEqual(answer, _pile);
+            _deck.Clear();
+            CityCard c1 = new CityCard("Saint Petersburg", Color.Blue);
+            CityCard c2 = new CityCard("Sydney", Color.Red);
+            _deck.addCardToTop(c2);
+            _deck.addCardToTop(c1);
+            _pile = new InfectionPile();
+            List<Cards> removedCities = InfectorBl.InfectCities(_deck, _pile, 2);
+            LinkedList<Cards> answer = new LinkedList<Cards>();
+            answer.AddFirst(c1);
+            answer.AddFirst(c2);
+            CollectionAssert.AreEqual(answer, _pile.getCardList());
         }
 
         [TestMethod]
@@ -89,7 +100,8 @@ namespace SQADemicAppTest
         {
             _deck.Clear();
             //InfectionRates = { 2, 2, 2, 3, 3, 4, 4 };
-            _deck.AddFirst("Chicago");
+            CityCard c1 = new CityCard("Chicago", Color.Blue);
+            _deck.addCardToTop(c1);
             _infectionIndex = 1;
             InfectorBl.Epidemic(_deck, _pile, ref _infectionIndex, ref _infectionRate);
             Assert.AreEqual(2, _infectionRate);
@@ -99,8 +111,9 @@ namespace SQADemicAppTest
         public void TestEpidemicIncreaseInfectionCounter2To3()
         {
             //InfectionRates = { 2, 2, 2, 3, 3, 4, 4 };
-            _deck.Clear(); 
-            _deck.AddFirst("Chicago");
+            _deck.Clear();
+            CityCard c1 = new CityCard("Chicago", Color.Blue);
+            _deck.addCardToTop(c1);
             _infectionIndex = 2;
             InfectorBl.Epidemic(_deck, _pile, ref _infectionIndex, ref _infectionRate);
             Assert.AreEqual(3, _infectionRate);
@@ -110,7 +123,8 @@ namespace SQADemicAppTest
         public void TestEpidemicIncreaseInfectionCounter3To4()
         {
             //InfectionRates = { 2, 2, 2, 3, 3, 4, 4 };
-            _deck.AddFirst("Chicago");
+            CityCard c1 = new CityCard("Chicago", Color.Blue);
+            _deck.addCardToTop(c1);
             _infectionRate = 3;
             _infectionIndex = 4;
             InfectorBl.Epidemic(_deck, _pile, ref _infectionIndex, ref _infectionRate);
@@ -120,7 +134,8 @@ namespace SQADemicAppTest
         [TestMethod]
         public void TestEpidemicIncreaseInfectionIndex()
         {
-            _deck.AddFirst("Chicago");
+            CityCard c1 = new CityCard("Chicago", Color.Blue);
+            _deck.addCardToTop(c1);
             _infectionRate = 3;
             _infectionIndex = 4;
             InfectorBl.Epidemic(_deck, _pile, ref _infectionIndex, ref _infectionRate);
@@ -130,53 +145,67 @@ namespace SQADemicAppTest
         [TestMethod]
         public void TestEpidemicDrawLastCardChicago()
         {
-            _deck.AddFirst("Chicago");
-            _deck.AddFirst("New York");
-            string lastCity = InfectorBl.Epidemic(_deck, _pile, ref _infectionIndex, ref _infectionRate);
-            Assert.AreEqual("Chicago", lastCity);
+            _deck.Clear();
+            CityCard c1 = new CityCard("Chicago", Color.Blue);
+            CityCard c2 = new CityCard("New York", Color.Blue);
+            _deck.addCardToTop(c1);
+            _deck.addCardToTop(c2);
+            Cards lastCity = InfectorBl.Epidemic(_deck, _pile, ref _infectionIndex, ref _infectionRate);
+            Assert.AreEqual("Chicago", lastCity.CityName);
         }
 
         [TestMethod]
         public void TestEpidemicDrawLastCardNewYork()
         {
-            _deck.AddFirst("New York");
-            _deck.AddFirst("Chicago");
-            string lastCity = InfectorBl.Epidemic(_deck, _pile, ref _infectionIndex, ref _infectionRate);
-            Assert.AreEqual("New York", lastCity);
+            _deck.Clear();
+            CityCard c1 = new CityCard("New York", Color.Blue);
+            _deck.addCardToTop(c1);
+            CityCard c2 = new CityCard("Chicago", Color.Blue);
+            _deck.addCardToTop(c2);
+            Cards lastCity = InfectorBl.Epidemic(_deck, _pile, ref _infectionIndex, ref _infectionRate);
+            Assert.AreEqual("New York", lastCity.CityName);
         }
 
         [TestMethod]
         public void TestEpidemicEmptyPileOnTopDeck()
         {
-            _deck = new LinkedList<string>();
-            _pile = new LinkedList<string>();
-            _deck.AddFirst("New York");
-            _deck.AddFirst("Chicago");
-            _pile.AddFirst("Saint Petersburg");
-            _pile.AddFirst("Sydney");
+            _deck.Clear();
+            _pile.Clear();
+            CityCard c1 = new CityCard("New York", Color.Blue);
+            CityCard c2 = new CityCard("Chicago", Color.Blue);
+            CityCard c3 = new CityCard("Saint Petersburg", Color.Blue);
+            CityCard c4 = new CityCard("Sydney", Color.Red);
+            _deck.addCardToTop(c1);
+            _deck.addCardToTop(c2);
+            _deck.addCardToTop(c3);
+            _deck.addCardToTop(c4);
             InfectorBl.Epidemic(_deck, _pile, ref _infectionIndex, ref _infectionRate);
-            Assert.AreEqual(0, _pile.Count);
-            Assert.AreEqual(4, _deck.Count);
+            Assert.AreEqual(0, _pile.getDeckSize());
+            Assert.AreEqual(4, _deck.getDeckSize());
 
             //Look at print statments to manualy asses random/diffrent placing
-            string[] deckarray = _deck.ToArray<String>();
-            for (int i = 0; i < 4; i++)
-            {
-                Console.WriteLine(deckarray[i]);
-            }
+            //string[] deckarray = _deck.ToArray<String>();
+            //for (int i = 0; i < 4; i++)
+            //{
+            //    Console.WriteLine(deckarray[i]);
+            //}
         }
 
         [TestMethod]
         public void TestEpidemicLastCityMixedIn()
         {
-            _deck = new LinkedList<string>();
-            _pile = new LinkedList<string>();
-            _deck.AddFirst("Saint Petersburg");
-            _deck.AddFirst("Sydney");
-            _deck.AddFirst("New York");
-            _deck.AddFirst("Chicago");
-            string lastcity = InfectorBl.Epidemic(_deck, _pile, ref _infectionIndex, ref _infectionRate);
-            Assert.AreEqual(lastcity, _deck.First.Value);
+            _deck.Clear();
+            _pile.Clear();
+            CityCard c1 = new CityCard("Saint Petersburg", Color.Blue);
+            CityCard c2 = new CityCard("Sydney", Color.Red);
+            CityCard c3 = new CityCard("New York", Color.Blue);
+            CityCard c4 = new CityCard("Chicago", Color.Blue);
+            _deck.addCardToTop(c1);
+            _deck.addCardToTop(c2);
+            _deck.addCardToTop(c3);
+            _deck.addCardToTop(c4);
+            Cards lastcity = InfectorBl.Epidemic(_deck, _pile, ref _infectionIndex, ref _infectionRate);
+            Assert.AreEqual(lastcity.CityName, c1.CityName);
         }
 
       [TestMethod]

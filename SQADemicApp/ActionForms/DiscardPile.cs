@@ -24,7 +24,7 @@ namespace SQADemicApp
         private void SetCards()
         {
             listBox1.Items.Clear();
-            List<string> discarded = new List<string>(GameBoardModels.InfectionPile);
+            List<string> discarded = GameBoardModels.infectionPile.getCardsAsStrings();
             listBox1.Items.AddRange(discarded.ToArray());
         }
 
@@ -33,7 +33,7 @@ namespace SQADemicApp
             try
             {
                 var selecteditem = listBox1.SelectedItem.ToString();
-                GameBoardModels.InfectionPile.Remove(selecteditem);
+                GameBoardModels.infectionPile.removeCardFromPlay(selecteditem);
                 this.Close();
             }
             catch (NullReferenceException)

@@ -13,15 +13,15 @@ namespace SQADemicApp.BL
         /// <param name="pile">infection Deck - LinkedList</param>
         /// <param name="infectionRate"></param>
         /// <returns>List of new infected cities</returns>
-        public static List<string> InfectCities(LinkedList<string> deck, LinkedList<string> pile, int infectionRate)
+        public static List<Cards> InfectCities(InfectionDeck deck, InfectionPile pile, int infectionRate)
         {
-            List<string> returnList = new List<string>();
+            List<Cards> returnList = new List<Cards>();
 
             for (int i = 0; i < infectionRate; i++)
             {
-                returnList.Add(deck.First.Value);
-                pile.AddFirst(deck.First.Value);
-                deck.RemoveFirst();
+                Cards drawnCard = deck.draw();
+                returnList.Add(drawnCard);
+                pile.addCardToTop(drawnCard);
             }
             return returnList;
         }
@@ -35,33 +35,26 @@ namespace SQADemicApp.BL
         /// <param name="infectionRateIndex">infectionRateIndex - int current index in the infectionRates</param>
         /// <param name="infectionRate"></param>
         /// <returns></returns>
-        public static string Epidemic(LinkedList<string> deck, LinkedList<string> pile, ref int infectionRateIndex, ref int infectionRate)
+        public static Cards Epidemic(InfectionDeck deck, InfectionPile pile, ref int infectionRateIndex, ref int infectionRate)
         {
             //infection rate stuff
             infectionRate = infectionRateIndex > 1 ? (infectionRateIndex > 3 ? 4 : 3) : 2;
             infectionRateIndex += 1;
 
             //draw Last card
-            string epidmicCity = deck.Last.Value;
-            deck.RemoveLast();
-            pile.AddFirst(epidmicCity);
-
-            //shuffle remains back on to the deck
-            string[] pilearray = pile.ToArray<string>();
-            pilearray = HelperBl.ShuffleArray(pilearray);
-            for (int i = 0; i < pilearray.Length; i++)
-            {
-                deck.AddFirst(pilearray[i]);
-            }
-            pile.Clear();
+            Cards epidmicCity = deck.drawFromBottom();
+            pile.addCardToTop(epidmicCity);
+            pile.shuffle();
+            deck.addCardListToTop(pile.getAndClearCardList());
             return epidmicCity;
         }
 
-        public static void InfectCities(List<string> citiesToInfect)
+        public static void InfectCities(List<Cards> citiesToInfect)
         {
-            foreach (string name in citiesToInfect)
+            foreach (Cards card in citiesToInfect)
             {
-                InfectCity(Create.CityDictionary[name], new HashSet<City>(), false, Create.CityDictionary[name].Color);
+                City city = Create.CityDictionary[card.CityName];
+                InfectCity(city, new HashSet<City>(), false, city.Color);
             }
         }
 

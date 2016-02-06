@@ -12,7 +12,7 @@ namespace SQADemicApp
         {
             InitializeComponent();
             listBox1.Items.Clear();
-            listBox1.Items.AddRange(SQADemicApp.BL.SpecialEventCardsBl.GetForcastCards(GameBoardModels.InfectionDeck).ToArray());
+            listBox1.Items.AddRange(SQADemicApp.BL.SpecialEventCardsBl.GetForcastCards(GameBoardModels.infectionDeck).ToArray());
         }
 
         private void Reorder_Click(object sender, EventArgs e)
@@ -22,7 +22,7 @@ namespace SQADemicApp
             {
                 selectedCards.Add(select.ToString());
             }
-            SQADemicApp.BL.SpecialEventCardsBl.CommitForcast(GameBoardModels.InfectionDeck, selectedCards);
+            SQADemicApp.BL.SpecialEventCardsBl.CommitForcast(GameBoardModels.infectionDeck, selectedCards);
             this.Close();
         }
 

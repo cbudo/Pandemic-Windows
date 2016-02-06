@@ -10,11 +10,10 @@ namespace SQADemicApp
     {
         public static Dictionary<string, City> CityDictionary = new Dictionary<string, City>();
 
-        public static bool SetUpCreate(string[] playerRoles, out List<string> infectionDeck)
+        public static bool SetUpCreate(string[] playerRoles)
         {
             CreateDictionary();
             SetAdjacentCities(new StringReader(Properties.Resources.AdjacentNeighbors));
-            infectionDeck = MakeInfectionDeck(new StringReader(Properties.Resources.InfectionDeck));
             CityDictionary["Atlanta"].ResearchStation = true;
             return true;
         }
@@ -76,23 +75,6 @@ namespace SQADemicApp
                     CityDictionary[cityname].AdjacentCities.Add(CityDictionary[city]);
                 }
             }
-        }
-
-        /// <summary>
-        /// PUBLIC FOR TESTING ONLY
-        /// </summary>
-        /// <param name="stringReader"></param>
-        /// <returns></returns>
-        public static List<string> MakeInfectionDeck(StringReader stringReader)
-        {
-            string line;
-            string[] infectionDeckArray = null;
-            while ((line = stringReader.ReadLine()) != null)
-            {
-                infectionDeckArray = line.Split(',');
-            }
-            string[] shuffledDeck = HelperBl.ShuffleArray(infectionDeckArray);
-            return shuffledDeck.ToList();
         }
 
         /// <summary>

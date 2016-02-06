@@ -63,7 +63,7 @@ namespace SQADemicApp
         {
             if (!QuietNight)
             {
-                List<string> infectedcites = InfectorBl.InfectCities(GameBoardModels.InfectionDeck, GameBoardModels.InfectionPile, GameBoardModels.InfectionRate);
+                List<Cards> infectedcites = InfectorBl.InfectCities(GameBoardModels.infectionDeck, GameBoardModels.infectionPile, GameBoardModels.InfectionRate);
                 InfectorBl.InfectCities(infectedcites);
             }
             else
@@ -84,11 +84,11 @@ namespace SQADemicApp
             //Epidemic code
             if (drawCard1.GetType() == typeof(EpidemicCard))
             {
-                string infectcityname = InfectorBl.Epidemic(GameBoardModels.InfectionDeck, GameBoardModels.InfectionPile, ref GameBoardModels.InfectionRateIndex, ref GameBoardModels.InfectionRate);
-                new PicForm(false, infectcityname).Show();
+                Cards infectcitycard = InfectorBl.Epidemic(GameBoardModels.infectionDeck, GameBoardModels.infectionPile, ref GameBoardModels.InfectionRateIndex, ref GameBoardModels.InfectionRate);
+                new PicForm(false, infectcitycard.CityName).Show();
                 for (int i = 0; i < 3; i++)
                 {
-                    InfectorBl.InfectCities(new List<string> { infectcityname });
+                    InfectorBl.InfectCities(new List<Cards> { infectcitycard });
                 }
             }
             else if (drawCard1.GetType() == typeof(SpecialCard))
@@ -98,11 +98,11 @@ namespace SQADemicApp
 
             if (drawCard2.GetType() == typeof(EpidemicCard))
             {
-                string infectcityname = InfectorBl.Epidemic(GameBoardModels.InfectionDeck, GameBoardModels.InfectionPile, ref GameBoardModels.InfectionRateIndex, ref GameBoardModels.InfectionRate);
-                new PicForm(false, infectcityname).Show();
+                Cards infectcitycard = InfectorBl.Epidemic(GameBoardModels.infectionDeck, GameBoardModels.infectionPile, ref GameBoardModels.InfectionRateIndex, ref GameBoardModels.InfectionRate);
+                new PicForm(false, infectcitycard.CityName).Show();
                 for (int i = 0; i < 3; i++)
                 {
-                    InfectorBl.InfectCities(new List<string> { infectcityname });
+                    InfectorBl.InfectCities(new List<Cards> { infectcitycard });
                 }
             }
             else if (drawCard2.GetType() == typeof(SpecialCard))

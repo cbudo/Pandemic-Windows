@@ -41,9 +41,9 @@ namespace SQADemicApp.BL
         /// <param name="infectionPile">Infection Discard Pile</param>
         /// <param name="cityname">Card to be removed</param>
         /// <returns>status flag</returns>
-        public static bool ResilientPopulation(LinkedList<string> infectionPile, string cityname)
+        public static bool ResilientPopulation(InfectionPile infectionPile, string cityname)
         {
-            return infectionPile.Remove(cityname);
+            return infectionPile.removeCardFromPlay(cityname);
         }
 
         /// <summary>
@@ -52,14 +52,15 @@ namespace SQADemicApp.BL
         /// </summary>
         /// <param name="infectionDeck"></param>
         /// <returns>Top 6 cards to be examined</returns>
-        public static List<string> GetForcastCards(LinkedList<string> infectionDeck)
+        public static List<string> GetForcastCards(InfectionDeck infectionDeck)
         {
             List<string> returnList = new List<string>();
 
             for (int _ = 0; _ < 6; _++)
             {
-                returnList.Add(infectionDeck.First.Value);
-                infectionDeck.RemoveFirst();
+                Cards drawn = infectionDeck.draw();
+                infectionDeck.addCardToBottom(drawn);
+                returnList.Add(drawn.CityName);
             }
             return returnList;
         }
@@ -71,13 +72,14 @@ namespace SQADemicApp.BL
         /// <param name="infectionDeck"></param>
         /// <param name="orderedCards">6 cards in the order to be replaced</param>
         /// <returns>status flag</returns>
-        public static bool CommitForcast(LinkedList<string> infectionDeck, List<string> orderedCards)
+        public static bool CommitForcast(InfectionDeck infectionDeck, List<string> orderedCards)
         {
             if (orderedCards.Count != 6)
                 return false;
+            List<Cards> ordered = infectionDeck.getAndRemoveCardsWithNames(orderedCards);
             for (int i = 5; i >= 0; i--)
             {
-                infectionDeck.AddFirst(orderedCards[i]);
+                infectionDeck.addCardToTop(ordered[i]);
             }
             return true;
         }

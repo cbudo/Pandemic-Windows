@@ -82,7 +82,7 @@ namespace SQADemicApp
                 string cardName = line.Substring(0, line.IndexOf(";"));
                 string cardColor = line.Substring(line.IndexOf(";") + 2);
                 Color color = getColor(cardColor);
-                addCard(new CityCard(cardName, color));
+                addCardToBottom(new CityCard(cardName, color));
             }
             addSpecialCards();
         }
@@ -90,11 +90,11 @@ namespace SQADemicApp
         private void addSpecialCards()
         {
             //TODO: Fix this to be integrated with the new Card types
-            addCard(new SpecialCard("Airlift"));
-            addCard(new SpecialCard("One Quiet Night"));
-            addCard(new SpecialCard("Resilient Population"));
-            addCard(new SpecialCard("Government Grant"));
-            addCard(new SpecialCard("Forecast"));
+            addCardToBottom(new SpecialCard("Airlift"));
+            addCardToBottom(new SpecialCard("One Quiet Night"));
+            addCardToBottom(new SpecialCard("Resilient Population"));
+            addCardToBottom(new SpecialCard("Government Grant"));
+            addCardToBottom(new SpecialCard("Forecast"));
         }
 
         public int getEpidemicCount()

@@ -180,20 +180,9 @@ namespace SQADemicAppTest
         [TestMethod]
         public void TestInfectionDeckCorrectLength()
         {
-            List<string> ls;
-            StringReader r = new StringReader("New York,Montreal,Washington,London,Madrid");
-            ls = Create.MakeInfectionDeck(r);
-            Assert.AreEqual(5, ls.Count);
-        }
-
-        [TestMethod]
-        public void TestInfectionDeckDoesntHaveDuplicates()
-        {
-            List<string> ls;
-            StringReader r = new StringReader("New York,Montreal,Washington,London,Madrid");
-            ls = Create.MakeInfectionDeck(r);
-            HashSet<string> hash = new HashSet<string>(ls);
-            Assert.AreEqual(5, hash.Count);
+            InfectionDeck ls;
+            ls = new InfectionDeck();
+            Assert.AreEqual(48, ls.getDeckSize());
         }
         #endregion
 
