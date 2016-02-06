@@ -197,7 +197,7 @@ namespace SQADemicApp
             }
             if (TurnPart == Turnpart.Draw)
             {
-                _playerForm.EndSequenceBtn.Text = "Draw Cards";
+                _playerForm.EndSequenceBtn.Text = "Draw Cards\n" + "(" + BoardModel.PlayerDeckSize() + " Remaining)";
                 _playerForm.EndSequenceBtn.Show();
             }
             else if (TurnPart == Turnpart.Infect)
