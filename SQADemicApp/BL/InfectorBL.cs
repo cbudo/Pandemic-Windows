@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace SQADemicApp.BL
 {
@@ -46,6 +47,12 @@ namespace SQADemicApp.BL
             pile.addCardToTop(epidmicCity);
             pile.shuffle();
             deck.addCardListToTop(pile.getAndClearCardList());
+            if (!PlayerFactory.HasResponder()) return epidmicCity;
+            if (MessageBox.Show("Move First Responder", "Would you like to move to " + epidmicCity.CityName,
+                MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                GameBoardModels.Players[GameBoardModels.CurrentPlayerIndex].CurrentCity = Create.CityDictionary[epidmicCity.CityName];
+            }
             return epidmicCity;
         }
 

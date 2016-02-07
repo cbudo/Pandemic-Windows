@@ -45,7 +45,7 @@ namespace SQADemicApp.Players
                 CharterFlightOption();
         }
 
-        public bool Move(City destination)
+        public virtual bool Move(City destination)
         {
             if (DriveOptions().Any(c => c.Name.Equals(destination.Name)))
             {

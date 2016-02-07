@@ -9,9 +9,10 @@ namespace SQADemicApp
 {
     class PlayerFactory
     {
+        private static bool responder = false;
         public static void init(string[] roles)
         {
-            List<Player> playerRoles = roles.Select(role => getRole(role)).ToList();
+            List<Player> playerRoles = roles.Select(role => GetRole(role)).ToList();
             GameBoardModels.Players = playerRoles.ToArray();
         }
 
@@ -20,7 +21,7 @@ namespace SQADemicApp
 
         }
 
-        private static Player getRole(string roleName)
+        private static Player GetRole(string roleName)
         {
             Player player;
             switch (roleName.ToUpper())
@@ -49,6 +50,15 @@ namespace SQADemicApp
                     player = new GeneSplicer();
                     break;
 
+                case "PHARMACIST":
+                    player = new Pharmacist();
+                    break;
+
+                case "FIRST RESPONDER":
+                    player = new FirstResponder();
+                    SetResponder(true);
+                    break;
+
                 default:
                     player = null;
                     break;
@@ -56,9 +66,18 @@ namespace SQADemicApp
             return player;
         }
 
-        public static object[] possibleRoles()
+        public static bool HasResponder()
         {
-            return new object[] {"Dispatcher", "Operations Expert", "Scientist", "Medic", "Researcher", "Gene Splicer"};
+            return responder;
+        }
+
+        public static void SetResponder(bool respondr)
+        {
+            PlayerFactory.responder = respondr;
+        }
+        public static object[] PossibleRoles()
+        {
+            return new object[] { "First Responder", "Dispatcher", "Operations Expert", "Scientist", "Medic", "Researcher", "Gene Splicer" };
         }
     }
 }
