@@ -13,6 +13,7 @@ Another aspect of our CSSE375 project was to add a couple additional features to
 # CSSE375 Milestone 2 Tasks
 - Add difficulty levels to the game (extra epidemic cards, infection rate change, difficulty selector, difficulty indicator)
 - Tooltips for cards and cities
+
 # CSSE375 Milestone 3 Tasks
 - Help Panel
 - Rebuild GameboardModels.cs (extract internal classes, decouple variables)
@@ -23,6 +24,7 @@ Another aspect of our CSSE375 project was to add a couple additional features to
 - Decouple functions in HelperBL.cs
 - Strategy Pattern for Card.cs
 - Decouple player actions
+
 # CSSE375 Milestone 4 Tasks
 - Highlight Possible Moves
 - Remove PlayerDeck method from Create.cs
