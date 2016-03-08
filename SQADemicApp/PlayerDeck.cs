@@ -91,7 +91,7 @@ namespace SQADemicApp
         {
             //TODO: Fix this to be integrated with the new Card types
             addCardToBottom(new SpecialCard("Airlift"));
-            addCardToBottom(new SpecialCard("One Quiet Night"));
+            addCardToBottom(new SpecialCard("One Quiet "));
             addCardToBottom(new SpecialCard("Resilient Population"));
             addCardToBottom(new SpecialCard("Government Grant"));
             addCardToBottom(new SpecialCard("Forecast"));
